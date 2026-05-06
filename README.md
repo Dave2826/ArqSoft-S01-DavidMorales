@@ -61,3 +61,7 @@ Catalogo
 │   ├── js
 │   └── lib
 └── Program.cs
+
+## Prueba Git
+
+Repositorio funcionando correctamente.
