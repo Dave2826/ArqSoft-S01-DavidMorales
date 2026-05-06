@@ -1,0 +1,16 @@
+﻿@model Catalogo.Models.Item
+
+<div class="container">
+
+    <h1>@Model.Nombre</h1>
+
+    <div class="card">
+        <p><strong>Marca:</strong> @Model.Marca</p>
+        <p><strong>Tipo:</strong> @Model.Tipo</p>
+        <p><strong>Año:</strong> @Model.Ano</p>
+        <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    </div>
+
+    <a class="btn" asp-action="Index">← Volver</a>
+
+</div>
