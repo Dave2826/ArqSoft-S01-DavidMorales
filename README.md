@@ -48,7 +48,7 @@ El proyecto utiliza el patrón MVC:
 
 ---
 
-# Estructura del proyecto
+# Estructura del proyecto.
 
 ```text
 Catalogo
