@@ -33,7 +33,11 @@ El sistema fue personalizado con una temática estilo racing/cyber inspirada en 
 
 ---
 
+<<<<<<< HEAD
 # Arquitectura utilizada.
+=======
+# Arquitectura utilizada
+>>>>>>> e4425225fb0a485b5164d54e877aa5904f00bff2
 
 El proyecto utiliza el patrón MVC:
 
@@ -48,7 +52,11 @@ El proyecto utiliza el patrón MVC:
 
 ---
 
+<<<<<<< HEAD
 # Estructura del proyecto.
+=======
+# Estructura del proyecto
+>>>>>>> e4425225fb0a485b5164d54e877aa5904f00bff2
 
 ```text
 Catalogo
@@ -61,7 +69,10 @@ Catalogo
 │   ├── js
 │   └── lib
 └── Program.cs
+<<<<<<< HEAD
 
 ## Prueba Git
 
 Repositorio funcionando correctamente.
+=======
+>>>>>>> e4425225fb0a485b5164d54e877aa5904f00bff2
