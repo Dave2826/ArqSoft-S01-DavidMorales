@@ -10,7 +10,7 @@ El sistema fue personalizado con una temática estilo racing/cyber inspirada en 
 
 ---
 
-# Funcionalidades
+## Funcionalidades
 
 - Listado dinámico de motocicletas
 - Filtro por marca
@@ -23,7 +23,7 @@ El sistema fue personalizado con una temática estilo racing/cyber inspirada en 
 
 ---
 
-# Tecnologías utilizadas
+## Tecnologías utilizadas
 
 - ASP.NET Core MVC
 - C#
@@ -33,30 +33,22 @@ El sistema fue personalizado con una temática estilo racing/cyber inspirada en 
 
 ---
 
-<<<<<<< HEAD
-# Arquitectura utilizada.
-=======
-# Arquitectura utilizada
->>>>>>> e4425225fb0a485b5164d54e877aa5904f00bff2
+## Arquitectura utilizada
 
 El proyecto utiliza el patrón MVC:
 
-- Models
-  - Representación de datos
+### Models
+Representación de datos.
 
-- Views
-  - Interfaz visual
+### Views
+Interfaz visual.
 
-- Controllers
-  - Lógica y control de navegación
+### Controllers
+Lógica y control de navegación.
 
 ---
 
-<<<<<<< HEAD
-# Estructura del proyecto.
-=======
-# Estructura del proyecto
->>>>>>> e4425225fb0a485b5164d54e877aa5904f00bff2
+## Estructura del proyecto
 
 ```text
 Catalogo
@@ -69,10 +61,16 @@ Catalogo
 │   ├── js
 │   └── lib
 └── Program.cs
-<<<<<<< HEAD
+```
 
-## Prueba Git
+---
 
-Repositorio funcionando correctamente.
-=======
->>>>>>> e4425225fb0a485b5164d54e877aa5904f00bff2
+## Uso de IA
+
+La inteligencia artificial fue utilizada únicamente como apoyo para:
+- personalización visual,
+- mejora estética,
+- organización de interfaz,
+- y asistencia menor en estructura visual del proyecto.
+
+La lógica principal, implementación MVC y configuración general fueron desarrolladas manualmente.
