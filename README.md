@@ -74,3 +74,19 @@ La inteligencia artificial fue utilizada únicamente como apoyo para:
 - y asistencia menor en estructura visual del proyecto.
 
 La lógica principal, implementación MVC y configuración general fueron desarrolladas manualmente.
+
+---
+
+## Capturas de pantalla
+
+### Página principal
+![Página principal](screenshots/home.png)
+
+### Registro de motocicletas
+![Agregar moto](screenshots/agregar.png)
+
+### Desarrollo en Visual Studio
+![Visual Studio](screenshots/visualstudio.png)
+
+### Repositorio en GitHub
+![GitHub](screenshots/github.png)
