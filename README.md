@@ -77,7 +77,7 @@ La lógica principal, implementación MVC y configuración general fueron desarr
 
 ---
 
-## Capturas de pantalla
+## Capturas de pantalla.
 
 ### Página principal
 ![Página principal](screenshots/home.png)
