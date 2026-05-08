@@ -1,16 +1,54 @@
 ﻿@model Catalogo.Models.Item
 
-<div class="container">
+@{
+    var imagenMoto = new Dictionary<string, string>
+    {
+        { "Kawasaki Ninja 400", "/images/Kawasaki Ninja 400.png" },
+        { "Yamaha R3", "/images/Yamaha R3.png" },
+        { "Honda CBR600RR", "/images/Honda CBR600RR.png" },
+        { "Italika DM200", "/images/Italika DM200.png" },
+        { "BMW S1000RR", "/images/BMW S1000RR.png" }
+    };
+}
 
-    <h1>@Model.Nombre</h1>
+<div class="container detalle-container">
 
-    <div class="card">
-        <p><strong>Marca:</strong> @Model.Marca</p>
-        <p><strong>Tipo:</strong> @Model.Tipo</p>
-        <p><strong>Año:</strong> @Model.Ano</p>
-        <p><strong>Descripción:</strong> @Model.Descripcion</p>
+    <a class="btn btn-volver" asp-action="Index">
+        <span class="flecha">&#8592;</span> Volver al catálogo
+    </a>
+
+    @if (imagenMoto.ContainsKey(Model.Nombre))
+    {
+        <div class="detalle-img-wrapper">
+            <img src="@Url.Content(imagenMoto[Model.Nombre])" alt="@Model.Nombre" class="detalle-img" />
+        </div>
+    }
+
+    <div class="detalle-header">
+        <h1>@Model.Nombre</h1>
+        <div class="detalle-badges">
+            <span class="badge badge-marca">@Model.Marca</span>
+            <span class="badge badge-tipo">@Model.Tipo</span>
+        </div>
     </div>
 
-    <a class="btn" asp-action="Index">← Volver</a>
+    <div class="detalle-grid">
+        <div class="detalle-card">
+            <div class="detalle-card-icon">&#128205;</div>
+            <h3>Ficha técnica</h3>
+            <ul>
+                <li><strong>Marca:</strong> @Model.Marca</li>
+                <li><strong>Modelo:</strong> @Model.Nombre</li>
+                <li><strong>Año:</strong> @Model.Ano</li>
+                <li><strong>Tipo:</strong> @Model.Tipo</li>
+            </ul>
+        </div>
+
+        <div class="detalle-card">
+            <div class="detalle-card-icon">&#128220;</div>
+            <h3>Descripción</h3>
+            <p>@Model.Descripcion</p>
+        </div>
+    </div>
 
 </div>

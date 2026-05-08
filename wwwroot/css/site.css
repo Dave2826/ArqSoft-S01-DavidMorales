@@ -48,6 +48,23 @@ a {
     border-left: 5px solid #ff7a00;
 }
 
+/* ================= IMAGENES DE CARDS ================= */
+.card-img {
+    width: 100%;
+    height: auto;
+    max-height: 220px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+    .card:hover .card-img {
+        transform: scale(1.03);
+        box-shadow: 0 4px 16px rgba(255, 122, 0, 0.3);
+    }
+
 /* ================= FILTRO ================= */
 .filtro {
     margin-bottom: 25px;
@@ -156,6 +173,157 @@ textarea {
 /* Footer */
 footer {
     color: #cfcfcf;
+}
+
+/* ================= DETALLE ================= */
+.detalle-container {
+    max-width: 900px;
+    margin: auto;
+    padding-bottom: 40px;
+}
+
+.btn-volver {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 24px;
+    background-color: #2a2a2a;
+    color: #ff7a00;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    border: 1px solid #3a3a3a;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+    .btn-volver:hover {
+        background-color: #ff7a00;
+        color: #000;
+        transform: translateX(-4px);
+    }
+
+.flecha {
+    font-size: 18px;
+}
+
+.detalle-img-wrapper {
+    margin-bottom: 24px;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    border: 2px solid #2a2a2a;
+}
+
+.detalle-img {
+    width: 100%;
+    height: auto;
+    max-height: 450px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+    .detalle-img-wrapper:hover .detalle-img {
+        transform: scale(1.04);
+    }
+
+.detalle-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+    .detalle-header h1 {
+        font-size: 2.4rem;
+        margin-bottom: 12px;
+        text-shadow: 0 2px 8px rgba(255, 122, 0, 0.3);
+    }
+
+.detalle-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.badge {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.badge-marca {
+    background-color: #ff7a00;
+    color: #000;
+}
+
+.badge-tipo {
+    background-color: #2a2a2a;
+    color: #ff7a00;
+    border: 1px solid #ff7a00;
+}
+
+.detalle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+@media (max-width: 640px) {
+    .detalle-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+.detalle-card {
+    background-color: #1e1e1e;
+    border-radius: 12px;
+    padding: 24px;
+    border-left: 5px solid #ff7a00;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.3s ease;
+}
+
+    .detalle-card:hover {
+        box-shadow: 0 4px 16px rgba(255, 122, 0, 0.2);
+    }
+
+    .detalle-card h3 {
+        margin-top: 10px;
+        margin-bottom: 12px;
+        font-size: 1.2rem;
+    }
+
+    .detalle-card ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+        .detalle-card ul li {
+            padding: 6px 0;
+            border-bottom: 1px solid #2a2a2a;
+            color: #e6e6e6;
+        }
+
+            .detalle-card ul li:last-child {
+                border-bottom: none;
+            }
+
+            .detalle-card ul li strong {
+                color: #ff7a00;
+            }
+
+    .detalle-card p {
+        line-height: 1.7;
+    }
+
+.detalle-card-icon {
+    font-size: 1.6rem;
+    margin-bottom: 4px;
 }
 
 /* ================= CANVAS FONDO ================= */
