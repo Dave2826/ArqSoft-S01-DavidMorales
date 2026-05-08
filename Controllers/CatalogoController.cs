@@ -1,62 +1,19 @@
 ﻿using Catalogo.Models;
+using Catalogo.Repository;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogo.Controllers
 {
-    public class CatalogoController : Controller
+    [Route("api/[controller]")]
+    [ApiController]
+    public class CatalogoController : ControllerBase
     {
-        private static List<Item> _items = new()
+        private readonly IRepository<Item> _repository;
+
+        public CatalogoController(IRepository<Item> repository)
         {
-            new Item
-            {
-                Id = 1,
-                Nombre = "Kawasaki Ninja 400",
-                Marca = "Kawasaki",
-                Ano = 2018,
-                Tipo = "Deportiva",
-                Descripcion = "Ligera y ágil."
-            },
-
-            new Item
-            {
-                Id = 2,
-                Nombre = "Yamaha R3",
-                Marca = "Yamaha",
-                Ano = 2020,
-                Tipo = "Deportiva",
-                Descripcion = "Buen balance potencia-control."
-            },
-
-            new Item
-            {
-                Id = 3,
-                Nombre = "Honda CBR600RR",
-                Marca = "Honda",
-                Ano = 2022,
-                Tipo = "Deportiva",
-                Descripcion = "Rendimiento en pista."
-            },
-
-            new Item
-            {
-                Id = 4,
-                Nombre = "Italika DM200",
-                Marca = "Italika",
-                Ano = 2023,
-                Tipo = "Doble propósito",
-                Descripcion = "Uso diario y caminos mixtos."
-            },
-
-            new Item
-            {
-                Id = 5,
-                Nombre = "BMW GS 1250",
-                Marca = "BMW",
-                Ano = 2022,
-                Tipo = "Adventure",
-                Descripcion = "Viajes largos y off-road."
-            }
-        };
+            _repository = repository;
+        }
 
         // ================= INDEX =================
 
