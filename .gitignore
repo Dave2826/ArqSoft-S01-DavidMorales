@@ -361,3 +361,13 @@ MigrationBackup/
 
 # Fody - auto-generated XML schema
 FodyWeavers.xsd
+
+# Warp / IA / terminal
+.warp/
+.history/
+
+# Mac/Linux metadata
+.DS_Store
+
+# Logs temporales
+*.tmp
