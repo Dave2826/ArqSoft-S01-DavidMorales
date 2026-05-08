@@ -1,0 +1,70 @@
+﻿@model Catalogo.Models.Item
+
+@{
+    var imagenMoto = new Dictionary<string, string>
+    {
+        { "Kawasaki Ninja 400", "/images/Kawasaki Ninja 400.png" },
+        { "Yamaha R3", "/images/Yamaha R3.png" },
+        { "Honda CBR600RR", "/images/Honda CBR600RR.png" },
+        { "Italika DM200", "/images/Italika DM200.png" },
+        { "BMW S1000RR", "/images/BMW S1000RR.png" }
+    };
+}
+
+<div class="container editar-container">
+
+    <a class="btn btn-volver" asp-action="Index">
+        <span class="flecha">&#8592;</span> Volver al catálogo
+    </a>
+
+    <h1>Editar Moto</h1>
+
+    @if (imagenMoto.ContainsKey(Model.Nombre))
+    {
+        <div class="editar-img-wrapper">
+            <img src="@Url.Content(imagenMoto[Model.Nombre])" alt="@Model.Nombre" class="editar-img" />
+        </div>
+    }
+
+    <form asp-action="Editar" method="post" class="form-box editar-form">
+
+        <input type="hidden" asp-for="Id" />
+
+        <div class="form-group">
+            <label asp-for="Nombre"></label>
+            <input asp-for="Nombre" />
+            <span asp-validation-for="Nombre" class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Marca"></label>
+            <input asp-for="Marca" />
+            <span asp-validation-for="Marca" class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Ano"></label>
+            <input asp-for="Ano" type="number" />
+            <span asp-validation-for="Ano" class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Tipo"></label>
+            <input asp-for="Tipo" />
+            <span asp-validation-for="Tipo" class="error"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Descripcion"></label>
+            <textarea asp-for="Descripcion"></textarea>
+            <span asp-validation-for="Descripcion" class="error"></span>
+        </div>
+
+        <div class="form-actions">
+            <button class="btn" type="submit">Guardar cambios</button>
+            <a class="btn-cancel" asp-action="Detalle" asp-route-id="@Model.Id">Cancelar</a>
+        </div>
+
+    </form>
+
+</div>

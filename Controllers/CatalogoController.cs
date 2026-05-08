@@ -119,5 +119,42 @@ namespace Catalogo.Controllers
 
             return RedirectToAction("Index");
         }
+
+        // ================= EDITAR GET =================
+
+        public IActionResult Editar(int id)
+        {
+            var item = _items.FirstOrDefault(i => i.Id == id);
+
+            return item == null
+                ? NotFound()
+                : View(item);
+        }
+
+        // ================= EDITAR POST =================
+
+        [HttpPost]
+        public IActionResult Editar(Item item)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(item);
+            }
+
+            var existente = _items.FirstOrDefault(i => i.Id == item.Id);
+
+            if (existente == null)
+            {
+                return NotFound();
+            }
+
+            existente.Nombre = item.Nombre?.Trim() ?? "";
+            existente.Marca = item.Marca?.Trim() ?? "";
+            existente.Tipo = item.Tipo?.Trim() ?? "";
+            existente.Ano = item.Ano;
+            existente.Descripcion = item.Descripcion?.Trim() ?? "";
+
+            return RedirectToAction("Index");
+        }
     }
 }

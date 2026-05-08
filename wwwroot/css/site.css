@@ -164,6 +164,58 @@ textarea {
         background-color: #555;
     }
 
+/* ================= BOTON EDITAR EN CARDS ================= */
+.card-actions {
+    margin-top: 10px;
+}
+
+.btn-editar-sm {
+    background-color: #2a2a2a;
+    color: #ff7a00;
+    padding: 5px 12px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border: 1px solid #3a3a3a;
+    display: inline-block;
+}
+
+    .btn-editar-sm:hover {
+        background-color: #ff7a00;
+        color: #000;
+    }
+
+/* ================= DETALLE ACCIONES ================= */
+.detalle-actions {
+    margin-top: 16px;
+}
+
+/* ================= EDITAR ================= */
+.editar-container {
+    max-width: 700px;
+    margin: auto;
+    padding-bottom: 40px;
+}
+
+.editar-img-wrapper {
+    margin-bottom: 24px;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
+    border: 2px solid #2a2a2a;
+}
+
+.editar-img {
+    width: 100%;
+    height: auto;
+    max-height: 280px;
+    object-fit: cover;
+    display: block;
+}
+
+.editar-form {
+    max-width: 100%;
+}
+
 /* ================= FIX BOOTSTRAP ================= */
 .text-muted,
 .text-secondary {

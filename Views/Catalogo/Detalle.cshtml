@@ -30,6 +30,9 @@
             <span class="badge badge-marca">@Model.Marca</span>
             <span class="badge badge-tipo">@Model.Tipo</span>
         </div>
+        <div class="detalle-actions">
+            <a class="btn" asp-action="Editar" asp-route-id="@Model.Id">&#9998; Editar moto</a>
+        </div>
     </div>
 
     <div class="detalle-grid">

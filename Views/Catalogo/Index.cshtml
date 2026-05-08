@@ -42,6 +42,9 @@
             </h3>
             <p>@item.Marca - @item.Ano</p>
             <p>@item.Tipo</p>
+            <div class="card-actions">
+                <a class="btn btn-editar-sm" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+            </div>
         </div>
     }
 
