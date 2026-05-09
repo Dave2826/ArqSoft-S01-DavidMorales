@@ -1,16 +1,5 @@
 ﻿@model Catalogo.Models.Item
 
-@{
-    var imagenMoto = new Dictionary<string, string>
-    {
-        { "Kawasaki Ninja 400", "/images/Kawasaki Ninja 400.png" },
-        { "Yamaha R3", "/images/Yamaha R3.png" },
-        { "Honda CBR600RR", "/images/Honda CBR600RR.png" },
-        { "Italika DM200", "/images/Italika DM200.png" },
-        { "BMW S1000RR", "/images/BMW S1000RR.png" }
-    };
-}
-
 <div class="container editar-container">
 
     <a class="btn btn-volver" asp-action="Index">
@@ -19,10 +8,12 @@
 
     <h1>Editar Moto</h1>
 
-    @if (imagenMoto.ContainsKey(Model.Nombre))
+    @if (!string.IsNullOrEmpty(Model.ImagenUrl))
     {
         <div class="editar-img-wrapper">
-            <img src="@Url.Content(imagenMoto[Model.Nombre])" alt="@Model.Nombre" class="editar-img" />
+            <img src="@Url.Content(Model.ImagenUrl)"
+                 alt="@Model.Nombre"
+                 class="editar-img" />
         </div>
     }
 
@@ -60,9 +51,78 @@
             <span asp-validation-for="Descripcion" class="error"></span>
         </div>
 
+        <div class="form-group">
+            <label asp-for="ImagenUrl"></label>
+            <input asp-for="ImagenUrl"
+                   placeholder="/images/Kawasaki Ninja 400.png" />
+            <span asp-validation-for="ImagenUrl" class="error"></span>
+        </div>
+
+        @if (!string.IsNullOrEmpty(Model.ImagenUrl))
+        {
+            <div class="preview-container">
+                <p class="preview-label">Vista previa:</p>
+
+                <img src="@Url.Content(Model.ImagenUrl)"
+                     alt="Preview"
+                     class="preview-img" />
+            </div>
+        }
+
+        <h3 class="form-section-title">Ficha técnica</h3>
+
+        <div class="form-group">
+            <label asp-for="Cilindrada"></label>
+            <input asp-for="Cilindrada"
+                   placeholder="Ej: 399 cc" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Potencia"></label>
+            <input asp-for="Potencia"
+                   placeholder="Ej: 45 HP @@ 10,000 rpm" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="VelocidadMax"></label>
+            <input asp-for="VelocidadMax"
+                   placeholder="Ej: 190 km/h" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Peso"></label>
+            <input asp-for="Peso"
+                   placeholder="Ej: 168 kg" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Transmision"></label>
+            <input asp-for="Transmision"
+                   placeholder="Ej: 6 velocidades" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="CapacidadTanque"></label>
+            <input asp-for="CapacidadTanque"
+                   placeholder="Ej: 14 L" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TipoMotor"></label>
+            <input asp-for="TipoMotor"
+                   placeholder="Ej: Bicilíndrico en paralelo" />
+        </div>
+
         <div class="form-actions">
-            <button class="btn" type="submit">Guardar cambios</button>
-            <a class="btn-cancel" asp-action="Detalle" asp-route-id="@Model.Id">Cancelar</a>
+            <button class="btn" type="submit">
+                Guardar cambios
+            </button>
+
+            <a class="btn-cancel"
+               asp-action="Detalle"
+               asp-route-id="@Model.Id">
+                Cancelar
+            </a>
         </div>
 
     </form>

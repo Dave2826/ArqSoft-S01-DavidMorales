@@ -13,7 +13,7 @@
 
     <!-- NAVBAR -->
     <header>
-        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom mb-3">
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom sticky-top">
             <div class="container-fluid">
 
                 <span class="navbar-brand text-warning">
@@ -76,6 +76,10 @@
 
     <!-- TU JAVASCRIPT -->
     <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderBody()
+
+    @RenderSection("Scripts", required: false)
 
 </body>
 </html>

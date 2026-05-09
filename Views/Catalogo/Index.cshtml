@@ -1,16 +1,5 @@
 ﻿@model List<Catalogo.Models.Item>
 
-@{
-    var imagenMoto = new Dictionary<string, string>
-    {
-        { "Kawasaki Ninja 400", "/images/Kawasaki Ninja 400.png" },
-        { "Yamaha R3", "/images/Yamaha R3.png" },
-        { "Honda CBR600RR", "/images/Honda CBR600RR.png" },
-        { "Italika DM200", "/images/Italika DM200.png" },
-        { "BMW S1000RR", "/images/BMW S1000RR.png" }
-    };
-}
-
 <div class="container">
 
     <h1>Catálogo de Motos</h1>
@@ -31,23 +20,43 @@
     @foreach (var item in Model)
     {
         <div class="card">
-            @if (imagenMoto.ContainsKey(item.Nombre))
+
+            @if (!string.IsNullOrEmpty(item.ImagenUrl))
             {
-                <img src="@Url.Content(imagenMoto[item.Nombre])" alt="@item.Nombre" class="card-img" />
+                <img src="@Url.Content(item.ImagenUrl)"
+                     alt="@item.Nombre"
+                     class="card-img" />
             }
+
             <h3>
                 <a asp-action="Detalle" asp-route-id="@item.Id">
                     @item.Nombre
                 </a>
             </h3>
-            <p>@item.Marca - @item.Ano</p>
-            <p>@item.Tipo</p>
-            <div class="card-actions">
-                <a class="btn btn-editar-sm" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+
+            <p class="card-subtitle">
+                @item.Marca - @item.Ano | @item.Tipo
+            </p>
+
+            <div class="card-specs-mini">
+                <span>@item.Cilindrada</span>
+                <span>@item.Potencia</span>
+                <span>@item.VelocidadMax</span>
             </div>
+
+            <div class="card-actions">
+                <a class="btn btn-editar-sm"
+                       asp-action="Editar"
+                       asp-route-id="@item.Id">
+                    Editar
+                </a>
+            </div>
+
         </div>
     }
 
-    <a class="btn" asp-action="Agregar">+ Agregar Moto</a>
+    <a class="btn" asp-action="Agregar">
+        + Agregar Moto
+    </a>
 
 </div>

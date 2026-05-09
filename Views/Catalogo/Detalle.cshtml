@@ -1,57 +1,99 @@
 ﻿@model Catalogo.Models.Item
 
-@{
-    var imagenMoto = new Dictionary<string, string>
-    {
-        { "Kawasaki Ninja 400", "/images/Kawasaki Ninja 400.png" },
-        { "Yamaha R3", "/images/Yamaha R3.png" },
-        { "Honda CBR600RR", "/images/Honda CBR600RR.png" },
-        { "Italika DM200", "/images/Italika DM200.png" },
-        { "BMW S1000RR", "/images/BMW S1000RR.png" }
-    };
-}
-
 <div class="container detalle-container">
 
     <a class="btn btn-volver" asp-action="Index">
         <span class="flecha">&#8592;</span> Volver al catálogo
     </a>
 
-    @if (imagenMoto.ContainsKey(Model.Nombre))
+    @if (!string.IsNullOrEmpty(Model.ImagenUrl))
     {
         <div class="detalle-img-wrapper">
-            <img src="@Url.Content(imagenMoto[Model.Nombre])" alt="@Model.Nombre" class="detalle-img" />
+            <img src="@Url.Content(Model.ImagenUrl)"
+                 alt="@Model.Nombre"
+                 class="detalle-img" />
         </div>
     }
 
     <div class="detalle-header">
+
         <h1>@Model.Nombre</h1>
+
         <div class="detalle-badges">
             <span class="badge badge-marca">@Model.Marca</span>
             <span class="badge badge-tipo">@Model.Tipo</span>
+            <span class="badge badge-ano">@Model.Ano</span>
         </div>
+
         <div class="detalle-actions">
-            <a class="btn" asp-action="Editar" asp-route-id="@Model.Id">&#9998; Editar moto</a>
+            <a class="btn"
+                   asp-action="Editar"
+                   asp-route-id="@Model.Id">
+                &#9998; Editar moto
+            </a>
         </div>
+
+    </div>
+
+    <!-- Specs highlight -->
+    <div class="specs-highlight">
+
+        <div class="spec-item">
+            <span class="spec-value">@Model.Cilindrada</span>
+            <span class="spec-label">Cilindrada</span>
+        </div>
+
+        <div class="spec-item">
+            <span class="spec-value">@Model.Potencia</span>
+            <span class="spec-label">Potencia</span>
+        </div>
+
+        <div class="spec-item">
+            <span class="spec-value">@Model.VelocidadMax</span>
+            <span class="spec-label">Vel. Máxima</span>
+        </div>
+
+        <div class="spec-item">
+            <span class="spec-value">@Model.Peso</span>
+            <span class="spec-label">Peso</span>
+        </div>
+
     </div>
 
     <div class="detalle-grid">
+
         <div class="detalle-card">
-            <div class="detalle-card-icon">&#128205;</div>
+
+            <div class="detalle-card-icon">
+                &#9881;
+            </div>
+
             <h3>Ficha técnica</h3>
+
             <ul>
-                <li><strong>Marca:</strong> @Model.Marca</li>
-                <li><strong>Modelo:</strong> @Model.Nombre</li>
-                <li><strong>Año:</strong> @Model.Ano</li>
-                <li><strong>Tipo:</strong> @Model.Tipo</li>
+                <li><strong>Cilindrada:</strong> @Model.Cilindrada</li>
+                <li><strong>Potencia:</strong> @Model.Potencia</li>
+                <li><strong>Velocidad máx:</strong> @Model.VelocidadMax</li>
+                <li><strong>Peso:</strong> @Model.Peso</li>
+                <li><strong>Transmisión:</strong> @Model.Transmision</li>
+                <li><strong>Tanque:</strong> @Model.CapacidadTanque</li>
+                <li><strong>Motor:</strong> @Model.TipoMotor</li>
             </ul>
+
         </div>
 
         <div class="detalle-card">
-            <div class="detalle-card-icon">&#128220;</div>
+
+            <div class="detalle-card-icon">
+                &#128220;
+            </div>
+
             <h3>Descripción</h3>
+
             <p>@Model.Descripcion</p>
+
         </div>
+
     </div>
 
 </div>
