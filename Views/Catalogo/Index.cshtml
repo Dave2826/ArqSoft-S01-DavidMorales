@@ -1,11 +1,11 @@
-﻿@model List<Catalogo.Models.Item>
+﻿@model IEnumerable<Catalogo.Domain.Models.Item>
 
 <div class="container">
 
     <h1>Catálogo de Motos</h1>
 
     <p class="contador-motos">
-        Total de motocicletas registradas: <strong>@Model.Count</strong>
+        Total de motocicletas registradas: <strong>@Model.Count()</strong>
     </p>
 
     <div class="filtro">

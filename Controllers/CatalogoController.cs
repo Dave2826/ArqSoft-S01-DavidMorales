@@ -1,4 +1,4 @@
-﻿using Catalogo.Models;
+﻿using Catalogo.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogo.Controllers
