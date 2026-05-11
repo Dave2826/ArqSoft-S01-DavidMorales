@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="../Catalogo.Application/Catalogo.Application.csproj" Id="38703f15-d8ea-4783-8c44-026cd0fce6c9" />
+  <Project Path="../Catalogo.Domain/Catalogo.Domain.csproj" Id="20163ab6-d18c-44c5-a060-6ef412d24a29" />
+  <Project Path="../Catalogo.Infrastructure/Catalogo.Infrastructure.csproj" Id="b1e1045c-f6e4-410c-a601-9e62e19f1197" />
   <Project Path="Catalogo.csproj" />
 </Solution>
