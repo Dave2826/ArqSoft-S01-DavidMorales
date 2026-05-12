@@ -1,24 +1,23 @@
-﻿using Catalogo.Domain.Interfaces;
+﻿using Catalogo.Application.Services;
 using Catalogo.Domain.Models;
-using Catalogo.Infrastructure.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Catalogo.Controllers
 {
     public class CatalogoController : Controller
     {
-        private readonly IItemRepository _repository;
+        private readonly ItemService _itemService;
 
-        public CatalogoController()
+        public CatalogoController(ItemService itemService)
         {
-            _repository = new ItemRepository();
+            _itemService = itemService;
         }
 
         // ================= INDEX =================
 
         public IActionResult Index(string? marca)
         {
-            var items = _repository.ObtenerTodos();
+            var items = _itemService.ObtenerTodos();
 
             var resultado = string.IsNullOrWhiteSpace(marca)
                 ? items
@@ -42,7 +41,7 @@ namespace Catalogo.Controllers
 
         public IActionResult Detalle(int id)
         {
-            var item = _repository.ObtenerPorId(id);
+            var item = _itemService.ObtenerPorId(id);
 
             return item == null
                 ? NotFound()
@@ -66,7 +65,7 @@ namespace Catalogo.Controllers
                 return View(item);
             }
 
-            item.Id = _repository.ObtenerTodos().Count + 1;
+            item.Id = _itemService.ObtenerTodos().Count + 1;
 
             item.Nombre = item.Nombre?.Trim() ?? "";
             item.Marca = item.Marca?.Trim() ?? "";
@@ -74,7 +73,7 @@ namespace Catalogo.Controllers
             item.Descripcion = item.Descripcion?.Trim() ?? "";
             item.ImagenUrl = item.ImagenUrl?.Trim() ?? "";
 
-            _repository.Agregar(item);
+            _itemService.Agregar(item);
 
             return RedirectToAction("Index");
         }
@@ -83,7 +82,7 @@ namespace Catalogo.Controllers
 
         public IActionResult Editar(int id)
         {
-            var item = _repository.ObtenerPorId(id);
+            var item = _itemService.ObtenerPorId(id);
 
             return item == null
                 ? NotFound()
@@ -100,7 +99,7 @@ namespace Catalogo.Controllers
                 return View(item);
             }
 
-            var existente = _repository.ObtenerPorId(item.Id);
+            var existente = _itemService.ObtenerPorId(item.Id);
 
             if (existente == null)
             {
@@ -121,7 +120,7 @@ namespace Catalogo.Controllers
             existente.TipoMotor = item.TipoMotor?.Trim() ?? "";
             existente.ImagenUrl = item.ImagenUrl?.Trim() ?? "";
 
-            _repository.Editar(existente);
+            _itemService.Editar(existente);
 
             return RedirectToAction("Index");
         }
