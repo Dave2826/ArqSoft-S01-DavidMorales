@@ -1,6 +1,7 @@
 ﻿using Catalogo.Application.Services;
 using Catalogo.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Http;
 
 namespace Catalogo.Controllers
 {
@@ -54,7 +55,61 @@ namespace Catalogo.Controllers
 
         public IActionResult Login()
         {
-            return View();
+            return View(new LoginViewModel());
+        }
+
+        // =====================
+        // LOGIN POST
+        // =====================
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+
+            var usuario =
+                _usuarioService.ValidarLogin(
+                    model.Correo,
+                    model.Password);
+
+            if (usuario == null)
+            {
+                ViewBag.Error =
+                    "Correo o contraseña incorrectos.";
+
+                return View(model);
+            }
+
+            HttpContext.Session.SetString(
+                "UsuarioId",
+                usuario.Id.ToString());
+
+            HttpContext.Session.SetString(
+                "Nombre",
+                usuario.Nombre);
+
+            HttpContext.Session.SetString(
+                "Correo",
+                usuario.Correo);
+
+            return RedirectToAction(
+                "Index",
+                "Home");
+        }
+
+        // =====================
+        // LOGOUT
+        // =====================
+
+        public IActionResult Logout()
+        {
+            HttpContext.Session.Clear();
+
+            return RedirectToAction(
+                "Login");
         }
     }
 }

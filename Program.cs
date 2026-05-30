@@ -8,6 +8,19 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 // ======================
+// Sesiones
+// ======================
+
+builder.Services.AddHttpContextAccessor();
+
+builder.Services.AddSession(options =>
+{
+    options.IdleTimeout = TimeSpan.FromHours(12);
+    options.Cookie.HttpOnly = true;
+    options.Cookie.IsEssential = true;
+});
+
+// ======================
 // Repositorios y Servicios actuales
 // ======================
 
@@ -20,6 +33,11 @@ builder.Services.AddSingleton<ItemService>();
 
 builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddSingleton<UsuarioService>();
+
+// ======================
+// Motocicletas
+// ======================
+
 builder.Services.AddSingleton<IMotocicletaRepository, MotocicletaRepository>();
 builder.Services.AddSingleton<MotocicletaService>();
 
@@ -35,6 +53,8 @@ if (!app.Environment.IsDevelopment())
 app.UseHttpsRedirection();
 
 app.UseRouting();
+
+app.UseSession();
 
 app.UseAuthorization();
 
