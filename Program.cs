@@ -20,6 +20,8 @@ builder.Services.AddSingleton<ItemService>();
 
 builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddSingleton<UsuarioService>();
+builder.Services.AddSingleton<IMotocicletaRepository, MotocicletaRepository>();
+builder.Services.AddSingleton<MotocicletaService>();
 
 var app = builder.Build();
 
