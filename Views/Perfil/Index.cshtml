@@ -1,0 +1,41 @@
+﻿@model Catalogo.Domain.Models.PerfilViewModel
+
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<h2>Mi Perfil</h2>
+
+<hr />
+
+<h4>Información Personal</h4>
+
+<p><strong>Nombre:</strong> @Model.Nombre</p>
+
+<p><strong>Apellido:</strong> @Model.Apellido</p>
+
+<p><strong>Correo:</strong> @Model.Correo</p>
+
+<p>
+    <strong>Fecha de Registro:</strong>
+    @Model.FechaRegistro.ToShortDateString()
+</p>
+
+<hr />
+
+<h4>Resumen de Cuenta</h4>
+
+<p>
+    <strong>Motocicletas registradas:</strong>
+    @Model.TotalMotocicletas
+</p>
+
+<p>
+    <strong>Servicios realizados:</strong>
+    @Model.ServiciosRealizados
+</p>
+
+<p>
+    <strong>Gasto acumulado:</strong>
+    $@Model.GastoAcumulado
+</p>
