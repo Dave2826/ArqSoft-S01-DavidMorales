@@ -1,1 +1,29 @@
-﻿[]
+[
+  {
+    "Id": "fea15a72-b279-4139-9586-aee43f6819fd",
+    "Nombre": "David",
+    "Apellido": "Mrales",
+    "Correo": "dave@gmail.com",
+    "PasswordHash": "123456",
+    "FechaRegistro": "2026-05-29T19:58:13.1854643-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "e98a2ad7-01c2-4fe2-b2f8-d5cce3fa502b",
+    "Nombre": "dave",
+    "Apellido": "mor",
+    "Correo": "dave28@gmail.com",
+    "PasswordHash": "1234567",
+    "FechaRegistro": "2026-05-29T20:02:17.3940475-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "65531b29-2d88-47ef-87a7-5635580349a4",
+    "Nombre": "dave",
+    "Apellido": "mor",
+    "Correo": "dave18@gmail.com",
+    "PasswordHash": "874562",
+    "FechaRegistro": "2026-05-29T20:07:48.4862286-06:00",
+    "Activo": true
+  }
+]

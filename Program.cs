@@ -7,8 +7,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+// ======================
+// Repositorios y Servicios actuales
+// ======================
+
 builder.Services.AddSingleton<IItemRepository, ItemRepository>();
 builder.Services.AddSingleton<ItemService>();
+
+// ======================
+// Usuarios
+// ======================
+
+builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
+builder.Services.AddSingleton<UsuarioService>();
 
 var app = builder.Build();
 

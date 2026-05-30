@@ -1,0 +1,44 @@
+﻿@model Catalogo.Domain.Models.Usuario
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<h2>Registro de Usuario</h2>
+
+@if (ViewBag.Error != null)
+{
+    <div style="color:red">
+        @ViewBag.Error
+    </div>
+}
+
+<form asp-action="Registro" method="post">
+
+    <div>
+        <label>Nombre</label>
+        <input asp-for="Nombre" />
+    </div>
+
+    <div>
+        <label>Apellido</label>
+        <input asp-for="Apellido" />
+    </div>
+
+    <div>
+        <label>Correo</label>
+        <input asp-for="Correo" />
+    </div>
+
+    <div>
+        <label>Contraseña</label>
+        <input asp-for="PasswordHash" type="password" />
+    </div>
+
+    <br />
+
+    <button type="submit">
+        Registrarme
+    </button>
+
+</form>
