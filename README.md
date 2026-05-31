@@ -91,5 +91,5 @@ La lógica principal, implementación MVC y configuración general fueron desarr
 ### Repositorio en GitHub
 ![GitHub](screenshots/github.png)
 
-### Contador dinámico de motocicletas y actualizacion en GitHub
+### Contador dinámico de motocicletas y actualizacion en GitHub.
 <img src="screenshots/contador.png" width="900">
