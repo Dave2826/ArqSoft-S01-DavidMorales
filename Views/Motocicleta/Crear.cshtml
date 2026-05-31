@@ -1,0 +1,78 @@
+﻿@model Catalogo.Domain.Models.Motocicleta
+
+@{
+    ViewData["Title"] = "Registrar Motocicleta";
+}
+
+<h2>Registrar Motocicleta</h2>
+
+<form asp-action="Crear" method="post">
+
+    <div>
+        <label>Marca</label>
+        <input asp-for="Marca" />
+        <span asp-validation-for="Marca"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Modelo</label>
+        <input asp-for="Modelo" />
+        <span asp-validation-for="Modelo"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Año</label>
+        <input asp-for="Ano" />
+        <span asp-validation-for="Ano"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Cilindrada</label>
+        <input asp-for="Cilindrada" />
+        <span asp-validation-for="Cilindrada"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label>Kilometraje Actual</label>
+        <input asp-for="KilometrajeActual" />
+        <span asp-validation-for="KilometrajeActual"></span>
+    </div>
+
+    <hr />
+
+    <h4>Información opcional</h4>
+
+    <div>
+        <label>Placas</label>
+        <input asp-for="Placas" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>VIN</label>
+        <input asp-for="VIN" />
+    </div>
+
+    <br />
+
+    <div>
+        <label>Número de Motor</label>
+        <input asp-for="NumeroMotor" />
+    </div>
+
+    <br />
+
+    <button type="submit">
+        Guardar Motocicleta
+    </button>
+
+</form>

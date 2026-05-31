@@ -1,1 +1,16 @@
-﻿[]
+[
+  {
+    "Id": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "UsuarioId": "fea15a72-b279-4139-9586-aee43f6819fd",
+    "Marca": "kawasaki",
+    "Modelo": "ninja 400",
+    "Ano": 2018,
+    "Cilindrada": 400,
+    "KilometrajeActual": 83000,
+    "Placas": null,
+    "VIN": null,
+    "NumeroMotor": null,
+    "FechaRegistro": "2026-05-31T11:00:38.1306811-06:00",
+    "Activa": true
+  }
+]

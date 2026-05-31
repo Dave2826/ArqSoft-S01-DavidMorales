@@ -1,0 +1,44 @@
+﻿@model List<Catalogo.Domain.Models.Motocicleta>
+
+@{
+    ViewData["Title"] = "Mis Motocicletas";
+}
+
+<h2>Mis Motocicletas</h2>
+
+<p>
+    <a asp-action="Crear">
+        Registrar Motocicleta
+    </a>
+</p>
+
+<hr />
+
+@if (!Model.Any())
+{
+    <p>No tienes motocicletas registradas.</p>
+}
+else
+{
+    @foreach (var moto in Model)
+    {
+        <div>
+
+            <h4>
+                @moto.Marca @moto.Modelo
+            </h4>
+
+            <p>
+                Año: @moto.Ano
+            </p>
+
+            <p>
+                Kilometraje:
+                @moto.KilometrajeActual km
+            </p>
+
+            <hr />
+
+        </div>
+    }
+}
