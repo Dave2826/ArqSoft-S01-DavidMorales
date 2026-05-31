@@ -21,7 +21,7 @@ builder.Services.AddSession(options =>
 });
 
 // ======================
-// Repositorios y Servicios actuales
+// Catálogo
 // ======================
 
 builder.Services.AddSingleton<IItemRepository, ItemRepository>();
@@ -40,6 +40,17 @@ builder.Services.AddSingleton<UsuarioService>();
 
 builder.Services.AddSingleton<IMotocicletaRepository, MotocicletaRepository>();
 builder.Services.AddSingleton<MotocicletaService>();
+
+// ======================
+// Lecturas de Kilometraje
+// ======================
+
+builder.Services.AddSingleton<
+    ILecturaKilometrajeRepository,
+    LecturaKilometrajeRepository>();
+
+builder.Services.AddSingleton<
+    LecturaKilometrajeService>();
 
 var app = builder.Build();
 

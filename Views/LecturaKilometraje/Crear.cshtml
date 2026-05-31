@@ -1,0 +1,34 @@
+﻿@model Catalogo.Domain.Models.RegistrarLecturaViewModel
+
+@{
+    ViewData["Title"] = "Actualizar Kilometraje";
+}
+
+<h2>Actualizar Kilometraje</h2>
+
+<form asp-action="Crear" method="post">
+
+    <input asp-for="MotocicletaId" type="hidden" />
+
+    <div>
+        <label asp-for="Kilometraje"></label>
+        <input asp-for="Kilometraje" />
+        <span asp-validation-for="Kilometraje"></span>
+    </div>
+
+    <br />
+
+    <div>
+        <label asp-for="Observaciones"></label>
+        <textarea asp-for="Observaciones"></textarea>
+    </div>
+
+    <br />
+
+    <button type="submit">
+        Guardar Lectura
+    </button>
+
+</form>
+
+<div asp-validation-summary="All"></div>
