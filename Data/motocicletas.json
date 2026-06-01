@@ -12,5 +12,19 @@
     "NumeroMotor": null,
     "FechaRegistro": "2026-05-31T11:00:38.1306811-06:00",
     "Activa": true
+  },
+  {
+    "Id": "e28197eb-c4a5-45db-a269-42ffff4c1073",
+    "UsuarioId": "fea15a72-b279-4139-9586-aee43f6819fd",
+    "Marca": "Honda",
+    "Modelo": "cbr600",
+    "Ano": 2026,
+    "Cilindrada": 600,
+    "KilometrajeActual": 1001,
+    "Placas": null,
+    "VIN": null,
+    "NumeroMotor": null,
+    "FechaRegistro": "2026-05-31T21:45:49.2441212-06:00",
+    "Activa": true
   }
 ]

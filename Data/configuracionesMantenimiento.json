@@ -1,0 +1,12 @@
+[
+  {
+    "Id": "af9d9918-e7b4-4453-a23c-b61c1052d375",
+    "MotocicletaId": "e28197eb-c4a5-45db-a269-42ffff4c1073",
+    "CambioAceiteKm": 3000,
+    "RevisionCadenaKm": 1000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 5000,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  }
+]

@@ -7,11 +7,14 @@ namespace Catalogo.Controllers
     public class MotocicletaController : Controller
     {
         private readonly MotocicletaService _motocicletaService;
+        private readonly ConfiguracionMantenimientoService _configuracionService;
 
         public MotocicletaController(
-            MotocicletaService motocicletaService)
+            MotocicletaService motocicletaService,
+            ConfiguracionMantenimientoService configuracionService)
         {
             _motocicletaService = motocicletaService;
+            _configuracionService = configuracionService;
         }
 
         // =====================
@@ -75,6 +78,31 @@ namespace Catalogo.Controllers
                 Guid.Parse(usuarioIdString);
 
             _motocicletaService.Agregar(motocicleta);
+
+            // =====================
+            // Configuración inicial
+            // =====================
+
+            var configuracion =
+                new ConfiguracionMantenimiento
+                {
+                    MotocicletaId = motocicleta.Id,
+
+                    CambioAceiteKm = 3000,
+
+                    RevisionCadenaKm = 1000,
+
+                    RevisionBalatasKm = 5000,
+
+                    RevisionLlantasKm = 5000,
+
+                    RevisionFiltroAireKm = 10000,
+
+                    AjusteValvulasKm = 12000
+                };
+
+            _configuracionService
+                .Guardar(configuracion);
 
             return RedirectToAction(nameof(Index));
         }

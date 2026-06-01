@@ -52,6 +52,13 @@ builder.Services.AddSingleton<
 builder.Services.AddSingleton<
     LecturaKilometrajeService>();
 
+builder.Services.AddSingleton<
+    IConfiguracionMantenimientoRepository,
+    ConfiguracionMantenimientoRepository>();
+
+builder.Services.AddSingleton<
+    ConfiguracionMantenimientoService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
