@@ -72,7 +72,7 @@ namespace Catalogo.Controllers
                 {
                     MotocicletaId = model.MotocicletaId,
                     Kilometraje = model.Kilometraje,
-                    Observaciones = model.Observaciones
+                    Observaciones = model.Observaciones ?? ""
                 };
 
             _lecturaService.Agregar(lectura);

@@ -37,6 +37,14 @@ else
                 @moto.KilometrajeActual km
             </p>
 
+            <p>
+                <a asp-controller="Mantenimiento"
+                   asp-action="Crear"
+                   asp-route-motocicletaId="@moto.Id">
+                    Registrar mantenimiento
+                </a>
+            </p>
+
             <hr />
 
         </div>

@@ -59,6 +59,13 @@ builder.Services.AddSingleton<
 builder.Services.AddSingleton<
     ConfiguracionMantenimientoService>();
 
+builder.Services.AddSingleton<
+    IMantenimientoRepository,
+    MantenimientoRepository>();
+
+builder.Services.AddSingleton<
+    MantenimientoService>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

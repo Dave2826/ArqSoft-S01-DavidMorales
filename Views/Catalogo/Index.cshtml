@@ -1,5 +1,9 @@
 ﻿@model IEnumerable<Catalogo.Domain.Models.Item>
 
+@{
+    var marcas = ViewBag.Marcas as List<string> ?? new List<string>();
+}
+
 <div class="container">
 
     <h1>Catálogo de Motos</h1>
@@ -11,7 +15,7 @@
     <div class="filtro">
         <a asp-action="Index">Todas</a>
 
-        @foreach (var marca in ViewBag.Marcas as List<string>)
+        @foreach (var marca in marcas)
         {
             <a asp-action="Index" asp-route-marca="@marca">@marca</a>
         }

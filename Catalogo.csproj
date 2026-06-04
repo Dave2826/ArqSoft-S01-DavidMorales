@@ -7,14 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Remove="wwwroot\css\site.css" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <None Include="wwwroot\css\site.css" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Catalogo.Application\Catalogo.Application.csproj" />
     <ProjectReference Include="..\Catalogo.Domain\Catalogo.Domain.csproj" />
     <ProjectReference Include="..\Catalogo.Infrastructure\Catalogo.Infrastructure.csproj" />
