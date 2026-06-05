@@ -8,5 +8,15 @@
     "Costo": 5000,
     "Descripcion": "cambio de foco",
     "Taller": "dk"
+  },
+  {
+    "Id": "e69ce0ec-c4aa-4c6d-b307-af6bfa908ba2",
+    "MotocicletaId": "27ae3629-06d2-4501-98f2-3ce2d0dfadc3",
+    "Fecha": "2026-06-01T00:00:00",
+    "KilometrajeServicio": 501,
+    "Tipo": "Cadena",
+    "Costo": 1000,
+    "Descripcion": "s",
+    "Taller": "da"
   }
 ]

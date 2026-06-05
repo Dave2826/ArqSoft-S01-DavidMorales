@@ -59,6 +59,13 @@ else
                    asp-action="Index"
                    asp-route-motocicletaId="@moto.Id">
                     Ver Historial
+                </a> |
+                
+                <a asp-action="Eliminar" 
+                   asp-route-id="@moto.Id"
+                   class="text-danger"
+                   onclick="return confirm('¿Estás seguro de eliminar esta motocicleta?')">
+                    Eliminar
                 </a>
             </p>
 

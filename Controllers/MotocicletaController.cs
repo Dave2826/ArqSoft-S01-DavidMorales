@@ -52,6 +52,38 @@ namespace Catalogo.Controllers
             return View(new Motocicleta());
         }
 
+        [HttpPost]
+        public IActionResult Crear(Motocicleta motocicleta)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(motocicleta);
+            }
+
+            var usuarioIdString = HttpContext.Session.GetString("UsuarioId");
+            if (string.IsNullOrEmpty(usuarioIdString))
+            {
+                return RedirectToAction("Login", "Auth");
+            }
+
+            motocicleta.UsuarioId = Guid.Parse(usuarioIdString);
+            _motocicletaService.Agregar(motocicleta);
+            
+            var configuracion = new ConfiguracionMantenimiento()
+            {
+                MotocicletaId = motocicleta.Id,
+                CambioAceiteKm = 2000,
+                RevisionCadenaKm = 3000,
+                RevisionBalatasKm = 5000,
+                RevisionLlantasKm = 7500,
+                RevisionFiltroAireKm = 10000,
+                AjusteValvulasKm = 12000
+            };
+            _configuracionService.Guardar(configuracion);
+            
+            return RedirectToAction(nameof(Index));
+        }
+
         public IActionResult Editar(Guid id)
         {
             var motocicleta = _motocicletaService.ObtenerPorId(id);
@@ -71,6 +103,18 @@ namespace Catalogo.Controllers
             }
 
             _motocicletaService.Actualizar(motocicleta);
+            return RedirectToAction(nameof(Index));
+        }
+        
+        public IActionResult Eliminar(Guid id)
+        {
+            var motocicleta = _motocicletaService.ObtenerPorId(id);
+            if (motocicleta == null)
+            {
+                return NotFound();
+            }
+            
+            _motocicletaService.Eliminar(id);
             return RedirectToAction(nameof(Index));
         }
     }
