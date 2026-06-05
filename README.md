@@ -1,95 +1,80 @@
-# Catálogo de Motos MVC
-
-Proyecto desarrollado en ASP.NET Core MVC para la materia de Arquitectura de Software.
+# MotoTrack
 
 ## Descripción
 
-La aplicación permite visualizar, consultar y registrar motocicletas dentro de un catálogo dinámico organizado por marcas.
+MotoTrack es una aplicación web desarrollada en ASP.NET Core MVC para ayudar a los motociclistas a llevar el control de sus motocicletas, registrar mantenimientos y dar seguimiento al kilometraje de cada unidad.
 
-El sistema fue personalizado con una temática estilo racing/cyber inspirada en motocicletas deportivas, utilizando diseño oscuro, acentos naranjas y animaciones dinámicas con JavaScript.
+El proyecto fue desarrollado como parte de la materia de Arquitectura de Software y se encuentra en evolución continua mediante entregas incrementales y mejoras por sprint.
 
 ---
 
-## Funcionalidades
+## Funcionalidades actuales
 
-- Listado dinámico de motocicletas
-- Filtro por marca
-- Vista de detalle
-- Registro de nuevas motos
-- Organización automática de marcas
-- Interfaz personalizada
-- Fondo dinámico animado
-- Diseño responsive
+Actualmente MotoTrack permite:
+
+* Registro de usuarios.
+* Inicio y cierre de sesión.
+* Registro de motocicletas.
+* Edición de motocicletas.
+* Eliminación de motocicletas.
+* Registro de lecturas de kilometraje.
+* Registro de mantenimientos.
+* Consulta de historial de mantenimientos.
+* Almacenamiento de información mediante archivos JSON.
+
+---
+
+## Arquitectura del proyecto
+
+El sistema está organizado utilizando una arquitectura por capas para separar responsabilidades y facilitar el mantenimiento del código.
+
+### Estructura principal
+
+* **Catalogo**
+  Contiene controladores, vistas y configuración general de la aplicación.
+
+* **Catalogo.Application**
+  Contiene los servicios que implementan la lógica de negocio.
+
+* **Catalogo.Domain**
+  Contiene los modelos e interfaces principales del sistema.
+
+* **Catalogo.Infrastructure**
+  Contiene los repositorios y la persistencia de datos.
 
 ---
 
 ## Tecnologías utilizadas
 
-- ASP.NET Core MVC
-- C#
-- Bootstrap
-- CSS
-- JavaScript
+* ASP.NET Core MVC
+* C#
+* Razor Views
+* Bootstrap
+* JSON para persistencia local
+* Git y GitHub para control de versiones
 
 ---
 
-## Arquitectura utilizada
+## Estado actual
 
-El proyecto utiliza el patrón MVC:
+MotoTrack se encuentra en desarrollo activo.
 
-### Models
-Representación de datos.
-
-### Views
-Interfaz visual.
-
-### Controllers
-Lógica y control de navegación.
+Las funcionalidades principales para la administración de motocicletas ya se encuentran operativas y actualmente se trabaja en nuevas mejoras relacionadas con visualización de información, experiencia de usuario y gestión de mantenimientos.
 
 ---
 
-## Estructura del proyecto
+## Autor
 
-```text
-Catalogo
-│
-├── Controllers
-├── Models
-├── Views
-├── wwwroot
-│   ├── css
-│   ├── js
-│   └── lib
-└── Program.cs
-```
+David Morales Guerrero
+
+Tecnológico del Software
+
+Materia: Arquitectura de Software
 
 ---
 
-## Uso de IA
+## Uso de Inteligencia Artificial
 
-La inteligencia artificial fue utilizada únicamente como apoyo para:
-- personalización visual,
-- mejora estética,
-- organización de interfaz,
-- y asistencia menor en estructura visual del proyecto.
+Se utilizó ChatGPT como herramienta de apoyo para analizar problemas específicos de implementación, revisar decisiones arquitectónicas y apoyar en la elaboración de documentación técnica del proyecto.
 
-La lógica principal, implementación MVC y configuración general fueron desarrolladas manualmente.
-
----
-
-## Capturas de pantalla.
-
-### Página principal
-![Página principal](screenshots/home.png)
-
-### Registro de motocicletas
-![Agregar moto](screenshots/agregar.png)
-
-### Desarrollo en Visual Studio
-![Visual Studio](screenshots/visualstudio.png)
-
-### Repositorio en GitHub
-![GitHub](screenshots/github.png)
-
-### Contador dinámico de motocicletas y actualizacion en GitHub.
-<img src="screenshots/contador.png" width="900">
+Las decisiones de diseño, implementación y validación final fueron realizadas y verificadas por el autor.
