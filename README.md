@@ -24,23 +24,63 @@ Actualmente MotoTrack permite:
 
 ---
 
+## Capturas del sistema
+
+### Pantalla principal
+
+La página principal permite acceder al sistema y presenta una visión general del propósito de MotoTrack.
+
+![Pantalla principal](screenshots/inicio.png)
+
+---
+
+### Mis motocicletas
+
+Sección donde cada usuario puede visualizar las motocicletas registradas en su cuenta y acceder a las principales acciones del sistema.
+
+![Mis motocicletas](screenshots/mis-motocicletas.png)
+
+---
+
+### Edición de motocicletas
+
+Formulario utilizado para actualizar la información de una motocicleta previamente registrada.
+
+![Editar motocicleta](screenshots/editar-motocicleta.png)
+
+---
+
+### Historial de mantenimientos
+
+Vista que permite consultar los mantenimientos registrados para una motocicleta específica.
+
+![Historial de mantenimientos](screenshots/historial-mantenimientos.png)
+
+---
+
 ## Arquitectura del proyecto
 
 El sistema está organizado utilizando una arquitectura por capas para separar responsabilidades y facilitar el mantenimiento del código.
 
 ### Estructura principal
 
-* **Catalogo**
-  Contiene controladores, vistas y configuración general de la aplicación.
+* **Capa Web**
 
-* **Catalogo.Application**
-  Contiene los servicios que implementan la lógica de negocio.
+  Contiene los controladores, vistas y configuración principal de la aplicación.
 
-* **Catalogo.Domain**
+* **Capa de Aplicación**
+
+  Contiene los servicios responsables de la lógica de negocio.
+
+* **Capa de Dominio**
+
   Contiene los modelos e interfaces principales del sistema.
 
-* **Catalogo.Infrastructure**
-  Contiene los repositorios y la persistencia de datos.
+* **Capa de Infraestructura**
+
+  Contiene los repositorios y mecanismos de persistencia de datos.
+
+Actualmente estas capas se encuentran implementadas en proyectos separados dentro de la solución.
 
 ---
 
@@ -51,7 +91,8 @@ El sistema está organizado utilizando una arquitectura por capas para separar r
 * Razor Views
 * Bootstrap
 * JSON para persistencia local
-* Git y GitHub para control de versiones
+* Git
+* GitHub
 
 ---
 
@@ -75,6 +116,6 @@ Materia: Arquitectura de Software
 
 ## Uso de Inteligencia Artificial
 
-Se utilizó ChatGPT como herramienta de apoyo para analizar problemas específicos de implementación, revisar decisiones arquitectónicas y apoyar en la elaboración de documentación técnica del proyecto.
+Se utilizó ChatGPT como herramienta de apoyo para resolver problemas específicos de implementación, analizar errores durante el desarrollo, revisar decisiones arquitectónicas y apoyar la elaboración de documentación técnica del proyecto.
 
-Las decisiones de diseño, implementación y validación final fueron realizadas y verificadas por el autor.
+Las decisiones finales de diseño, implementación, pruebas y validación fueron realizadas y verificadas por el autor.
