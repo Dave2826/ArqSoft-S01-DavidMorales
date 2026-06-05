@@ -1,1 +1,12 @@
-﻿[]
+[
+  {
+    "Id": "7866fe7b-d9a0-42fe-9269-b0ae100c0ae4",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-06-04T00:00:00",
+    "KilometrajeServicio": 83500,
+    "Tipo": "Revisi\u00F3n general",
+    "Costo": 5000,
+    "Descripcion": "cambio de foco",
+    "Taller": "dk"
+  }
+]

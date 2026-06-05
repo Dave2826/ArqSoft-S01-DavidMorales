@@ -1,8 +1,32 @@
 ﻿@{
-    ViewData["Title"] = "Home Page";
+    ViewData["Title"] = "MotoTrack - Inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Bienvenidos apacionados.</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<div class="container mt-5">
+    <div class="text-center mb-5">
+        <h1 class="display-3 text-primary">MotoTrack</h1>
+        <h3 class="text-muted">Controla el mantenimiento de tu motocicleta en un solo lugar</h3>
+    </div>
+
+    <div class="d-flex justify-content-center gap-3 mb-5">
+        <a href="/Auth/Login" class="btn btn-primary btn-lg">Iniciar Sesión</a>
+        <a href="/Auth/Registro" class="btn btn-outline-primary btn-lg">Registrarse</a>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-body p-4">
+                    <h4 class="card-title text-center mb-4">Gestiona tu motocicleta</h4>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">• Registro de motocicletas</li>
+                        <li class="list-group-item">• Control de kilometraje</li>
+                        <li class="list-group-item">• Actualizar KM</li>
+                        <li class="list-group-item">• Registrar Mantenimiento</li>
+                        <li class="list-group-item">• Ver Historial</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

@@ -20,6 +20,19 @@ namespace Catalogo.Controllers
             _motocicletaService = motocicletaService;
         }
 
+        public IActionResult Index(Guid motocicletaId)
+        {
+            var mantenimientos = _mantenimientoService
+                .ObtenerPorMotocicleta(motocicletaId);
+            
+            var motocicleta = _motocicletaService
+                .ObtenerPorId(motocicletaId);
+                
+            ViewData["Motocicleta"] = motocicleta;
+                
+            return View(mantenimientos);
+        }
+
         public IActionResult Crear(Guid motocicletaId)
         {
             var motocicleta = _motocicletaService

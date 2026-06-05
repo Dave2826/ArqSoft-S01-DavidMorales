@@ -38,10 +38,22 @@ else
             </p>
 
             <p>
+                <a asp-controller="LecturaKilometraje" 
+                   asp-action="Crear" 
+                   asp-route-motocicletaId="@moto.Id">
+                    Actualizar KM
+                </a> | 
+                
                 <a asp-controller="Mantenimiento"
                    asp-action="Crear"
                    asp-route-motocicletaId="@moto.Id">
                     Registrar mantenimiento
+                </a> | 
+                
+                <a asp-controller="Mantenimiento"
+                   asp-action="Index"
+                   asp-route-motocicletaId="@moto.Id">
+                    Ver Historial
                 </a>
             </p>
 

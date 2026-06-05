@@ -1,6 +1,46 @@
-﻿namespace Catalogo.Views.Mantenimiento
-{
-    public class Index
+﻿@model IEnumerable<Catalogo.Domain.Models.Mantenimiento>
+
+@{
+    var motocicleta = ViewData["Motocicleta"] as Catalogo.Domain.Models.Motocicleta;
+    if (motocicleta != null) 
     {
+        ViewData["Title"] = $"Historial de mantenimientos - {motocicleta.Marca} {motocicleta.Modelo}";
     }
 }
+
+<h2>Historial de mantenimientos</h2>
+@if (motocicleta != null)
+{
+    <h4>@motocicleta.Marca @motocicleta.Modelo</h4>
+}
+<hr />
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Fecha</th>
+            <th>Tipo</th>
+            <th>Kilometraje</th>
+            <th>Costo</th>
+            <th>Taller</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Fecha.ToShortDateString()</td>
+                <td>@item.Tipo</td>
+                <td>@item.KilometrajeServicio km</td>
+                <td>@item.Costo.ToString("C")</td>
+                <td>@item.Taller</td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-controller="Motocicleta" asp-action="Index" class="btn btn-primary">
+        Volver a Mis Motocicletas
+    </a>
+</div>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>@ViewData["Title"] - Catalogo</title>
+    <title>@ViewData["Title"] - MotoTrack</title>
 
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
@@ -17,7 +17,7 @@
             <div class="container-fluid">
 
                 <span class="navbar-brand text-warning">
-                    MotoCatalog
+                     MotoTrack
                 </span>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -27,28 +27,60 @@
 
                 <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
                     <ul class="navbar-nav flex-grow-1">
+                        @if (Context.Session.GetString("UsuarioId") == null)
+                        {
+                            <!-- Sin sesión -->
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Home" asp-action="Index">
+                                    INICIO
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light"
-                                   asp-controller="Home" asp-action="Index">
-                                INICIO
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-controller="Catalogo" asp-action="Index">
+                                    CATÁLOGO
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-light"
-                                   asp-controller="Home" asp-action="Privacy">
-                                PRIVACIDAD
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="/Auth/Login">
+                                    LOGIN
+                                </a>
+                            </li>
 
-                        <li class="nav-item">
-                            <a class="nav-link text-warning"
-                                   asp-controller="Catalogo" asp-action="Index">
-                                CATÁLOGO
-                            </a>
-                        </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="/Auth/Registro">
+                                    REGISTRO
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- Con sesión -->
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Home" asp-action="Index">
+                                    DASHBOARD
+                                </a>
+                            </li>
 
+                            <li class="nav-item">
+                                <a class="nav-link text-light" asp-controller="Motocicleta" asp-action="Index">
+                                    MIS MOTOS
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-warning" asp-controller="Catalogo" asp-action="Index">
+                                    CATÁLOGO
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light" href="/Auth/Logout">
+                                    CERRAR SESIÓN
+                                </a>
+                            </li>
+                        }
                     </ul>
                 </div>
             </div>
@@ -66,7 +98,7 @@
     <!-- FOOTER -->
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; 2026 - Catalogo -
+             &copy; 2026 - MotoTrack -
             <a class="text-warning" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
