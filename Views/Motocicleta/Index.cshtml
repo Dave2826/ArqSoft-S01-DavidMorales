@@ -38,6 +38,11 @@ else
             </p>
 
             <p>
+                <a asp-action="Editar" 
+                   asp-route-id="@moto.Id">
+                    Editar
+                </a> |
+                
                 <a asp-controller="LecturaKilometraje" 
                    asp-action="Crear" 
                    asp-route-motocicletaId="@moto.Id">

@@ -52,58 +52,25 @@ namespace Catalogo.Controllers
             return View(new Motocicleta());
         }
 
-        // =====================
-        // CREAR POST
-        // =====================
+        public IActionResult Editar(Guid id)
+        {
+            var motocicleta = _motocicletaService.ObtenerPorId(id);
+            if (motocicleta == null)
+            {
+                return NotFound();
+            }
+            return View(motocicleta);
+        }
 
         [HttpPost]
-        public IActionResult Crear(Motocicleta motocicleta)
+        public IActionResult Editar(Motocicleta motocicleta)
         {
             if (!ModelState.IsValid)
             {
                 return View(motocicleta);
             }
 
-            var usuarioIdString =
-                HttpContext.Session.GetString("UsuarioId");
-
-            if (string.IsNullOrEmpty(usuarioIdString))
-            {
-                return RedirectToAction(
-                    "Login",
-                    "Auth");
-            }
-
-            motocicleta.UsuarioId =
-                Guid.Parse(usuarioIdString);
-
-            _motocicletaService.Agregar(motocicleta);
-
-            // =====================
-            // Configuración inicial
-            // =====================
-
-            var configuracion =
-                new ConfiguracionMantenimiento
-                {
-                    MotocicletaId = motocicleta.Id,
-
-                    CambioAceiteKm = 3000,
-
-                    RevisionCadenaKm = 1000,
-
-                    RevisionBalatasKm = 5000,
-
-                    RevisionLlantasKm = 5000,
-
-                    RevisionFiltroAireKm = 10000,
-
-                    AjusteValvulasKm = 12000
-                };
-
-            _configuracionService
-                .Guardar(configuracion);
-
+            _motocicletaService.Actualizar(motocicleta);
             return RedirectToAction(nameof(Index));
         }
     }

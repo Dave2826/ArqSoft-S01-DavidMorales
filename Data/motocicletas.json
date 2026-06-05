@@ -3,14 +3,14 @@
     "Id": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
     "UsuarioId": "fea15a72-b279-4139-9586-aee43f6819fd",
     "Marca": "kawasaki",
-    "Modelo": "ninja 400",
+    "Modelo": "ninja 40001",
     "Ano": 2018,
     "Cilindrada": 400,
-    "KilometrajeActual": 83500,
-    "Placas": null,
+    "KilometrajeActual": 83550,
+    "Placas": "26kraf8",
     "VIN": null,
     "NumeroMotor": null,
-    "FechaRegistro": "2026-05-31T11:00:38.1306811-06:00",
+    "FechaRegistro": "2026-06-04T20:13:10",
     "Activa": true
   },
   {

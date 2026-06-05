@@ -1,12 +1,16 @@
-﻿@model Catalogo.Domain.Models.Motocicleta
+@model Catalogo.Domain.Models.Motocicleta
 
 @{
-    ViewData["Title"] = "Registrar Motocicleta";
+    ViewData["Title"] = "Editar Motocicleta";
 }
 
-<h2>Registrar Motocicleta</h2>
+<h2>Editar Motocicleta</h2>
 
-<form asp-action="Crear" method="post">
+<form asp-action="Editar" method="post">
+    <input asp-for="Id" type="hidden" />
+    <input asp-for="UsuarioId" type="hidden" />
+    <input asp-for="FechaRegistro" type="hidden" />
+    <input asp-for="Activa" type="hidden" />
 
     <div>
         <label>Marca</label>
@@ -63,7 +67,8 @@
     </div>
 
     <br />
-        <div>
+
+    <div>
         <label>Número de Motor</label>
         <input asp-for="NumeroMotor" />
     </div>
