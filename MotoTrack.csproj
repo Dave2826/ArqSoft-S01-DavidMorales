@@ -7,9 +7,9 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Catalogo.Application\Catalogo.Application.csproj" />
-    <ProjectReference Include="..\Catalogo.Domain\Catalogo.Domain.csproj" />
-    <ProjectReference Include="..\Catalogo.Infrastructure\Catalogo.Infrastructure.csproj" />
+    <ProjectReference Include="..\MotoTrack.Application\MotoTrack.Application.csproj" />
+    <ProjectReference Include="..\MotoTrack.Domain\MotoTrack.Domain.csproj" />
+    <ProjectReference Include="..\MotoTrack.Infrastructure\MotoTrack.Infrastructure.csproj" />
   </ItemGroup>
 
   <ItemGroup>

@@ -18,5 +18,15 @@
     "Costo": 1000,
     "Descripcion": "s",
     "Taller": "da"
+  },
+  {
+    "Id": "a556fc50-da78-4e6e-bfd2-97a371f3032d",
+    "MotocicletaId": "d445d83e-ccfb-4ca0-a1f4-5917908e0fa8",
+    "Fecha": "2026-06-06T00:00:00",
+    "KilometrajeServicio": 102,
+    "Tipo": "Otro",
+    "Costo": 200,
+    "Descripcion": "25",
+    "Taller": "s2"
   }
 ]
