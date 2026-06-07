@@ -26,5 +26,19 @@
     "NumeroMotor": "lkjhgfdsa654",
     "FechaRegistro": "2026-05-31T21:45:49",
     "Activa": true
+  },
+  {
+    "Id": "a6c0d233-9ef6-43ce-8a36-10ee86cdf173",
+    "UsuarioId": "9bcda347-382f-4b50-b21b-1ce8745b7b14",
+    "Marca": "kiwis",
+    "Modelo": "ghj",
+    "Ano": 8562,
+    "Cilindrada": 655,
+    "KilometrajeActual": 2,
+    "Placas": "fg",
+    "VIN": "gh",
+    "NumeroMotor": "gh",
+    "FechaRegistro": "2026-06-06T21:01:36",
+    "Activa": true
   }
 ]

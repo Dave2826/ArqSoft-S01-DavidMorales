@@ -52,5 +52,14 @@
     "PasswordHash": "123456",
     "FechaRegistro": "2026-06-06T19:15:52.1810124-06:00",
     "Activo": true
+  },
+  {
+    "Id": "9bcda347-382f-4b50-b21b-1ce8745b7b14",
+    "Nombre": "damka",
+    "Apellido": "da",
+    "Correo": "a@gmail.com",
+    "PasswordHash": "123456",
+    "FechaRegistro": "2026-06-06T21:01:03.6085383-06:00",
+    "Activo": true
   }
 ]

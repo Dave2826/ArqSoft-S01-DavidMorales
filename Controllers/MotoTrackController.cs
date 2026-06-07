@@ -1,14 +1,14 @@
-﻿using MotoTrack.Application.Services;
+using MotoTrack.Application.Services;
 using MotoTrack.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MotoTrack.Controllers
 {
-    public class CatalogoController : Controller
+    public class MotoTrackController : Controller
     {
         private readonly ItemService _itemService;
 
-        public CatalogoController(ItemService itemService)
+        public MotoTrackController(ItemService itemService)
         {
             _itemService = itemService;
         }

@@ -1,4 +1,4 @@
-﻿@model MotoTrack.Domain.Models.Item
+@model MotoTrack.Domain.Models.Item
 
 <div class="container editar-container">
 
@@ -57,17 +57,6 @@
                    placeholder="/images/Kawasaki Ninja 400.png" />
             <span asp-validation-for="ImagenUrl" class="error"></span>
         </div>
-
-        @if (!string.IsNullOrEmpty(Model.ImagenUrl))
-        {
-            <div class="preview-container">
-                <p class="preview-label">Vista previa:</p>
-
-                <img src="@Url.Content(Model.ImagenUrl)"
-                     alt="Preview"
-                     class="preview-img" />
-            </div>
-        }
 
         <h3 class="form-section-title">Ficha técnica</h3>
 
