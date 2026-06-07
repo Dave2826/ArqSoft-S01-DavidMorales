@@ -1,4 +1,4 @@
-namespace Catalogo.Models
+namespace MotoTrack.Models
 {
     public class ErrorViewModel
     {

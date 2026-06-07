@@ -1,8 +1,8 @@
-﻿using Catalogo.Application.Services;
-using Catalogo.Domain.Models;
+﻿using MotoTrack.Application.Services;
+using MotoTrack.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Catalogo.Controllers
+namespace MotoTrack.Controllers
 {
     public class CatalogoController : Controller
     {

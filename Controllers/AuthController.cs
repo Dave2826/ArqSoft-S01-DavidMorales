@@ -1,9 +1,9 @@
-﻿using Catalogo.Application.Services;
-using Catalogo.Domain.Models;
+﻿using MotoTrack.Application.Services;
+using MotoTrack.Domain.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Http;
 
-namespace Catalogo.Controllers
+namespace MotoTrack.Controllers
 {
     public class AuthController : Controller
     {

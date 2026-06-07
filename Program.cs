@@ -1,6 +1,6 @@
-using Catalogo.Application.Services;
-using Catalogo.Domain.Interfaces;
-using Catalogo.Infrastructure.Repositories;
+using MotoTrack.Application.Services;
+using MotoTrack.Domain.Interfaces;
+using MotoTrack.Infrastructure.Repositories;
 
 var builder = WebApplication.CreateBuilder(args);
 

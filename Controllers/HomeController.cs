@@ -1,8 +1,8 @@
-using Catalogo.Models;
+using MotoTrack.Models;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace Catalogo.Controllers
+namespace MotoTrack.Controllers
 {
     public class HomeController : Controller
     {

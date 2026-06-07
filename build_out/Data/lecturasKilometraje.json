@@ -1,0 +1,58 @@
+[
+  {
+    "Id": "c4186181-dd8d-4e6c-a47c-cb1bd8e8778d",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-05-31T15:38:20.0448689-06:00",
+    "Kilometraje": 83200,
+    "Observaciones": "s"
+  },
+  {
+    "Id": "3c18dbc8-2aa4-467f-a438-3d48a02cd1b5",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-05-31T15:40:08.8306433-06:00",
+    "Kilometraje": 83200,
+    "Observaciones": "prueba"
+  },
+  {
+    "Id": "6c61be59-11ce-4a4b-9868-4b285ca0bb46",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-05-31T15:56:58.113875-06:00",
+    "Kilometraje": 83200,
+    "Observaciones": "p1"
+  },
+  {
+    "Id": "74d07384-23df-4e1d-b597-b5f315162a1b",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-05-31T15:57:58.1281285-06:00",
+    "Kilometraje": 83202,
+    "Observaciones": "p2"
+  },
+  {
+    "Id": "3704954f-06cd-424b-96de-ca9bc1a1523d",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-06-04T19:06:36.0997594-06:00",
+    "Kilometraje": 83500,
+    "Observaciones": ""
+  },
+  {
+    "Id": "cc53040d-517c-4a75-8d9a-b4e5d5b83746",
+    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
+    "Fecha": "2026-06-04T19:56:38.217794-06:00",
+    "Kilometraje": 83550,
+    "Observaciones": ""
+  },
+  {
+    "Id": "c8bcb795-57d1-4002-ae36-9d7d921cc3d9",
+    "MotocicletaId": "27ae3629-06d2-4501-98f2-3ce2d0dfadc3",
+    "Fecha": "2026-06-04T21:17:27.9896868-06:00",
+    "Kilometraje": 500,
+    "Observaciones": "s"
+  },
+  {
+    "Id": "7aefdea7-42c1-4a7f-b85d-cb6ed95849ba",
+    "MotocicletaId": "d445d83e-ccfb-4ca0-a1f4-5917908e0fa8",
+    "Fecha": "2026-06-06T19:17:38.0302238-06:00",
+    "Kilometraje": 102,
+    "Observaciones": "na"
+  }
+]

@@ -1,7 +1,7 @@
-﻿@model IEnumerable<Catalogo.Domain.Models.Mantenimiento>
+﻿@model IEnumerable<MotoTrack.Domain.Models.Mantenimiento>
 
 @{
-    var motocicleta = ViewData["Motocicleta"] as Catalogo.Domain.Models.Motocicleta;
+    var motocicleta = ViewData["Motocicleta"] as MotoTrack.Domain.Models.Motocicleta;
     if (motocicleta != null) 
     {
         ViewData["Title"] = $"Historial de mantenimientos - {motocicleta.Marca} {motocicleta.Modelo}";

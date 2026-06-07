@@ -1,0 +1,56 @@
+[
+  {
+    "Id": "fea15a72-b279-4139-9586-aee43f6819fd",
+    "Nombre": "David",
+    "Apellido": "Mrales",
+    "Correo": "dave@gmail.com",
+    "PasswordHash": "123456",
+    "FechaRegistro": "2026-05-29T19:58:13.1854643-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "e98a2ad7-01c2-4fe2-b2f8-d5cce3fa502b",
+    "Nombre": "dave",
+    "Apellido": "mor",
+    "Correo": "dave28@gmail.com",
+    "PasswordHash": "1234567",
+    "FechaRegistro": "2026-05-29T20:02:17.3940475-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "65531b29-2d88-47ef-87a7-5635580349a4",
+    "Nombre": "dave",
+    "Apellido": "mor",
+    "Correo": "dave18@gmail.com",
+    "PasswordHash": "874562",
+    "FechaRegistro": "2026-05-29T20:07:48.4862286-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "b40aa058-694c-4331-8260-3b66f8b1fe29",
+    "Nombre": "dave2",
+    "Apellido": "moraless",
+    "Correo": "davi@gmail",
+    "PasswordHash": "123456",
+    "FechaRegistro": "2026-05-29T21:16:56.9133409-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "5d1d55e3-751b-4d7b-b438-125aecade7ac",
+    "Nombre": "dave",
+    "Apellido": "mor",
+    "Correo": "correo@gmail.com",
+    "PasswordHash": "123456",
+    "FechaRegistro": "2026-05-29T21:21:13.7542719-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "1c3b34e7-6051-493d-b0b0-9c46ebb63f11",
+    "Nombre": "andrez",
+    "Apellido": "lopez",
+    "Correo": "pere@gmail.com",
+    "PasswordHash": "123456",
+    "FechaRegistro": "2026-06-06T19:15:52.1810124-06:00",
+    "Activo": true
+  }
+]
