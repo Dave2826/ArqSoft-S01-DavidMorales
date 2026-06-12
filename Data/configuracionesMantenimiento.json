@@ -58,5 +58,25 @@
     "RevisionLlantasKm": 7500,
     "RevisionFiltroAireKm": 10000,
     "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "e1b3d2c3-91fa-4c08-a05c-1c09eea91b7d",
+    "MotocicletaId": "ba0fbee6-8cb5-4649-9879-e38ea7aadb8b",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "f0d8668d-a104-4d6a-8da1-03e4a6a45333",
+    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
   }
 ]

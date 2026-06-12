@@ -1,32 +1,90 @@
-﻿@{
-    ViewData["Title"] = "MotoTrack - Inicio";
+@model MotoTrack.Controllers.DashboardViewModel
+@{
+    ViewData["Title"] = "Dashboard - MotoTrack";
 }
 
-<div class="container mt-5">
-    <div class="text-center mb-5">
-        <h1 class="display-3 text-primary">MotoTrack</h1>
-        <h3 class="text-muted">Controla el mantenimiento de tu motocicleta en un solo lugar</h3>
-    </div>
-
-    <div class="d-flex justify-content-center gap-3 mb-5">
-        <a href="/Auth/Login" class="btn btn-primary btn-lg">Iniciar Sesión</a>
-        <a href="/Auth/Registro" class="btn btn-outline-primary btn-lg">Registrarse</a>
-    </div>
-
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-body p-4">
-                    <h4 class="card-title text-center mb-4">Gestiona tu motocicleta</h4>
-                    <ul class="list-group list-group-flush">
-                        <li class="list-group-item">• Registro de motocicletas</li>
-                        <li class="list-group-item">• Control de kilometraje</li>
-                        <li class="list-group-item">• Actualizar KM</li>
-                        <li class="list-group-item">• Registrar Mantenimiento</li>
-                        <li class="list-group-item">• Ver Historial</li>
-                    </ul>
+<div class="container mt-4">
+    <h2 class="mb-4">Dashboard</h2>
+    
+    <div class="row">
+        <!-- Tarjeta Total Motocicletas -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-primary">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Total Motocicletas</h5>
+                    <h3 class="text-primary">@Model.TotalMotocicletas</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tarjeta Estado Kilometraje -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-success">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Estado Kilometraje</h5>
+                    <h3 class="text-success">@Model.KilometrajeStatus</h3>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tarjeta Último Mantenimiento -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-info">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Último Mantenimiento</h5>
+                    <h4 class="text-info">@(Model.UltimoMantenimiento?.Tipo ?? "Ninguno")</h4>
+                    <small class="text-muted">@(Model.UltimoMantenimiento?.Fecha.ToString("dd/MM/yyyy") ?? "Sin registro")</small>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Tarjeta Primera Motocicleta -->
+        <div class="col-md-3 mb-4">
+            <div class="card border-warning">
+                <div class="card-body text-center">
+                    <h5 class="card-title">Mi Motocicleta</h5>
+                    @if(Model.PrimeraMotocicleta != null)
+                    {
+                        <p class="mb-1">@Model.PrimeraMotocicleta.Marca</p>
+                        <p class="mb-1">@Model.PrimeraMotocicleta.Modelo</p>
+                        <p class="mb-1">@Model.PrimeraMotocicleta.Ano</p>
+                        <p class="mb-0">@(Model.PrimeraMotocicleta.KilometrajeActual) km</p>
+                    }
+                    else
+                    {
+                        <p class="text-muted">No hay motocicletas</p>
+                    }
                 </div>
             </div>
         </div>
     </div>
+    
+<!-- Accesos Rápidos -->
+<div class="row mt-4">
+    <div class="col-12">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Accesos Rápidos</h5>
+                <div class="d-flex flex-wrap gap-2">
+                    <a asp-controller="Motocicleta" asp-action="Index" class="btn btn-outline-primary">Mis Motocicletas</a>
+                    <a asp-controller="Motocicleta" asp-action="Crear" class="btn btn-outline-success">Agregar Motocicleta</a>
+                    
+                    @if(Model.PrimeraMotocicleta != null)
+                    {
+                        <a asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@Model.PrimeraMotocicleta.Id" class="btn btn-outline-info">Registrar Kilometraje</a>
+                        <a asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@Model.PrimeraMotocicleta.Id" class="btn btn-outline-warning">Registrar Mantenimiento</a>
+                    }
+                    else
+                    {
+                        <button class="btn btn-outline-info" disabled>Registrar Kilometraje</button>
+                        <button class="btn btn-outline-warning" disabled>Registrar Mantenimiento</button>
+                        <div class="w-100 mt-2 text-muted">
+                            No tienes motocicletas registradas. Agrega una motocicleta para comenzar a registrar kilometrajes y mantenimientos.
+                        </div>
+                    }
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
 </div>

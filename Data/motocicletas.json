@@ -40,5 +40,19 @@
     "NumeroMotor": "gh",
     "FechaRegistro": "2026-06-06T21:01:36",
     "Activa": true
+  },
+  {
+    "Id": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "UsuarioId": "97a7e318-019e-42fc-87a5-48f85c84f235",
+    "Marca": "Kawasaki",
+    "Modelo": "ninja 6000",
+    "Ano": 2202,
+    "Cilindrada": 1,
+    "KilometrajeActual": 10,
+    "Placas": null,
+    "VIN": null,
+    "NumeroMotor": null,
+    "FechaRegistro": "2026-06-12T13:57:38.3598238-06:00",
+    "Activa": true
   }
 ]

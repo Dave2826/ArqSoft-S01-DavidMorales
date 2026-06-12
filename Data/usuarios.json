@@ -61,5 +61,14 @@
     "PasswordHash": "123456",
     "FechaRegistro": "2026-06-06T21:01:03.6085383-06:00",
     "Activo": true
+  },
+  {
+    "Id": "97a7e318-019e-42fc-87a5-48f85c84f235",
+    "Nombre": "Jesus",
+    "Apellido": "J@hmail.com",
+    "Correo": "J@hmail.com",
+    "PasswordHash": "123",
+    "FechaRegistro": "2026-06-12T13:52:06.3948077-06:00",
+    "Activo": true
   }
 ]

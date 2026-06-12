@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -75,7 +75,7 @@
                                 </a>
                             </li>
 
-                            <li class="nav-item">
+                            <li class="nav-item ms-auto">
                                 <a class="nav-link text-light" href="/Auth/Logout">
                                     CERRAR SESIÓN
                                 </a>
@@ -87,14 +87,13 @@
         </nav>
     </header>
 
-    <!-- CONTENIDO (ESTO ERA LO QUE TE FALTABA) -->
+    <!-- CONTENIDO -->
     <div class="container">
         <main role="main" class="pb-3">
             @RenderBody()
         </main>
     </div>
 
-    <!-- FOOTER -->
     <!-- FOOTER -->
     <footer class="border-top footer text-muted">
         <div class="container">
@@ -105,8 +104,6 @@
 
     <script src="~/lib/jquery/dist/jquery.min.js"></script>
     <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-
-    <!-- TU JAVASCRIPT -->
     <script src="~/js/site.js" asp-append-version="true"></script>
 
     @RenderSection("Scripts", required: false)

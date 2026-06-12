@@ -48,5 +48,15 @@
     "Costo": 52,
     "Descripcion": "a23",
     "Taller": "a23"
+  },
+  {
+    "Id": "84b482b8-8571-4bfb-9f22-2da191a089f3",
+    "MotocicletaId": "ba0fbee6-8cb5-4649-9879-e38ea7aadb8b",
+    "Fecha": "2026-06-12T00:00:00",
+    "KilometrajeServicio": 30,
+    "Tipo": "Cambio de aceite",
+    "Costo": 500,
+    "Descripcion": "ds",
+    "Taller": "dh"
   }
 ]
