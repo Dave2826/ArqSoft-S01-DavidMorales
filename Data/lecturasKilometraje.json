@@ -75,5 +75,19 @@
     "Fecha": "2026-06-12T13:53:52.3498763-06:00",
     "Kilometraje": 30,
     "Observaciones": "d\r\n"
+  },
+  {
+    "Id": "6965d089-af9a-4f69-8061-d49e50720f15",
+    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "Fecha": "2026-06-17T17:35:48.2473116-06:00",
+    "Kilometraje": 505,
+    "Observaciones": ""
+  },
+  {
+    "Id": "14deb85b-c1a1-413c-822f-8b89c22f0813",
+    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "Fecha": "2026-06-17T17:36:02.7636105-06:00",
+    "Kilometraje": 505,
+    "Observaciones": ""
   }
 ]

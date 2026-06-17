@@ -48,11 +48,25 @@
     "Modelo": "ninja 6000",
     "Ano": 2202,
     "Cilindrada": 1,
-    "KilometrajeActual": 10,
+    "KilometrajeActual": 505,
     "Placas": null,
     "VIN": null,
     "NumeroMotor": null,
     "FechaRegistro": "2026-06-12T13:57:38.3598238-06:00",
+    "Activa": true
+  },
+  {
+    "Id": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
+    "UsuarioId": "97a7e318-019e-42fc-87a5-48f85c84f235",
+    "Marca": "honda",
+    "Modelo": "navi200",
+    "Ano": 2026,
+    "Cilindrada": 200,
+    "KilometrajeActual": 500,
+    "Placas": null,
+    "VIN": null,
+    "NumeroMotor": null,
+    "FechaRegistro": "2026-06-17T17:34:55.4898129-06:00",
     "Activa": true
   }
 ]

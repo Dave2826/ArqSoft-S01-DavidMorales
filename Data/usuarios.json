@@ -70,5 +70,14 @@
     "PasswordHash": "123",
     "FechaRegistro": "2026-06-12T13:52:06.3948077-06:00",
     "Activo": true
+  },
+  {
+    "Id": "8ced0a51-1c07-4d72-9f8f-6caa374ef127",
+    "Nombre": "ningunamotp",
+    "Apellido": "moto",
+    "Correo": "ninguna@gmail.com",
+    "PasswordHash": "123",
+    "FechaRegistro": "2026-06-17T17:31:23.171821-06:00",
+    "Activo": true
   }
 ]

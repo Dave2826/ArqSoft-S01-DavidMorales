@@ -12,9 +12,4 @@
     <ProjectReference Include="..\MotoTrack.Infrastructure\MotoTrack.Infrastructure.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="docs\adr\" />
-    <Folder Include="docs\diagramas\" />
-  </ItemGroup>
-
 </Project>

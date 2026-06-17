@@ -1,25 +1,23 @@
-﻿# Vista de Despliegue
-
-## Descripción
-
-La vista de despliegue muestra cómo se ejecuta actualmente MotoTrack y los elementos físicos involucrados en su funcionamiento.
-
-```mermaid
+﻿```mermaid
 flowchart TD
 
     U[Usuario]
 
-    U --> B[Navegador Web<br/>Google Chrome]
+    U --> V[Presentación<br/>ASP.NET Core MVC]
 
-    B --> S[Aplicación ASP.NET Core MVC<br/>MotoTrack]
+    V --> C[Controllers]
+    V --> W[Views]
 
-    S --> J[usuarios.json]
-    S --> M[motocicletas.json]
-    S --> MA[mantenimientos.json]
-    S --> L[lecturasKilometraje.json]
-    S --> C[configuracionesMantenimiento.json]
+    C --> A[MotoTrack.Application<br/>Services]
+
+    A --> D[MotoTrack.Domain<br/>Models e Interfaces]
+
+    A --> I[MotoTrack.Infrastructure<br/>Repositories]
+
+    I --> J[(Archivos JSON)]
+
+    style V fill:#E3F2FD,stroke:#1565C0,stroke-width:2px
+    style A fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
+    style D fill:#FFF8E1,stroke:#F9A825,stroke-width:2px
+    style I fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
 ```
-
-## Interpretación
-
-Actualmente MotoTrack se ejecuta en un entorno local de desarrollo utilizando ASP.NET Core MVC sobre IIS Express. Los usuarios acceden al sistema mediante un navegador web y la información es almacenada en archivos JSON utilizados como mecanismo de persistencia.

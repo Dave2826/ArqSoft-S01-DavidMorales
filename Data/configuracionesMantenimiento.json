@@ -78,5 +78,15 @@
     "RevisionLlantasKm": 7500,
     "RevisionFiltroAireKm": 10000,
     "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "5a8b62ec-bd17-4411-9dfe-6efa1a4e1dd6",
+    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
   }
 ]

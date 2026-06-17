@@ -58,5 +58,15 @@
     "Costo": 500,
     "Descripcion": "ds",
     "Taller": "dh"
+  },
+  {
+    "Id": "8e2530ee-406f-4658-bdf6-616ab32d16c9",
+    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "Fecha": "2026-06-17T00:00:00",
+    "KilometrajeServicio": 505,
+    "Tipo": "Revisi\u00F3n general",
+    "Costo": 1000,
+    "Descripcion": "ss",
+    "Taller": "dsd"
   }
 ]
