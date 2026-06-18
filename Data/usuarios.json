@@ -13,7 +13,7 @@
     "Nombre": "dave",
     "Apellido": "mor",
     "Correo": "dave28@gmail.com",
-    "PasswordHash": "1234567",
+    "PasswordHash": "123",
     "FechaRegistro": "2026-05-29T20:02:17.3940475-06:00",
     "Activo": true
   },
@@ -58,7 +58,7 @@
     "Nombre": "damka",
     "Apellido": "da",
     "Correo": "a@gmail.com",
-    "PasswordHash": "123456",
+    "PasswordHash": "123",
     "FechaRegistro": "2026-06-06T21:01:03.6085383-06:00",
     "Activo": true
   },
@@ -78,6 +78,15 @@
     "Correo": "ninguna@gmail.com",
     "PasswordHash": "123",
     "FechaRegistro": "2026-06-17T17:31:23.171821-06:00",
+    "Activo": true
+  },
+  {
+    "Id": "e51f28d9-0ed6-4a47-80b0-8c5f88fc34a9",
+    "Nombre": "sn",
+    "Apellido": "mantenimiento",
+    "Correo": "snmntenimiento@gmail.com",
+    "PasswordHash": "123",
+    "FechaRegistro": "2026-06-17T17:58:21.7865127-06:00",
     "Activo": true
   }
 ]

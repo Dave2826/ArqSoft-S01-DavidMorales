@@ -71,6 +71,17 @@ namespace MotoTrack.Controllers
             _mantenimientoService
                 .Agregar(mantenimiento);
 
+            // Actualizar kilometraje de la motocicleta
+            if (mantenimiento.KilometrajeServicio >
+                motocicleta.KilometrajeActual)
+            {
+                motocicleta.KilometrajeActual =
+                    mantenimiento.KilometrajeServicio;
+
+                _motocicletaService
+                    .Actualizar(motocicleta);
+            }
+
             return RedirectToAction(
                 "Index",
                 "Motocicleta");

@@ -5,6 +5,39 @@
 
 <div class="container mt-4">
     <h2 class="mb-4">Dashboard</h2>
+
+    @if (Model.Motocicletas.Any())
+{
+    <div class="row mb-4">
+        <div class="col-md-6">
+
+            <label class="form-label">
+                Motocicleta seleccionada
+            </label>
+
+            <form method="get"
+                  asp-controller="Home"
+                  asp-action="Index">
+
+                <select name="motocicletaId"
+                        class="form-select"
+                        onchange="this.form.submit()">
+
+                    @foreach (var moto in Model.Motocicletas)
+                    {
+                        <option value="@moto.Id"
+                                selected="@(moto.Id == Model.MotocicletaSeleccionadaId)">
+                            @moto.Marca @moto.Modelo
+                        </option>
+                    }
+
+                </select>
+
+            </form>
+
+        </div>
+    </div>
+}
     
     <div class="row">
         <!-- Tarjeta Total Motocicletas -->
@@ -17,12 +50,20 @@
             </div>
         </div>
         
-        <!-- Tarjeta Estado Kilometraje -->
+        <!-- Tarjeta Kilometraje Actual -->
         <div class="col-md-3 mb-4">
             <div class="card border-success">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Estado Kilometraje</h5>
+                    <h5 class="card-title">Kilometraje Actual</h5>
                     <h3 class="text-success">@Model.KilometrajeStatus</h3>
+
+                    @if (Model.PrimeraMotocicleta != null)
+                    {
+                        <small class="text-muted">
+                            @Model.PrimeraMotocicleta.Marca
+                            @Model.PrimeraMotocicleta.Modelo
+                        </small>
+                    }
                 </div>
             </div>
         </div>
@@ -58,6 +99,42 @@
             </div>
         </div>
     </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+            <div class="card border-dark">
+                <div class="card-body">
+                    <h5 class="card-title">
+                        Estado de Mantenimientos
+                    </h5>
+
+                    <div class="row text-center">
+
+                        <div class="col-md-3">
+                            <strong>Aceite</strong>
+                            <p>@Model.UltimoAceite</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <strong>Cadena</strong>
+                            <p>@Model.UltimaCadena</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <strong>Balatas</strong>
+                            <p>@Model.UltimasBalatas</p>
+                        </div>
+
+                        <div class="col-md-3">
+                            <strong>Llantas</strong>
+                            <p>@Model.UltimasLlantas</p>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
     
 <!-- Accesos Rápidos -->
 <div class="row mt-4">
@@ -68,12 +145,24 @@
                 <div class="d-flex flex-wrap gap-2">
                     <a asp-controller="Motocicleta" asp-action="Index" class="btn btn-outline-primary">Mis Motocicletas</a>
                     <a asp-controller="Motocicleta" asp-action="Crear" class="btn btn-outline-success">Agregar Motocicleta</a>
-                    
-                    @if(Model.PrimeraMotocicleta != null)
-                    {
-                        <a asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@Model.PrimeraMotocicleta.Id" class="btn btn-outline-info">Registrar Kilometraje</a>
-                        <a asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@Model.PrimeraMotocicleta.Id" class="btn btn-outline-warning">Registrar Mantenimiento</a>
-                    }
+                            @if (Model.PrimeraMotocicleta != null)
+                        {
+                            <a asp-controller="Motocicleta"
+                               asp-action="Index"
+                               class="btn btn-outline-info">
+                                Registrar Kilometraje
+                            </a>
+
+                            <a asp-controller="Motocicleta"
+                               asp-action="Index"
+                               class="btn btn-outline-warning">
+                                Registrar Mantenimiento
+                            </a>
+
+                            <div class="w-100 mt-2 text-muted">
+                                Selecciona una motocicleta para registrar kilometraje o mantenimiento.
+                            </div>
+                        }
                     else
                     {
                         <button class="btn btn-outline-info" disabled>Registrar Kilometraje</button>
