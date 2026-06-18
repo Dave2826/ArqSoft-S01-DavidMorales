@@ -166,23 +166,23 @@
                             <div class="row text-center">
 
                                 <div class="col-md-3">
-                                    <strong>Aceite</strong>
-                                    <p>@Model.EstadoAceite</p>
+                                     <strong>Aceite</strong>
+                                     <p><span class="badge @(Model.EstadoAceite == "AL DÍA" ? "bg-success" : Model.EstadoAceite == "PRÓXIMO" ? "bg-warning" : Model.EstadoAceite == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoAceite</span></p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <strong>Cadena</strong>
-                                    <p>@Model.EstadoCadena</p>
+                                     <strong>Cadena</strong>
+                                     <p><span class="badge @(Model.EstadoCadena == "AL DÍA" ? "bg-success" : Model.EstadoCadena == "PRÓXIMO" ? "bg-warning" : Model.EstadoCadena == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoCadena</span></p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <strong>Balatas</strong>
-                                    <p>@Model.EstadoBalatas</p>
+                                     <strong>Balatas</strong>
+                                     <p><span class="badge @(Model.EstadoBalatas == "AL DÍA" ? "bg-success" : Model.EstadoBalatas == "PRÓXIMO" ? "bg-warning" : Model.EstadoBalatas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoBalatas</span></p>
                                 </div>
 
                                 <div class="col-md-3">
-                                    <strong>Llantas</strong>
-                                    <p>@Model.EstadoLlantas</p>
+                                     <strong>Llantas</strong>
+                                     <p><span class="badge @(Model.EstadoLlantas == "AL DÍA" ? "bg-success" : Model.EstadoLlantas == "PRÓXIMO" ? "bg-warning" : Model.EstadoLlantas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoLlantas</span></p>
                                 </div>
 
                             </div>

@@ -198,5 +198,15 @@
     "Costo": 3000,
     "Descripcion": "5",
     "Taller": "2"
+  },
+  {
+    "Id": "8d752d24-d9e0-4264-b72b-878d6568081f",
+    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "Fecha": "2026-06-17T00:00:00",
+    "KilometrajeServicio": 5000,
+    "Tipo": "Cadena",
+    "Costo": 1000,
+    "Descripcion": "2",
+    "Taller": "2"
   }
 ]
