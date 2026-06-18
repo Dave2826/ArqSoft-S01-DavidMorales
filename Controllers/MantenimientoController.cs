@@ -52,6 +52,42 @@ namespace MotoTrack.Controllers
             return View(mantenimiento);
         }
 
+        public IActionResult Gastos(Guid motocicletaId)
+        {
+            var mantenimientos = _mantenimientoService
+                .ObtenerPorMotocicleta(motocicletaId);
+
+            var motocicleta = _motocicletaService
+                .ObtenerPorId(motocicletaId);
+
+            ViewData["Motocicleta"] = motocicleta;
+
+            ViewData["TotalGastado"] =
+                mantenimientos.Sum(m => m.Costo);
+
+            ViewData["Aceite"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Cambio de aceite")
+                    .Sum(m => m.Costo);
+
+            ViewData["Balatas"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Balatas")
+                    .Sum(m => m.Costo);
+
+            ViewData["Cadena"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Cadena")
+                    .Sum(m => m.Costo);
+
+            ViewData["Llantas"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Llantas")
+                    .Sum(m => m.Costo);
+
+            return View();
+        }
+
         [HttpPost]
         public IActionResult Crear(Mantenimiento mantenimiento)
         {

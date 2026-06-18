@@ -1,0 +1,79 @@
+﻿@{
+    var motocicleta =
+        ViewData["Motocicleta"]
+        as MotoTrack.Domain.Models.Motocicleta;
+
+    ViewData["Title"] = "Gastos";
+}
+
+<div class="container mt-4">
+
+    <h2>Resumen de Gastos</h2>
+
+    @if (motocicleta != null)
+    {
+        <h5>
+            @motocicleta.Marca
+            @motocicleta.Modelo
+        </h5>
+    }
+
+    <div class="card mt-3">
+        <div class="card-body">
+
+            <h4 class="text-success">
+                Total Invertido:
+                @(((decimal)ViewData["TotalGastado"]).ToString("C"))
+            </h4>
+
+        </div>
+    </div>
+
+    <div class="card mt-3">
+        <div class="card-body">
+
+            <table class="table">
+
+                <thead>
+                    <tr>
+                        <th>Concepto</th>
+                        <th>Total</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+
+                    <tr>
+                        <td>Cambio de aceite</td>
+                        <td>@(((decimal)ViewData["Aceite"]).ToString("C"))</td>
+                    </tr>
+
+                    <tr>
+                        <td>Balatas</td>
+                        <td>@(((decimal)ViewData["Balatas"]).ToString("C"))</td>
+                    </tr>
+
+                    <tr>
+                        <td>Cadena</td>
+                        <td>@(((decimal)ViewData["Cadena"]).ToString("C"))</td>
+                    </tr>
+
+                    <tr>
+                        <td>Llantas</td>
+                        <td>@(((decimal)ViewData["Llantas"]).ToString("C"))</td>
+                    </tr>
+
+                </tbody>
+
+            </table>
+
+        </div>
+    </div>
+
+    <a asp-controller="Motocicleta"
+       asp-action="Index"
+       class="btn btn-secondary mt-3">
+        Volver
+    </a>
+
+</div>
