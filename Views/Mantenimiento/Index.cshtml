@@ -23,10 +23,11 @@
             <th>Kilometraje</th>
             <th>Costo</th>
             <th>Taller</th>
+            <th>Descripción</th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model)
+        @foreach (var item in Model.OrderByDescending(m => m.Fecha))
         {
             <tr>
                 <td>@item.Fecha.ToShortDateString()</td>
@@ -34,6 +35,7 @@
                 <td>@item.KilometrajeServicio km</td>
                 <td>@item.Costo.ToString("C")</td>
                 <td>@item.Taller</td>
+                <td>@item.Descripcion</td>
             </tr>
         }
     </tbody>
