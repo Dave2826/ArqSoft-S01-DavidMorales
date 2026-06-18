@@ -178,5 +178,25 @@
     "Costo": 123,
     "Descripcion": "2",
     "Taller": "2"
+  },
+  {
+    "Id": "79b33608-22a0-42f3-a24b-2833edb80f5a",
+    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
+    "Fecha": "2026-06-17T00:00:00",
+    "KilometrajeServicio": 3000,
+    "Tipo": "Cambio de aceite",
+    "Costo": 2500,
+    "Descripcion": "5",
+    "Taller": "5"
+  },
+  {
+    "Id": "d1ac832f-6fa6-4efb-83ed-3d7a183b73cb",
+    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
+    "Fecha": "2026-06-17T00:00:00",
+    "KilometrajeServicio": 3000,
+    "Tipo": "Cambio de aceite",
+    "Costo": 3000,
+    "Descripcion": "5",
+    "Taller": "2"
   }
 ]
