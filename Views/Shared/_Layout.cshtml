@@ -1,3 +1,18 @@
+@functions {
+    string NavActive(string controller, string action = "Index")
+    {
+        var c = ViewContext.RouteData.Values["controller"]?.ToString();
+        var a = ViewContext.RouteData.Values["action"]?.ToString();
+        return (c == controller && a == action) ? "nav-link-active" : "";
+    }
+
+    string NavActiveHref(string path)
+    {
+        var current = Context.Request.Path.Value ?? "";
+        return current.StartsWith(path, StringComparison.OrdinalIgnoreCase) ? "nav-link-active" : "";
+    }
+}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -31,25 +46,25 @@
                         {
                             <!-- Sin sesión -->
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-controller="Home" asp-action="Index">
+                                <a class="nav-link text-light @NavActive("Home", "Index")" asp-controller="Home" asp-action="Index">
                                     INICIO
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-warning" asp-controller="MotoTrack" asp-action="Index">
+                                <a class="nav-link text-warning @NavActive("MotoTrack", "Index")" asp-controller="MotoTrack" asp-action="Index">
                                     CATÁLOGO
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="/Auth/Login">
+                                <a class="nav-link text-light @NavActiveHref("/Auth/Login")" href="/Auth/Login">
                                     LOGIN
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" href="/Auth/Registro">
+                                <a class="nav-link text-light @NavActiveHref("/Auth/Registro")" href="/Auth/Registro">
                                     REGISTRO
                                 </a>
                             </li>
@@ -58,25 +73,25 @@
                         {
                             <!-- Con sesión -->
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-controller="Home" asp-action="Index">
+                                <a class="nav-link text-light @NavActive("Home", "Index")" asp-controller="Home" asp-action="Index">
                                     DASHBOARD
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-controller="Motocicleta" asp-action="Index">
+                                <a class="nav-link text-light @NavActive("Motocicleta", "Index")" asp-controller="Motocicleta" asp-action="Index">
                                     MIS MOTOS
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-light" asp-controller="Perfil" asp-action="Index">
+                                <a class="nav-link text-light @NavActive("Perfil", "Index")" asp-controller="Perfil" asp-action="Index">
                                     PERFIL
                                 </a>
                             </li>
 
                             <li class="nav-item">
-                                <a class="nav-link text-warning" asp-controller="MotoTrack" asp-action="Index">
+                                <a class="nav-link text-warning @NavActive("MotoTrack", "Index")" asp-controller="MotoTrack" asp-action="Index">
                                     CATÁLOGO
                                 </a>
                             </li>

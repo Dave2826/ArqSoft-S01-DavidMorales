@@ -398,3 +398,344 @@ footer {
     border-radius: 6px;
     color: #f5f5f5;
 }
+
+/* ================= MIS MOTOS ================= */
+.moto-card {
+    display: flex;
+    gap: 20px;
+    align-items: flex-start;
+}
+
+.moto-card-img {
+    flex-shrink: 0;
+    width: 180px;
+    height: 120px;
+    border-radius: 8px;
+    background: #2a2a2a;
+    border: 1px solid #3a3a3a;
+}
+
+.moto-card-body {
+    flex: 1;
+    min-width: 0;
+}
+
+.moto-card-title {
+    font-size: 1.2rem;
+    color: #ff7a00;
+    font-weight: 600;
+    display: inline;
+}
+
+.moto-card-year {
+    color: #888;
+    font-size: 0.85rem;
+    margin-left: 8px;
+}
+
+.moto-card-meta {
+    display: flex;
+    gap: 16px;
+    margin: 6px 0 10px;
+    color: #ccc;
+}
+
+.moto-card-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 6px;
+}
+
+.moto-card-actions--danger {
+    margin-top: 4px;
+    padding-top: 8px;
+    border-top: 1px solid #333;
+}
+
+.btn-editar-sm--danger {
+    border-color: #ff4444;
+    color: #ff4444;
+}
+
+    .btn-editar-sm--danger:hover {
+        background-color: #ff4444;
+        color: #000;
+    }
+
+.moto-card-status {
+    margin-top: 4px;
+    min-height: 4px;
+}
+
+@media (max-width: 576px) {
+    .moto-card {
+        flex-direction: column;
+    }
+
+    .moto-card-img {
+        width: 100%;
+        height: 160px;
+    }
+}
+
+/* ================= NAVBAR ACTIVE ================= */
+.navbar .nav-link.nav-link-active {
+    background-color: #ff7a00 !important;
+    color: #000 !important;
+    border-radius: 4px;
+}
+
+.navbar .nav-link.nav-link-active:hover {
+    background-color: #e06e00 !important;
+    color: #000 !important;
+}
+
+/* ================= DASHBOARD STAT CARDS ================= */
+.card-stat-label {
+    color: #aaa;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 4px;
+}
+
+.card-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff7a00;
+}
+
+.card-stat-sub {
+    color: #ccc;
+    font-size: 0.85rem;
+}
+
+/* ================= DASHBOARD SECTION CARDS ================= */
+.card-section {
+    border-left: 5px solid #ff7a00;
+}
+
+/* ================= BADGE ESTADO MANTENIMIENTO ================= */
+.badge-estado {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.badge-estado--al-dia {
+    background-color: #1b5e20;
+    color: #a5d6a7;
+}
+
+.badge-estado--proximo {
+    background-color: #e65100;
+    color: #ffcc80;
+}
+
+.badge-estado--vencido {
+    background-color: #b71c1c;
+    color: #ef9a9a;
+}
+
+.badge-estado--sin-registro {
+    background-color: #333;
+    color: #999;
+}
+
+/* ================= DASHBOARD ACTION BUTTONS ================= */
+.btn-action {
+    background-color: #2a2a2a;
+    color: #ff7a00;
+    padding: 6px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    border: 1px solid #3a3a3a;
+    display: inline-block;
+    text-decoration: none;
+}
+
+    .btn-action:hover {
+        background-color: #ff7a00;
+        color: #000;
+    }
+
+    .btn-action[disabled] {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+/* ================= TOTAL GASTOS ================= */
+.total-gastos {
+    color: #ff7a00;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+/* ================= HERO CARD ================= */
+.hero-card {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.hero-img {
+    flex-shrink: 0;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: #2a2a2a;
+    border: 2px solid #3a3a3a;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+    .hero-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+
+.hero-body {
+    flex: 1;
+    min-width: 200px;
+}
+
+.hero-title {
+    font-size: 1.5rem;
+    color: #ff7a00;
+    font-weight: 700;
+}
+
+.hero-year {
+    color: #888;
+    font-size: 0.9rem;
+    margin-left: 8px;
+}
+
+.hero-km {
+    font-size: 1.2rem;
+    color: #f5f5f5;
+    margin: 4px 0;
+}
+
+.hero-mto {
+    color: #aaa;
+    font-size: 0.85rem;
+}
+
+.hero-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 10px;
+    flex-wrap: wrap;
+}
+
+@media (max-width: 576px) {
+    .hero-card {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-actions {
+        justify-content: center;
+    }
+
+    .hero-year {
+        display: block;
+        margin-left: 0;
+    }
+}
+
+/* ================= PERFIL ================= */
+.perfil-card {
+    margin-bottom: 20px;
+}
+
+.perfil-section-title {
+    color: #ff7a00;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 16px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #333;
+}
+
+.perfil-field {
+    padding: 8px 0;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+    .perfil-field:last-child {
+        border-bottom: none;
+    }
+
+.perfil-field-label {
+    color: #ff7a00;
+    font-weight: 600;
+    display: inline-block;
+    min-width: 100px;
+}
+
+.perfil-field-value {
+    color: #f5f5f5;
+}
+
+.perfil-stats-grid {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.perfil-stat-box {
+    flex: 1;
+    min-width: 120px;
+    max-width: 180px;
+    text-align: center;
+    padding: 20px 16px;
+    background: #2a2a2a;
+    border-radius: 10px;
+}
+
+.perfil-stat-value {
+    font-size: 2rem;
+    font-weight: 700;
+    color: #ff7a00;
+}
+
+.perfil-stat-label {
+    color: #aaa;
+    font-size: 0.8rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 4px;
+}
+
+@media (max-width: 480px) {
+    .perfil-stats-grid {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .perfil-stat-box {
+        max-width: 100%;
+        width: 100%;
+    }
+}
+
+/* ================= BANNER ================= */
+.banner-info {
+    background-color: #1e3a5f;
+    color: #b3d4fc;
+    padding: 10px 16px;
+    border-radius: 8px;
+    border-left: 4px solid #4a9eff;
+    margin-bottom: 16px;
+    font-size: 0.9rem;
+}

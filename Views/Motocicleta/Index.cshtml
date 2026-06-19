@@ -22,61 +22,31 @@ else
 {
     @foreach (var moto in Model)
     {
-        <div>
+        <div class="card moto-card">
+            <div class="moto-card-img"></div>
+            <div class="moto-card-body">
+                <div class="moto-card-title">@moto.Marca @moto.Modelo</div>
+                <span class="moto-card-year">@moto.Ano</span>
 
-            <h4>
-                @moto.Marca @moto.Modelo
-            </h4>
+                <div class="moto-card-meta">
+                    <span>@moto.KilometrajeActual km</span>
+                    <span>@moto.Cilindrada cc</span>
+                </div>
 
-            <p>
-                Año: @moto.Ano
-            </p>
+                <div class="moto-card-actions">
+                    <a class="btn-editar-sm" asp-action="Editar" asp-route-id="@moto.Id">Editar</a>
+                    <a class="btn-editar-sm" asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@moto.Id">Actualizar KM</a>
+                    <a class="btn-editar-sm" asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@moto.Id">Reg. Mantenimiento</a>
+                    <a class="btn-editar-sm" asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@moto.Id">Historial</a>
+                    <a class="btn-editar-sm" asp-controller="Mantenimiento" asp-action="Gastos" asp-route-motocicletaId="@moto.Id">Gastos</a>
+                </div>
 
-            <p>
-                Kilometraje:
-                @moto.KilometrajeActual km
-            </p>
+                <div class="moto-card-actions moto-card-actions--danger">
+                    <a class="btn-editar-sm btn-editar-sm--danger" asp-action="Eliminar" asp-route-id="@moto.Id" onclick="return confirm('¿Estás seguro de eliminar esta motocicleta?')">Eliminar</a>
+                </div>
 
-            <p>
-                <a asp-action="Editar" 
-                   asp-route-id="@moto.Id">
-                    Editar
-                </a> |
-                
-                <a asp-controller="LecturaKilometraje" 
-                   asp-action="Crear" 
-                   asp-route-motocicletaId="@moto.Id">
-                    Actualizar KM
-                </a> | 
-                
-                <a asp-controller="Mantenimiento"
-                   asp-action="Crear"
-                   asp-route-motocicletaId="@moto.Id">
-                    Registrar mantenimiento
-                </a> | 
-                
-                <a asp-controller="Mantenimiento"
-                   asp-action="Index"
-                   asp-route-motocicletaId="@moto.Id">
-                    Ver Historial
-                </a> |
-                <a asp-controller="Mantenimiento"
-   asp-action="Gastos"
-   asp-route-motocicletaId="@moto.Id"
-   class="btn btn-info">
-    Ver Gastos
-</a>
-                
-                <a asp-action="Eliminar" 
-                   asp-route-id="@moto.Id"
-                   class="text-danger"
-                   onclick="return confirm('¿Estás seguro de eliminar esta motocicleta?')">
-                    Eliminar
-                </a>
-            </p>
-
-            <hr />
-
+                <div class="moto-card-status"></div>
+            </div>
         </div>
     }
 }

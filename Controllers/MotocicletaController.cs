@@ -8,13 +8,16 @@ namespace MotoTrack.Controllers
     {
         private readonly MotocicletaService _motocicletaService;
         private readonly ConfiguracionMantenimientoService _configuracionService;
+        private readonly MantenimientoService _mantenimientoService;
 
         public MotocicletaController(
             MotocicletaService motocicletaService,
-            ConfiguracionMantenimientoService configuracionService)
+            ConfiguracionMantenimientoService configuracionService,
+            MantenimientoService mantenimientoService)
         {
             _motocicletaService = motocicletaService;
             _configuracionService = configuracionService;
+            _mantenimientoService = mantenimientoService;
         }
 
         // =====================
@@ -53,7 +56,9 @@ namespace MotoTrack.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(Motocicleta motocicleta)
+        public IActionResult Crear(Motocicleta motocicleta,
+            int? kmAceite, int? kmCadena, int? kmBalatas,
+            int? kmLlantas, int? kmFiltro, int? kmValvulas)
         {
             if (!ModelState.IsValid)
             {
@@ -80,8 +85,64 @@ namespace MotoTrack.Controllers
                 AjusteValvulasKm = 12000
             };
             _configuracionService.Guardar(configuracion);
+
+            RegistrarHistorialCompra(motocicleta.Id, kmAceite, kmCadena, kmBalatas, kmLlantas, kmFiltro, kmValvulas);
             
             return RedirectToAction(nameof(Index));
+        }
+
+        private void RegistrarHistorialCompra(Guid motoId,
+            int? kmAceite, int? kmCadena, int? kmBalatas,
+            int? kmLlantas, int? kmFiltro, int? kmValvulas)
+        {
+            if (kmAceite.HasValue)
+                _mantenimientoService.Agregar(new Mantenimiento
+                {
+                    MotocicletaId = motoId, Tipo = "Cambio de aceite",
+                    KilometrajeServicio = kmAceite.Value, Costo = 0,
+                    Taller = "Historial de compra",
+                    Descripcion = "Registrado al dar de alta como usada"
+                });
+            if (kmCadena.HasValue)
+                _mantenimientoService.Agregar(new Mantenimiento
+                {
+                    MotocicletaId = motoId, Tipo = "Cadena",
+                    KilometrajeServicio = kmCadena.Value, Costo = 0,
+                    Taller = "Historial de compra",
+                    Descripcion = "Registrado al dar de alta como usada"
+                });
+            if (kmBalatas.HasValue)
+                _mantenimientoService.Agregar(new Mantenimiento
+                {
+                    MotocicletaId = motoId, Tipo = "Balatas",
+                    KilometrajeServicio = kmBalatas.Value, Costo = 0,
+                    Taller = "Historial de compra",
+                    Descripcion = "Registrado al dar de alta como usada"
+                });
+            if (kmLlantas.HasValue)
+                _mantenimientoService.Agregar(new Mantenimiento
+                {
+                    MotocicletaId = motoId, Tipo = "Llantas",
+                    KilometrajeServicio = kmLlantas.Value, Costo = 0,
+                    Taller = "Historial de compra",
+                    Descripcion = "Registrado al dar de alta como usada"
+                });
+            if (kmFiltro.HasValue)
+                _mantenimientoService.Agregar(new Mantenimiento
+                {
+                    MotocicletaId = motoId, Tipo = "Filtro de aire",
+                    KilometrajeServicio = kmFiltro.Value, Costo = 0,
+                    Taller = "Historial de compra",
+                    Descripcion = "Registrado al dar de alta como usada"
+                });
+            if (kmValvulas.HasValue)
+                _mantenimientoService.Agregar(new Mantenimiento
+                {
+                    MotocicletaId = motoId, Tipo = "Válvulas",
+                    KilometrajeServicio = kmValvulas.Value, Costo = 0,
+                    Taller = "Historial de compra",
+                    Descripcion = "Registrado al dar de alta como usada"
+                });
         }
 
         public IActionResult Editar(Guid id)

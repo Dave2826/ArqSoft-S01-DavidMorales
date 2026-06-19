@@ -47,12 +47,12 @@
     "Marca": "Kawasaki",
     "Modelo": "ninja 6000",
     "Ano": 2202,
-    "Cilindrada": 1,
-    "KilometrajeActual": 5000,
-    "Placas": null,
-    "VIN": null,
-    "NumeroMotor": null,
-    "FechaRegistro": "2026-06-12T13:57:38.3598238-06:00",
+    "Cilindrada": 1000,
+    "KilometrajeActual": 5005,
+    "Placas": "sadgf",
+    "VIN": "gdhfgs",
+    "NumeroMotor": "sdg",
+    "FechaRegistro": "2026-06-12T13:57:38",
     "Activa": true
   },
   {

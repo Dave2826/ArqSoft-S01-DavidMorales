@@ -6,29 +6,32 @@
 
 <h2>Actualizar Kilometraje</h2>
 
-<form asp-action="Crear" method="post">
+<div class="card">
+    <div class="card-body">
 
-    <input asp-for="MotocicletaId" type="hidden" />
+        <form asp-action="Crear" method="post">
 
-    <div>
-        <label asp-for="Kilometraje"></label>
-        <input asp-for="Kilometraje" />
-        <span asp-validation-for="Kilometraje"></span>
+            <input asp-for="MotocicletaId" type="hidden" />
+
+            <div class="form-group">
+                <label asp-for="Kilometraje"></label>
+                <input asp-for="Kilometraje" />
+                <span asp-validation-for="Kilometraje" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Observaciones"></label>
+                <textarea asp-for="Observaciones"></textarea>
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Guardar Lectura</button>
+                <a asp-controller="Motocicleta" asp-action="Index" class="btn-cancel">Volver</a>
+            </div>
+
+        </form>
+
     </div>
-
-    <br />
-
-    <div>
-        <label asp-for="Observaciones"></label>
-        <textarea asp-for="Observaciones"></textarea>
-    </div>
-
-    <br />
-
-    <button type="submit">
-        Guardar Lectura
-    </button>
-
-</form>
+</div>
 
 <div asp-validation-summary="All"></div>

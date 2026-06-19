@@ -6,72 +6,105 @@
 
 <h2>Registrar Motocicleta</h2>
 
-<form asp-action="Crear" method="post">
+<div class="card">
+    <div class="card-body">
 
-    <div>
-        <label>Marca</label>
-        <input asp-for="Marca" />
-        <span asp-validation-for="Marca"></span>
+        <form asp-action="Crear" method="post">
+
+            <div class="form-group">
+                <label>Marca</label>
+                <input asp-for="Marca" />
+                <span asp-validation-for="Marca" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Modelo</label>
+                <input asp-for="Modelo" />
+                <span asp-validation-for="Modelo" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Año</label>
+                <input asp-for="Ano" />
+                <span asp-validation-for="Ano" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Cilindrada</label>
+                <input asp-for="Cilindrada" />
+                <span asp-validation-for="Cilindrada" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Kilometraje Actual</label>
+                <input asp-for="KilometrajeActual" />
+                <span asp-validation-for="KilometrajeActual" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Kilometraje al comprar (solo si es usada)</label>
+                <input asp-for="KilometrajeCompra" type="number" />
+            </div>
+
+            <hr />
+
+            <h4>Información opcional</h4>
+
+            <div class="form-group">
+                <label>Placas</label>
+                <input asp-for="Placas" />
+            </div>
+
+            <div class="form-group">
+                <label>VIN</label>
+                <input asp-for="VIN" />
+            </div>
+
+            <div class="form-group">
+                <label>Número de Motor</label>
+                <input asp-for="NumeroMotor" />
+            </div>
+
+            <hr />
+
+            <h4>Mantenimientos conocidos al comprar <small class="text-muted">(opcional)</small></h4>
+
+            <div class="form-group">
+                <label>Cambio de aceite — km</label>
+                <input name="kmAceite" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label>Cadena — km</label>
+                <input name="kmCadena" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label>Balatas — km</label>
+                <input name="kmBalatas" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label>Llantas — km</label>
+                <input name="kmLlantas" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label>Filtro de aire — km</label>
+                <input name="kmFiltro" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label>Válvulas — km</label>
+                <input name="kmValvulas" type="number" />
+            </div>
+
+            <div class="form-actions">
+                <button type="submit" class="btn">Guardar Motocicleta</button>
+                <a asp-controller="Motocicleta" asp-action="Index" class="btn-cancel">Cancelar</a>
+            </div>
+
+        </form>
+
     </div>
-
-    <br />
-
-    <div>
-        <label>Modelo</label>
-        <input asp-for="Modelo" />
-        <span asp-validation-for="Modelo"></span>
-    </div>
-
-    <br />
-
-    <div>
-        <label>Año</label>
-        <input asp-for="Ano" />
-        <span asp-validation-for="Ano"></span>
-    </div>
-
-    <br />
-
-    <div>
-        <label>Cilindrada</label>
-        <input asp-for="Cilindrada" />
-        <span asp-validation-for="Cilindrada"></span>
-    </div>
-
-    <br />
-
-    <div>
-        <label>Kilometraje Actual</label>
-        <input asp-for="KilometrajeActual" />
-        <span asp-validation-for="KilometrajeActual"></span>
-    </div>
-
-    <hr />
-
-    <h4>Información opcional</h4>
-
-    <div>
-        <label>Placas</label>
-        <input asp-for="Placas" />
-    </div>
-
-    <br />
-
-    <div>
-        <label>VIN</label>
-        <input asp-for="VIN" />
-    </div>
-
-    <br />
-        <div>
-        <label>Número de Motor</label>
-        <input asp-for="NumeroMotor" />
-    </div>
-
-    <br />
-
-    <button type="submit">
-        Guardar Motocicleta
-    </button>
-
-</form>
+</div>

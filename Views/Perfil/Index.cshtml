@@ -6,36 +6,51 @@
 
 <h2>Mi Perfil</h2>
 
-<hr />
+<div class="card perfil-card">
+    <div class="card-body">
+        <div class="perfil-section-title">Información Personal</div>
 
-<h4>Información Personal</h4>
+        <div class="perfil-field">
+            <span class="perfil-field-label">Nombre</span>
+            <span class="perfil-field-value">@Model.Nombre</span>
+        </div>
 
-<p><strong>Nombre:</strong> @Model.Nombre</p>
+        <div class="perfil-field">
+            <span class="perfil-field-label">Apellido</span>
+            <span class="perfil-field-value">@Model.Apellido</span>
+        </div>
 
-<p><strong>Apellido:</strong> @Model.Apellido</p>
+        <div class="perfil-field">
+            <span class="perfil-field-label">Correo</span>
+            <span class="perfil-field-value">@Model.Correo</span>
+        </div>
 
-<p><strong>Correo:</strong> @Model.Correo</p>
+        <div class="perfil-field">
+            <span class="perfil-field-label">Registro</span>
+            <span class="perfil-field-value">@Model.FechaRegistro.ToShortDateString()</span>
+        </div>
+    </div>
+</div>
 
-<p>
-    <strong>Fecha de Registro:</strong>
-    @Model.FechaRegistro.ToShortDateString()
-</p>
+<div class="card perfil-card">
+    <div class="card-body">
+        <div class="perfil-section-title">Resumen de Cuenta</div>
 
-<hr />
+        <div class="perfil-stats-grid">
+            <div class="perfil-stat-box">
+                <div class="perfil-stat-value">@Model.TotalMotocicletas</div>
+                <div class="perfil-stat-label">Motos</div>
+            </div>
 
-<h4>Resumen de Cuenta</h4>
+            <div class="perfil-stat-box">
+                <div class="perfil-stat-value">@Model.ServiciosRealizados</div>
+                <div class="perfil-stat-label">Servicios</div>
+            </div>
 
-<p>
-    <strong>Motocicletas registradas:</strong>
-    @Model.TotalMotocicletas
-</p>
-
-<p>
-    <strong>Servicios realizados:</strong>
-    @Model.ServiciosRealizados
-</p>
-
-<p>
-    <strong>Gasto acumulado:</strong>
-    $@Model.GastoAcumulado.ToString("N0")
-</p>
+            <div class="perfil-stat-box">
+                <div class="perfil-stat-value">$@Model.GastoAcumulado.ToString("N0")</div>
+                <div class="perfil-stat-label">Gasto</div>
+            </div>
+        </div>
+    </div>
+</div>

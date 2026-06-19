@@ -41,72 +41,54 @@
         </div>
     }
 
+    @if (Model.TieneEstimados)
+    {
+        <div class="banner-info">
+            Algunos cálculos usan el kilometraje de compra como referencia.
+            Registra mantenimientos reales para obtener datos precisos.
+        </div>
+    }
+
     <div class="row">
 
-        <div class="col-md-3 mb-4">
-            <div class="card border-primary">
+        <div class="col-md-4 mb-4">
+            <div class="card card-stat">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Total Motocicletas</h5>
-                    <h3 class="text-primary">@Model.TotalMotocicletas</h3>
+                    <div class="card-stat-label">Total Motocicletas</div>
+                    <div class="card-stat-value">@Model.TotalMotocicletas</div>
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mb-4">
-            <div class="card border-success">
+        <div class="col-md-4 mb-4">
+            <div class="card card-stat">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Kilometraje Actual</h5>
-                    <h3 class="text-success">@Model.KilometrajeStatus</h3>
+                    <div class="card-stat-label">Kilometraje Actual</div>
+                    <div class="card-stat-value">@Model.KilometrajeStatus</div>
 
                     @if (Model.PrimeraMotocicleta != null)
                     {
-                        <small class="text-muted">
+                        <div class="card-stat-sub">
                             @Model.PrimeraMotocicleta.Marca
                             @Model.PrimeraMotocicleta.Modelo
-                        </small>
+                        </div>
                     }
                 </div>
             </div>
         </div>
 
-        <div class="col-md-3 mb-4">
-            <div class="card border-info">
+        <div class="col-md-4 mb-4">
+            <div class="card card-stat">
                 <div class="card-body text-center">
-                    <h5 class="card-title">Último Mantenimiento</h5>
+                    <div class="card-stat-label">Último Mantenimiento</div>
 
-                    <h4 class="text-info">
+                    <div class="card-stat-value" style="font-size:1.3rem">
                         @(Model.UltimoMantenimiento?.Tipo ?? "Ninguno")
-                    </h4>
+                    </div>
 
-                    <small class="text-muted">
+                    <div class="card-stat-sub">
                         @(Model.UltimoMantenimiento?.Fecha.ToString("dd/MM/yyyy") ?? "Sin registro")
-                    </small>
-                </div>
-            </div>
-        </div>
-
-        <div class="col-md-3 mb-4">
-            <div class="card border-warning">
-                <div class="card-body text-center">
-
-                    <h5 class="card-title">Mi Motocicleta</h5>
-
-                    @if (Model.PrimeraMotocicleta != null)
-                    {
-                        <p class="mb-1">@Model.PrimeraMotocicleta.Marca</p>
-                        <p class="mb-1">@Model.PrimeraMotocicleta.Modelo</p>
-                        <p class="mb-1">@Model.PrimeraMotocicleta.Ano</p>
-                        <p class="mb-0">
-                            @Model.PrimeraMotocicleta.KilometrajeActual km
-                        </p>
-                    }
-                    else
-                    {
-                        <p class="text-muted">
-                            No hay motocicletas
-                        </p>
-                    }
-
+                    </div>
                 </div>
             </div>
         </div>
@@ -115,8 +97,46 @@
 
     <div class="row mt-3">
         <div class="col-12">
+            <div class="card hero-card">
 
-            <div class="card border-dark">
+                <div class="hero-img"></div>
+
+                <div class="hero-body">
+                    @if (Model.PrimeraMotocicleta != null)
+                    {
+                        <div class="hero-title">
+                            @Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo
+                            <span class="hero-year">@Model.PrimeraMotocicleta.Ano</span>
+                        </div>
+                        <div class="hero-km">@Model.PrimeraMotocicleta.KilometrajeActual km</div>
+                        <div class="hero-mto">
+                            Último: @(Model.UltimoMantenimiento?.Tipo ?? "Ninguno")
+                            @if (Model.UltimoMantenimiento != null)
+                            {
+                                <text>&middot; @Model.UltimoMantenimiento.Fecha.ToString("dd/MM/yyyy")</text>
+                            }
+                        </div>
+                        <div class="hero-actions">
+                            <a class="btn-action" asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Reg. KM</a>
+                            <a class="btn-action" asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Reg. Manto</a>
+                            <a class="btn-action" asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Historial</a>
+                            <a class="btn-action" asp-controller="Mantenimiento" asp-action="Gastos" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Gastos</a>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="hero-mto">Selecciona una motocicleta para ver su información</div>
+                    }
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="row mt-3">
+        <div class="col-12">
+
+            <div class="card card-section">
 
                 <div class="card-body">
 
@@ -165,7 +185,7 @@
             <div class="row mt-3">
                 <div class="col-12">
 
-                    <div class="card border-warning">
+                    <div class="card card-section">
 
                         <div class="card-body">
 
@@ -177,32 +197,38 @@
 
                                 <div class="col-md-2">
                                      <strong>Aceite</strong>
-                                     <p><span class="badge @(Model.EstadoAceite == "AL DÍA" ? "bg-success" : Model.EstadoAceite == "PRÓXIMO" ? "bg-warning" : Model.EstadoAceite == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoAceite</span></p>
+                                     @if(Model.AceiteEsEstimado){<small class="text-muted">(estimado)</small>}
+                                     <p><span class="badge-estado @(Model.EstadoAceite == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoAceite == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoAceite == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoAceite</span></p>
                                 </div>
 
                                 <div class="col-md-2">
                                      <strong>Cadena</strong>
-                                     <p><span class="badge @(Model.EstadoCadena == "AL DÍA" ? "bg-success" : Model.EstadoCadena == "PRÓXIMO" ? "bg-warning" : Model.EstadoCadena == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoCadena</span></p>
+                                     @if(Model.CadenaEsEstimado){<small class="text-muted">(estimado)</small>}
+                                     <p><span class="badge-estado @(Model.EstadoCadena == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoCadena == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoCadena == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoCadena</span></p>
                                 </div>
 
                                 <div class="col-md-2">
                                      <strong>Balatas</strong>
-                                     <p><span class="badge @(Model.EstadoBalatas == "AL DÍA" ? "bg-success" : Model.EstadoBalatas == "PRÓXIMO" ? "bg-warning" : Model.EstadoBalatas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoBalatas</span></p>
+                                     @if(Model.BalatasEsEstimado){<small class="text-muted">(estimado)</small>}
+                                     <p><span class="badge-estado @(Model.EstadoBalatas == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoBalatas == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoBalatas == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoBalatas</span></p>
                                 </div>
 
                                 <div class="col-md-2">
                                      <strong>Llantas</strong>
-                                     <p><span class="badge @(Model.EstadoLlantas == "AL DÍA" ? "bg-success" : Model.EstadoLlantas == "PRÓXIMO" ? "bg-warning" : Model.EstadoLlantas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoLlantas</span></p>
+                                     @if(Model.LlantasEsEstimado){<small class="text-muted">(estimado)</small>}
+                                     <p><span class="badge-estado @(Model.EstadoLlantas == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoLlantas == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoLlantas == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoLlantas</span></p>
                                 </div>
 
                                 <div class="col-md-2">
                                      <strong>Filtro Aire</strong>
-                                     <p><span class="badge @(Model.EstadoFiltroAire == "AL DÍA" ? "bg-success" : Model.EstadoFiltroAire == "PRÓXIMO" ? "bg-warning" : Model.EstadoFiltroAire == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoFiltroAire</span></p>
+                                     @if(Model.FiltroAireEsEstimado){<small class="text-muted">(estimado)</small>}
+                                     <p><span class="badge-estado @(Model.EstadoFiltroAire == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoFiltroAire == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoFiltroAire == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoFiltroAire</span></p>
                                 </div>
 
                                 <div class="col-md-2">
                                      <strong>Válvulas</strong>
-                                     <p><span class="badge @(Model.EstadoValvulas == "AL DÍA" ? "bg-success" : Model.EstadoValvulas == "PRÓXIMO" ? "bg-warning" : Model.EstadoValvulas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoValvulas</span></p>
+                                     @if(Model.ValvulasEsEstimado){<small class="text-muted">(estimado)</small>}
+                                     <p><span class="badge-estado @(Model.EstadoValvulas == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoValvulas == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoValvulas == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoValvulas</span></p>
                                 </div>
 
                             </div>
@@ -220,7 +246,7 @@
     <div class="row mt-3">
         <div class="col-12">
 
-            <div class="card border-success">
+            <div class="card card-section">
 
                 <div class="card-body">
 
@@ -232,32 +258,32 @@
 
                         <div class="col-md-2">
                             <strong>Aceite</strong>
-                            <p>@Model.ProximoAceite</p>
+                            <p>@Model.ProximoAceite @if(Model.AceiteEsEstimado){<span class="text-muted">· estimado</span>}</p>
                         </div>
 
                         <div class="col-md-2">
                             <strong>Cadena</strong>
-                            <p>@Model.ProximaCadena</p>
+                            <p>@Model.ProximaCadena @if(Model.CadenaEsEstimado){<span class="text-muted">· estimado</span>}</p>
                         </div>
 
                         <div class="col-md-2">
                             <strong>Balatas</strong>
-                            <p>@Model.ProximasBalatas</p>
+                            <p>@Model.ProximasBalatas @if(Model.BalatasEsEstimado){<span class="text-muted">· estimado</span>}</p>
                         </div>
 
                         <div class="col-md-2">
                             <strong>Llantas</strong>
-                            <p>@Model.ProximasLlantas</p>
+                            <p>@Model.ProximasLlantas @if(Model.LlantasEsEstimado){<span class="text-muted">· estimado</span>}</p>
                         </div>
 
                         <div class="col-md-2">
                             <strong>Filtro Aire</strong>
-                            <p>@Model.ProximoFiltroAire</p>
+                            <p>@Model.ProximoFiltroAire @if(Model.FiltroAireEsEstimado){<span class="text-muted">· estimado</span>}</p>
                         </div>
 
                         <div class="col-md-2">
                             <strong>Válvulas</strong>
-                            <p>@Model.ProximasValvulas</p>
+                            <p>@Model.ProximasValvulas @if(Model.ValvulasEsEstimado){<span class="text-muted">· estimado</span>}</p>
                         </div>
 
                     </div>
@@ -284,13 +310,13 @@
 
                         <a asp-controller="Motocicleta"
                            asp-action="Index"
-                           class="btn btn-outline-primary">
+                           class="btn-action">
                             Mis Motocicletas
                         </a>
 
                         <a asp-controller="Motocicleta"
                            asp-action="Crear"
-                           class="btn btn-outline-success">
+                           class="btn-action">
                             Agregar Motocicleta
                         </a>
 
@@ -299,24 +325,24 @@
                             <a asp-controller="LecturaKilometraje"
                                asp-action="Crear"
                                asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId"
-                               class="btn btn-outline-info">
+                               class="btn-action">
                                 Registrar Kilometraje
                             </a>
 
                             <a asp-controller="Mantenimiento"
                                asp-action="Crear"
                                asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId"
-                               class="btn btn-outline-warning">
+                               class="btn-action">
                                 Registrar Mantenimiento
                             </a>
                         }
                         else
                         {
-                            <button class="btn btn-outline-info" disabled>
+                            <button class="btn-action" disabled>
                                 Registrar Kilometraje
                             </button>
 
-                            <button class="btn btn-outline-warning" disabled>
+                            <button class="btn-action" disabled>
                                 Registrar Mantenimiento
                             </button>
 

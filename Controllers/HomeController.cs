@@ -88,6 +88,13 @@ namespace MotoTrack.Controllers
                     .OrderByDescending(m => m.KilometrajeServicio)
                     .FirstOrDefault();
 
+            bool aceiteEsEstimado = false;
+            bool cadenaEsEstimado = false;
+            bool balatasEsEstimado = false;
+            bool llantasEsEstimado = false;
+            bool filtroAireEsEstimado = false;
+            bool valvulasEsEstimado = false;
+
             var configuracion =
                 motocicletaSeleccionada != null
                     ? _configuracionService
@@ -298,6 +305,73 @@ namespace MotoTrack.Controllers
                 }
             }
 
+            bool tieneEstimados = false;
+
+            if (motocicletaSeleccionada?.KilometrajeCompra.HasValue == true && configuracion != null)
+            {
+                var kmCompra = motocicletaSeleccionada.KilometrajeCompra.Value;
+
+                if (ultimoAceite == null)
+                {
+                    var est = kmCompra + configuracion.CambioAceiteKm;
+                    proximoAceite = $"{est} km";
+                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
+                    estadoAceite = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
+                    aceiteEsEstimado = true;
+                    tieneEstimados = true;
+                }
+
+                if (ultimaCadena == null)
+                {
+                    var est = kmCompra + configuracion.RevisionCadenaKm;
+                    proximaCadena = $"{est} km";
+                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
+                    estadoCadena = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
+                    cadenaEsEstimado = true;
+                    tieneEstimados = true;
+                }
+
+                if (ultimasBalatas == null)
+                {
+                    var est = kmCompra + configuracion.RevisionBalatasKm;
+                    proximasBalatas = $"{est} km";
+                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
+                    estadoBalatas = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
+                    balatasEsEstimado = true;
+                    tieneEstimados = true;
+                }
+
+                if (ultimasLlantas == null)
+                {
+                    var est = kmCompra + configuracion.RevisionLlantasKm;
+                    proximasLlantas = $"{est} km";
+                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
+                    estadoLlantas = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
+                    llantasEsEstimado = true;
+                    tieneEstimados = true;
+                }
+
+                if (ultimoFiltroAire == null)
+                {
+                    var est = kmCompra + configuracion.RevisionFiltroAireKm;
+                    proximoFiltroAire = $"{est} km";
+                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
+                    estadoFiltroAire = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
+                    filtroAireEsEstimado = true;
+                    tieneEstimados = true;
+                }
+
+                if (ultimasValvulas == null)
+                {
+                    var est = kmCompra + configuracion.AjusteValvulasKm;
+                    proximasValvulas = $"{est} km";
+                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
+                    estadoValvulas = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
+                    valvulasEsEstimado = true;
+                    tieneEstimados = true;
+                }
+            }
+
             var model = new DashboardViewModel
             {
                 TotalMotocicletas = motocicletas.Count,
@@ -368,7 +442,15 @@ namespace MotoTrack.Controllers
                 Motocicletas = motocicletas,
 
                 MotocicletaSeleccionadaId =
-                    motocicletaSeleccionada?.Id
+                    motocicletaSeleccionada?.Id,
+
+                AceiteEsEstimado = aceiteEsEstimado,
+                CadenaEsEstimado = cadenaEsEstimado,
+                BalatasEsEstimado = balatasEsEstimado,
+                LlantasEsEstimado = llantasEsEstimado,
+                FiltroAireEsEstimado = filtroAireEsEstimado,
+                ValvulasEsEstimado = valvulasEsEstimado,
+                TieneEstimados = tieneEstimados
             };
 
             return View(model);
@@ -445,5 +527,19 @@ namespace MotoTrack.Controllers
             = new();
 
         public Guid? MotocicletaSeleccionadaId { get; set; }
+
+        public bool TieneEstimados { get; set; }
+
+        public bool AceiteEsEstimado { get; set; }
+
+        public bool CadenaEsEstimado { get; set; }
+
+        public bool BalatasEsEstimado { get; set; }
+
+        public bool LlantasEsEstimado { get; set; }
+
+        public bool FiltroAireEsEstimado { get; set; }
+
+        public bool ValvulasEsEstimado { get; set; }
     }
 }
