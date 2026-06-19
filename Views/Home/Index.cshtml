@@ -126,24 +126,34 @@
 
                     <div class="row text-center">
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Aceite</strong>
                             <p>@Model.UltimoAceite</p>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Cadena</strong>
                             <p>@Model.UltimaCadena</p>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Balatas</strong>
                             <p>@Model.UltimasBalatas</p>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Llantas</strong>
                             <p>@Model.UltimasLlantas</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <strong>Filtro Aire</strong>
+                            <p>@Model.UltimoFiltroAire</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <strong>Válvulas</strong>
+                            <p>@Model.UltimasValvulas</p>
                         </div>
 
                     </div>
@@ -165,24 +175,34 @@
 
                             <div class="row text-center">
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                      <strong>Aceite</strong>
                                      <p><span class="badge @(Model.EstadoAceite == "AL DÍA" ? "bg-success" : Model.EstadoAceite == "PRÓXIMO" ? "bg-warning" : Model.EstadoAceite == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoAceite</span></p>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                      <strong>Cadena</strong>
                                      <p><span class="badge @(Model.EstadoCadena == "AL DÍA" ? "bg-success" : Model.EstadoCadena == "PRÓXIMO" ? "bg-warning" : Model.EstadoCadena == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoCadena</span></p>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                      <strong>Balatas</strong>
                                      <p><span class="badge @(Model.EstadoBalatas == "AL DÍA" ? "bg-success" : Model.EstadoBalatas == "PRÓXIMO" ? "bg-warning" : Model.EstadoBalatas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoBalatas</span></p>
                                 </div>
 
-                                <div class="col-md-3">
+                                <div class="col-md-2">
                                      <strong>Llantas</strong>
                                      <p><span class="badge @(Model.EstadoLlantas == "AL DÍA" ? "bg-success" : Model.EstadoLlantas == "PRÓXIMO" ? "bg-warning" : Model.EstadoLlantas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoLlantas</span></p>
+                                </div>
+
+                                <div class="col-md-2">
+                                     <strong>Filtro Aire</strong>
+                                     <p><span class="badge @(Model.EstadoFiltroAire == "AL DÍA" ? "bg-success" : Model.EstadoFiltroAire == "PRÓXIMO" ? "bg-warning" : Model.EstadoFiltroAire == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoFiltroAire</span></p>
+                                </div>
+
+                                <div class="col-md-2">
+                                     <strong>Válvulas</strong>
+                                     <p><span class="badge @(Model.EstadoValvulas == "AL DÍA" ? "bg-success" : Model.EstadoValvulas == "PRÓXIMO" ? "bg-warning" : Model.EstadoValvulas == "VENCIDO" ? "bg-danger" : "bg-secondary")">@Model.EstadoValvulas</span></p>
                                 </div>
 
                             </div>
@@ -210,24 +230,34 @@
 
                     <div class="row text-center">
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Aceite</strong>
                             <p>@Model.ProximoAceite</p>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Cadena</strong>
                             <p>@Model.ProximaCadena</p>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Balatas</strong>
                             <p>@Model.ProximasBalatas</p>
                         </div>
 
-                        <div class="col-md-3">
+                        <div class="col-md-2">
                             <strong>Llantas</strong>
                             <p>@Model.ProximasLlantas</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <strong>Filtro Aire</strong>
+                            <p>@Model.ProximoFiltroAire</p>
+                        </div>
+
+                        <div class="col-md-2">
+                            <strong>Válvulas</strong>
+                            <p>@Model.ProximasValvulas</p>
                         </div>
 
                     </div>

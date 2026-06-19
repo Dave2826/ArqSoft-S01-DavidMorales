@@ -76,6 +76,18 @@ namespace MotoTrack.Controllers
                     .OrderByDescending(m => m.KilometrajeServicio)
                     .FirstOrDefault();
 
+            var ultimoFiltroAire =
+                mantenimientos
+                    .Where(m => m.Tipo == "Filtro de aire")
+                    .OrderByDescending(m => m.KilometrajeServicio)
+                    .FirstOrDefault();
+
+            var ultimasValvulas =
+                mantenimientos
+                    .Where(m => m.Tipo == "Válvulas")
+                    .OrderByDescending(m => m.KilometrajeServicio)
+                    .FirstOrDefault();
+
             var configuracion =
                 motocicletaSeleccionada != null
                     ? _configuracionService
@@ -111,6 +123,16 @@ namespace MotoTrack.Controllers
             var proximasLlantas =
                 ultimasLlantas != null && configuracion != null
                     ? $"{ultimasLlantas.KilometrajeServicio + configuracion.RevisionLlantasKm} km"
+                    : "Sin registro";
+
+            var proximoFiltroAire =
+                ultimoFiltroAire != null && configuracion != null
+                    ? $"{ultimoFiltroAire.KilometrajeServicio + configuracion.RevisionFiltroAireKm} km"
+                    : "Sin registro";
+
+            var proximasValvulas =
+                ultimasValvulas != null && configuracion != null
+                    ? $"{ultimasValvulas.KilometrajeServicio + configuracion.AjusteValvulasKm} km"
                     : "Sin registro";
 
             string estadoAceite = "Sin registro";
@@ -220,6 +242,62 @@ namespace MotoTrack.Controllers
                 }
             }
 
+            string estadoFiltroAire = "Sin registro";
+
+            if (motocicletaSeleccionada != null &&
+                ultimoFiltroAire != null &&
+                configuracion != null)
+            {
+                var proximoKm =
+                    ultimoFiltroAire.KilometrajeServicio +
+                    configuracion.RevisionFiltroAireKm;
+
+                var faltan =
+                    proximoKm -
+                    motocicletaSeleccionada.KilometrajeActual;
+
+                if (faltan < 0)
+                {
+                    estadoFiltroAire = "VENCIDO";
+                }
+                else if (faltan <= 500)
+                {
+                    estadoFiltroAire = "PRÓXIMO";
+                }
+                else
+                {
+                    estadoFiltroAire = "AL DÍA";
+                }
+            }
+
+            string estadoValvulas = "Sin registro";
+
+            if (motocicletaSeleccionada != null &&
+                ultimasValvulas != null &&
+                configuracion != null)
+            {
+                var proximoKm =
+                    ultimasValvulas.KilometrajeServicio +
+                    configuracion.AjusteValvulasKm;
+
+                var faltan =
+                    proximoKm -
+                    motocicletaSeleccionada.KilometrajeActual;
+
+                if (faltan < 0)
+                {
+                    estadoValvulas = "VENCIDO";
+                }
+                else if (faltan <= 500)
+                {
+                    estadoValvulas = "PRÓXIMO";
+                }
+                else
+                {
+                    estadoValvulas = "AL DÍA";
+                }
+            }
+
             var model = new DashboardViewModel
             {
                 TotalMotocicletas = motocicletas.Count,
@@ -253,6 +331,16 @@ namespace MotoTrack.Controllers
                         ? $"{ultimasLlantas.KilometrajeServicio} km"
                         : "Sin registro",
 
+                UltimoFiltroAire =
+                    ultimoFiltroAire != null
+                        ? $"{ultimoFiltroAire.KilometrajeServicio} km"
+                        : "Sin registro",
+
+                UltimasValvulas =
+                    ultimasValvulas != null
+                        ? $"{ultimasValvulas.KilometrajeServicio} km"
+                        : "Sin registro",
+
                 ProximoAceite = proximoAceite,
 
                 ProximaCadena = proximaCadena,
@@ -261,6 +349,10 @@ namespace MotoTrack.Controllers
 
                 ProximasLlantas = proximasLlantas,
 
+                ProximoFiltroAire = proximoFiltroAire,
+
+                ProximasValvulas = proximasValvulas,
+
                 EstadoAceite = estadoAceite,
 
                 EstadoCadena = estadoCadena,
@@ -268,6 +360,10 @@ namespace MotoTrack.Controllers
                 EstadoBalatas = estadoBalatas,
 
                 EstadoLlantas = estadoLlantas,
+
+                EstadoFiltroAire = estadoFiltroAire,
+
+                EstadoValvulas = estadoValvulas,
 
                 Motocicletas = motocicletas,
 
@@ -317,6 +413,10 @@ namespace MotoTrack.Controllers
 
         public string UltimasLlantas { get; set; } = "Sin registro";
 
+        public string UltimoFiltroAire { get; set; } = "Sin registro";
+
+        public string UltimasValvulas { get; set; } = "Sin registro";
+
         public string ProximoAceite { get; set; } = "Sin registro";
 
         public string ProximaCadena { get; set; } = "Sin registro";
@@ -325,6 +425,10 @@ namespace MotoTrack.Controllers
 
         public string ProximasLlantas { get; set; } = "Sin registro";
 
+        public string ProximoFiltroAire { get; set; } = "Sin registro";
+
+        public string ProximasValvulas { get; set; } = "Sin registro";
+
         public string EstadoAceite { get; set; } = "Sin registro";
 
         public string EstadoCadena { get; set; } = "Sin registro";
@@ -332,6 +436,10 @@ namespace MotoTrack.Controllers
         public string EstadoBalatas { get; set; } = "Sin registro";
 
         public string EstadoLlantas { get; set; } = "Sin registro";
+
+        public string EstadoFiltroAire { get; set; } = "Sin registro";
+
+        public string EstadoValvulas { get; set; } = "Sin registro";
 
         public List<Motocicleta> Motocicletas { get; set; }
             = new();
