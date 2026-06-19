@@ -266,21 +266,19 @@
 
                         @if (Model.PrimeraMotocicleta != null)
                         {
-                            <a asp-controller="Motocicleta"
-                               asp-action="Index"
+                            <a asp-controller="LecturaKilometraje"
+                               asp-action="Crear"
+                               asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId"
                                class="btn btn-outline-info">
                                 Registrar Kilometraje
                             </a>
 
-                            <a asp-controller="Motocicleta"
-                               asp-action="Index"
+                            <a asp-controller="Mantenimiento"
+                               asp-action="Crear"
+                               asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId"
                                class="btn btn-outline-warning">
                                 Registrar Mantenimiento
                             </a>
-
-                            <div class="w-100 mt-2 text-muted">
-                                Selecciona una motocicleta para registrar kilometraje o mantenimiento.
-                            </div>
                         }
                         else
                         {

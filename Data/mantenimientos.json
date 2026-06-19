@@ -208,5 +208,35 @@
     "Costo": 1000,
     "Descripcion": "2",
     "Taller": "2"
+  },
+  {
+    "Id": "59ca7257-b4df-4058-912f-884fd3062729",
+    "MotocicletaId": "92805009-eb19-4549-be64-49ed18917f63",
+    "Fecha": "2026-06-19T00:00:00",
+    "KilometrajeServicio": 55001,
+    "Tipo": "Filtro de aire",
+    "Costo": 2000,
+    "Descripcion": "d",
+    "Taller": "2"
+  },
+  {
+    "Id": "a80701f5-53ba-4516-8124-0f8b1206cc53",
+    "MotocicletaId": "92805009-eb19-4549-be64-49ed18917f63",
+    "Fecha": "2026-06-19T00:00:00",
+    "KilometrajeServicio": 55010,
+    "Tipo": "Llantas",
+    "Costo": 6000,
+    "Descripcion": "5",
+    "Taller": "2"
+  },
+  {
+    "Id": "ec9e5670-1dfd-4987-a662-e0acaf8fdf79",
+    "MotocicletaId": "92805009-eb19-4549-be64-49ed18917f63",
+    "Fecha": "2026-06-01T00:00:00",
+    "KilometrajeServicio": 5450,
+    "Tipo": "Balatas",
+    "Costo": 500,
+    "Descripcion": "5",
+    "Taller": "5"
   }
 ]

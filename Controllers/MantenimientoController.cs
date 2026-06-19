@@ -85,6 +85,14 @@ namespace MotoTrack.Controllers
                     .Where(m => m.Tipo == "Llantas")
                     .Sum(m => m.Costo);
 
+            ViewData["Otros"] =
+                mantenimientos
+                    .Where(m => m.Tipo != "Cambio de aceite"
+                             && m.Tipo != "Balatas"
+                             && m.Tipo != "Cadena"
+                             && m.Tipo != "Llantas")
+                    .Sum(m => m.Costo);
+
             return View();
         }
 

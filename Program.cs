@@ -66,6 +66,10 @@ builder.Services.AddSingleton<
 builder.Services.AddSingleton<
     MantenimientoService>();
 
+// ======================
+// Gastos
+// ======================
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
