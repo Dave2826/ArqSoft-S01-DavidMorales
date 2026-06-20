@@ -9,11 +9,12 @@
 <div class="card">
     <div class="card-body">
 
-        <form asp-action="Editar" method="post">
+        <form asp-action="Editar" method="post" enctype="multipart/form-data">
             <input asp-for="Id" type="hidden" />
             <input asp-for="UsuarioId" type="hidden" />
             <input asp-for="FechaRegistro" type="hidden" />
             <input asp-for="Activa" type="hidden" />
+            <input asp-for="FotoUrl" type="hidden" />
 
             <div class="form-group">
                 <label>Marca</label>
@@ -43,6 +44,33 @@
                 <label>Kilometraje Actual</label>
                 <input asp-for="KilometrajeActual" />
                 <span asp-validation-for="KilometrajeActual" class="error"></span>
+            </div>
+
+            <div class="form-group">
+                <label>Kilometraje al comprar (solo si es usada)</label>
+                <input asp-for="KilometrajeCompra" type="number" />
+            </div>
+
+            <hr />
+
+            <h4>Fotografía</h4>
+
+            @if (!string.IsNullOrEmpty(Model.FotoUrl))
+            {
+                <div style="margin-bottom:12px;">
+                    <img src="@Model.FotoUrl" alt="@Model.Marca @Model.Modelo" style="max-width:200px;max-height:150px;border-radius:8px;border:1px solid #333;" />
+                </div>
+                <div class="form-group">
+                    <label>
+                        <input type="checkbox" name="eliminarFoto" value="true" />
+                        Eliminar fotografía actual
+                    </label>
+                </div>
+            }
+
+            <div class="form-group">
+                <label>Cambiar fotografía</label>
+                <input type="file" name="foto" accept=".jpg,.jpeg,.png,.webp" />
             </div>
 
             <hr />

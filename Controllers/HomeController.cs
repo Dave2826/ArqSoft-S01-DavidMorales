@@ -1,4 +1,5 @@
 using MotoTrack.Models;
+using MotoTrack.Helpers;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 using MotoTrack.Application.Services;
@@ -52,49 +53,6 @@ namespace MotoTrack.Controllers
             var ultimoMantenimiento =
                 mantenimientos.FirstOrDefault();
 
-            var ultimoAceite =
-                mantenimientos
-                    .Where(m => m.Tipo == "Cambio de aceite")
-                    .OrderByDescending(m => m.KilometrajeServicio)
-                    .FirstOrDefault();
-
-            var ultimaCadena =
-                mantenimientos
-                    .Where(m => m.Tipo == "Cadena")
-                    .OrderByDescending(m => m.KilometrajeServicio)
-                    .FirstOrDefault();
-
-            var ultimasBalatas =
-                mantenimientos
-                    .Where(m => m.Tipo == "Balatas")
-                    .OrderByDescending(m => m.KilometrajeServicio)
-                    .FirstOrDefault();
-
-            var ultimasLlantas =
-                mantenimientos
-                    .Where(m => m.Tipo == "Llantas")
-                    .OrderByDescending(m => m.KilometrajeServicio)
-                    .FirstOrDefault();
-
-            var ultimoFiltroAire =
-                mantenimientos
-                    .Where(m => m.Tipo == "Filtro de aire")
-                    .OrderByDescending(m => m.KilometrajeServicio)
-                    .FirstOrDefault();
-
-            var ultimasValvulas =
-                mantenimientos
-                    .Where(m => m.Tipo == "Válvulas")
-                    .OrderByDescending(m => m.KilometrajeServicio)
-                    .FirstOrDefault();
-
-            bool aceiteEsEstimado = false;
-            bool cadenaEsEstimado = false;
-            bool balatasEsEstimado = false;
-            bool llantasEsEstimado = false;
-            bool filtroAireEsEstimado = false;
-            bool valvulasEsEstimado = false;
-
             var configuracion =
                 motocicletaSeleccionada != null
                     ? _configuracionService
@@ -102,274 +60,14 @@ namespace MotoTrack.Controllers
                             motocicletaSeleccionada.Id)
                     : null;
 
-            var proximoAceiteKm = 0;
+            EstadoMantenimientoResult? resultado = null;
 
-            if (ultimoAceite != null &&
-                configuracion != null)
+            if (motocicletaSeleccionada != null)
             {
-                proximoAceiteKm =
-                    ultimoAceite.KilometrajeServicio +
-                    configuracion.CambioAceiteKm;
-            }
-
-            var proximoAceite =
-                proximoAceiteKm > 0
-                    ? $"{proximoAceiteKm} km"
-                    : "Sin registro";
-
-            var proximaCadena =
-                ultimaCadena != null && configuracion != null
-                    ? $"{ultimaCadena.KilometrajeServicio + configuracion.RevisionCadenaKm} km"
-                    : "Sin registro";
-
-            var proximasBalatas =
-                ultimasBalatas != null && configuracion != null
-                    ? $"{ultimasBalatas.KilometrajeServicio + configuracion.RevisionBalatasKm} km"
-                    : "Sin registro";
-
-            var proximasLlantas =
-                ultimasLlantas != null && configuracion != null
-                    ? $"{ultimasLlantas.KilometrajeServicio + configuracion.RevisionLlantasKm} km"
-                    : "Sin registro";
-
-            var proximoFiltroAire =
-                ultimoFiltroAire != null && configuracion != null
-                    ? $"{ultimoFiltroAire.KilometrajeServicio + configuracion.RevisionFiltroAireKm} km"
-                    : "Sin registro";
-
-            var proximasValvulas =
-                ultimasValvulas != null && configuracion != null
-                    ? $"{ultimasValvulas.KilometrajeServicio + configuracion.AjusteValvulasKm} km"
-                    : "Sin registro";
-
-            string estadoAceite = "Sin registro";
-
-            if (motocicletaSeleccionada != null &&
-                proximoAceiteKm > 0)
-            {
-                var faltan =
-                    proximoAceiteKm -
-                    motocicletaSeleccionada.KilometrajeActual;
-
-                if (faltan < 0)
-                {
-                    estadoAceite = "VENCIDO";
-                }
-                else if (faltan <= 500)
-                {
-                    estadoAceite = "PRÓXIMO";
-                }
-                else
-                {
-                    estadoAceite = "AL DÍA";
-                }
-            }
-
-            string estadoCadena = "Sin registro";
-
-            if (motocicletaSeleccionada != null &&
-                ultimaCadena != null &&
-                configuracion != null)
-            {
-                var proximoKm =
-                    ultimaCadena.KilometrajeServicio +
-                    configuracion.RevisionCadenaKm;
-
-                var faltan =
-                    proximoKm -
-                    motocicletaSeleccionada.KilometrajeActual;
-
-                if (faltan < 0)
-                {
-                    estadoCadena = "VENCIDO";
-                }
-                else if (faltan <= 500)
-                {
-                    estadoCadena = "PRÓXIMO";
-                }
-                else
-                {
-                    estadoCadena = "AL DÍA";
-                }
-            }
-
-            string estadoBalatas = "Sin registro";
-
-            if (motocicletaSeleccionada != null &&
-                ultimasBalatas != null &&
-                configuracion != null)
-            {
-                var proximoKm =
-                    ultimasBalatas.KilometrajeServicio +
-                    configuracion.RevisionBalatasKm;
-
-                var faltan =
-                    proximoKm -
-                    motocicletaSeleccionada.KilometrajeActual;
-
-                if (faltan < 0)
-                {
-                    estadoBalatas = "VENCIDO";
-                }
-                else if (faltan <= 500)
-                {
-                    estadoBalatas = "PRÓXIMO";
-                }
-                else
-                {
-                    estadoBalatas = "AL DÍA";
-                }
-            }
-
-            string estadoLlantas = "Sin registro";
-
-            if (motocicletaSeleccionada != null &&
-                ultimasLlantas != null &&
-                configuracion != null)
-            {
-                var proximoKm =
-                    ultimasLlantas.KilometrajeServicio +
-                    configuracion.RevisionLlantasKm;
-
-                var faltan =
-                    proximoKm -
-                    motocicletaSeleccionada.KilometrajeActual;
-
-                if (faltan < 0)
-                {
-                    estadoLlantas = "VENCIDO";
-                }
-                else if (faltan <= 500)
-                {
-                    estadoLlantas = "PRÓXIMO";
-                }
-                else
-                {
-                    estadoLlantas = "AL DÍA";
-                }
-            }
-
-            string estadoFiltroAire = "Sin registro";
-
-            if (motocicletaSeleccionada != null &&
-                ultimoFiltroAire != null &&
-                configuracion != null)
-            {
-                var proximoKm =
-                    ultimoFiltroAire.KilometrajeServicio +
-                    configuracion.RevisionFiltroAireKm;
-
-                var faltan =
-                    proximoKm -
-                    motocicletaSeleccionada.KilometrajeActual;
-
-                if (faltan < 0)
-                {
-                    estadoFiltroAire = "VENCIDO";
-                }
-                else if (faltan <= 500)
-                {
-                    estadoFiltroAire = "PRÓXIMO";
-                }
-                else
-                {
-                    estadoFiltroAire = "AL DÍA";
-                }
-            }
-
-            string estadoValvulas = "Sin registro";
-
-            if (motocicletaSeleccionada != null &&
-                ultimasValvulas != null &&
-                configuracion != null)
-            {
-                var proximoKm =
-                    ultimasValvulas.KilometrajeServicio +
-                    configuracion.AjusteValvulasKm;
-
-                var faltan =
-                    proximoKm -
-                    motocicletaSeleccionada.KilometrajeActual;
-
-                if (faltan < 0)
-                {
-                    estadoValvulas = "VENCIDO";
-                }
-                else if (faltan <= 500)
-                {
-                    estadoValvulas = "PRÓXIMO";
-                }
-                else
-                {
-                    estadoValvulas = "AL DÍA";
-                }
-            }
-
-            bool tieneEstimados = false;
-
-            if (motocicletaSeleccionada?.KilometrajeCompra.HasValue == true && configuracion != null)
-            {
-                var kmCompra = motocicletaSeleccionada.KilometrajeCompra.Value;
-
-                if (ultimoAceite == null)
-                {
-                    var est = kmCompra + configuracion.CambioAceiteKm;
-                    proximoAceite = $"{est} km";
-                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
-                    estadoAceite = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
-                    aceiteEsEstimado = true;
-                    tieneEstimados = true;
-                }
-
-                if (ultimaCadena == null)
-                {
-                    var est = kmCompra + configuracion.RevisionCadenaKm;
-                    proximaCadena = $"{est} km";
-                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
-                    estadoCadena = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
-                    cadenaEsEstimado = true;
-                    tieneEstimados = true;
-                }
-
-                if (ultimasBalatas == null)
-                {
-                    var est = kmCompra + configuracion.RevisionBalatasKm;
-                    proximasBalatas = $"{est} km";
-                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
-                    estadoBalatas = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
-                    balatasEsEstimado = true;
-                    tieneEstimados = true;
-                }
-
-                if (ultimasLlantas == null)
-                {
-                    var est = kmCompra + configuracion.RevisionLlantasKm;
-                    proximasLlantas = $"{est} km";
-                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
-                    estadoLlantas = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
-                    llantasEsEstimado = true;
-                    tieneEstimados = true;
-                }
-
-                if (ultimoFiltroAire == null)
-                {
-                    var est = kmCompra + configuracion.RevisionFiltroAireKm;
-                    proximoFiltroAire = $"{est} km";
-                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
-                    estadoFiltroAire = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
-                    filtroAireEsEstimado = true;
-                    tieneEstimados = true;
-                }
-
-                if (ultimasValvulas == null)
-                {
-                    var est = kmCompra + configuracion.AjusteValvulasKm;
-                    proximasValvulas = $"{est} km";
-                    var faltan = est - motocicletaSeleccionada.KilometrajeActual;
-                    estadoValvulas = faltan < 0 ? "VENCIDO" : faltan <= 500 ? "PRÓXIMO" : "AL DÍA";
-                    valvulasEsEstimado = true;
-                    tieneEstimados = true;
-                }
+                resultado = CalculadorEstadoMantenimiento.Calcular(
+                    motocicletaSeleccionada,
+                    mantenimientos,
+                    configuracion);
             }
 
             var model = new DashboardViewModel
@@ -385,72 +83,54 @@ namespace MotoTrack.Controllers
                         ? $"{motocicletaSeleccionada.KilometrajeActual} km"
                         : "Sin motocicletas",
 
-                UltimoAceite =
-                    ultimoAceite != null
-                        ? $"{ultimoAceite.KilometrajeServicio} km"
-                        : "Sin registro",
+                UltimoAceite = resultado?.UltimoAceite ?? "Sin registro",
 
-                UltimaCadena =
-                    ultimaCadena != null
-                        ? $"{ultimaCadena.KilometrajeServicio} km"
-                        : "Sin registro",
+                UltimaCadena = resultado?.UltimaCadena ?? "Sin registro",
 
-                UltimasBalatas =
-                    ultimasBalatas != null
-                        ? $"{ultimasBalatas.KilometrajeServicio} km"
-                        : "Sin registro",
+                UltimasBalatas = resultado?.UltimasBalatas ?? "Sin registro",
 
-                UltimasLlantas =
-                    ultimasLlantas != null
-                        ? $"{ultimasLlantas.KilometrajeServicio} km"
-                        : "Sin registro",
+                UltimasLlantas = resultado?.UltimasLlantas ?? "Sin registro",
 
-                UltimoFiltroAire =
-                    ultimoFiltroAire != null
-                        ? $"{ultimoFiltroAire.KilometrajeServicio} km"
-                        : "Sin registro",
+                UltimoFiltroAire = resultado?.UltimoFiltroAire ?? "Sin registro",
 
-                UltimasValvulas =
-                    ultimasValvulas != null
-                        ? $"{ultimasValvulas.KilometrajeServicio} km"
-                        : "Sin registro",
+                UltimasValvulas = resultado?.UltimasValvulas ?? "Sin registro",
 
-                ProximoAceite = proximoAceite,
+                ProximoAceite = resultado?.ProximoAceite ?? "Sin registro",
 
-                ProximaCadena = proximaCadena,
+                ProximaCadena = resultado?.ProximaCadena ?? "Sin registro",
 
-                ProximasBalatas = proximasBalatas,
+                ProximasBalatas = resultado?.ProximasBalatas ?? "Sin registro",
 
-                ProximasLlantas = proximasLlantas,
+                ProximasLlantas = resultado?.ProximasLlantas ?? "Sin registro",
 
-                ProximoFiltroAire = proximoFiltroAire,
+                ProximoFiltroAire = resultado?.ProximoFiltroAire ?? "Sin registro",
 
-                ProximasValvulas = proximasValvulas,
+                ProximasValvulas = resultado?.ProximasValvulas ?? "Sin registro",
 
-                EstadoAceite = estadoAceite,
+                EstadoAceite = resultado?.EstadoAceite ?? "Sin registro",
 
-                EstadoCadena = estadoCadena,
+                EstadoCadena = resultado?.EstadoCadena ?? "Sin registro",
 
-                EstadoBalatas = estadoBalatas,
+                EstadoBalatas = resultado?.EstadoBalatas ?? "Sin registro",
 
-                EstadoLlantas = estadoLlantas,
+                EstadoLlantas = resultado?.EstadoLlantas ?? "Sin registro",
 
-                EstadoFiltroAire = estadoFiltroAire,
+                EstadoFiltroAire = resultado?.EstadoFiltroAire ?? "Sin registro",
 
-                EstadoValvulas = estadoValvulas,
+                EstadoValvulas = resultado?.EstadoValvulas ?? "Sin registro",
 
                 Motocicletas = motocicletas,
 
                 MotocicletaSeleccionadaId =
                     motocicletaSeleccionada?.Id,
 
-                AceiteEsEstimado = aceiteEsEstimado,
-                CadenaEsEstimado = cadenaEsEstimado,
-                BalatasEsEstimado = balatasEsEstimado,
-                LlantasEsEstimado = llantasEsEstimado,
-                FiltroAireEsEstimado = filtroAireEsEstimado,
-                ValvulasEsEstimado = valvulasEsEstimado,
-                TieneEstimados = tieneEstimados
+                AceiteEsEstimado = resultado?.AceiteEsEstimado ?? false,
+                CadenaEsEstimado = resultado?.CadenaEsEstimado ?? false,
+                BalatasEsEstimado = resultado?.BalatasEsEstimado ?? false,
+                LlantasEsEstimado = resultado?.LlantasEsEstimado ?? false,
+                FiltroAireEsEstimado = resultado?.FiltroAireEsEstimado ?? false,
+                ValvulasEsEstimado = resultado?.ValvulasEsEstimado ?? false,
+                TieneEstimados = resultado?.TieneEstimados ?? false
             };
 
             return View(model);

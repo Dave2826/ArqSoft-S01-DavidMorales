@@ -117,5 +117,12 @@
     "Fecha": "2026-06-19T12:06:20.4585702-06:00",
     "Kilometraje": 55000,
     "Observaciones": "NA"
+  },
+  {
+    "Id": "cd0208d4-e68e-4d1b-9071-8d9a8d0e3a49",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "Fecha": "2026-06-19T19:18:33.1570504-06:00",
+    "Kilometraje": 85001,
+    "Observaciones": "\r\nS"
   }
 ]

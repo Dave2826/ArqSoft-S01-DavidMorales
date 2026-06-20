@@ -9,7 +9,7 @@
 <div class="card">
     <div class="card-body">
 
-        <form asp-action="Crear" method="post">
+        <form asp-action="Crear" method="post" enctype="multipart/form-data">
 
             <div class="form-group">
                 <label>Marca</label>
@@ -44,6 +44,11 @@
             <div class="form-group">
                 <label>Kilometraje al comprar (solo si es usada)</label>
                 <input asp-for="KilometrajeCompra" type="number" />
+            </div>
+
+            <div class="form-group">
+                <label>Fotografía</label>
+                <input type="file" name="foto" accept=".jpg,.jpeg,.png,.webp" />
             </div>
 
             <hr />

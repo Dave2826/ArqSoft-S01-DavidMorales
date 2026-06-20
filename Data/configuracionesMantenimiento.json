@@ -108,5 +108,65 @@
     "RevisionLlantasKm": 7500,
     "RevisionFiltroAireKm": 10000,
     "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "063e0462-5480-45b1-9306-c3badc79d03e",
+    "MotocicletaId": "00d25564-0587-4678-b052-9c97c4c2ca9f",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "1fd27496-71ec-476f-b626-636a61283c51",
+    "MotocicletaId": "55e0f076-e5f6-4d1a-ab20-3bf75053b6e2",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "4a2a81b8-5092-46ea-b717-134fda36543d",
+    "MotocicletaId": "39b66fa4-7283-4fd9-a13e-39dfc1bf9554",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "1e9e4ab3-43b6-4978-b44f-4924d510055c",
+    "MotocicletaId": "0d020c29-2289-45ce-aed7-96a03ad7ca79",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "13c7a0bb-163e-49cf-bfe2-fc97d76dbbd8",
+    "MotocicletaId": "e3d9cc37-70bb-49c6-9f2f-0b4b582b906f",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
+  },
+  {
+    "Id": "992daa80-ec00-4976-bcc4-34558b4a7018",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "CambioAceiteKm": 2000,
+    "RevisionCadenaKm": 3000,
+    "RevisionBalatasKm": 5000,
+    "RevisionLlantasKm": 7500,
+    "RevisionFiltroAireKm": 10000,
+    "AjusteValvulasKm": 12000
   }
 ]

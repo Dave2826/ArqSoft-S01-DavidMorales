@@ -23,7 +23,12 @@ else
     @foreach (var moto in Model)
     {
         <div class="card moto-card">
-            <div class="moto-card-img"></div>
+            <div class="moto-card-img">
+                @if (!string.IsNullOrEmpty(moto.FotoUrl))
+                {
+                    <img src="@moto.FotoUrl" alt="@moto.Marca @moto.Modelo" />
+                }
+            </div>
             <div class="moto-card-body">
                 <div class="moto-card-title">@moto.Marca @moto.Modelo</div>
                 <span class="moto-card-year">@moto.Ano</span>
@@ -45,7 +50,19 @@ else
                     <a class="btn-editar-sm btn-editar-sm--danger" asp-action="Eliminar" asp-route-id="@moto.Id" onclick="return confirm('¿Estás seguro de eliminar esta motocicleta?')">Eliminar</a>
                 </div>
 
-                <div class="moto-card-status"></div>
+                @{
+                    var dict = ViewData["Estados"] as Dictionary<Guid, MotoTrack.Domain.Models.EstadoMantenimientoResult>;
+                    var est = dict![moto.Id];
+                }
+                <div class="moto-status-resumen moto-status--@(est.PrioridadGeneral == MotoTrack.Domain.Models.EstadoMantenimientoResult.EstadoPrioridad.Vencido ? "vencido" : est.PrioridadGeneral == MotoTrack.Domain.Models.EstadoMantenimientoResult.EstadoPrioridad.Proximo ? "proximo" : est.PrioridadGeneral == MotoTrack.Domain.Models.EstadoMantenimientoResult.EstadoPrioridad.AlDia ? "al-dia" : "sin-registro")">@est.Resumen</div>
+                <div class="moto-estado-row">
+                    <span class="moto-estado-item moto-estado-item--@(est.EstadoAceite == "VENCIDO" ? "vencido" : est.EstadoAceite == "PRÓXIMO" ? "proximo" : est.EstadoAceite == "AL DÍA" ? "al-dia" : "sin-reg")" title="Aceite: @est.EstadoAceite@(est.AceiteEsEstimado ? " (estimado)" : "")">A</span>
+                    <span class="moto-estado-item moto-estado-item--@(est.EstadoCadena == "VENCIDO" ? "vencido" : est.EstadoCadena == "PRÓXIMO" ? "proximo" : est.EstadoCadena == "AL DÍA" ? "al-dia" : "sin-reg")" title="Cadena: @est.EstadoCadena@(est.CadenaEsEstimado ? " (estimado)" : "")">C</span>
+                    <span class="moto-estado-item moto-estado-item--@(est.EstadoBalatas == "VENCIDO" ? "vencido" : est.EstadoBalatas == "PRÓXIMO" ? "proximo" : est.EstadoBalatas == "AL DÍA" ? "al-dia" : "sin-reg")" title="Balatas: @est.EstadoBalatas@(est.BalatasEsEstimado ? " (estimado)" : "")">B</span>
+                    <span class="moto-estado-item moto-estado-item--@(est.EstadoLlantas == "VENCIDO" ? "vencido" : est.EstadoLlantas == "PRÓXIMO" ? "proximo" : est.EstadoLlantas == "AL DÍA" ? "al-dia" : "sin-reg")" title="Llantas: @est.EstadoLlantas@(est.LlantasEsEstimado ? " (estimado)" : "")">L</span>
+                    <span class="moto-estado-item moto-estado-item--@(est.EstadoFiltroAire == "VENCIDO" ? "vencido" : est.EstadoFiltroAire == "PRÓXIMO" ? "proximo" : est.EstadoFiltroAire == "AL DÍA" ? "al-dia" : "sin-reg")" title="Filtro de aire: @est.EstadoFiltroAire@(est.FiltroAireEsEstimado ? " (estimado)" : "")">F</span>
+                    <span class="moto-estado-item moto-estado-item--@(est.EstadoValvulas == "VENCIDO" ? "vencido" : est.EstadoValvulas == "PRÓXIMO" ? "proximo" : est.EstadoValvulas == "AL DÍA" ? "al-dia" : "sin-reg")" title="Válvulas: @est.EstadoValvulas@(est.ValvulasEsEstimado ? " (estimado)" : "")">V</span>
+                </div>
             </div>
         </div>
     }

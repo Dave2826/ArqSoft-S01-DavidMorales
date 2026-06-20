@@ -88,5 +88,14 @@
     "PasswordHash": "123",
     "FechaRegistro": "2026-06-17T17:58:21.7865127-06:00",
     "Activo": true
+  },
+  {
+    "Id": "2d735ecb-7759-486a-95e9-0bf8e2ac51ab",
+    "Nombre": "Chanel",
+    "Apellido": "chanelinoi",
+    "Correo": "test2@test.com",
+    "PasswordHash": "123",
+    "FechaRegistro": "2026-06-19T19:13:33.2206163-06:00",
+    "Activo": true
   }
 ]

@@ -99,7 +99,12 @@
         <div class="col-12">
             <div class="card hero-card">
 
-                <div class="hero-img"></div>
+                <div class="hero-img">
+                    @if (Model.PrimeraMotocicleta != null && !string.IsNullOrEmpty(Model.PrimeraMotocicleta.FotoUrl))
+                    {
+                        <img src="@Model.PrimeraMotocicleta.FotoUrl" alt="@Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo" />
+                    }
+                </div>
 
                 <div class="hero-body">
                     @if (Model.PrimeraMotocicleta != null)

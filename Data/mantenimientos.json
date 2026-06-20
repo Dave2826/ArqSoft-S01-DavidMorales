@@ -238,5 +238,55 @@
     "Costo": 500,
     "Descripcion": "5",
     "Taller": "5"
+  },
+  {
+    "Id": "b9d6f251-dd87-4793-920b-898940aef58e",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "Fecha": "2026-06-19T19:17:10.4550479-06:00",
+    "KilometrajeServicio": 84000,
+    "Tipo": "Cambio de aceite",
+    "Costo": 0,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "0c2fe19e-d52a-4ae9-9e7b-bc2a9a2b2891",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "Fecha": "2026-06-19T19:17:10.459568-06:00",
+    "KilometrajeServicio": 84500,
+    "Tipo": "Cadena",
+    "Costo": 0,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "015abae8-e847-4408-b5c2-89392c94a725",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "Fecha": "2026-06-19T19:17:10.468538-06:00",
+    "KilometrajeServicio": 85000,
+    "Tipo": "Llantas",
+    "Costo": 0,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "7f87c408-d206-4236-b9d2-e9909daea06d",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "Fecha": "2026-06-19T19:17:10.4764786-06:00",
+    "KilometrajeServicio": 84000,
+    "Tipo": "Filtro de aire",
+    "Costo": 0,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "37ea3edd-02ff-42cf-95b9-1aca748efe89",
+    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
+    "Fecha": "2026-06-19T00:00:00",
+    "KilometrajeServicio": 85001,
+    "Tipo": "V\u00E1lvulas",
+    "Costo": 5000,
+    "Descripcion": "2",
+    "Taller": "2"
   }
 ]

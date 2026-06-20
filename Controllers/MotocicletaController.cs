@@ -1,5 +1,6 @@
 ﻿using MotoTrack.Application.Services;
 using MotoTrack.Domain.Models;
+using MotoTrack.Helpers;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MotoTrack.Controllers
@@ -9,15 +10,18 @@ namespace MotoTrack.Controllers
         private readonly MotocicletaService _motocicletaService;
         private readonly ConfiguracionMantenimientoService _configuracionService;
         private readonly MantenimientoService _mantenimientoService;
+        private readonly IWebHostEnvironment _env;
 
         public MotocicletaController(
             MotocicletaService motocicletaService,
             ConfiguracionMantenimientoService configuracionService,
-            MantenimientoService mantenimientoService)
+            MantenimientoService mantenimientoService,
+            IWebHostEnvironment env)
         {
             _motocicletaService = motocicletaService;
             _configuracionService = configuracionService;
             _mantenimientoService = mantenimientoService;
+            _env = env;
         }
 
         // =====================
@@ -43,6 +47,17 @@ namespace MotoTrack.Controllers
                 _motocicletaService
                     .ObtenerPorUsuario(usuarioId);
 
+            var estados = new Dictionary<Guid, EstadoMantenimientoResult>();
+
+            foreach (var moto in motos)
+            {
+                var mantenimientos = _mantenimientoService.ObtenerPorMotocicleta(moto.Id);
+                var config = _configuracionService.ObtenerPorMotocicleta(moto.Id);
+                estados[moto.Id] = CalculadorEstadoMantenimiento.Calcular(moto, mantenimientos, config);
+            }
+
+            ViewData["Estados"] = estados;
+
             return View(motos);
         }
 
@@ -56,7 +71,7 @@ namespace MotoTrack.Controllers
         }
 
         [HttpPost]
-        public IActionResult Crear(Motocicleta motocicleta,
+        public IActionResult Crear(Motocicleta motocicleta, IFormFile? foto,
             int? kmAceite, int? kmCadena, int? kmBalatas,
             int? kmLlantas, int? kmFiltro, int? kmValvulas)
         {
@@ -72,8 +87,36 @@ namespace MotoTrack.Controllers
             }
 
             motocicleta.UsuarioId = Guid.Parse(usuarioIdString);
+
+            if (foto != null && foto.Length > 0)
+            {
+                var allowed = new[] { ".jpg", ".jpeg", ".png", ".webp" };
+                var ext = Path.GetExtension(foto.FileName).ToLowerInvariant();
+                if (!allowed.Contains(ext))
+                {
+                    ModelState.AddModelError("foto", "Formato no válido (jpg, jpeg, png, webp).");
+                    return View(motocicleta);
+                }
+                if (foto.Length > 5 * 1024 * 1024)
+                {
+                    ModelState.AddModelError("foto", "La imagen no debe superar 5 MB.");
+                    return View(motocicleta);
+                }
+
+                var fileName = $"{motocicleta.Id}{ext}";
+                var uploadsDir = Path.Combine(_env.WebRootPath, "uploads", "motos");
+                Directory.CreateDirectory(uploadsDir);
+
+                using (var stream = new FileStream(Path.Combine(uploadsDir, fileName), FileMode.Create))
+                {
+                    foto.CopyTo(stream);
+                }
+
+                motocicleta.FotoUrl = $"/uploads/motos/{fileName}";
+            }
+
             _motocicletaService.Agregar(motocicleta);
-            
+
             var configuracion = new ConfiguracionMantenimiento()
             {
                 MotocicletaId = motocicleta.Id,
@@ -87,7 +130,7 @@ namespace MotoTrack.Controllers
             _configuracionService.Guardar(configuracion);
 
             RegistrarHistorialCompra(motocicleta.Id, kmAceite, kmCadena, kmBalatas, kmLlantas, kmFiltro, kmValvulas);
-            
+
             return RedirectToAction(nameof(Index));
         }
 
@@ -156,11 +199,64 @@ namespace MotoTrack.Controllers
         }
 
         [HttpPost]
-        public IActionResult Editar(Motocicleta motocicleta)
+        public IActionResult Editar(Motocicleta motocicleta, IFormFile? foto, bool? eliminarFoto)
         {
             if (!ModelState.IsValid)
             {
                 return View(motocicleta);
+            }
+
+            var motoActual = _motocicletaService.ObtenerPorId(motocicleta.Id);
+
+            if (eliminarFoto == true)
+            {
+                if (!string.IsNullOrEmpty(motoActual?.FotoUrl))
+                {
+                    var oldPath = Path.Combine(_env.WebRootPath, "uploads", "motos", Path.GetFileName(motoActual.FotoUrl));
+                    if (System.IO.File.Exists(oldPath))
+                        System.IO.File.Delete(oldPath);
+                }
+                motocicleta.FotoUrl = null;
+            }
+            else if (foto != null && foto.Length > 0)
+            {
+                var allowed = new[] { ".jpg", ".jpeg", ".png", ".webp" };
+                var ext = Path.GetExtension(foto.FileName).ToLowerInvariant();
+                if (!allowed.Contains(ext))
+                {
+                    ModelState.AddModelError("foto", "Formato no válido (jpg, jpeg, png, webp).");
+                    motocicleta.FotoUrl = motoActual?.FotoUrl;
+                    return View(motocicleta);
+                }
+                if (foto.Length > 5 * 1024 * 1024)
+                {
+                    ModelState.AddModelError("foto", "La imagen no debe superar 5 MB.");
+                    motocicleta.FotoUrl = motoActual?.FotoUrl;
+                    return View(motocicleta);
+                }
+
+                var oldUrl = motoActual?.FotoUrl;
+                if (!string.IsNullOrEmpty(oldUrl))
+                {
+                    var oldPath = Path.Combine(_env.WebRootPath, "uploads", "motos", Path.GetFileName(oldUrl));
+                    if (System.IO.File.Exists(oldPath))
+                        System.IO.File.Delete(oldPath);
+                }
+
+                var fileName = $"{motocicleta.Id}{ext}";
+                var uploadsDir = Path.Combine(_env.WebRootPath, "uploads", "motos");
+                Directory.CreateDirectory(uploadsDir);
+
+                using (var stream = new FileStream(Path.Combine(uploadsDir, fileName), FileMode.Create))
+                {
+                    foto.CopyTo(stream);
+                }
+
+                motocicleta.FotoUrl = $"/uploads/motos/{fileName}";
+            }
+            else
+            {
+                motocicleta.FotoUrl = motoActual?.FotoUrl;
             }
 
             _motocicletaService.Actualizar(motocicleta);
@@ -174,7 +270,14 @@ namespace MotoTrack.Controllers
             {
                 return NotFound();
             }
-            
+
+            if (!string.IsNullOrEmpty(motocicleta.FotoUrl))
+            {
+                var filePath = Path.Combine(_env.WebRootPath, "uploads", "motos", Path.GetFileName(motocicleta.FotoUrl));
+                if (System.IO.File.Exists(filePath))
+                    System.IO.File.Delete(filePath);
+            }
+
             _motocicletaService.Eliminar(id);
             return RedirectToAction(nameof(Index));
         }
