@@ -6,6 +6,18 @@
 
 <h2>Registrar Motocicleta</h2>
 
+@if (!string.IsNullOrEmpty(ViewBag.ImagenCatalogo as string))
+{
+    <div class="catalogo-preview">
+        <div class="catalogo-preview-img">
+            <img src="@Url.Content(ViewBag.ImagenCatalogo)" alt="Vista previa del catalogo" />
+        </div>
+        <div class="catalogo-preview-info">
+            <p>Precargado desde el catalogo. Puedes ajustar los datos antes de guardar.</p>
+        </div>
+    </div>
+}
+
 <div class="card">
     <div class="card-body">
 

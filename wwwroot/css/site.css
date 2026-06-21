@@ -2,7 +2,26 @@
 body {
     background-color: #121212;
     color: #f5f5f5;
-    font-family: 'Segoe UI', sans-serif;
+    font-family: 'Inter', 'Segoe UI', sans-serif;
+}
+
+/* ================= TYPOGRAPHY PREMIUM ================= */
+h1, h2, h3, h4, h5, .navbar-brand, .navbar .nav-link, .btn, .btn-mototrack-primary, .btn-landing-secondary, .btn-action, .btn-cancel, .btn-editar-sm, .landing-title, .login-title, .card-stat-value, .perfil-stat-value, .moto-card-title, .hero-title, .alertas-title, .landing-benefit-title, .login-showcase-text, .landing-showcase-text {
+    font-family: 'Montserrat', 'Segoe UI', sans-serif;
+    font-weight: 700;
+}
+
+.navbar-brand {
+    color: #ff7a00 !important;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 700;
+}
+
+.navbar-logo {
+    display: block;
+    flex-shrink: 0;
 }
 
 /* Texto general */
@@ -374,7 +393,10 @@ footer {
     }
 
 .detalle-card-icon {
-    font-size: 1.6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 32px;
     margin-bottom: 4px;
 }
 
@@ -817,5 +839,405 @@ footer {
     border-radius: 8px;
     border-left: 4px solid #4a9eff;
     margin-bottom: 16px;
+    font-size: 0.9rem;
+}
+
+/* ================= ALERTAS CARD ================= */
+.alertas-card {
+    border-left: 5px solid #ff7a00;
+}
+
+.alertas-title {
+    color: #ff7a00;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.alertas-counters {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.alertas-count {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 0.9rem;
+}
+
+.alertas-count--vencido {
+    background-color: #b71c1c;
+    color: #ef9a9a;
+}
+
+.alertas-count--proximo {
+    background-color: #e65100;
+    color: #ffcc80;
+}
+
+.alertas-lista {
+    list-style: none;
+    padding: 0;
+    margin: 8px 0 0;
+}
+
+.alertas-item {
+    padding: 3px 0;
+    font-size: 0.9rem;
+}
+
+.alertas-item--vencido {
+    color: #ef9a9a;
+}
+
+.alertas-item--proximo {
+    color: #ffcc80;
+}
+
+.alertas-ok {
+    color: #a5d6a7;
+    margin: 0;
+}
+
+/* ================= STICKY FOOTER ================= */
+html, body {
+    height: 100%;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+}
+
+body > .container {
+    flex: 1;
+}
+
+/* ================= LOGIN PAGE ================= */
+.login-page {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 40px;
+    padding: 40px 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+}
+
+.login-container {
+    width: 100%;
+    max-width: 520px;
+}
+
+.login-hero {
+    margin-bottom: 32px;
+    text-align: center;
+}
+
+.login-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    color: #ff7a00;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+}
+
+.login-subtitle {
+    color: #aaa;
+    font-size: 1rem;
+    line-height: 1.5;
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.login-form-box {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 28px;
+    border-left: 5px solid #ff7a00;
+}
+
+.login-input {
+    display: block;
+    width: 100%;
+    padding: 10px 12px;
+    border-radius: 6px;
+    border: 1px solid #333;
+    background: #1a1a1a;
+    color: #fff;
+    outline: none;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.login-input:focus {
+    border-color: #ff7a00;
+    box-shadow: 0 0 0 3px rgba(255, 122, 0, 0.25);
+}
+
+.btn-mototrack-primary {
+    background-color: #ff7a00;
+    color: #000;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 12px rgba(255, 122, 0, 0.3);
+    display: inline-block;
+}
+
+.btn-mototrack-primary:hover {
+    background-color: #ffa64d;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 16px rgba(255, 122, 0, 0.4);
+}
+
+.login-register-link {
+    text-align: center;
+    margin-top: 16px;
+}
+
+.login-register-link a {
+    color: #ff7a00;
+    text-decoration: none;
+}
+
+.login-register-link a:hover {
+    text-decoration: underline;
+}
+
+.login-showcase {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px;
+    min-width: 200px;
+}
+
+.login-showcase-image {
+    width: 220px;
+    height: 220px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+    margin-bottom: 12px;
+}
+
+.login-showcase-text {
+    font-size: 1.3rem;
+    color: #ff7a00;
+    font-weight: 700;
+}
+
+.login-showcase-sub {
+    color: #666;
+    font-size: 0.85rem;
+    margin-top: 4px;
+}
+
+@media (max-width: 768px) {
+    .login-page {
+        flex-direction: column;
+        align-items: center;
+        padding: 24px 16px;
+    }
+
+    .login-container {
+        max-width: 100%;
+    }
+
+    .login-showcase {
+        display: none;
+    }
+
+    .login-title {
+        font-size: 2rem;
+    }
+}
+
+/* ================= LANDING PAGE ================= */
+.landing-page {
+    text-align: center;
+    padding: 60px 20px 40px;
+}
+
+.landing-hero {
+    margin-bottom: 60px;
+}
+
+.landing-brand-area {
+    width: 80px;
+    height: 80px;
+    margin: 0 auto 24px;
+    border-radius: 50%;
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+}
+
+.landing-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #ff7a00;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+    margin-bottom: 12px;
+}
+
+.landing-subtitle {
+    color: #aaa;
+    font-size: 1.15rem;
+    max-width: 500px;
+    margin: 0 auto 32px;
+    line-height: 1.6;
+}
+
+.landing-ctas {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.btn-landing-secondary {
+    background-color: transparent;
+    color: #ff7a00;
+    padding: 10px 24px;
+    border-radius: 6px;
+    border: 2px solid #ff7a00;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.btn-landing-secondary:hover {
+    background-color: #ff7a00;
+    color: #000;
+}
+
+.landing-benefits {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 60px;
+}
+
+.landing-benefit {
+    background: #1e1e1e;
+    border-radius: 12px;
+    padding: 28px 20px;
+    border-left: 4px solid #ff7a00;
+    flex: 1;
+    min-width: 220px;
+    max-width: 320px;
+    text-align: center;
+}
+
+.landing-benefit-icon {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 44px;
+    margin-bottom: 12px;
+}
+
+.landing-benefit-title {
+    color: #ff7a00;
+    font-size: 1.1rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+}
+
+.landing-benefit-desc {
+    color: #ccc;
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.landing-showcase {
+    margin-top: 20px;
+}
+
+.landing-showcase-image {
+    width: 220px;
+    height: 220px;
+    margin: 0 auto 12px;
+    border-radius: 16px;
+    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
+    border: 2px solid #333;
+}
+
+.landing-showcase-text {
+    color: #ff7a00;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+}
+
+@media (max-width: 768px) {
+    .landing-title {
+        font-size: 2.2rem;
+        letter-spacing: 4px;
+    }
+
+    .landing-subtitle {
+        font-size: 1rem;
+    }
+
+    .landing-benefit {
+        max-width: 100%;
+    }
+}
+
+.detalle-adoptar {
+    text-align: center;
+    margin: 24px 0;
+    padding-top: 24px;
+    border-top: 1px solid #333;
+}
+
+.catalogo-preview {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: #1a1a1a;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 16px;
+    margin-bottom: 20px;
+}
+
+.catalogo-preview-img {
+    width: 120px;
+    height: 90px;
+    border-radius: 8px;
+    overflow: hidden;
+    flex-shrink: 0;
+    background: #111;
+}
+
+.catalogo-preview-img img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.catalogo-preview-info p {
+    margin: 0;
+    color: #999;
     font-size: 0.9rem;
 }

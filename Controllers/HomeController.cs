@@ -29,7 +29,7 @@ namespace MotoTrack.Controllers
 
             if (string.IsNullOrEmpty(usuarioIdString))
             {
-                return RedirectToAction("Login", "Auth");
+                return View("Landing");
             }
 
             var usuarioId = Guid.Parse(usuarioIdString);
@@ -130,7 +130,10 @@ namespace MotoTrack.Controllers
                 LlantasEsEstimado = resultado?.LlantasEsEstimado ?? false,
                 FiltroAireEsEstimado = resultado?.FiltroAireEsEstimado ?? false,
                 ValvulasEsEstimado = resultado?.ValvulasEsEstimado ?? false,
-                TieneEstimados = resultado?.TieneEstimados ?? false
+                TieneEstimados = resultado?.TieneEstimados ?? false,
+                TotalVencidos = resultado?.TotalVencidos ?? 0,
+                TotalProximos = resultado?.TotalProximos ?? 0,
+                Alertas = ConstruirAlertas(resultado)
             };
 
             return View(model);
@@ -154,6 +157,33 @@ namespace MotoTrack.Controllers
                         Activity.Current?.Id
                         ?? HttpContext.TraceIdentifier
                 });
+        }
+
+        private List<DashboardViewModel.AlertaItem> ConstruirAlertas(EstadoMantenimientoResult? r)
+        {
+            var items = new List<DashboardViewModel.AlertaItem>();
+
+            if (r == null) return items;
+
+            if (r.EstadoAceite is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Aceite", Estado = r.EstadoAceite, EsEstimado = r.AceiteEsEstimado });
+
+            if (r.EstadoCadena is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Cadena", Estado = r.EstadoCadena, EsEstimado = r.CadenaEsEstimado });
+
+            if (r.EstadoBalatas is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Balatas", Estado = r.EstadoBalatas, EsEstimado = r.BalatasEsEstimado });
+
+            if (r.EstadoLlantas is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Llantas", Estado = r.EstadoLlantas, EsEstimado = r.LlantasEsEstimado });
+
+            if (r.EstadoFiltroAire is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Filtro de aire", Estado = r.EstadoFiltroAire, EsEstimado = r.FiltroAireEsEstimado });
+
+            if (r.EstadoValvulas is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Válvulas", Estado = r.EstadoValvulas, EsEstimado = r.ValvulasEsEstimado });
+
+            return items;
         }
     }
 
@@ -221,5 +251,18 @@ namespace MotoTrack.Controllers
         public bool FiltroAireEsEstimado { get; set; }
 
         public bool ValvulasEsEstimado { get; set; }
+
+        public int TotalVencidos { get; set; }
+
+        public int TotalProximos { get; set; }
+
+        public List<AlertaItem> Alertas { get; set; } = new();
+
+        public class AlertaItem
+        {
+            public string Tipo { get; set; } = "";
+            public string Estado { get; set; } = "";
+            public bool EsEstimado { get; set; }
+        }
     }
 }

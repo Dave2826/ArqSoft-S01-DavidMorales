@@ -33,7 +33,7 @@
                 <td>@item.Fecha.ToShortDateString()</td>
                 <td>@item.Tipo</td>
                 <td>@item.KilometrajeServicio km</td>
-                <td>@item.Costo.ToString("C")</td>
+                <td>@("$" + item.Costo.ToString("N0"))</td>
                 <td>@item.Taller</td>
                 <td>@item.Descripcion</td>
             </tr>

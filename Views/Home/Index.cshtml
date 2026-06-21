@@ -49,6 +49,58 @@
         </div>
     }
 
+    @if (Model.PrimeraMotocicleta != null)
+    {
+        <div class="card alertas-card mb-4">
+            <div class="card-body">
+                <h5 class="alertas-title">
+                    Alertas MotoTrack - @Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo
+                </h5>
+
+                @if (Model.Alertas.Any())
+                {
+                    <div class="alertas-counters">
+                        @if (Model.TotalVencidos > 0)
+                        {
+                            <span class="alertas-count alertas-count--vencido">
+                                @Model.TotalVencidos mantenimiento(s) vencido(s)
+                            </span>
+                        }
+                        @if (Model.TotalProximos > 0)
+                        {
+                            <span class="alertas-count alertas-count--proximo">
+                                @Model.TotalProximos próximo(s) servicio(s)
+                            </span>
+                        }
+                    </div>
+
+                    <ul class="alertas-lista">
+                        @foreach (var item in Model.Alertas)
+                        {
+                            <li class="alertas-item alertas-item--@(item.Estado == "VENCIDO" ? "vencido" : "proximo")">
+                                • @item.Tipo
+                                @(item.Estado == "VENCIDO" ? "vencido" : "próximo")
+                                @if (item.EsEstimado)
+                                {
+                                    <span class="text-muted">(estimado)</span>
+                                }
+                            </li>
+                        }
+                    </ul>
+                }
+                else
+                {
+                    <p class="alertas-ok">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="vertical-align:middle;margin-right:4px">
+                    <path d="M3 8L6.5 11.5L13 5" stroke="#a5d6a7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                Sin alertas pendientes. Todos los mantenimientos registrados están al día.
+            </p>
+                }
+            </div>
+        </div>
+    }
+
     <div class="row">
 
         <div class="col-md-4 mb-4">

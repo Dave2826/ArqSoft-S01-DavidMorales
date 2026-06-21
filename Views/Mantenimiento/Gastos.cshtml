@@ -23,7 +23,7 @@
 
             <h4 class="total-gastos">
                 Total Invertido:
-                @(((decimal)ViewData["TotalGastado"]).ToString("C"))
+                @("$" + ((decimal)ViewData["TotalGastado"]).ToString("N0"))
             </h4>
 
         </div>
@@ -45,27 +45,27 @@
 
                     <tr>
                         <td>Cambio de aceite</td>
-                        <td>@(((decimal)ViewData["Aceite"]).ToString("C"))</td>
+                        <td>@("$" + ((decimal)ViewData["Aceite"]).ToString("N0"))</td>
                     </tr>
 
                     <tr>
                         <td>Balatas</td>
-                        <td>@(((decimal)ViewData["Balatas"]).ToString("C"))</td>
+                        <td>@("$" + ((decimal)ViewData["Balatas"]).ToString("N0"))</td>
                     </tr>
 
                     <tr>
                         <td>Cadena</td>
-                        <td>@(((decimal)ViewData["Cadena"]).ToString("C"))</td>
+                        <td>@("$" + ((decimal)ViewData["Cadena"]).ToString("N0"))</td>
                     </tr>
 
                     <tr>
                         <td>Llantas</td>
-                        <td>@(((decimal)ViewData["Llantas"]).ToString("C"))</td>
+                        <td>@("$" + ((decimal)ViewData["Llantas"]).ToString("N0"))</td>
                     </tr>
 
                     <tr>
                         <td>Otros</td>
-                        <td>@(((decimal)ViewData["Otros"]).ToString("C"))</td>
+                        <td>@("$" + ((decimal)ViewData["Otros"]).ToString("N0"))</td>
                     </tr>
 
                 </tbody>

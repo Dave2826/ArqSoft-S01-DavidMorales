@@ -65,9 +65,35 @@ namespace MotoTrack.Controllers
         // CREAR GET
         // =====================
 
-        public IActionResult Crear()
+        public IActionResult Crear(string? marca, string? modelo, int? ano, string? cilindrada, string? imagenUrl)
         {
-            return View(new Motocicleta());
+            var moto = new Motocicleta();
+
+            if (!string.IsNullOrEmpty(marca))
+                moto.Marca = marca;
+
+            if (!string.IsNullOrEmpty(modelo))
+                moto.Modelo = modelo;
+
+            if (ano.HasValue)
+                moto.Ano = ano.Value;
+
+            if (!string.IsNullOrEmpty(cilindrada))
+            {
+                var clean = cilindrada
+                    .Replace("cc", "")
+                    .Replace("CC", "")
+                    .Replace("Cc", "")
+                    .Trim();
+
+                if (int.TryParse(clean, out var cc))
+                    moto.Cilindrada = cc;
+            }
+
+            if (!string.IsNullOrEmpty(imagenUrl))
+                ViewBag.ImagenCatalogo = imagenUrl;
+
+            return View(moto);
         }
 
         [HttpPost]

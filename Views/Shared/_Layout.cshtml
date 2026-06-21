@@ -20,6 +20,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - MotoTrack</title>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="~/favicon.svg" />
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
     <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
 </head>
@@ -31,8 +35,11 @@
         <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom sticky-top">
             <div class="container-fluid">
 
-                <span class="navbar-brand text-warning">
-                     MotoTrack
+                <span class="navbar-brand">
+                    <svg width="28" height="28" viewBox="0 0 32 32" class="navbar-logo">
+                        <path d="M6 26 L10 6 L16 16 L22 6 L26 26" stroke="#ff7a00" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    MotoTrack
                 </span>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -53,7 +60,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link text-warning @NavActive("MotoTrack", "Index")" asp-controller="MotoTrack" asp-action="Index">
-                                    CATÁLOGO
+                                    EXPLORAR
                                 </a>
                             </li>
 
@@ -92,7 +99,7 @@
 
                             <li class="nav-item">
                                 <a class="nav-link text-warning @NavActive("MotoTrack", "Index")" asp-controller="MotoTrack" asp-action="Index">
-                                    CATÁLOGO
+                                    EXPLORAR
                                 </a>
                             </li>
 
