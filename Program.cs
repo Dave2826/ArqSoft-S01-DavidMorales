@@ -1,11 +1,23 @@
 using MotoTrack.Application.Services;
 using MotoTrack.Domain.Interfaces;
 using MotoTrack.Infrastructure.Repositories;
+using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
+
+// === Swagger ===
+builder.Services.AddSwaggerGen(c =>
+{
+    c.SwaggerDoc("v1", new OpenApiInfo
+    {
+        Title = "MotoTrack API",
+        Version = "v1",
+        Description = "API REST para la gestión de motocicletas."
+    });
+});
 
 // ======================
 // Sesiones
@@ -93,5 +105,8 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}")
     .WithStaticAssets();
+
+app.UseSwagger();
+app.UseSwaggerUI();
 
 app.Run();
