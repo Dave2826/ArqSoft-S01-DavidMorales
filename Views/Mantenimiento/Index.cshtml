@@ -1,11 +1,29 @@
 ﻿@model IEnumerable<MotoTrack.Domain.Models.Mantenimiento>
 
+@functions {
+    string TipoClass(string tipo) => tipo switch
+    {
+        "Cambio de aceite" => "aceite",
+        "Cadena" => "cadena",
+        "Balatas" => "balatas",
+        "Llantas" => "llantas",
+        "Filtro de aire" => "filtro",
+        "Válvulas" => "valvulas",
+        _ => "otro"
+    };
+}
+
 @{
     var motocicleta = ViewData["Motocicleta"] as MotoTrack.Domain.Models.Motocicleta;
-    if (motocicleta != null) 
+    if (motocicleta != null)
     {
         ViewData["Title"] = $"Historial de mantenimientos - {motocicleta.Marca} {motocicleta.Modelo}";
     }
+
+    var agrupados = Model
+        .OrderByDescending(m => m.Fecha)
+        .GroupBy(m => m.Fecha.Year)
+        .OrderByDescending(g => g.Key);
 }
 
 <h2>Historial de mantenimientos</h2>
@@ -15,31 +33,57 @@
 }
 <hr />
 
-<table class="table">
-    <thead>
-        <tr>
-            <th>Fecha</th>
-            <th>Tipo</th>
-            <th>Kilometraje</th>
-            <th>Costo</th>
-            <th>Taller</th>
-            <th>Descripción</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model.OrderByDescending(m => m.Fecha))
+<div class="timeline">
+    @foreach (var grupo in agrupados)
+    {
+        <div class="timeline-year">
+            <span class="timeline-year-label">@grupo.Key</span>
+        </div>
+
+        @foreach (var item in grupo)
         {
-            <tr>
-                <td>@item.Fecha.ToShortDateString()</td>
-                <td>@item.Tipo</td>
-                <td>@item.KilometrajeServicio km</td>
-                <td>@("$" + item.Costo.ToString("N0"))</td>
-                <td>@item.Taller</td>
-                <td>@item.Descripcion</td>
-            </tr>
+            var tipoCls = TipoClass(item.Tipo);
+            <div class="timeline-item">
+                <div class="timeline-dot timeline-dot--@tipoCls"></div>
+                <div class="timeline-content">
+                    <div class="timeline-meta">
+                        <span class="timeline-date">@item.Fecha.ToString("dd MMM yyyy")</span>
+                        <span class="timeline-km">@item.KilometrajeServicio km</span>
+                    </div>
+                    <div class="timeline-body">
+                        <span class="timeline-type timeline-type--@tipoCls">@item.Tipo</span>
+                        @if (item.Costo > 0)
+                        {
+                            <span class="timeline-cost">@("$" + item.Costo.ToString("N0"))</span>
+                        }
+                        else
+                        {
+                            <span class="timeline-cost timeline-cost--none">Costo no registrado</span>
+                        }
+                        @if (!string.IsNullOrEmpty(item.Taller))
+                        {
+                            <span class="timeline-taller">
+                                @item.Taller
+                                @if (item.Taller == "Historial de compra")
+                                {
+                                    <span class="timeline-badge-compra">COMPRA USADA</span>
+                                }
+                            </span>
+                        }
+                    </div>
+                    @if (!string.IsNullOrEmpty(item.Descripcion))
+                    {
+                        <div class="timeline-desc">@item.Descripcion</div>
+                    }
+                    else
+                    {
+                        <div class="timeline-desc timeline-desc--empty">Sin descripcion</div>
+                    }
+                </div>
+            </div>
         }
-    </tbody>
-</table>
+    }
+</div>
 
 <div>
     <a asp-controller="Motocicleta" asp-action="Index" class="btn-cancel">

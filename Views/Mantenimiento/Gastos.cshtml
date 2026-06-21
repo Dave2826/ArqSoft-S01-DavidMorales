@@ -6,79 +6,56 @@
     ViewData["Title"] = "Gastos";
 }
 
-<div class="container mt-4">
+<h2>Resumen de Gastos</h2>
 
-    <h2>Resumen de Gastos</h2>
+@if (motocicleta != null)
+{
+    <div class="gastos-header-moto">
+        @motocicleta.Marca @motocicleta.Modelo &middot; @motocicleta.KilometrajeActual km
+    </div>
+}
 
+<div class="card gastos-hero">
+    <div class="card-body text-center">
+        <div class="gastos-hero-value">
+            @("$" + ((decimal)ViewData["TotalGastado"]).ToString("N0"))
+        </div>
+        <div class="gastos-hero-label">Total invertido en mantenimientos</div>
+    </div>
+</div>
+
+<div class="gastos-grid">
+    <div class="gastos-card gastos-card--aceite">
+        <div class="gastos-card-label">Aceite</div>
+        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Aceite"]).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--cadena">
+        <div class="gastos-card-label">Cadena</div>
+        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Cadena"]).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--balatas">
+        <div class="gastos-card-label">Balatas</div>
+        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Balatas"]).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--llantas">
+        <div class="gastos-card-label">Llantas</div>
+        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Llantas"]).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--otros">
+        <div class="gastos-card-label">Otros</div>
+        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Otros"]).ToString("N0"))</div>
+    </div>
+</div>
+
+<div class="gastos-actions">
     @if (motocicleta != null)
     {
-        <h5>
-            @motocicleta.Marca
-            @motocicleta.Modelo
-        </h5>
+        <a class="btn-action" asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@motocicleta.Id">Reg. Mantenimiento</a>
+        <a class="btn-action" asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@motocicleta.Id">Ver Historial</a>
     }
-
-    <div class="card mt-3">
-        <div class="card-body">
-
-            <h4 class="total-gastos">
-                Total Invertido:
-                @("$" + ((decimal)ViewData["TotalGastado"]).ToString("N0"))
-            </h4>
-
-        </div>
-    </div>
-
-    <div class="card mt-3">
-        <div class="card-body">
-
-            <table class="table">
-
-                <thead>
-                    <tr>
-                        <th>Concepto</th>
-                        <th>Total</th>
-                    </tr>
-                </thead>
-
-                <tbody>
-
-                    <tr>
-                        <td>Cambio de aceite</td>
-                        <td>@("$" + ((decimal)ViewData["Aceite"]).ToString("N0"))</td>
-                    </tr>
-
-                    <tr>
-                        <td>Balatas</td>
-                        <td>@("$" + ((decimal)ViewData["Balatas"]).ToString("N0"))</td>
-                    </tr>
-
-                    <tr>
-                        <td>Cadena</td>
-                        <td>@("$" + ((decimal)ViewData["Cadena"]).ToString("N0"))</td>
-                    </tr>
-
-                    <tr>
-                        <td>Llantas</td>
-                        <td>@("$" + ((decimal)ViewData["Llantas"]).ToString("N0"))</td>
-                    </tr>
-
-                    <tr>
-                        <td>Otros</td>
-                        <td>@("$" + ((decimal)ViewData["Otros"]).ToString("N0"))</td>
-                    </tr>
-
-                </tbody>
-
-            </table>
-
-        </div>
-    </div>
-
-    <a asp-controller="Motocicleta"
-       asp-action="Index"
-       class="btn-cancel mt-3">
-        Volver
-    </a>
-
+    <a asp-controller="Motocicleta" asp-action="Index" class="btn-cancel">Volver a Mis Motocicletas</a>
 </div>
