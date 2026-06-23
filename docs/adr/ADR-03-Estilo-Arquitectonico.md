@@ -16,18 +16,11 @@ David Morales Guerrero
 
 ## Contexto
 
-MotoTrack es una aplicación web desarrollada en ASP.NET Core MVC cuyo propósito es ayudar a los motociclistas a administrar sus vehículos, registrar lecturas de kilometraje y llevar un control de los mantenimientos realizados.
+MotoTrack se ha estructurado desde su inicio con una separación en proyectos que dividen responsabilidades específicas: una capa web para la interfaz y controladores, una capa de aplicación para los servicios de negocio, una capa de dominio para los modelos y contratos, y una capa de infraestructura para la persistencia.
 
-Conforme el proyecto ha evolucionado, se han incorporado nuevas funcionalidades y se ha estructurado el sistema en diferentes proyectos que separan responsabilidades específicas.
+Conforme el proyecto ha evolucionado y se han incorporado nuevas funcionalidades (dashboard, alertas, centro de notificaciones, API REST, explorador de catálogo), esta organización natural ha resultado efectiva pero no había sido formalizada como decisión arquitectónica explícita.
 
-Actualmente la solución se encuentra organizada mediante las siguientes capas:
-
-- Presentación (ASP.NET Core MVC)
-- Aplicación (Servicios de negocio)
-- Dominio (Modelos e interfaces)
-- Infraestructura (Persistencia y repositorios)
-
-Dado que el proyecto continúa creciendo, resulta necesario definir formalmente el estilo arquitectónico utilizado para documentar la decisión y facilitar futuras modificaciones.
+Dado que el proyecto continúa creciendo, resulta necesario definir formalmente el estilo arquitectónico utilizado para documentar la decisión, facilitar futuras modificaciones y establecer una referencia clara para nuevos desarrolladores.
 
 ---
 
@@ -35,19 +28,24 @@ Dado que el proyecto continúa creciendo, resulta necesario definir formalmente 
 
 Se adopta una **Arquitectura por Capas (Layered Architecture)** como estilo arquitectónico principal para MotoTrack.
 
+Esta decisión refuerza y formaliza la adopción inicial documentada en ADR-01, detallando los componentes actuales de cada capa según la implementación real del proyecto.
+
 La arquitectura por capas divide el sistema en niveles con responsabilidades claramente definidas, permitiendo mantener una adecuada separación de intereses entre la interfaz de usuario, la lógica de negocio, el dominio del problema y la persistencia de datos.
 
 La implementación actual de MotoTrack sigue este modelo mediante la siguiente estructura:
 
 ### Capa de Presentación
 
-Responsable de la interacción con el usuario.
+Responsable de la interacción con el usuario y la exposición de endpoints HTTP.
 
 **Componentes:**
 
-- Controllers
-- Views
-- ViewModels
+- Controllers MVC: AuthController, HomeController, LecturaKilometrajeController, MantenimientoController, MotocicletaController, MotoTrackController, PerfilController
+- Controllers API: MotocicletasApiController (ruta `/api/motocicletas`)
+- Views (Razor)
+- Helpers: CalculadorEstadoMantenimiento
+- ViewModels: LoginViewModel, PerfilViewModel, RegistrarLecturaViewModel, EstadoMantenimientoResult, ErrorViewModel
+- Swagger UI (`/swagger`) para documentación y prueba de la API REST
 
 ### Capa de Aplicación
 
@@ -55,10 +53,13 @@ Responsable de coordinar los casos de uso y reglas de negocio.
 
 **Componentes:**
 
-- MotocicletaService
-- MantenimientoService
-- LecturaKilometrajeService
 - ConfiguracionMantenimientoService
+- GastoService
+- ItemService
+- LecturaKilometrajeService
+- MantenimientoService
+- MotocicletaService
+- UsuarioService
 
 ### Capa de Dominio
 
@@ -66,8 +67,8 @@ Responsable de representar las entidades y contratos principales del sistema.
 
 **Componentes:**
 
-- Models
-- Interfaces
+- Models: ConfiguracionMantenimiento, EstadoMantenimientoResult, Gasto, Item, LecturaKilometraje, LoginViewModel, Mantenimiento, Motocicleta, PerfilViewModel, RegistrarLecturaViewModel, Usuario
+- Interfaces: IConfiguracionMantenimientoRepository, IGastoRepository, IItemRepository, ILecturaKilometrajeRepository, IMantenimientoRepository, IMotocicletaRepository, IUsuarioRepository
 
 ### Capa de Infraestructura
 
@@ -75,14 +76,14 @@ Responsable de la persistencia y acceso a datos.
 
 **Componentes:**
 
-- Repositories
-- Archivos JSON de almacenamiento
+- Repositories: ConfiguracionMantenimientoRepository, GastoRepository, ItemRepository, LecturaKilometrajeRepository, MantenimientoRepository, MotocicletaRepository, UsuarioRepository
+- Archivos JSON de almacenamiento en `Catalogo/Data/`
 
 ---
 
-## Justificación
+## ¿Por qué?
 
-La arquitectura por capas fue seleccionada porque proporciona una estructura clara y adecuada para el tamaño y complejidad actual de MotoTrack.
+La arquitectura por capas fue seleccionada porque la estructura actual del proyecto ya implementa de forma natural este estilo arquitectónico, evitando refactorizaciones innecesarias y manteniendo la estabilidad del sistema.
 
 Las principales razones son:
 
@@ -93,45 +94,15 @@ Las principales razones son:
 - Es adecuada para un proyecto académico desarrollado por un solo integrante.
 - Permite incorporar nuevas funcionalidades sin afectar significativamente otras partes del sistema.
 
-Además, la estructura actual del proyecto ya implementa de forma natural este estilo arquitectónico, evitando refactorizaciones innecesarias y manteniendo la estabilidad del sistema.
-
 ---
 
 ## Alternativas Consideradas
 
-### Alternativa 1: Arquitectura Hexagonal (Ports and Adapters)
-
-La arquitectura hexagonal busca aislar completamente el dominio mediante puertos y adaptadores, permitiendo una mayor independencia tecnológica.
-
-#### Motivo de descarte
-
-Aunque ofrece beneficios importantes en proyectos grandes o con múltiples integraciones, su implementación incrementa significativamente la complejidad del sistema.
-
-Para el alcance actual de MotoTrack, los beneficios obtenidos no justifican el costo de migración ni el aumento de complejidad de desarrollo y mantenimiento.
-
-No obstante, la estructura actual del proyecto facilita una futura evolución hacia este estilo si el crecimiento del sistema lo requiere.
-
----
-
-### Alternativa 2: Arquitectura de Microservicios
-
-La arquitectura de microservicios divide el sistema en múltiples servicios independientes desplegados por separado.
-
-#### Motivo de descarte
-
-El tamaño actual de MotoTrack no requiere una separación distribuida de servicios.
-
-Su adopción implicaría un aumento considerable en complejidad operativa, despliegue, monitoreo y mantenimiento.
-
----
-
-### Alternativa 3: Arquitectura Cliente-Servidor Tradicional
-
-La arquitectura cliente-servidor concentra la lógica principal en una única aplicación con poca separación interna.
-
-#### Motivo de descarte
-
-A medida que el sistema crece, este enfoque dificulta el mantenimiento y la evolución del software debido al incremento del acoplamiento entre componentes.
+| Alternativa | Descripción | Motivo de descarte |
+|---|---|---|
+| **Arquitectura Hexagonal** | Aísla el dominio mediante puertos y adaptadores, independizando la lógica de negocio de la infraestructura. | Incrementa significativamente la complejidad del sistema. Para el alcance actual de MotoTrack, los beneficios no justifican el costo de migración. La estructura actual podría evolucionar hacia este estilo si el proyecto lo requiere. |
+| **Arquitectura de Microservicios** | Divide el sistema en múltiples servicios independientes desplegados por separado, cada uno con su propio dominio y persistencia. | El tamaño actual de MotoTrack no requiere una separación distribuida. Su adopción implicaría complejidad operativa, de despliegue, monitoreo y mantenimiento que no se justifica para un proyecto individual. |
+| **Arquitectura Cliente-Servidor** | Concentra la lógica principal en una única aplicación con poca separación interna entre capas. | A medida que el sistema crece, este enfoque dificulta el mantenimiento y la evolución debido al incremento del acoplamiento entre componentes. No ofrece ventajas sobre la organización actual. |
 
 ---
 
@@ -162,29 +133,108 @@ La arquitectura por capas se encuentra reflejada en la estructura real del proye
 ```text
 MotoTrack
 │
-├── Presentación (MVC)
-│   ├── Controllers
-│   ├── Views
-│   └── ViewModels
+├── Catalogo (Presentación MVC + API)
+│   ├── Controllers/
+│   │   ├── AuthController.cs
+│   │   ├── HomeController.cs
+│   │   ├── LecturaKilometrajeController.cs
+│   │   ├── MantenimientoController.cs
+│   │   ├── MotocicletaController.cs
+│   │   ├── MotoTrackController.cs
+│   │   ├── PerfilController.cs
+│   │   └── Api/
+│   │       └── MotocicletasApiController.cs
+│   ├── Views/
+│   ├── Helpers/
+│   │   └── CalculadorEstadoMantenimiento.cs
+│   ├── Models/
+│   │   └── ErrorViewModel.cs
+│   └── wwwroot/
 │
-├── MotoTrack.Application
-│   └── Services
+├── MotoTrack.Application (Servicios)
+│   ├── ConfiguracionMantenimientoService.cs
+│   ├── GastoService.cs
+│   ├── ItemServices.cs
+│   ├── LecturaKilometrajeService.cs
+│   ├── MantenimientoService.cs
+│   ├── MotocicletaService.cs
+│   └── UsuarioService.cs
 │
-├── MotoTrack.Domain
-│   ├── Models
-│   └── Interfaces
+├── MotoTrack.Domain (Dominio)
+│   ├── Models/
+│   │   ├── ConfiguracionMantenimiento.cs
+│   │   ├── EstadoMantenimientoResult.cs
+│   │   ├── Gasto.cs
+│   │   ├── Item.cs
+│   │   ├── LecturaKilometraje.cs
+│   │   ├── LoginViewModel.cs
+│   │   ├── Mantenimiento.cs
+│   │   ├── Motocicleta.cs
+│   │   ├── PerfilViewModel.cs
+│   │   ├── RegistrarLecturaViewModel.cs
+│   │   └── Usuario.cs
+│   └── Interfaces/
+│       ├── IConfiguracionMantenimientoRepository.cs
+│       ├── IGastoRepository.cs
+│       ├── IItemRepository.cs
+│       ├── ILecturaKilometrajeRepository.cs
+│       ├── IMantenimientoRepository.cs
+│       ├── IMotocicletaRepository.cs
+│       └── IUsuarioRepository.cs
 │
-└── MotoTrack.Infrastructure
-    ├── Repositories
-    └── Persistencia JSON
+└── MotoTrack.Infrastructure (Infraestructura)
+    └── Repositories/
+        ├── ConfiguracionMantenimientoRepository.cs
+        ├── GastoRepository.cs
+        ├── ItemRepository.cs
+        ├── LecturaKilometrajeRepository.cs
+        ├── MantenimientoRepository.cs
+        ├── MotocicletaRepository.cs
+        └── UsuarioRepository.cs
 ```
 
 Esta organización soporta todas las funcionalidades actualmente implementadas en el sistema y mantiene una separación clara de responsabilidades.
 
 ---
 
-## Diagramas Asociados
+## Diagrama
 
-Esta decisión arquitectónica se complementa con el diagrama:
+El siguiente diagrama representa la Arquitectura por Capas de MotoTrack con sus componentes reales:
 
-- Arquitectura por Capas de MotoTrack.
+```mermaid
+flowchart TD
+    subgraph "Catalogo (Presentación)"
+        CMVC[Controllers MVC<br/>Auth · Home · Motocicleta ·<br/>Mantenimiento · LecturaKM ·<br/>MotoTrack · Perfil]
+        CAP[Controllers/Api<br/>MotocicletasApiController]
+        VW[Views · Helpers · ViewModels]
+    end
+
+    subgraph "MotoTrack.Application"
+        SVC[Services<br/>Usuario · Motocicleta · Mantenimiento<br/>LecturaKM · Configuracion ·<br/>Item · Gasto]
+    end
+
+    subgraph "MotoTrack.Domain"
+        MDL[Models<br/>11 modelos de dominio]
+        INT[Interfaces<br/>7 repositorios]
+    end
+
+    subgraph "MotoTrack.Infrastructure"
+        REP[Repositories<br/>7 implementaciones]
+        JSON[JSON Data<br/>Catalogo/Data/]
+    end
+
+    CMVC --> SVC
+    CAP --> SVC
+    SVC --> INT
+    SVC --> REP
+    REP --> JSON
+
+    style CMVC fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style CAP fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style VW fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style SVC fill:#2a2a2a,stroke:#4a9eff,color:#f5f5f5
+    style MDL fill:#2a2a2a,stroke:#66bb6a,color:#f5f5f5
+    style INT fill:#2a2a2a,stroke:#66bb6a,color:#f5f5f5
+    style REP fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
+    style JSON fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
+```
