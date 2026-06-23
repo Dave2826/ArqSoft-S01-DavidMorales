@@ -6,7 +6,7 @@ Aceptado
 
 ## Fecha
 
-Junio 2026
+2026-06-05
 
 ## Autor
 
@@ -41,35 +41,25 @@ Adicionalmente, se consideran los escenarios de uso principales del sistema como
 
 ---
 
+## ¿Por qué?
+
+La documentación arquitectónica mediante vistas permite comprender un sistema desde múltiples perspectivas complementarias, evitando la sobrecarga cognitiva de un solo diagrama monolítico. El modelo 4+1 de Kruchten separa la estructura lógica, la distribución física, el despliegue y los procesos del sistema, manteniendo los escenarios de uso como hilo conductor.
+
+En MotoTrack, este enfoque facilita:
+- Distinguir qué componentes son responsabilidad de cada capa arquitectónica.
+- Visualizar cómo los controladores MVC y API se relacionan con los servicios y repositorios.
+- Entender el flujo de ejecución desde el navegador hasta la persistencia JSON.
+- Mantener la documentación sincronizada con la evolución del proyecto mediante diagramas Mermaid versionados junto al código.
+
+---
+
 ## Alternativas consideradas
 
-### Alternativa 1: Documentación únicamente textual
-
-Consistía en documentar la arquitectura exclusivamente mediante descripciones escritas.
-
-**Motivo de descarte:**
-
-Dificulta la comprensión visual de la estructura del sistema y de las relaciones existentes entre sus componentes.
-
----
-
-### Alternativa 2: Utilizar únicamente diagramas UML tradicionales
-
-Consistía en representar toda la arquitectura únicamente mediante diagramas UML.
-
-**Motivo de descarte:**
-
-Aunque UML proporciona información útil, no permite mostrar con suficiente claridad las distintas perspectivas arquitectónicas requeridas para el proyecto.
-
----
-
-### Alternativa 3: Utilizar vistas arquitectónicas complementarias
-
-Consiste en documentar el sistema mediante diferentes vistas enfocadas en estructura, componentes, despliegue y comportamiento.
-
-**Resultado:**
-
-Alternativa seleccionada.
+| Alternativa | Descripción | Motivo de descarte |
+|---|---|---|
+| **Documentación únicamente textual** | Describir la arquitectura solo con texto sin diagramas. | Dificulta la comprensión visual de la estructura y las relaciones entre componentes. Sin diagramas, la arquitectura es ambigua. |
+| **Solo diagramas UML tradicionales** | Usar exclusivamente diagramas UML (clases, secuencia, paquetes). | UML muestra estructura estática pero no captura las múltiples perspectivas (física, despliegue, procesos) que requiere un sistema web completo como MotoTrack. |
+| **Vistas arquitectónicas (seleccionado)** | Documentar el sistema con 4 vistas complementarias (lógica, física, despliegue, procesos) usando Mermaid. | Proporciona una visión integral: cada perspectiva responde preguntas distintas sobre la arquitectura. Los diagramas se mantienen en el repositorio y evolucionan con el código. |
 
 ---
 
@@ -100,6 +90,13 @@ Las vistas arquitectónicas documentan la implementación actual del sistema, in
 * Registro de lecturas de kilometraje.
 * Registro de mantenimientos.
 * Consulta de historial de servicios.
+* Consulta de gastos por tipo de mantenimiento.
+* Explorador de catálogo de motocicletas (adopción).
+* Dashboard con indicadores de estado de mantenimiento (6 tipos).
+* Centro de alertas (vencidos/próximos).
+* API REST con Swagger (`/api/motocicletas`, 5 endpoints).
+* Landing page para usuarios no autenticados.
+* Perfil de usuario con estadísticas.
 * Persistencia de información mediante archivos JSON.
 * Arquitectura en capas implementada en la solución.
 
@@ -117,3 +114,52 @@ La presente decisión arquitectónica se complementa con los siguientes diagrama
 4. Vista de procesos.
 
 Todos los diagramas se encuentran documentados mediante Mermaid y forman parte de la documentación técnica de MotoTrack.
+
+---
+
+## Diagrama
+
+El siguiente diagrama muestra cómo las 4 vistas arquitectónicas cubren diferentes aspectos de MotoTrack y cómo se relacionan entre sí:
+
+```mermaid
+flowchart TD
+    subgraph "Vista Lógica"
+        C[Controladores MVC + API]
+        S[Servicios de Aplicación]
+        R[Repositorios]
+    end
+
+    subgraph "Vista Física"
+        P1[Catalogo - MVC]
+        P2[MotoTrack.Application]
+        P3[MotoTrack.Domain]
+        P4[MotoTrack.Infrastructure]
+    end
+
+    subgraph "Vista de Despliegue"
+        K[Kestrel / dotnet run]
+        N[Navegador / Cliente HTTP]
+    end
+
+    subgraph "Vista de Procesos"
+        F1[Login]
+        F2[Mis Motos / Dashboard]
+        F3[Mantenimientos / API REST]
+    end
+
+    C --> S
+    S --> R
+    R --> P4
+    P4 --> P2
+    P2 --> P1
+    N --> K
+    K --> C
+    F1 --> F2
+    F2 --> F3
+
+    style C fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style S fill:#2a2a2a,stroke:#4a9eff,color:#f5f5f5
+    style R fill:#2a2a2a,stroke:#66bb6a,color:#f5f5f5
+    style K fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
+    style N fill:#2a2a2a,stroke:#ef5350,color:#f5f5f5
+```

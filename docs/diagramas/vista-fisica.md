@@ -10,28 +10,31 @@ flowchart TB
     A[MotoTrack]
 
     A --> B[Catalogo]
-    A --> C[Catalogo.Application]
-    A --> D[Catalogo.Domain]
-    A --> E[Catalogo.Infrastructure]
+    A --> C[MotoTrack.Application]
+    A --> D[MotoTrack.Domain]
+    A --> E[MotoTrack.Infrastructure]
 
     B --> F[Controllers]
+    B --> F1[Controllers/Api]
     B --> G[Views]
-    B --> H[Data]
+    B --> H[Helpers]
+    B --> I[Data]
+    B --> J[docs]
 
-    H --> J[usuarios.json]
-    H --> K[motocicletas.json]
-    H --> L[mantenimientos.json]
-    H --> M[lecturasKilometraje.json]
-    H --> N[configuracionesMantenimiento.json]
+    I --> J1[usuarios.json]
+    I --> J2[motocicletas.json]
+    I --> J3[mantenimientos.json]
+    I --> J4[lecturasKilometraje.json]
+    I --> J5[configuracionesMantenimiento.json]
 
-    C --> O[Services]
+    C --> K[Services]
 
-    D --> P[Models]
-    D --> Q[Interfaces]
+    D --> L[Models]
+    D --> M[Interfaces]
 
-    E --> R[Repositories]
+    E --> N[Repositories]
 ```
 
 ## Interpretación
 
-MotoTrack se encuentra dividido en múltiples proyectos que permiten separar responsabilidades. La capa web contiene los controladores y vistas, la capa de aplicación contiene la lógica de negocio, la capa de dominio define los modelos e interfaces, mientras que la capa de infraestructura implementa la persistencia de datos mediante repositorios y archivos JSON.
+MotoTrack se encuentra dividido en múltiples proyectos que permiten separar responsabilidades. La capa web (`Catalogo`) contiene los controladores MVC y API, vistas, helpers, la documentación técnica y los archivos JSON de persistencia. La capa de aplicación (`MotoTrack.Application`) contiene la lógica de negocio mediante servicios. La capa de dominio (`MotoTrack.Domain`) define los modelos e interfaces del sistema. La capa de infraestructura (`MotoTrack.Infrastructure`) implementa los repositorios que leen y escriben los archivos JSON en `Catalogo/Data/`.
