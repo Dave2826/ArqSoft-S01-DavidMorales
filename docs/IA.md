@@ -62,3 +62,16 @@ La IA fue utilizada como apoyo técnico para planificar la incorporación de una
 Las recomendaciones generadas por la IA fueron revisadas, adaptadas e implementadas por el autor dentro del proyecto MotoTrack, validando manualmente la compilación, el funcionamiento de los endpoints REST y la documentación generada mediante Swagger UI.
 
 La decisión final sobre la arquitectura, los endpoints expuestos y la documentación incluida en el repositorio fue tomada por el autor del proyecto.
+
+---
+
+## Consideraciones
+
+La inteligencia artificial fue utilizada como herramienta de apoyo para:
+
+- Analizar alternativas arquitectónicas.
+- Revisar consistencia entre documentación y código.
+- Identificar posibles riesgos técnicos.
+- Resolver dudas específicas durante la implementación.
+
+La validación final de las decisiones arquitectónicas, la implementación del código, las pruebas y la documentación fueron realizadas por el autor del proyecto.

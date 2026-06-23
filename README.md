@@ -12,15 +12,17 @@ El proyecto fue desarrollado como parte de la materia de Arquitectura de Softwar
 
 Actualmente MotoTrack permite:
 
-* Registro de usuarios.
-* Inicio y cierre de sesión.
-* Registro de motocicletas.
-* Edición de motocicletas.
-* Eliminación de motocicletas.
-* Registro de lecturas de kilometraje.
-* Registro de mantenimientos.
-* Consulta de historial de mantenimientos.
-* Almacenamiento de información mediante archivos JSON.
+* Registro e inicio de sesión.
+* Gestión de motocicletas (registro, edición, eliminación).
+* Historial de mantenimientos.
+* Registro de kilometraje.
+* Dashboard principal.
+* Perfil de usuario.
+* Centro de alertas.
+* Explorador de motocicletas.
+* Gestión de gastos.
+* API REST.
+* Swagger/OpenAPI.
 
 ---
 
@@ -96,11 +98,55 @@ Actualmente estas capas se encuentran implementadas en proyectos separados dentr
 
 ---
 
-## Estado actual
+## Roadmap Arquitectónico
 
-MotoTrack se encuentra en desarrollo activo.
+| ADR | Etapa | Descripción |
+|------|--------|-------------|
+| ADR-01 | Arquitectura Inicial | Arquitectura por capas con persistencia JSON |
+| ADR-02 | Vistas Arquitectónicas | Documentación mediante modelo 4+1 |
+| ADR-03 | Estilo Arquitectónico | Formalización de arquitectura por capas |
+| ADR-04 | API REST | Exposición de endpoints REST documentados con Swagger |
 
-Las funcionalidades principales para la administración de motocicletas ya se encuentran operativas y actualmente se trabaja en nuevas mejoras relacionadas con visualización de información, experiencia de usuario y gestión de mantenimientos.
+---
+
+## Documentación Arquitectónica
+
+Las decisiones arquitectónicas del proyecto se encuentran documentadas en:
+
+- docs/adr/ADR-01-Arquitectura-Inicial.md
+- docs/adr/ADR-02-Vistas-Arquitectonicas.md
+- docs/adr/ADR-03-Estilo-Arquitectonico.md
+- docs/adr/ADR-04-Incorporacion-API-REST.md
+
+El uso de herramientas de inteligencia artificial se documenta en:
+
+- docs/IA.md
+
+---
+
+## API REST
+
+MotoTrack incorpora una API REST documentada mediante Swagger.
+
+Endpoints disponibles:
+
+- GET /api/motocicletas
+- GET /api/motocicletas/{id}
+- POST /api/motocicletas
+- PUT /api/motocicletas/{id}
+- DELETE /api/motocicletas/{id}
+
+Swagger UI:
+
+/swagger
+
+---
+
+## Estado Actual
+
+MotoTrack cuenta con una arquitectura por capas documentada mediante ADRs, persistencia basada en archivos JSON y una API REST documentada con Swagger.
+
+El proyecto continúa evolucionando mediante entregas incrementales y decisiones arquitectónicas registradas formalmente.
 
 ---
 
