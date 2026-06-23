@@ -110,3 +110,7 @@ flowchart TD
 ```
 
 El sistema se organiza mediante una arquitectura por capas donde la interfaz de usuario se comunica con la capa de aplicación, la lógica de negocio se mantiene en dominio y el acceso a datos se concentra en infraestructura.
+
+---
+
+> **Nota:** Esta decisión inicial fue posteriormente reforzada y formalizada en [ADR-03](ADR-03-Estilo-Arquitectonico.md), donde se detallan los componentes actuales de cada capa según la implementación real del proyecto.
