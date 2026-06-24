@@ -1,15 +1,15 @@
+using MotoTrack.Domain.Interfaces;
 using MotoTrack.Domain.Models;
 
 namespace MotoTrack.Helpers
 {
-    public static class CalculadorEstadoMantenimiento
+    public class CalculadorEstadoMantenimiento
     {
-        private static string DeterminarEstado(int kmActual, int proxKm)
+        private readonly IEstadoMantenimientoStrategy _strategy;
+
+        public CalculadorEstadoMantenimiento(IEstadoMantenimientoStrategy strategy)
         {
-            var faltan = proxKm - kmActual;
-            if (faltan < 0) return "VENCIDO";
-            if (faltan <= 500) return "PRÓXIMO";
-            return "AL DÍA";
+            _strategy = strategy;
         }
 
         private static EstadoMantenimientoResult.EstadoPrioridad EstadoAPrioridad(string estado)
@@ -23,7 +23,7 @@ namespace MotoTrack.Helpers
             };
         }
 
-        private static (string estado, string proximo, string ultimo, bool esEstimado, EstadoMantenimientoResult.EstadoPrioridad prioridad) CalcularTipo(
+        private (string estado, string proximo, string ultimo, bool esEstimado, EstadoMantenimientoResult.EstadoPrioridad prioridad) CalcularTipo(
             List<Mantenimiento> mantenimientos,
             ConfiguracionMantenimiento? config,
             Motocicleta moto,
@@ -45,21 +45,21 @@ namespace MotoTrack.Helpers
                 var intervalo = selectorIntervalo(config);
                 var proxKm = ultimo.KilometrajeServicio + intervalo;
                 proximo = $"{proxKm} km";
-                estado = DeterminarEstado(moto.KilometrajeActual, proxKm);
+                estado = _strategy.DeterminarEstado(moto.KilometrajeActual, proxKm);
             }
             else if (ultimo == null && moto.KilometrajeCompra.HasValue && config != null)
             {
                 var intervalo = selectorIntervalo(config);
                 var estKm = moto.KilometrajeCompra.Value + intervalo;
                 proximo = $"{estKm} km";
-                estado = DeterminarEstado(moto.KilometrajeActual, estKm);
+                estado = _strategy.DeterminarEstado(moto.KilometrajeActual, estKm);
                 esEstimado = true;
             }
 
             return (estado, proximo, ultimoStr, esEstimado, EstadoAPrioridad(estado));
         }
 
-        public static EstadoMantenimientoResult Calcular(
+        public EstadoMantenimientoResult Calcular(
             Motocicleta moto,
             List<Mantenimiento> mantenimientos,
             ConfiguracionMantenimiento? config)

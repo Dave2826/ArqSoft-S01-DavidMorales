@@ -10,17 +10,20 @@ namespace MotoTrack.Controllers
         private readonly MotocicletaService _motocicletaService;
         private readonly ConfiguracionMantenimientoService _configuracionService;
         private readonly MantenimientoService _mantenimientoService;
+        private readonly CalculadorEstadoMantenimiento _calculadorEstado;
         private readonly IWebHostEnvironment _env;
 
         public MotocicletaController(
             MotocicletaService motocicletaService,
             ConfiguracionMantenimientoService configuracionService,
             MantenimientoService mantenimientoService,
+            CalculadorEstadoMantenimiento calculadorEstado,
             IWebHostEnvironment env)
         {
             _motocicletaService = motocicletaService;
             _configuracionService = configuracionService;
             _mantenimientoService = mantenimientoService;
+            _calculadorEstado = calculadorEstado;
             _env = env;
         }
 
@@ -53,7 +56,7 @@ namespace MotoTrack.Controllers
             {
                 var mantenimientos = _mantenimientoService.ObtenerPorMotocicleta(moto.Id);
                 var config = _configuracionService.ObtenerPorMotocicleta(moto.Id);
-                estados[moto.Id] = CalculadorEstadoMantenimiento.Calcular(moto, mantenimientos, config);
+                estados[moto.Id] = _calculadorEstado.Calcular(moto, mantenimientos, config);
             }
 
             ViewData["Estados"] = estados;

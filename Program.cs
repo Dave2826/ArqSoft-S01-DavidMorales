@@ -1,6 +1,9 @@
 using MotoTrack.Application.Services;
+using MotoTrack.Application.Strategies;
 using MotoTrack.Domain.Interfaces;
+using MotoTrack.Infrastructure.Decorators;
 using MotoTrack.Infrastructure.Repositories;
+using MotoTrack.Helpers;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -47,10 +50,16 @@ builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
 builder.Services.AddSingleton<UsuarioService>();
 
 // ======================
-// Motocicletas
+// Motocicletas — Strategy + Decorator
 // ======================
 
-builder.Services.AddSingleton<IMotocicletaRepository, MotocicletaRepository>();
+builder.Services.AddSingleton<IEstadoMantenimientoStrategy, DefaultEstadoStrategy>();
+builder.Services.AddSingleton<CalculadorEstadoMantenimiento>();
+
+builder.Services.AddSingleton<MotocicletaRepository>();
+builder.Services.AddSingleton<IMotocicletaRepository>(sp =>
+    new LoggingMotocicletaRepository(
+        sp.GetRequiredService<MotocicletaRepository>()));
 builder.Services.AddSingleton<MotocicletaService>();
 
 // ======================

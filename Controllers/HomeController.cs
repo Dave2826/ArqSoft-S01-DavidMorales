@@ -12,15 +12,18 @@ namespace MotoTrack.Controllers
         private readonly MotocicletaService _motocicletaService;
         private readonly MantenimientoService _mantenimientoService;
         private readonly ConfiguracionMantenimientoService _configuracionService;
+        private readonly CalculadorEstadoMantenimiento _calculadorEstado;
 
         public HomeController(
             MotocicletaService motocicletaService,
             MantenimientoService mantenimientoService,
-            ConfiguracionMantenimientoService configuracionService)
+            ConfiguracionMantenimientoService configuracionService,
+            CalculadorEstadoMantenimiento calculadorEstado)
         {
             _motocicletaService = motocicletaService;
             _mantenimientoService = mantenimientoService;
             _configuracionService = configuracionService;
+            _calculadorEstado = calculadorEstado;
         }
 
         public IActionResult Index(Guid? motocicletaId)
@@ -64,7 +67,7 @@ namespace MotoTrack.Controllers
 
             if (motocicletaSeleccionada != null)
             {
-                resultado = CalculadorEstadoMantenimiento.Calcular(
+                resultado = _calculadorEstado.Calcular(
                     motocicletaSeleccionada,
                     mantenimientos,
                     configuracion);
