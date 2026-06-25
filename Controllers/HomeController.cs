@@ -96,7 +96,17 @@ namespace MotoTrack.Controllers
 
                 UltimoFiltroAire = resultado?.UltimoFiltroAire ?? "Sin registro",
 
+                UltimasBujias = resultado?.UltimasBujias ?? "Sin registro",
+
                 UltimasValvulas = resultado?.UltimasValvulas ?? "Sin registro",
+
+                UltimaBateria = resultado?.UltimaBateria ?? "Sin registro",
+
+                UltimaSuspension = resultado?.UltimaSuspension ?? "Sin registro",
+
+                UltimoLiquidoFrenos = resultado?.UltimoLiquidoFrenos ?? "Sin registro",
+
+                UltimoAnticongelante = resultado?.UltimoAnticongelante ?? "Sin registro",
 
                 ProximoAceite = resultado?.ProximoAceite ?? "Sin registro",
 
@@ -108,7 +118,17 @@ namespace MotoTrack.Controllers
 
                 ProximoFiltroAire = resultado?.ProximoFiltroAire ?? "Sin registro",
 
+                ProximasBujias = resultado?.ProximasBujias ?? "Sin registro",
+
                 ProximasValvulas = resultado?.ProximasValvulas ?? "Sin registro",
+
+                ProximaBateria = resultado?.ProximaBateria ?? "Sin registro",
+
+                ProximaSuspension = resultado?.ProximaSuspension ?? "Sin registro",
+
+                ProximoLiquidoFrenos = resultado?.ProximoLiquidoFrenos ?? "Sin registro",
+
+                ProximoAnticongelante = resultado?.ProximoAnticongelante ?? "Sin registro",
 
                 EstadoAceite = resultado?.EstadoAceite ?? "Sin registro",
 
@@ -120,7 +140,17 @@ namespace MotoTrack.Controllers
 
                 EstadoFiltroAire = resultado?.EstadoFiltroAire ?? "Sin registro",
 
+                EstadoBujias = resultado?.EstadoBujias ?? "Sin registro",
+
                 EstadoValvulas = resultado?.EstadoValvulas ?? "Sin registro",
+
+                EstadoBateria = resultado?.EstadoBateria ?? "Sin registro",
+
+                EstadoSuspension = resultado?.EstadoSuspension ?? "Sin registro",
+
+                EstadoLiquidoFrenos = resultado?.EstadoLiquidoFrenos ?? "Sin registro",
+
+                EstadoAnticongelante = resultado?.EstadoAnticongelante ?? "Sin registro",
 
                 Motocicletas = motocicletas,
 
@@ -132,7 +162,12 @@ namespace MotoTrack.Controllers
                 BalatasEsEstimado = resultado?.BalatasEsEstimado ?? false,
                 LlantasEsEstimado = resultado?.LlantasEsEstimado ?? false,
                 FiltroAireEsEstimado = resultado?.FiltroAireEsEstimado ?? false,
+                BujiasEsEstimado = resultado?.BujiasEsEstimado ?? false,
                 ValvulasEsEstimado = resultado?.ValvulasEsEstimado ?? false,
+                BateriaEsEstimado = resultado?.BateriaEsEstimado ?? false,
+                SuspensionEsEstimado = resultado?.SuspensionEsEstimado ?? false,
+                LiquidoFrenosEsEstimado = resultado?.LiquidoFrenosEsEstimado ?? false,
+                AnticongelanteEsEstimado = resultado?.AnticongelanteEsEstimado ?? false,
                 TieneEstimados = resultado?.TieneEstimados ?? false,
                 TotalVencidos = resultado?.TotalVencidos ?? 0,
                 TotalProximos = resultado?.TotalProximos ?? 0,
@@ -183,8 +218,23 @@ namespace MotoTrack.Controllers
             if (r.EstadoFiltroAire is "VENCIDO" or "PRÓXIMO")
                 items.Add(new DashboardViewModel.AlertaItem { Tipo = "Filtro de aire", Estado = r.EstadoFiltroAire, EsEstimado = r.FiltroAireEsEstimado });
 
+            if (r.EstadoBujias is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Bujías", Estado = r.EstadoBujias, EsEstimado = r.BujiasEsEstimado });
+
             if (r.EstadoValvulas is "VENCIDO" or "PRÓXIMO")
                 items.Add(new DashboardViewModel.AlertaItem { Tipo = "Válvulas", Estado = r.EstadoValvulas, EsEstimado = r.ValvulasEsEstimado });
+
+            if (r.EstadoBateria is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Batería", Estado = r.EstadoBateria, EsEstimado = r.BateriaEsEstimado });
+
+            if (r.EstadoSuspension is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Suspensión", Estado = r.EstadoSuspension, EsEstimado = r.SuspensionEsEstimado });
+
+            if (r.EstadoLiquidoFrenos is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Líquido de frenos", Estado = r.EstadoLiquidoFrenos, EsEstimado = r.LiquidoFrenosEsEstimado });
+
+            if (r.EstadoAnticongelante is "VENCIDO" or "PRÓXIMO")
+                items.Add(new DashboardViewModel.AlertaItem { Tipo = "Anticongelante", Estado = r.EstadoAnticongelante, EsEstimado = r.AnticongelanteEsEstimado });
 
             return items;
         }
@@ -210,7 +260,17 @@ namespace MotoTrack.Controllers
 
         public string UltimoFiltroAire { get; set; } = "Sin registro";
 
+        public string UltimasBujias { get; set; } = "Sin registro";
+
         public string UltimasValvulas { get; set; } = "Sin registro";
+
+        public string UltimaBateria { get; set; } = "Sin registro";
+
+        public string UltimaSuspension { get; set; } = "Sin registro";
+
+        public string UltimoLiquidoFrenos { get; set; } = "Sin registro";
+
+        public string UltimoAnticongelante { get; set; } = "Sin registro";
 
         public string ProximoAceite { get; set; } = "Sin registro";
 
@@ -222,7 +282,17 @@ namespace MotoTrack.Controllers
 
         public string ProximoFiltroAire { get; set; } = "Sin registro";
 
+        public string ProximasBujias { get; set; } = "Sin registro";
+
         public string ProximasValvulas { get; set; } = "Sin registro";
+
+        public string ProximaBateria { get; set; } = "Sin registro";
+
+        public string ProximaSuspension { get; set; } = "Sin registro";
+
+        public string ProximoLiquidoFrenos { get; set; } = "Sin registro";
+
+        public string ProximoAnticongelante { get; set; } = "Sin registro";
 
         public string EstadoAceite { get; set; } = "Sin registro";
 
@@ -234,7 +304,17 @@ namespace MotoTrack.Controllers
 
         public string EstadoFiltroAire { get; set; } = "Sin registro";
 
+        public string EstadoBujias { get; set; } = "Sin registro";
+
         public string EstadoValvulas { get; set; } = "Sin registro";
+
+        public string EstadoBateria { get; set; } = "Sin registro";
+
+        public string EstadoSuspension { get; set; } = "Sin registro";
+
+        public string EstadoLiquidoFrenos { get; set; } = "Sin registro";
+
+        public string EstadoAnticongelante { get; set; } = "Sin registro";
 
         public List<Motocicleta> Motocicletas { get; set; }
             = new();
@@ -253,7 +333,17 @@ namespace MotoTrack.Controllers
 
         public bool FiltroAireEsEstimado { get; set; }
 
+        public bool BujiasEsEstimado { get; set; }
+
         public bool ValvulasEsEstimado { get; set; }
+
+        public bool BateriaEsEstimado { get; set; }
+
+        public bool SuspensionEsEstimado { get; set; }
+
+        public bool LiquidoFrenosEsEstimado { get; set; }
+
+        public bool AnticongelanteEsEstimado { get; set; }
 
         public int TotalVencidos { get; set; }
 

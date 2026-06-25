@@ -63,35 +63,77 @@ namespace MotoTrack.Controllers
             ViewData["Motocicleta"] = motocicleta;
 
             ViewData["TotalGastado"] =
-                mantenimientos.Sum(m => m.Costo);
+                mantenimientos.Sum(m => m.Costo ?? 0);
 
             ViewData["Aceite"] =
                 mantenimientos
                     .Where(m => m.Tipo == "Cambio de aceite")
-                    .Sum(m => m.Costo);
+                    .Sum(m => m.Costo ?? 0);
 
             ViewData["Balatas"] =
                 mantenimientos
                     .Where(m => m.Tipo == "Balatas")
-                    .Sum(m => m.Costo);
+                    .Sum(m => m.Costo ?? 0);
 
             ViewData["Cadena"] =
                 mantenimientos
                     .Where(m => m.Tipo == "Cadena")
-                    .Sum(m => m.Costo);
+                    .Sum(m => m.Costo ?? 0);
 
             ViewData["Llantas"] =
                 mantenimientos
                     .Where(m => m.Tipo == "Llantas")
-                    .Sum(m => m.Costo);
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["FiltroAire"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Filtro de aire")
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["Bujias"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Bujías")
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["Valvulas"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Válvulas")
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["Bateria"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Batería")
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["Suspension"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Suspensión")
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["LiquidoFrenos"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Líquido de frenos")
+                    .Sum(m => m.Costo ?? 0);
+
+            ViewData["Anticongelante"] =
+                mantenimientos
+                    .Where(m => m.Tipo == "Anticongelante")
+                    .Sum(m => m.Costo ?? 0);
 
             ViewData["Otros"] =
                 mantenimientos
                     .Where(m => m.Tipo != "Cambio de aceite"
                              && m.Tipo != "Balatas"
                              && m.Tipo != "Cadena"
-                             && m.Tipo != "Llantas")
-                    .Sum(m => m.Costo);
+                             && m.Tipo != "Llantas"
+                             && m.Tipo != "Filtro de aire"
+                             && m.Tipo != "Bujías"
+                             && m.Tipo != "Válvulas"
+                             && m.Tipo != "Batería"
+                             && m.Tipo != "Suspensión"
+                             && m.Tipo != "Líquido de frenos"
+                             && m.Tipo != "Anticongelante")
+                    .Sum(m => m.Costo ?? 0);
 
             return View();
         }

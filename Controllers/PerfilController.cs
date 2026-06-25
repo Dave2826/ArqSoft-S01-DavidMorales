@@ -63,7 +63,7 @@ namespace MotoTrack.Controllers
 
                 TotalMotocicletas = motos.Count,
                 ServiciosRealizados = todosMantenimientos.Count,
-                GastoAcumulado = todosMantenimientos.Sum(m => m.Costo)
+                GastoAcumulado = todosMantenimientos.Sum(m => m.Costo ?? 0)
             };
 
             return View(model);
