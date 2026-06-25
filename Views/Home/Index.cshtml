@@ -4,42 +4,27 @@
     ViewData["Title"] = "Dashboard - MotoTrack";
 }
 
-<div class="container mt-4">
+<div class="dash-container-fluid">
 
-    <h2 class="mb-4">Dashboard</h2>
-
-    @if (Model.Motocicletas.Any())
-    {
-        <div class="row mb-4">
-            <div class="col-md-6">
-
-                <label class="form-label">
-                    Motocicleta seleccionada
-                </label>
-
-                <form method="get"
-                      asp-controller="Home"
-                      asp-action="Index">
-
-                    <select name="motocicletaId"
-                            class="form-select"
-                            onchange="this.form.submit()">
-
+    <div class="dash-header">
+        <h2>Dashboard</h2>
+        @if (Model.Motocicletas.Any())
+        {
+            <div class="dash-select-wrap">
+                <label>Motocicleta</label>
+                <form method="get" asp-controller="Home" asp-action="Index">
+                    <select name="motocicletaId" class="form-select" onchange="this.form.submit()">
                         @foreach (var moto in Model.Motocicletas)
                         {
-                            <option value="@moto.Id"
-                                    selected="@(moto.Id == Model.MotocicletaSeleccionadaId)">
+                            <option value="@moto.Id" selected="@(moto.Id == Model.MotocicletaSeleccionadaId)">
                                 @moto.Marca @moto.Modelo
                             </option>
                         }
-
                     </select>
-
                 </form>
-
             </div>
-        </div>
-    }
+        }
+    </div>
 
     @if (Model.TieneEstimados)
     {
@@ -51,491 +36,277 @@
 
     @if (Model.PrimeraMotocicleta != null)
     {
-        <div class="card alertas-card mb-4">
-            <div class="card-body">
-                <h5 class="alertas-title">
-                    Alertas MotoTrack - @Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo
-                </h5>
-
-                @if (Model.Alertas.Any())
-                {
+        @if (Model.Alertas.Any())
+        {
+            <div class="card alertas-card">
+                <div class="card-body">
+                    <h5 class="alertas-title">Alertas - @Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo</h5>
                     <div class="alertas-counters">
                         @if (Model.TotalVencidos > 0)
                         {
-                            <span class="alertas-count alertas-count--vencido">
-                                @Model.TotalVencidos mantenimiento(s) vencido(s)
-                            </span>
+                            <span class="alertas-count alertas-count--vencido">@Model.TotalVencidos vencido(s)</span>
                         }
                         @if (Model.TotalProximos > 0)
                         {
-                            <span class="alertas-count alertas-count--proximo">
-                                @Model.TotalProximos próximo(s) servicio(s)
-                            </span>
+                            <span class="alertas-count alertas-count--proximo">@Model.TotalProximos próximo(s)</span>
                         }
                     </div>
-
                     <ul class="alertas-lista">
                         @foreach (var item in Model.Alertas)
                         {
                             <li class="alertas-item alertas-item--@(item.Estado == "VENCIDO" ? "vencido" : "proximo")">
-                                • @item.Tipo
-                                @(item.Estado == "VENCIDO" ? "vencido" : "próximo")
-                                @if (item.EsEstimado)
-                                {
-                                    <span class="text-muted">(estimado)</span>
-                                }
+                                @item.Tipo @(item.Estado == "VENCIDO" ? "vencido" : "próximo")
+                                @if (item.EsEstimado) { <span class="text-muted">(estimado)</span> }
                             </li>
                         }
                     </ul>
-                }
-                else
-                {
-                    <p class="alertas-ok">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" style="vertical-align:middle;margin-right:4px">
-                    <path d="M3 8L6.5 11.5L13 5" stroke="#a5d6a7" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-                Sin alertas pendientes. Todos los mantenimientos registrados están al día.
-            </p>
-                }
-            </div>
-        </div>
-    }
-
-    <div class="row anim-stat-cards">
-
-        <div class="col-md-4 mb-4">
-            <div class="card card-stat">
-                <div class="card-body text-center">
-                    <div class="card-stat-label">Total Motocicletas</div>
-                    <div class="card-stat-value">@Model.TotalMotocicletas</div>
                 </div>
             </div>
-        </div>
+        }
 
-        <div class="col-md-4 mb-4">
-            <div class="card card-stat">
-                <div class="card-body text-center">
-                    <div class="card-stat-label">Kilometraje Actual</div>
-                    <div class="card-stat-value">@Model.KilometrajeStatus</div>
-
-                    @if (Model.PrimeraMotocicleta != null)
+        <div class="card hero-card hero-card-tight anim-hero">
+            <div class="hero-img">
+                @if (!string.IsNullOrEmpty(Model.PrimeraMotocicleta.FotoUrl))
+                {
+                    <img src="@Model.PrimeraMotocicleta.FotoUrl" alt="@Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo" />
+                }
+            </div>
+            <div class="hero-body">
+                <div class="hero-title">
+                    @Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo
+                    @if (Model.PrimeraMotocicleta.Cilindrada > 0)
                     {
-                        <div class="card-stat-sub">
-                            @Model.PrimeraMotocicleta.Marca
-                            @Model.PrimeraMotocicleta.Modelo
-                        </div>
+                        <span class="hero-spec">@Model.PrimeraMotocicleta.Cilindrada cc</span>
                     }
                 </div>
-            </div>
-        </div>
-
-        <div class="col-md-4 mb-4">
-            <div class="card card-stat">
-                <div class="card-body text-center">
-                    <div class="card-stat-label">Último Mantenimiento</div>
-
-                    <div class="card-stat-value" style="font-size:1.3rem">
-                        @(Model.UltimoMantenimiento?.Tipo ?? "Ninguno")
-                    </div>
-
-                    <div class="card-stat-sub">
-                        @(Model.UltimoMantenimiento?.Fecha.ToString("dd/MM/yyyy") ?? "Sin registro")
-                    </div>
+                <div class="hero-meta">
+                    <span class="hero-badge-year">@Model.PrimeraMotocicleta.Ano</span>
                 </div>
-            </div>
-        </div>
 
-    </div>
+                <div class="hero-km">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:4px">
+                        <circle cx="12" cy="12" r="10" stroke="#ff7a00" stroke-width="2"/>
+                        <circle cx="12" cy="12" r="3" stroke="#ff7a00" stroke-width="2"/>
+                        <path d="M12 2V5M12 19V22M2 12H5M19 12H22" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                    @Model.PrimeraMotocicleta.KilometrajeActual km
+                </div>
 
-    <div class="row mt-3">
-        <div class="col-12">
+                <hr class="hero-divider" />
 
-            @if (Model.PrimeraMotocicleta != null)
-            {
-                var tieneUrgente = false;
-                var urgenteTipo = "";
-                var urgenteEstado = "";
-                var urgenteDetalle = "";
-
-                if (Model.EstadoAceite == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Aceite"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximoAceite; }
-                else if (Model.EstadoCadena == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Cadena"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximaCadena; }
-                else if (Model.EstadoBalatas == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Balatas"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasBalatas; }
-                else if (Model.EstadoLlantas == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Llantas"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasLlantas; }
-                else if (Model.EstadoFiltroAire == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Filtro de aire"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximoFiltroAire; }
-                else if (Model.EstadoValvulas == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Válvulas"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasValvulas; }
-                else if (Model.EstadoAceite == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Aceite"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximoAceite; }
-                else if (Model.EstadoCadena == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Cadena"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximaCadena; }
-                else if (Model.EstadoBalatas == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Balatas"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasBalatas; }
-                else if (Model.EstadoLlantas == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Llantas"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasLlantas; }
-                else if (Model.EstadoFiltroAire == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Filtro de aire"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximoFiltroAire; }
-                else if (Model.EstadoValvulas == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Válvulas"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasValvulas; }
-
-                var moto = Model.PrimeraMotocicleta;
-
-                <div class="card hero-card anim-hero">
-                    <div class="hero-img">
-                        @if (!string.IsNullOrEmpty(moto.FotoUrl))
+                <div class="hero-stats">
+                    <div class="hero-stat-card">
+                        <div class="hero-stat-label">Ultimo servicio</div>
+                        @if (Model.UltimoMantenimiento != null)
                         {
-                            <img src="@moto.FotoUrl" alt="@moto.Marca @moto.Modelo" />
-                        }
-                    </div>
-                    <div class="hero-body">
-                        <div class="hero-title">
-                            @moto.Marca @moto.Modelo
-                            @if (moto.Cilindrada > 0)
-                            {
-                                <span class="hero-spec">@moto.Cilindrada cc</span>
-                            }
-                        </div>
-                        <div class="hero-meta">
-                            <span class="hero-badge-year">@moto.Ano</span>
-                        </div>
-
-                        <hr class="hero-divider" />
-
-                        <div class="hero-km">
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" style="vertical-align:middle;margin-right:6px">
-                                <circle cx="12" cy="12" r="10" stroke="#ff7a00" stroke-width="2"/>
-                                <circle cx="12" cy="12" r="3" stroke="#ff7a00" stroke-width="2"/>
-                                <path d="M12 2V5M12 19V22M2 12H5M19 12H22" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/>
-                            </svg>
-                            @moto.KilometrajeActual km
-                        </div>
-
-                        <hr class="hero-divider" />
-
-                        <div class="hero-stats">
-                            <div class="hero-stat-card">
-                                <div class="hero-stat-label">Ultimo servicio</div>
-                                @if (Model.UltimoMantenimiento != null)
-                                {
-                                    <div class="hero-stat-value">@Model.UltimoMantenimiento.Tipo</div>
-                                    <div class="hero-stat-date">@Model.UltimoMantenimiento.Fecha.ToString("dd MMM yyyy")</div>
-                                }
-                                else
-                                {
-                                    <div class="hero-stat-value hero-stat-value--none">Sin registro</div>
-                                }
-                            </div>
-                            @if (tieneUrgente)
-                            {
-                                <div class="hero-stat-card">
-                                    <div class="hero-stat-label">Proximo servicio</div>
-                                    <div class="hero-stat-value">@urgenteTipo</div>
-                                    @if (urgenteEstado == "VENCIDO")
-                                    {
-                                        <div class="hero-stat-date hero-stat-date--vencido">Vencido</div>
-                                    }
-                                    else
-                                    {
-                                        <div class="hero-stat-date hero-stat-date--proximo">@urgenteDetalle</div>
-                                    }
-                                </div>
-                            }
-                        </div>
-
-                        <hr class="hero-divider" />
-
-                        @{
-                            string HeroCircleClass(string est) => est switch {
-                                "VENCIDO" => "vencido",
-                                "PRÓXIMO" => "proximo",
-                                "AL DÍA" => "al-dia",
-                                _ => "sin-reg"
-                            };
-                        }
-                        <div class="hero-status-row">
-                            <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoAceite)" title="Aceite: @Model.EstadoAceite@(Model.AceiteEsEstimado ? " (estimado)" : "")">A</span>
-                            <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoCadena)" title="Cadena: @Model.EstadoCadena@(Model.CadenaEsEstimado ? " (estimado)" : "")">C</span>
-                            <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoBalatas)" title="Balatas: @Model.EstadoBalatas@(Model.BalatasEsEstimado ? " (estimado)" : "")">B</span>
-                            <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoLlantas)" title="Llantas: @Model.EstadoLlantas@(Model.LlantasEsEstimado ? " (estimado)" : "")">L</span>
-                            <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoFiltroAire)" title="Filtro de aire: @Model.EstadoFiltroAire@(Model.FiltroAireEsEstimado ? " (estimado)" : "")">F</span>
-                            <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoValvulas)" title="Valvulas: @Model.EstadoValvulas@(Model.ValvulasEsEstimado ? " (estimado)" : "")">V</span>
-                        </div>
-
-                        <div class="hero-actions">
-                            <a class="btn-action" asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Reg. KM</a>
-                            <a class="btn-action" asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Reg. Manto</a>
-                            <a class="btn-action" asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Historial</a>
-                            <a class="btn-action" asp-controller="Mantenimiento" asp-action="Gastos" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Gastos</a>
-                        </div>
-                    </div>
-                </div>
-            }
-            else
-            {
-                <div class="card hero-card hero-empty anim-hero">
-                    <div class="hero-img hero-img--empty">
-                        <svg width="64" height="64" viewBox="0 0 32 32">
-                            <path d="M6 26 L10 6 L16 16 L22 6 L26 26" stroke="#ff7a00" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
-                        </svg>
-                    </div>
-                    <div class="hero-body">
-                        <div class="hero-empty-title">No tienes motocicletas registradas</div>
-                        <div class="hero-empty-text">Agrega tu primera motocicleta para comenzar a usar MotoTrack.</div>
-                        <a class="btn-mototrack-primary" asp-controller="Motocicleta" asp-action="Crear">Agregar motocicleta</a>
-                    </div>
-                </div>
-            }
-
-        </div>
-    </div>
-
-    <div class="row mt-3">
-        <div class="col-12">
-            <div class="card card-section anim-section-1">
-
-
-
-                <div class="card-body">
-
-                    <h5 class="hud-section-title">Últimos Mantenimientos</h5>
-                    <div class="row text-center">
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Aceite</div>
-                                <div class="hud-value hud-value-sm">@Model.UltimoAceite</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Cadena</div>
-                                <div class="hud-value hud-value-sm">@Model.UltimaCadena</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Balatas</div>
-                                <div class="hud-value hud-value-sm">@Model.UltimasBalatas</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Llantas</div>
-                                <div class="hud-value hud-value-sm">@Model.UltimasLlantas</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Filtro Aire</div>
-                                <div class="hud-value hud-value-sm">@Model.UltimoFiltroAire</div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Válvulas</div>
-                                <div class="hud-value hud-value-sm">@Model.UltimasValvulas</div>
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-            <div class="row mt-3">
-                <div class="col-12">
-
-                    <div class="card card-section anim-section-2">
-
-                        <div class="card-body">
-
-                            <h5 class="hud-section-title">Estado General</h5>
-
-                            <div class="row text-center">
-
-                                <div class="col-md-2 mb-2">
-                                     <div class="hud-panel">
-                                         <div class="hud-label">Aceite @if(Model.AceiteEsEstimado){<span class="hud-sub" style="display:inline;margin:0">· est</span>}</div>
-                                         <span class="badge-estado @(Model.EstadoAceite == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoAceite == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoAceite == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoAceite</span>
-                                     </div>
-                                </div>
-
-                                <div class="col-md-2 mb-2">
-                                     <div class="hud-panel">
-                                         <div class="hud-label">Cadena @if(Model.CadenaEsEstimado){<span class="hud-sub" style="display:inline;margin:0">· est</span>}</div>
-                                         <span class="badge-estado @(Model.EstadoCadena == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoCadena == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoCadena == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoCadena</span>
-                                     </div>
-                                </div>
-
-                                <div class="col-md-2 mb-2">
-                                     <div class="hud-panel">
-                                         <div class="hud-label">Balatas @if(Model.BalatasEsEstimado){<span class="hud-sub" style="display:inline;margin:0">· est</span>}</div>
-                                         <span class="badge-estado @(Model.EstadoBalatas == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoBalatas == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoBalatas == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoBalatas</span>
-                                     </div>
-                                </div>
-
-                                <div class="col-md-2 mb-2">
-                                     <div class="hud-panel">
-                                         <div class="hud-label">Llantas @if(Model.LlantasEsEstimado){<span class="hud-sub" style="display:inline;margin:0">· est</span>}</div>
-                                         <span class="badge-estado @(Model.EstadoLlantas == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoLlantas == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoLlantas == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoLlantas</span>
-                                     </div>
-                                </div>
-
-                                <div class="col-md-2 mb-2">
-                                     <div class="hud-panel">
-                                         <div class="hud-label">Filtro Aire @if(Model.FiltroAireEsEstimado){<span class="hud-sub" style="display:inline;margin:0">· est</span>}</div>
-                                         <span class="badge-estado @(Model.EstadoFiltroAire == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoFiltroAire == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoFiltroAire == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoFiltroAire</span>
-                                     </div>
-                                </div>
-
-                                <div class="col-md-2 mb-2">
-                                     <div class="hud-panel">
-                                         <div class="hud-label">Válvulas @if(Model.ValvulasEsEstimado){<span class="hud-sub" style="display:inline;margin:0">· est</span>}</div>
-                                         <span class="badge-estado @(Model.EstadoValvulas == "AL DÍA" ? "badge-estado--al-dia" : Model.EstadoValvulas == "PRÓXIMO" ? "badge-estado--proximo" : Model.EstadoValvulas == "VENCIDO" ? "badge-estado--vencido" : "badge-estado--sin-registro")">@Model.EstadoValvulas</span>
-                                     </div>
-                                </div>
-
-                            </div>
-
-                        </div>
-
-                    </div>
-
-                </div>
-            </div>
-
-        </div>
-    </div>
-
-    <div class="row mt-3">
-        <div class="col-12">
-
-            <div class="card card-section anim-section-3">
-
-                <div class="card-body">
-
-                    <h5 class="hud-section-title">Próximos Servicios</h5>
-
-                    <div class="row text-center">
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Aceite</div>
-                                <div class="hud-value hud-value-sm">@Model.ProximoAceite</div>
-                                @if(Model.AceiteEsEstimado){<div class="hud-sub">estimado</div>}
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Cadena</div>
-                                <div class="hud-value hud-value-sm">@Model.ProximaCadena</div>
-                                @if(Model.CadenaEsEstimado){<div class="hud-sub">estimado</div>}
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Balatas</div>
-                                <div class="hud-value hud-value-sm">@Model.ProximasBalatas</div>
-                                @if(Model.BalatasEsEstimado){<div class="hud-sub">estimado</div>}
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Llantas</div>
-                                <div class="hud-value hud-value-sm">@Model.ProximasLlantas</div>
-                                @if(Model.LlantasEsEstimado){<div class="hud-sub">estimado</div>}
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Filtro Aire</div>
-                                <div class="hud-value hud-value-sm">@Model.ProximoFiltroAire</div>
-                                @if(Model.FiltroAireEsEstimado){<div class="hud-sub">estimado</div>}
-                            </div>
-                        </div>
-
-                        <div class="col-md-2 mb-2">
-                            <div class="hud-panel">
-                                <div class="hud-label">Válvulas</div>
-                                <div class="hud-value hud-value-sm">@Model.ProximasValvulas</div>
-                                @if(Model.ValvulasEsEstimado){<div class="hud-sub">estimado</div>}
-                            </div>
-                        </div>
-
-                    </div>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-
- <div class="row mt-4">
-        <div class="col-12">
-
-            <div class="card">
-
-                <div class="card-body">
-
-                    <h5 class="hud-section-title">
-                        Accesos Rápidos
-                    </h5>
-
-                    <div class="d-flex flex-wrap gap-2">
-
-                        <a asp-controller="Motocicleta"
-                           asp-action="Index"
-                           class="btn-action">
-                            Mis Motocicletas
-                        </a>
-
-                        <a asp-controller="Motocicleta"
-                           asp-action="Crear"
-                           class="btn-action">
-                            Agregar Motocicleta
-                        </a>
-
-                        @if (Model.PrimeraMotocicleta != null)
-                        {
-                            <a asp-controller="LecturaKilometraje"
-                               asp-action="Crear"
-                               asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId"
-                               class="btn-action">
-                                Registrar Kilometraje
-                            </a>
-
-                            <a asp-controller="Mantenimiento"
-                               asp-action="Crear"
-                               asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId"
-                               class="btn-action">
-                                Registrar Mantenimiento
-                            </a>
+                            <div class="hero-stat-value">@Model.UltimoMantenimiento.Tipo</div>
+                            <div class="hero-stat-date">@Model.UltimoMantenimiento.Fecha.ToString("dd MMM yyyy")</div>
                         }
                         else
                         {
-                            <button class="btn-action" disabled>
-                                Registrar Kilometraje
-                            </button>
-
-                            <button class="btn-action" disabled>
-                                Registrar Mantenimiento
-                            </button>
-
-                            <div class="w-100 mt-2 text-muted">
-                                No tienes motocicletas registradas. Agrega una motocicleta para comenzar a registrar kilometrajes y mantenimientos.
-                            </div>
+                            <div class="hero-stat-value hero-stat-value--none">Sin registro</div>
                         }
-
                     </div>
+                    @{
+                        var tieneUrgente = false;
+                        var urgenteTipo = "";
+                        var urgenteEstado = "";
+                        var urgenteDetalle = "";
 
+                        if (Model.EstadoAceite == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Aceite"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximoAceite; }
+                        else if (Model.EstadoCadena == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Cadena"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximaCadena; }
+                        else if (Model.EstadoBalatas == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Balatas"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasBalatas; }
+                        else if (Model.EstadoLlantas == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Llantas"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasLlantas; }
+                        else if (Model.EstadoFiltroAire == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Filtro de aire"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximoFiltroAire; }
+                        else if (Model.EstadoBujias == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Bujías"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasBujias; }
+                        else if (Model.EstadoValvulas == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Válvulas"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximasValvulas; }
+                        else if (Model.EstadoBateria == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Batería"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximaBateria; }
+                        else if (Model.EstadoSuspension == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Suspensión"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximaSuspension; }
+                        else if (Model.EstadoLiquidoFrenos == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Líquido de frenos"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximoLiquidoFrenos; }
+                        else if (Model.EstadoAnticongelante == "VENCIDO") { tieneUrgente = true; urgenteTipo = "Anticongelante"; urgenteEstado = "VENCIDO"; urgenteDetalle = Model.ProximoAnticongelante; }
+                        else if (Model.EstadoAceite == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Aceite"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximoAceite; }
+                        else if (Model.EstadoCadena == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Cadena"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximaCadena; }
+                        else if (Model.EstadoBalatas == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Balatas"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasBalatas; }
+                        else if (Model.EstadoLlantas == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Llantas"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasLlantas; }
+                        else if (Model.EstadoFiltroAire == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Filtro de aire"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximoFiltroAire; }
+                        else if (Model.EstadoBujias == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Bujías"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasBujias; }
+                        else if (Model.EstadoValvulas == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Válvulas"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximasValvulas; }
+                        else if (Model.EstadoBateria == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Batería"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximaBateria; }
+                        else if (Model.EstadoSuspension == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Suspensión"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximaSuspension; }
+                        else if (Model.EstadoLiquidoFrenos == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Líquido de frenos"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximoLiquidoFrenos; }
+                        else if (Model.EstadoAnticongelante == "PRÓXIMO") { tieneUrgente = true; urgenteTipo = "Anticongelante"; urgenteEstado = "PRÓXIMO"; urgenteDetalle = Model.ProximoAnticongelante; }
+                    }
+                    @if (tieneUrgente)
+                    {
+                        <div class="hero-stat-card">
+                            <div class="hero-stat-label">Proximo servicio</div>
+                            <div class="hero-stat-value">@urgenteTipo</div>
+                            @if (urgenteEstado == "VENCIDO")
+                            {
+                                <div class="hero-stat-date hero-stat-date--vencido">Vencido</div>
+                            }
+                            else
+                            {
+                                <div class="hero-stat-date hero-stat-date--proximo">@urgenteDetalle</div>
+                            }
+                        </div>
+                    }
                 </div>
 
+                <div class="hero-actions">
+                    <a class="btn-action" asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Reg. KM</a>
+                    <a class="btn-action" asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Reg. Manto</a>
+                    <a class="btn-action" asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Historial</a>
+                    <a class="btn-action" asp-controller="Mantenimiento" asp-action="Gastos" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId">Gastos</a>
+                    <a class="btn-action" asp-controller="Motocicleta" asp-action="Editar" asp-route-id="@Model.MotocicletaSeleccionadaId">Editar</a>
+                </div>
             </div>
 
+            <div class="hero-status-bar">
+                <div class="hero-status-label">Estado</div>
+                @{
+                    string HeroCircleClass(string est) => est switch {
+                        "VENCIDO" => "vencido",
+                        "PRÓXIMO" => "proximo",
+                        "AL DÍA" => "al-dia",
+                        _ => "sin-reg"
+                    };
+
+                    string BadgeClass(string est) => est switch {
+                        "VENCIDO" => "vencido",
+                        "PRÓXIMO" => "proximo",
+                        "AL DÍA" => "al-dia",
+                        _ => "sin-reg"
+                    };
+
+                    string TooltipMantenimiento(string nombre, string estado, string ultimo, string proximo, bool esEstimado) {
+                        var moto = Model.PrimeraMotocicleta;
+                        var lines = new List<string>();
+                        lines.Add(nombre);
+                        lines.Add($"Estado: {estado}{(esEstimado ? " (estimado)" : "")}");
+                        if (ultimo != "Sin registro") lines.Add($"Último: {ultimo}");
+                        if (proximo != "Sin registro") { lines.Add($"Próximo: {proximo}"); }
+                        if (proximo != "Sin registro" && moto != null) {
+                            var proxStr = proximo.Replace(" km", "");
+                            if (int.TryParse(proxStr, out var proxKm)) {
+                                var restan = proxKm - moto.KilometrajeActual;
+                                lines.Add(estado == "VENCIDO"
+                                    ? $"Excedido: {Math.Abs(restan)} km"
+                                    : $"Restan: {Math.Max(0, restan)} km");
+                            }
+                        }
+                        lines.Add(estado switch {
+                            "VENCIDO" => "Realizar mantenimiento lo antes posible.",
+                            "PRÓXIMO" => "Programar mantenimiento próximamente.",
+                            "AL DÍA" => "Dentro del intervalo recomendado.",
+                            _ => ""
+                        });
+                        return string.Join("\n", lines.Where(l => !string.IsNullOrEmpty(l)));
+                    }
+                }
+                <div class="hero-status-items">
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoAceite)" title="@TooltipMantenimiento("Aceite", Model.EstadoAceite, Model.UltimoAceite, Model.ProximoAceite, Model.AceiteEsEstimado)">A</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoCadena)" title="@TooltipMantenimiento("Cadena", Model.EstadoCadena, Model.UltimaCadena, Model.ProximaCadena, Model.CadenaEsEstimado)">C</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoBalatas)" title="@TooltipMantenimiento("Balatas", Model.EstadoBalatas, Model.UltimasBalatas, Model.ProximasBalatas, Model.BalatasEsEstimado)">B</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoLlantas)" title="@TooltipMantenimiento("Llantas", Model.EstadoLlantas, Model.UltimasLlantas, Model.ProximasLlantas, Model.LlantasEsEstimado)">L</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoFiltroAire)" title="@TooltipMantenimiento("Filtro de aire", Model.EstadoFiltroAire, Model.UltimoFiltroAire, Model.ProximoFiltroAire, Model.FiltroAireEsEstimado)">F</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoBujias) hero-estado-item--sm" title="@TooltipMantenimiento("Bujías", Model.EstadoBujias, Model.UltimasBujias, Model.ProximasBujias, Model.BujiasEsEstimado)">BU</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoValvulas)" title="@TooltipMantenimiento("Válvulas", Model.EstadoValvulas, Model.UltimasValvulas, Model.ProximasValvulas, Model.ValvulasEsEstimado)">V</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoBateria) hero-estado-item--sm" title="@TooltipMantenimiento("Batería", Model.EstadoBateria, Model.UltimaBateria, Model.ProximaBateria, Model.BateriaEsEstimado)">BA</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoSuspension)" title="@TooltipMantenimiento("Suspensión", Model.EstadoSuspension, Model.UltimaSuspension, Model.ProximaSuspension, Model.SuspensionEsEstimado)">S</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoLiquidoFrenos) hero-estado-item--sm" title="@TooltipMantenimiento("Líquido de frenos", Model.EstadoLiquidoFrenos, Model.UltimoLiquidoFrenos, Model.ProximoLiquidoFrenos, Model.LiquidoFrenosEsEstimado)">LF</span>
+                    <span class="hero-estado-item hero-estado-item--@HeroCircleClass(Model.EstadoAnticongelante) hero-estado-item--sm" title="@TooltipMantenimiento("Anticongelante", Model.EstadoAnticongelante, Model.UltimoAnticongelante, Model.ProximoAnticongelante, Model.AnticongelanteEsEstimado)">AN</span>
+                </div>
+            </div>
         </div>
-    </div>
+
+        <div class="dash-stats-row">
+            <div class="dash-stat-item">
+                <div class="dash-stat-number">@Model.TotalMotocicletas</div>
+                <div class="dash-stat-label">Total Motocicletas</div>
+            </div>
+            <div class="dash-stat-item">
+                <div class="dash-stat-number">@Model.KilometrajeStatus</div>
+                <div class="dash-stat-label">Kilometraje</div>
+                <div style="font-size:0.7rem;color:#999;margin-top:2px">@Model.PrimeraMotocicleta.Marca @Model.PrimeraMotocicleta.Modelo</div>
+            </div>
+            <div class="dash-stat-item">
+                <div class="dash-stat-number" style="font-size:1rem">
+                    @(Model.UltimoMantenimiento?.Tipo ?? "Ninguno")
+                </div>
+                <div class="dash-stat-label">Último Mantenimiento</div>
+                <div style="font-size:0.7rem;color:#999;margin-top:2px">
+                    @(Model.UltimoMantenimiento?.Fecha.ToString("dd/MM/yyyy") ?? "Sin registro")
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-section">
+            <div class="card-body" style="padding: 14px 16px">
+                <h5 class="hud-section-title">Últimos Mantenimientos</h5>
+                <div class="hud-list">
+                    <div class="hud-list-item"><span class="hud-list-label">Aceite</span><span class="hud-list-value">@Model.UltimoAceite</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoAceite)">@Model.EstadoAceite</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Cadena</span><span class="hud-list-value">@Model.UltimaCadena</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoCadena)">@Model.EstadoCadena</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Balatas</span><span class="hud-list-value">@Model.UltimasBalatas</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoBalatas)">@Model.EstadoBalatas</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Llantas</span><span class="hud-list-value">@Model.UltimasLlantas</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoLlantas)">@Model.EstadoLlantas</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Filtro</span><span class="hud-list-value">@Model.UltimoFiltroAire</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoFiltroAire)">@Model.EstadoFiltroAire</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Válvulas</span><span class="hud-list-value">@Model.UltimasValvulas</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoValvulas)">@Model.EstadoValvulas</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Bujías</span><span class="hud-list-value">@Model.UltimasBujias</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoBujias)">@Model.EstadoBujias</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Batería</span><span class="hud-list-value">@Model.UltimaBateria</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoBateria)">@Model.EstadoBateria</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Suspensión</span><span class="hud-list-value">@Model.UltimaSuspension</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoSuspension)">@Model.EstadoSuspension</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Líquido</span><span class="hud-list-value">@Model.UltimoLiquidoFrenos</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoLiquidoFrenos)">@Model.EstadoLiquidoFrenos</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Anticong.</span><span class="hud-list-value">@Model.UltimoAnticongelante</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoAnticongelante)">@Model.EstadoAnticongelante</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-section" style="margin-top:12px">
+            <div class="card-body" style="padding: 14px 16px">
+                <h5 class="hud-section-title">Próximos Servicios</h5>
+                <div class="hud-list">
+                    <div class="hud-list-item"><span class="hud-list-label">Aceite</span><span class="hud-list-value">@Model.ProximoAceite</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoAceite)">@Model.EstadoAceite @if(Model.AceiteEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Cadena</span><span class="hud-list-value">@Model.ProximaCadena</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoCadena)">@Model.EstadoCadena @if(Model.CadenaEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Balatas</span><span class="hud-list-value">@Model.ProximasBalatas</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoBalatas)">@Model.EstadoBalatas @if(Model.BalatasEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Llantas</span><span class="hud-list-value">@Model.ProximasLlantas</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoLlantas)">@Model.EstadoLlantas @if(Model.LlantasEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Filtro</span><span class="hud-list-value">@Model.ProximoFiltroAire</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoFiltroAire)">@Model.EstadoFiltroAire @if(Model.FiltroAireEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Válvulas</span><span class="hud-list-value">@Model.ProximasValvulas</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoValvulas)">@Model.EstadoValvulas @if(Model.ValvulasEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Bujías</span><span class="hud-list-value">@Model.ProximasBujias</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoBujias)">@Model.EstadoBujias @if(Model.BujiasEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Batería</span><span class="hud-list-value">@Model.ProximaBateria</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoBateria)">@Model.EstadoBateria @if(Model.BateriaEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Suspensión</span><span class="hud-list-value">@Model.ProximaSuspension</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoSuspension)">@Model.EstadoSuspension @if(Model.SuspensionEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Líquido</span><span class="hud-list-value">@Model.ProximoLiquidoFrenos</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoLiquidoFrenos)">@Model.EstadoLiquidoFrenos @if(Model.LiquidoFrenosEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                    <div class="hud-list-item"><span class="hud-list-label">Anticong.</span><span class="hud-list-value">@Model.ProximoAnticongelante</span><span class="hud-list-badge hud-badge--@BadgeClass(Model.EstadoAnticongelante)">@Model.EstadoAnticongelante @if(Model.AnticongelanteEsEstimado){<span class="hud-est-badge">estimado</span>}</span></div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card card-section">
+            <div class="card-body" style="padding: 14px 16px">
+                <h5 class="hud-section-title">Accesos Rápidos</h5>
+                <div class="dash-actions">
+                    <a asp-controller="Motocicleta" asp-action="Index" class="btn-action">Mis Motocicletas</a>
+                    <a asp-controller="Motocicleta" asp-action="Crear" class="btn-action">Agregar Motocicleta</a>
+                    <a asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId" class="btn-action">Registrar Kilometraje</a>
+                    <a asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId" class="btn-action">Registrar Mantenimiento</a>
+                    <a asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId" class="btn-action">Historial</a>
+                    <a asp-controller="Mantenimiento" asp-action="Gastos" asp-route-motocicletaId="@Model.MotocicletaSeleccionadaId" class="btn-action">Gastos</a>
+                </div>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="card hero-card hero-empty anim-hero">
+            <div class="hero-img hero-img--empty">
+                <svg width="64" height="64" viewBox="0 0 32 32">
+                    <path d="M6 26 L10 6 L16 16 L22 6 L26 26" stroke="#ff7a00" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <div class="hero-body">
+                <div class="hero-empty-title">No tienes motocicletas registradas</div>
+                <div class="hero-empty-text">Agrega tu primera motocicleta para comenzar a usar MotoTrack.</div>
+                <a class="btn-mototrack-primary" asp-controller="Motocicleta" asp-action="Crear">Agregar motocicleta</a>
+            </div>
+        </div>
+    }
 
 </div>

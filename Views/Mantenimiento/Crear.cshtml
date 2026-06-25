@@ -22,7 +22,12 @@
                     <option value="Balatas">Balatas</option>
                     <option value="Llantas">Llantas</option>
                     <option value="Filtro de aire">Filtro de aire</option>
+                    <option value="Bujías">Bujías</option>
                     <option value="Válvulas">Válvulas</option>
+                    <option value="Batería">Batería</option>
+                    <option value="Suspensión">Suspensión</option>
+                    <option value="Líquido de frenos">Líquido de frenos</option>
+                    <option value="Anticongelante">Anticongelante</option>
                     <option value="Revisión general">Revisión general</option>
                     <option value="Otro">Otro</option>
                 </select>
@@ -42,13 +47,13 @@
             </div>
 
             <div class="form-group">
-                <label asp-for="Costo"></label>
+                <label asp-for="Costo">Costo (opcional)</label>
                 <input asp-for="Costo" type="number" step="0.01" />
                 <span asp-validation-for="Costo" class="error"></span>
             </div>
 
             <div class="form-group">
-                <label asp-for="Taller"></label>
+                <label asp-for="Taller">Proveedor / Taller (opcional)</label>
                 <input asp-for="Taller" />
                 <span asp-validation-for="Taller" class="error"></span>
             </div>

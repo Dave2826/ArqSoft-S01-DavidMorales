@@ -18,7 +18,7 @@
 <div class="card gastos-hero">
     <div class="card-body text-center">
         <div class="gastos-hero-value">
-            @("$" + ((decimal)ViewData["TotalGastado"]).ToString("N0"))
+            @("$" + ((decimal?)(ViewData["TotalGastado"]) ?? 0m).ToString("N0"))
         </div>
         <div class="gastos-hero-label">Total invertido en mantenimientos</div>
     </div>
@@ -27,27 +27,62 @@
 <div class="gastos-grid">
     <div class="gastos-card gastos-card--aceite">
         <div class="gastos-card-label">Aceite</div>
-        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Aceite"]).ToString("N0"))</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Aceite"]) ?? 0m).ToString("N0"))</div>
     </div>
 
     <div class="gastos-card gastos-card--cadena">
         <div class="gastos-card-label">Cadena</div>
-        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Cadena"]).ToString("N0"))</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Cadena"]) ?? 0m).ToString("N0"))</div>
     </div>
 
     <div class="gastos-card gastos-card--balatas">
         <div class="gastos-card-label">Balatas</div>
-        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Balatas"]).ToString("N0"))</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Balatas"]) ?? 0m).ToString("N0"))</div>
     </div>
 
     <div class="gastos-card gastos-card--llantas">
         <div class="gastos-card-label">Llantas</div>
-        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Llantas"]).ToString("N0"))</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Llantas"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--filtro">
+        <div class="gastos-card-label">Filtro de aire</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["FiltroAire"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--bujias">
+        <div class="gastos-card-label">Bujías</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Bujias"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--valvulas">
+        <div class="gastos-card-label">Válvulas</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Valvulas"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--bateria">
+        <div class="gastos-card-label">Batería</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Bateria"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--suspension">
+        <div class="gastos-card-label">Suspensión</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Suspension"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--liquido">
+        <div class="gastos-card-label">Líquido de frenos</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["LiquidoFrenos"]) ?? 0m).ToString("N0"))</div>
+    </div>
+
+    <div class="gastos-card gastos-card--anticongelante">
+        <div class="gastos-card-label">Anticongelante</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Anticongelante"]) ?? 0m).ToString("N0"))</div>
     </div>
 
     <div class="gastos-card gastos-card--otros">
         <div class="gastos-card-label">Otros</div>
-        <div class="gastos-card-value">@("$" + ((decimal)ViewData["Otros"]).ToString("N0"))</div>
+        <div class="gastos-card-value">@("$" + ((decimal?)(ViewData["Otros"]) ?? 0m).ToString("N0"))</div>
     </div>
 </div>
 

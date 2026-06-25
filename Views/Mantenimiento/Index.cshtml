@@ -8,7 +8,12 @@
         "Balatas" => "balatas",
         "Llantas" => "llantas",
         "Filtro de aire" => "filtro",
+        "Bujías" => "bujias",
         "Válvulas" => "valvulas",
+        "Batería" => "bateria",
+        "Suspensión" => "suspension",
+        "Líquido de frenos" => "liquido",
+        "Anticongelante" => "anticongelante",
         _ => "otro"
     };
 }
@@ -54,11 +59,7 @@
                         <span class="timeline-type timeline-type--@tipoCls">@item.Tipo</span>
                         @if (item.Costo > 0)
                         {
-                            <span class="timeline-cost">@("$" + item.Costo.ToString("N0"))</span>
-                        }
-                        else
-                        {
-                            <span class="timeline-cost timeline-cost--none">Costo no registrado</span>
+                            <span class="timeline-cost">@("$" + item.Costo?.ToString("N0"))</span>
                         }
                         @if (!string.IsNullOrEmpty(item.Taller))
                         {
@@ -74,10 +75,6 @@
                     @if (!string.IsNullOrEmpty(item.Descripcion))
                     {
                         <div class="timeline-desc">@item.Descripcion</div>
-                    }
-                    else
-                    {
-                        <div class="timeline-desc timeline-desc--empty">Sin descripcion</div>
                     }
                 </div>
             </div>
