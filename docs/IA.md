@@ -65,6 +65,34 @@ La decisión final sobre la arquitectura, los endpoints expuestos y la documenta
 
 ---
 
+# Actividad #28 — Patrones GOF
+
+## IA utilizada
+
+ChatGPT (OpenAI)
+
+## Propósito
+
+Apoyar en el análisis de patrones GOF aplicables a problemas reales del proyecto MotoTrack, evaluando alternativas como Factory Method + Decorator frente a Strategy + Decorator, así como en la revisión de consistencia arquitectónica y validación de riesgos antes de la implementación.
+
+## Prompt utilizado
+
+Identifica los problemas actuales de MotoTrack relacionados con el umbral de kilometraje hardcodeado en el cálculo de estado de mantenimiento y la falta de trazabilidad en las operaciones del repositorio de motocicletas. Evalúa qué patrones GOF de categorías distintas (behavioral y structural) podrían aplicarse para resolver estos problemas sin modificar la arquitectura por capas existente ni los modelos de dominio.
+
+## Archivos utilizados
+
+* CalculadorEstadoMantenimiento.cs
+* MotocicletaRepository.cs
+* IMotocicletaRepository.cs
+* docs/adr/ADR-05-Patrones-GOF.md
+* Repositorio MotoTrack
+
+## Resultado
+
+La IA fue utilizada como apoyo para evaluar patrones candidatos, comparar alternativas de implementación y validar la consistencia arquitectónica de la solución propuesta. La decisión final de adoptar Strategy + Decorator, la implementación concreta de cada patrón y las pruebas fueron realizadas por el autor del proyecto.
+
+---
+
 ## Consideraciones
 
 La inteligencia artificial fue utilizada como herramienta de apoyo para:

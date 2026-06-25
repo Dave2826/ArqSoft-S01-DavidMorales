@@ -238,3 +238,7 @@ flowchart TD
     style REP fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
     style JSON fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
 ```
+
+---
+
+> **Nota:** Esta decisión arquitectónica fue posteriormente extendida mediante [ADR-05](ADR-05-Patrones-GOF.md), incorporando los patrones GOF Strategy (Behavioral) y Decorator (Structural) sin modificar el estilo arquitectónico principal basado en capas.

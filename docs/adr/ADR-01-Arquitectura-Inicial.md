@@ -3,7 +3,7 @@
 | Campo  | Valor                  |
 | ------ | ---------------------- |
 | Autor  | David Morales Guerrero |
-| Fecha  | 15/05/2026             |
+| Fecha  | 2026-05-15             |
 | Estado | Aceptado               |
 
 ---

@@ -23,16 +23,18 @@ Actualmente MotoTrack permite:
 * Gestión de gastos.
 * API REST.
 * Swagger/OpenAPI.
+* Strategy para cálculo de estado de mantenimiento.
+* Decorator para trazabilidad de operaciones sobre motocicletas.
 
 ---
 
 ## Capturas del sistema
 
-### Pantalla principal
+### Dashboard con alertas
 
-La página principal permite acceder al sistema y presenta una visión general del propósito de MotoTrack.
+Panel principal que muestra el estado de mantenimiento de cada motocicleta y las alertas de servicios vencidos o próximos.
 
-![Pantalla principal](screenshots/inicio.png)
+<!-- Dashboard con alertas visibles — captura pendiente -->
 
 ---
 
@@ -44,19 +46,27 @@ Sección donde cada usuario puede visualizar las motocicletas registradas en su 
 
 ---
 
-### Edición de motocicletas
-
-Formulario utilizado para actualizar la información de una motocicleta previamente registrada.
-
-![Editar motocicleta](screenshots/editar-motocicleta.png)
-
----
-
 ### Historial de mantenimientos
 
 Vista que permite consultar los mantenimientos registrados para una motocicleta específica.
 
 ![Historial de mantenimientos](screenshots/historial-mantenimientos.png)
+
+---
+
+### Swagger UI
+
+Interfaz de documentación interactiva de la API REST de MotoTrack.
+
+![Swagger UI](screenshots/actividad24-swagger-home.png)
+
+---
+
+### GET /api/motocicletas
+
+Ejecución del endpoint que lista todas las motocicletas registradas en el sistema, mostrando la respuesta JSON.
+
+![GET /api/motocicletas](screenshots/actividad24-get-motocicletas.png)
 
 ---
 
@@ -106,6 +116,7 @@ Actualmente estas capas se encuentran implementadas en proyectos separados dentr
 | ADR-02 | Vistas Arquitectónicas | Documentación mediante modelo 4+1 |
 | ADR-03 | Estilo Arquitectónico | Formalización de arquitectura por capas |
 | ADR-04 | API REST | Exposición de endpoints REST documentados con Swagger |
+| ADR-05 | Patrones GOF | Incorporación de Strategy + Decorator para estado de mantenimiento y trazabilidad |
 
 ---
 
@@ -117,6 +128,7 @@ Las decisiones arquitectónicas del proyecto se encuentran documentadas en:
 - docs/adr/ADR-02-Vistas-Arquitectonicas.md
 - docs/adr/ADR-03-Estilo-Arquitectonico.md
 - docs/adr/ADR-04-Incorporacion-API-REST.md
+- docs/adr/ADR-05-Patrones-GOF.md
 
 El uso de herramientas de inteligencia artificial se documenta en:
 
@@ -144,9 +156,7 @@ Swagger UI:
 
 ## Estado Actual
 
-MotoTrack cuenta con una arquitectura por capas documentada mediante ADRs, persistencia basada en archivos JSON y una API REST documentada con Swagger.
-
-El proyecto continúa evolucionando mediante entregas incrementales y decisiones arquitectónicas registradas formalmente.
+MotoTrack cuenta con una arquitectura por capas documentada mediante ADRs, persistencia basada en archivos JSON, una API REST documentada con Swagger y la incorporación de los patrones GOF Strategy y Decorator. El proyecto evoluciona de forma incremental mediante decisiones arquitectónicas registradas formalmente.
 
 ---
 

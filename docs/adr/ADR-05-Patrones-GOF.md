@@ -24,6 +24,8 @@ Adicionalmente, las operaciones del repositorio de motocicletas (`MotocicletaRep
 
 La Actividad #28 requiere incorporar dos patrones GOF de categorías distintas que resuelvan problemas reales del proyecto sin modificar la arquitectura existente.
 
+El proyecto ha evolucionado de forma incremental: ADR-01 definió la arquitectura inicial por capas, ADR-03 formalizó dicho estilo arquitectónico y ADR-04 incorporó la API REST con Swagger. El presente ADR complementa estas decisiones incorporando patrones GOF que resuelven problemas específicos sin alterar la estructura base del sistema.
+
 ---
 
 ## Decisión
