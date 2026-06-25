@@ -2,45 +2,42 @@
 
 ## Descripción
 
-MotoTrack es una aplicación web desarrollada en ASP.NET Core MVC para ayudar a los motociclistas a llevar el control de sus motocicletas, registrar mantenimientos y dar seguimiento al kilometraje de cada unidad.
+MotoTrack es una aplicación web desarrollada en ASP.NET Core MVC que permite a los motociclistas administrar sus motocicletas, registrar mantenimientos, controlar el kilometraje, visualizar alertas inteligentes de servicio, consultar el historial completo y utilizar una API REST documentada con Swagger.
 
-El proyecto fue desarrollado como parte de la materia de Arquitectura de Software y se encuentra en evolución continua mediante entregas incrementales y mejoras por sprint.
+El proyecto fue desarrollado como parte de la materia de Arquitectura de Software y evoluciona mediante entregas incrementales.
 
 ---
 
-## Funcionalidades actuales
+## Características principales
 
-Actualmente MotoTrack permite:
-
-* Registro e inicio de sesión.
-* Gestión de motocicletas (registro, edición, eliminación).
-* Historial de mantenimientos.
-* Registro de kilometraje.
-* Dashboard principal.
-* Perfil de usuario.
-* Centro de alertas.
-* Explorador de motocicletas.
-* Gestión de gastos.
-* API REST.
-* Swagger/OpenAPI.
-* Strategy para cálculo de estado de mantenimiento.
-* Decorator para trazabilidad de operaciones sobre motocicletas.
+- Registro e inicio de sesión.
+- Gestión de motocicletas.
+- Historial de mantenimientos.
+- Registro de kilometraje.
+- Dashboard inteligente.
+- Alertas de mantenimiento.
+- Perfil de usuario.
+- Gestión de gastos.
+- API REST.
+- Swagger/OpenAPI.
+- Strategy para cálculo del estado de mantenimiento.
+- Decorator para trazabilidad del repositorio.
 
 ---
 
 ## Capturas del sistema
 
-### Dashboard con alertas
+### Dashboard principal
 
-Panel principal que muestra el estado de mantenimiento de cada motocicleta y las alertas de servicios vencidos o próximos.
+Panel principal de MotoTrack donde el usuario puede consultar el estado general de mantenimiento de la motocicleta seleccionada, visualizar alertas activas y conocer los últimos y próximos servicios recomendados.
 
-<!-- Dashboard con alertas visibles — captura pendiente -->
+![Dashboard principal](screenshots/dashboard-principal.png)
 
 ---
 
 ### Mis motocicletas
 
-Sección donde cada usuario puede visualizar las motocicletas registradas en su cuenta y acceder a las principales acciones del sistema.
+Vista que permite administrar todas las motocicletas registradas, consultar su estado general y acceder rápidamente al historial, gastos, registro de kilometraje y mantenimientos.
 
 ![Mis motocicletas](screenshots/mis-motocicletas.png)
 
@@ -48,7 +45,7 @@ Sección donde cada usuario puede visualizar las motocicletas registradas en su 
 
 ### Historial de mantenimientos
 
-Vista que permite consultar los mantenimientos registrados para una motocicleta específica.
+Línea de tiempo con el historial completo de servicios realizados, incluyendo fecha, kilometraje, categoría, proveedor y observaciones cuando existen.
 
 ![Historial de mantenimientos](screenshots/historial-mantenimientos.png)
 
@@ -56,43 +53,17 @@ Vista que permite consultar los mantenimientos registrados para una motocicleta 
 
 ### Swagger UI
 
-Interfaz de documentación interactiva de la API REST de MotoTrack.
+Documentación interactiva de la API REST que permite explorar y probar todos los endpoints disponibles.
 
-![Swagger UI](screenshots/actividad24-swagger-home.png)
-
----
-
-### GET /api/motocicletas
-
-Ejecución del endpoint que lista todas las motocicletas registradas en el sistema, mostrando la respuesta JSON.
-
-![GET /api/motocicletas](screenshots/actividad24-get-motocicletas.png)
+![Swagger UI](screenshots/swagger-ui.png)
 
 ---
 
-## Arquitectura del proyecto
+### Consulta mediante API REST
 
-El sistema está organizado utilizando una arquitectura por capas para separar responsabilidades y facilitar el mantenimiento del código.
+Resultado de la ejecución del endpoint GET /api/motocicletas mostrando la respuesta JSON generada por MotoTrack.
 
-### Estructura principal
-
-* **Capa Web**
-
-  Contiene los controladores, vistas y configuración principal de la aplicación.
-
-* **Capa de Aplicación**
-
-  Contiene los servicios responsables de la lógica de negocio.
-
-* **Capa de Dominio**
-
-  Contiene los modelos e interfaces principales del sistema.
-
-* **Capa de Infraestructura**
-
-  Contiene los repositorios y mecanismos de persistencia de datos.
-
-Actualmente estas capas se encuentran implementadas en proyectos separados dentro de la solución.
+![Consulta mediante API REST](screenshots/swagger-get-motocicletas.png)
 
 ---
 
@@ -103,8 +74,50 @@ Actualmente estas capas se encuentran implementadas en proyectos separados dentr
 * Razor Views
 * Bootstrap
 * JSON para persistencia local
+* Swagger / OpenAPI
 * Git
 * GitHub
+
+---
+
+## Arquitectura implementada
+
+MotoTrack implementa una Arquitectura por Capas compuesta por las siguientes capas:
+
+- Presentación
+- Aplicación
+- Dominio
+- Infraestructura
+
+La evolución arquitectónica del proyecto está documentada mediante ADR (Architecture Decision Records).
+
+---
+
+## Patrones de diseño implementados
+
+### Strategy
+
+Permite determinar dinámicamente el estado de mantenimiento de cada componente de la motocicleta utilizando distintas estrategias de cálculo según el criterio seleccionado.
+
+### Decorator
+
+Añade trazabilidad sobre el repositorio de motocicletas sin modificar su implementación original, registrando cada operación realizada.
+
+---
+
+## API REST
+
+MotoTrack incorpora una API REST documentada mediante Swagger.
+
+La documentación interactiva se encuentra disponible en /swagger.
+
+Endpoints disponibles:
+
+- GET /api/motocicletas
+- GET /api/motocicletas/{id}
+- POST /api/motocicletas
+- PUT /api/motocicletas/{id}
+- DELETE /api/motocicletas/{id}
 
 ---
 
@@ -136,27 +149,9 @@ El uso de herramientas de inteligencia artificial se documenta en:
 
 ---
 
-## API REST
-
-MotoTrack incorpora una API REST documentada mediante Swagger.
-
-Endpoints disponibles:
-
-- GET /api/motocicletas
-- GET /api/motocicletas/{id}
-- POST /api/motocicletas
-- PUT /api/motocicletas/{id}
-- DELETE /api/motocicletas/{id}
-
-Swagger UI:
-
-/swagger
-
----
-
 ## Estado Actual
 
-MotoTrack cuenta con una arquitectura por capas documentada mediante ADRs, persistencia basada en archivos JSON, una API REST documentada con Swagger y la incorporación de los patrones GOF Strategy y Decorator. El proyecto evoluciona de forma incremental mediante decisiones arquitectónicas registradas formalmente.
+MotoTrack actualmente cuenta con arquitectura por capas documentada, API REST, Swagger, persistencia JSON, Strategy y Decorator. El proyecto continúa evolucionando mediante mejoras incrementales.
 
 ---
 
@@ -172,6 +167,4 @@ Materia: Arquitectura de Software
 
 ## Uso de Inteligencia Artificial
 
-Se utilizó ChatGPT como herramienta de apoyo para resolver problemas específicos de implementación, analizar errores durante el desarrollo, revisar decisiones arquitectónicas y apoyar la elaboración de documentación técnica del proyecto.
-
-Las decisiones finales de diseño, implementación, pruebas y validación fueron realizadas y verificadas por el autor.
+Se utilizó ChatGPT como herramienta de apoyo para investigación, resolución de problemas y documentación. Las decisiones finales fueron tomadas y verificadas por el autor.
