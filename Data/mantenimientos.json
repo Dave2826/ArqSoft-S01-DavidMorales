@@ -1,292 +1,562 @@
 [
   {
-    "Id": "7866fe7b-d9a0-42fe-9269-b0ae100c0ae4",
-    "MotocicletaId": "3733a767-fda4-46eb-bfab-3cc0fba2217d",
-    "Fecha": "2026-06-04T00:00:00",
-    "KilometrajeServicio": 83500,
-    "Tipo": "Revisi\u00F3n general",
-    "Costo": 5000,
-    "Descripcion": "cambio de foco",
-    "Taller": "dk"
+    "Id": "0541e7e8-96f5-4642-96e1-05f533a7ac9f",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2026-06-24T14:28:10.1122657-06:00",
+    "KilometrajeServicio": 86600,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
   },
   {
-    "Id": "e69ce0ec-c4aa-4c6d-b307-af6bfa908ba2",
-    "MotocicletaId": "27ae3629-06d2-4501-98f2-3ce2d0dfadc3",
-    "Fecha": "2026-06-01T00:00:00",
-    "KilometrajeServicio": 501,
+    "Id": "4014273e-a7a0-41ae-825e-f639fe25c590",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2026-06-24T14:28:10.1258117-06:00",
+    "KilometrajeServicio": 70000,
     "Tipo": "Cadena",
-    "Costo": 1000,
-    "Descripcion": "s",
-    "Taller": "da"
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
   },
   {
-    "Id": "a556fc50-da78-4e6e-bfd2-97a371f3032d",
-    "MotocicletaId": "d445d83e-ccfb-4ca0-a1f4-5917908e0fa8",
-    "Fecha": "2026-06-06T00:00:00",
-    "KilometrajeServicio": 102,
-    "Tipo": "Otro",
-    "Costo": 200,
-    "Descripcion": "25",
-    "Taller": "s2"
+    "Id": "a7db28f5-6399-4059-a387-ab5c31d03e3e",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2026-06-24T14:28:10.1392232-06:00",
+    "KilometrajeServicio": 74000,
+    "Tipo": "Balatas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
   },
   {
-    "Id": "34e941d1-bb02-4ef4-89d3-5a9061093b55",
-    "MotocicletaId": "2bd69739-fc2d-43bd-b68e-23eb6bde7841",
-    "Fecha": "2026-06-06T00:00:00",
-    "KilometrajeServicio": 800000,
-    "Tipo": "Cambio de aceite",
-    "Costo": 52,
-    "Descripcion": "1\r\n",
-    "Taller": "2"
-  },
-  {
-    "Id": "97a4a6f4-635c-4145-8f69-c581871d87a9",
-    "MotocicletaId": "a6c0d233-9ef6-43ce-8a36-10ee86cdf173",
-    "Fecha": "2026-06-06T00:00:00",
-    "KilometrajeServicio": 3,
-    "Tipo": "Cambio de aceite",
-    "Costo": 52,
-    "Descripcion": "a23",
-    "Taller": "a23"
-  },
-  {
-    "Id": "84b482b8-8571-4bfb-9f22-2da191a089f3",
-    "MotocicletaId": "ba0fbee6-8cb5-4649-9879-e38ea7aadb8b",
-    "Fecha": "2026-06-12T00:00:00",
-    "KilometrajeServicio": 30,
-    "Tipo": "Cambio de aceite",
-    "Costo": 500,
-    "Descripcion": "ds",
-    "Taller": "dh"
-  },
-  {
-    "Id": "8e2530ee-406f-4658-bdf6-616ab32d16c9",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 505,
-    "Tipo": "Revisi\u00F3n general",
-    "Costo": 1000,
-    "Descripcion": "ss",
-    "Taller": "dsd"
-  },
-  {
-    "Id": "b34bdb32-09af-40db-ad6d-e1c5ea7577a4",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 2001,
-    "Tipo": "Cambio de aceite",
-    "Costo": 300,
-    "Descripcion": "s",
-    "Taller": "s"
-  },
-  {
-    "Id": "c7b896c9-8d03-4b02-9a0c-9e19d56bd54e",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 505,
-    "Tipo": "Cambio de aceite",
-    "Costo": 500,
-    "Descripcion": "d",
-    "Taller": "d"
-  },
-  {
-    "Id": "7ea0305a-ac7d-4342-9be7-e7db3c8e18ae",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 2005,
+    "Id": "4e34e182-908a-4eef-adc4-f053c97cba27",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2026-06-24T14:28:10.1503405-06:00",
+    "KilometrajeServicio": 62000,
     "Tipo": "Llantas",
-    "Costo": 100,
-    "Descripcion": "2",
-    "Taller": "2"
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
   },
   {
-    "Id": "07309f49-dc2d-44dd-bd82-de775159b105",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 100,
-    "Tipo": "Balatas",
-    "Costo": 2500,
-    "Descripcion": "22",
-    "Taller": "22"
-  },
-  {
-    "Id": "be0aa081-ff5c-452b-bac3-ff6b3b9e1f31",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 1000,
-    "Tipo": "Cambio de aceite",
-    "Costo": 25000,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "91499a11-99b5-4b0c-b46d-23501f56fbc5",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 1505,
-    "Tipo": "Cambio de aceite",
-    "Costo": 500,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "1efd7131-46cf-4c17-b02b-1c822ac4c523",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 1505,
-    "Tipo": "Balatas",
-    "Costo": 500,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "369591e1-4400-4a5c-b1d2-d47627247811",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 1510,
-    "Tipo": "Cadena",
-    "Costo": 5,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "a8b6c195-0252-4d51-89e2-982ce93c46e3",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 2010,
-    "Tipo": "Cadena",
-    "Costo": 555,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "07523138-e6f5-4b8c-9425-acf9f0ba1a56",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 1511,
-    "Tipo": "Balatas",
-    "Costo": 550,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "b0cbc889-ebd9-4e8e-a86e-9a77ece9d897",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 2011,
-    "Tipo": "Balatas",
-    "Costo": 123,
-    "Descripcion": "2",
-    "Taller": "2"
-  },
-  {
-    "Id": "79b33608-22a0-42f3-a24b-2833edb80f5a",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 3000,
-    "Tipo": "Cambio de aceite",
-    "Costo": 2500,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "d1ac832f-6fa6-4efb-83ed-3d7a183b73cb",
-    "MotocicletaId": "2bd6c1b0-ffa6-4025-b3ce-e41a73e238d7",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 3000,
-    "Tipo": "Cambio de aceite",
-    "Costo": 3000,
-    "Descripcion": "5",
-    "Taller": "2"
-  },
-  {
-    "Id": "8d752d24-d9e0-4264-b72b-878d6568081f",
-    "MotocicletaId": "b59e4f56-c63c-439a-a039-be40a638a242",
-    "Fecha": "2026-06-17T00:00:00",
-    "KilometrajeServicio": 5000,
-    "Tipo": "Cadena",
-    "Costo": 1000,
-    "Descripcion": "2",
-    "Taller": "2"
-  },
-  {
-    "Id": "59ca7257-b4df-4058-912f-884fd3062729",
-    "MotocicletaId": "92805009-eb19-4549-be64-49ed18917f63",
-    "Fecha": "2026-06-19T00:00:00",
-    "KilometrajeServicio": 55001,
+    "Id": "d9037634-b7b7-4650-a150-1e71e8af35e3",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2026-06-24T14:28:10.1604371-06:00",
+    "KilometrajeServicio": 87000,
     "Tipo": "Filtro de aire",
-    "Costo": 2000,
-    "Descripcion": "d",
-    "Taller": "2"
-  },
-  {
-    "Id": "a80701f5-53ba-4516-8124-0f8b1206cc53",
-    "MotocicletaId": "92805009-eb19-4549-be64-49ed18917f63",
-    "Fecha": "2026-06-19T00:00:00",
-    "KilometrajeServicio": 55010,
-    "Tipo": "Llantas",
-    "Costo": 6000,
-    "Descripcion": "5",
-    "Taller": "2"
-  },
-  {
-    "Id": "ec9e5670-1dfd-4987-a662-e0acaf8fdf79",
-    "MotocicletaId": "92805009-eb19-4549-be64-49ed18917f63",
-    "Fecha": "2026-06-01T00:00:00",
-    "KilometrajeServicio": 5450,
-    "Tipo": "Balatas",
-    "Costo": 500,
-    "Descripcion": "5",
-    "Taller": "5"
-  },
-  {
-    "Id": "b9d6f251-dd87-4793-920b-898940aef58e",
-    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
-    "Fecha": "2026-06-19T19:17:10.4550479-06:00",
-    "KilometrajeServicio": 84000,
-    "Tipo": "Cambio de aceite",
-    "Costo": 0,
+    "Costo": null,
     "Descripcion": "Registrado al dar de alta como usada",
     "Taller": "Historial de compra"
   },
   {
-    "Id": "0c2fe19e-d52a-4ae9-9e7b-bc2a9a2b2891",
-    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
-    "Fecha": "2026-06-19T19:17:10.459568-06:00",
-    "KilometrajeServicio": 84500,
-    "Tipo": "Cadena",
-    "Costo": 0,
-    "Descripcion": "Registrado al dar de alta como usada",
-    "Taller": "Historial de compra"
-  },
-  {
-    "Id": "015abae8-e847-4408-b5c2-89392c94a725",
-    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
-    "Fecha": "2026-06-19T19:17:10.468538-06:00",
-    "KilometrajeServicio": 85000,
-    "Tipo": "Llantas",
-    "Costo": 0,
-    "Descripcion": "Registrado al dar de alta como usada",
-    "Taller": "Historial de compra"
-  },
-  {
-    "Id": "7f87c408-d206-4236-b9d2-e9909daea06d",
-    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
-    "Fecha": "2026-06-19T19:17:10.4764786-06:00",
-    "KilometrajeServicio": 84000,
-    "Tipo": "Filtro de aire",
-    "Costo": 0,
-    "Descripcion": "Registrado al dar de alta como usada",
-    "Taller": "Historial de compra"
-  },
-  {
-    "Id": "37ea3edd-02ff-42cf-95b9-1aca748efe89",
-    "MotocicletaId": "480118a1-17ec-48ef-aafd-a2842b985e38",
-    "Fecha": "2026-06-19T00:00:00",
-    "KilometrajeServicio": 85001,
+    "Id": "ee7fc99c-e6a8-4e0e-8a00-1b3fd2261e50",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2026-06-24T14:28:10.1685275-06:00",
+    "KilometrajeServicio": 76500,
     "Tipo": "V\u00E1lvulas",
-    "Costo": 5000,
-    "Descripcion": "2",
-    "Taller": "2"
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "f35085b1-3230-4276-8425-1cf3a829f31a",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-06-24T14:31:32.7847087-06:00",
+    "KilometrajeServicio": 12500,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "546221c1-5d5b-41ff-8d52-fe5d4e9794e5",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-06-24T14:31:32.787171-06:00",
+    "KilometrajeServicio": 12500,
+    "Tipo": "Cadena",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "78f6ac22-d6fc-41b7-af40-65ad4e8917ac",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-06-24T14:31:32.7965054-06:00",
+    "KilometrajeServicio": 6000,
+    "Tipo": "Balatas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "313d60c7-44ef-4c8f-b3a7-f03b53f6b2c5",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-06-24T14:31:32.8070001-06:00",
+    "KilometrajeServicio": 0,
+    "Tipo": "Llantas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "5cbd6dcf-e5c7-434e-ace7-3ba082629cf7",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-06-24T14:31:32.8177951-06:00",
+    "KilometrajeServicio": 12500,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "45d14aca-5e71-4203-aa2f-2e0163608ce3",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-06-24T14:31:32.8290399-06:00",
+    "KilometrajeServicio": 0,
+    "Tipo": "V\u00E1lvulas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "7f802151-51f4-4926-aaac-3e17827f6271",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-06-24T14:33:02.4830053-06:00",
+    "KilometrajeServicio": 3200,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "88e3df53-ed86-424d-855d-84d151db9609",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-06-24T14:33:02.4861419-06:00",
+    "KilometrajeServicio": 0,
+    "Tipo": "Cadena",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "5e1aaa0c-098c-42d1-bf9b-6e629782758f",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-06-24T14:33:02.4954823-06:00",
+    "KilometrajeServicio": 0,
+    "Tipo": "Balatas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "ff6f528d-5fd2-4ea1-9bc2-c9371bf7a664",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-06-24T14:33:02.5038217-06:00",
+    "KilometrajeServicio": 0,
+    "Tipo": "Llantas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "74a5ca30-af30-44eb-894f-bf8c2694ebfb",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-06-24T14:33:02.5121969-06:00",
+    "KilometrajeServicio": 3200,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "e2e7a94a-0949-4de8-b4d8-1ed8d00ab336",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-06-24T14:33:02.5205121-06:00",
+    "KilometrajeServicio": 0,
+    "Tipo": "V\u00E1lvulas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "7a5c953e-8bc7-4a7a-a2e4-8aff784b91ea",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-06-24T14:35:30.8302797-06:00",
+    "KilometrajeServicio": 28000,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "607c4eee-d35a-4149-89a2-8d36bcf631ca",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-06-24T14:35:30.8318028-06:00",
+    "KilometrajeServicio": 3000,
+    "Tipo": "Cadena",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "c7016036-d920-4bb7-b0d8-9269cd4a7a0b",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-06-24T14:35:30.8432601-06:00",
+    "KilometrajeServicio": 17000,
+    "Tipo": "Balatas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "79ecbf63-4a2f-4e5d-84f8-896c57ad65a3",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-06-24T14:35:30.8544863-06:00",
+    "KilometrajeServicio": 6000,
+    "Tipo": "Llantas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "25f7309b-18ff-402a-81ff-826768c51917",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-06-24T14:35:30.8655038-06:00",
+    "KilometrajeServicio": 20000,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "d4e5f6a7-b8c9-0123-4567-890abcdef012",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-06-24T14:35:30.8765432-06:00",
+    "KilometrajeServicio": 10000,
+    "Tipo": "V\u00E1lvulas",
+    "Costo": null,
+    "Descripcion": "Registrado al dar de alta como usada",
+    "Taller": "Historial de compra"
+  },
+  {
+    "Id": "0df75b13-64da-4372-9f8d-57876c13caf6",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-06-18T00:00:00",
+    "KilometrajeServicio": 53000,
+    "Tipo": "Llantas",
+    "Costo": 5500,
+    "Descripcion": "Bridgestone S21",
+    "Taller": "NC TIRES"
+  },
+  {
+    "Id": "48668508-7355-49bf-a430-778950130cca",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-07-02T00:00:00",
+    "KilometrajeServicio": 54500,
+    "Tipo": "Balatas",
+    "Costo": 820,
+    "Descripcion": "Balatas traseras",
+    "Taller": "Capital"
+  },
+  {
+    "Id": "6942b239-197a-4271-a573-d91278295eca",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-10-21T00:00:00",
+    "KilometrajeServicio": 59600,
+    "Tipo": "Suspensi\u00F3n",
+    "Costo": 2500,
+    "Descripcion": "Servicio suspensi\u00F3n delantera",
+    "Taller": "IGB Motos"
+  },
+  {
+    "Id": "b5e8b69b-1aed-49ea-931d-8eac8ae03404",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-10-29T00:00:00",
+    "KilometrajeServicio": 59900,
+    "Tipo": "Balatas",
+    "Costo": 720,
+    "Descripcion": "Balatas delanteras",
+    "Taller": "Garaje"
+  },
+  {
+    "Id": "755f48ab-5330-40a1-91d6-f88bbab47d60",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-11-21T00:00:00",
+    "KilometrajeServicio": 60000,
+    "Tipo": "Bater\u00EDa",
+    "Costo": 750,
+    "Descripcion": "Dynavolt 12V 9Ah",
+    "Taller": "Mr Moto"
+  },
+  {
+    "Id": "a70a74f1-7a11-4f8b-b7d5-835bff7aac9d",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-12-03T00:00:00",
+    "KilometrajeServicio": 61000,
+    "Tipo": "Cambio de aceite",
+    "Costo": 260,
+    "Descripcion": "Incluye cambio de filtros",
+    "Taller": "Mr Moto"
+  },
+  {
+    "Id": "420486d6-f6ee-45e2-b31e-690760ddabd3",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2022-12-03T00:00:00",
+    "KilometrajeServicio": 61000,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": "Mr Moto"
+  },
+  {
+    "Id": "662aef38-8565-4a86-a0f0-8892ed89c247",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2023-12-28T00:00:00",
+    "KilometrajeServicio": 69000,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "3cbfcfbe-2461-42ec-9850-d73ef43e125c",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2024-08-10T00:00:00",
+    "KilometrajeServicio": 76500,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Servicio completo",
+    "Taller": ""
+  },
+  {
+    "Id": "f6e7e808-c723-4a60-b389-70e6fe940c61",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2024-08-10T00:00:00",
+    "KilometrajeServicio": 76500,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "e59dc169-4a2e-408b-9276-edfc90a17707",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2024-08-10T00:00:00",
+    "KilometrajeServicio": 76500,
+    "Tipo": "Buj\u00EDas",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "fd737bb5-3272-49e3-8bcb-2343ba01c72a",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-04-15T00:00:00",
+    "KilometrajeServicio": 82000,
+    "Tipo": "Bater\u00EDa",
+    "Costo": 700,
+    "Descripcion": "Dynavolt 11Ah",
+    "Taller": "ML"
+  },
+  {
+    "Id": "b01ee384-eab1-4ab8-a782-8f5ff5ddf35d",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-04-15T00:00:00",
+    "KilometrajeServicio": 82000,
+    "Tipo": "Otro",
+    "Costo": null,
+    "Descripcion": "Cambio tazas direcci\u00F3n",
+    "Taller": ""
+  },
+  {
+    "Id": "5e2f79fc-ca18-41b4-a1e7-3451b7ab5e54",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-04-15T00:00:00",
+    "KilometrajeServicio": 82000,
+    "Tipo": "L\u00EDquido de frenos",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "35dcc077-ae21-4b19-9447-bcc962dc081c",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-04-15T00:00:00",
+    "KilometrajeServicio": 82000,
+    "Tipo": "Anticongelante",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "44323a96-960d-455e-bac8-de8bc5a49373",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-04-15T00:00:00",
+    "KilometrajeServicio": 82000,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "20W50",
+    "Taller": ""
+  },
+  {
+    "Id": "06888dfe-839b-43d6-bd61-9c2368072535",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-05-02T00:00:00",
+    "KilometrajeServicio": 82000,
+    "Tipo": "Suspensi\u00F3n",
+    "Costo": 2800,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "7bd004ac-c378-409b-8c25-458121f5526e",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-10-31T00:00:00",
+    "KilometrajeServicio": 86600,
+    "Tipo": "Buj\u00EDas",
+    "Costo": 230,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "dc64aed0-c491-445c-a316-faf0b9e978cc",
+    "MotocicletaId": "152bad07-79c8-4992-8290-0ce607aafe27",
+    "Fecha": "2025-11-20T00:00:00",
+    "KilometrajeServicio": 87000,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "Limpieza. Incluye inyectores y sensor O2",
+    "Taller": ""
+  },
+  {
+    "Id": "37a0931f-bb5a-41a6-acdb-b003ec54e46f",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2023-01-15T00:00:00",
+    "KilometrajeServicio": 360,
+    "Tipo": "Cambio de aceite",
+    "Costo": 180,
+    "Descripcion": "Motul 3000. Primer servicio.",
+    "Taller": ""
+  },
+  {
+    "Id": "ff16e242-8c49-4895-bdac-681c7142f2a1",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2023-05-20T00:00:00",
+    "KilometrajeServicio": 3000,
+    "Tipo": "Buj\u00EDas",
+    "Costo": 70,
+    "Descripcion": "Segundo servicio",
+    "Taller": ""
+  },
+  {
+    "Id": "14a3a4c1-d1c0-4865-b8fe-e8ff8a2d8a8d",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2023-09-16T00:00:00",
+    "KilometrajeServicio": 6000,
+    "Tipo": "Cambio de aceite",
+    "Costo": 180,
+    "Descripcion": "Motul 3000. Tercer servicio.",
+    "Taller": ""
+  },
+  {
+    "Id": "46d786e1-c902-438c-9938-c14b054951b7",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2023-09-16T00:00:00",
+    "KilometrajeServicio": 6000,
+    "Tipo": "Balatas",
+    "Costo": 80,
+    "Descripcion": "Delanteras y traseras. Tercer servicio.",
+    "Taller": ""
+  },
+  {
+    "Id": "c7a9738a-bda2-4d47-8c18-0381edd658d5",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2025-05-17T00:00:00",
+    "KilometrajeServicio": 12000,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Incluye cambio de filtro",
+    "Taller": ""
+  },
+  {
+    "Id": "a741a55a-d7a4-42d9-b2ee-edc0371a673d",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2025-05-17T00:00:00",
+    "KilometrajeServicio": 12000,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "",
+    "Taller": ""
+  },
+  {
+    "Id": "5c6fd4a2-7f36-4091-a0fe-3ccececb489f",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-04-20T00:00:00",
+    "KilometrajeServicio": 12500,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Motul 5100 15W50",
+    "Taller": ""
+  },
+  {
+    "Id": "973abefb-27f3-464d-877c-e78a8473f7d7",
+    "MotocicletaId": "3547d89c-864a-43f6-9e8d-ab7ad4db9fc3",
+    "Fecha": "2026-04-20T00:00:00",
+    "KilometrajeServicio": 12500,
+    "Tipo": "Buj\u00EDas",
+    "Costo": 160,
+    "Descripcion": "Iridium",
+    "Taller": ""
+  },
+  {
+    "Id": "e373b443-dc1b-4898-a0a7-fdd82219b4bb",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-01-15T00:00:00",
+    "KilometrajeServicio": 500,
+    "Tipo": "Cambio de aceite",
+    "Costo": 190,
+    "Descripcion": "Motul 5100. Primer servicio.",
+    "Taller": ""
+  },
+  {
+    "Id": "b6818b5e-739b-428d-9023-fea1e195c508",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-01-15T00:00:00",
+    "KilometrajeServicio": 500,
+    "Tipo": "Filtro de aire",
+    "Costo": null,
+    "Descripcion": "Filtro gasolina lavable. Primer servicio.",
+    "Taller": ""
+  },
+  {
+    "Id": "df20f124-b050-4986-ab36-b0b7e1a3bf90",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-01-15T00:00:00",
+    "KilometrajeServicio": 500,
+    "Tipo": "Buj\u00EDas",
+    "Costo": 150,
+    "Descripcion": "NGK Iridium. Primer servicio.",
+    "Taller": ""
+  },
+  {
+    "Id": "16cda7c2-df8e-4c8c-8b5c-4043d71dcbb7",
+    "MotocicletaId": "fd98f71a-f47b-4401-8369-6a62409f5048",
+    "Fecha": "2026-04-20T00:00:00",
+    "KilometrajeServicio": 3200,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Motul 5100",
+    "Taller": ""
+  },
+  {
+    "Id": "a5ec7d70-c5a6-4def-a5e2-af9d662c7c26",
+    "MotocicletaId": "dd1581cf-6338-4470-a274-61dfb3951ffc",
+    "Fecha": "2026-04-20T00:00:00",
+    "KilometrajeServicio": 7750,
+    "Tipo": "Cambio de aceite",
+    "Costo": null,
+    "Descripcion": "Motul 5100",
+    "Taller": ""
   }
 ]
