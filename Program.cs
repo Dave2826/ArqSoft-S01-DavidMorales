@@ -53,14 +53,7 @@ builder.Services.AddSingleton<IItemRepository, ItemRepository>();
 builder.Services.AddSingleton<ItemService>();
 
 // ======================
-// Usuarios
-// ======================
-
-builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
-builder.Services.AddSingleton<UsuarioService>();
-
-// ======================
-// Motocicletas — Strategy + Decorator
+// Strategy + Decorator
 // ======================
 
 builder.Services.AddSingleton<IEstadoMantenimientoStrategy, DefaultEstadoStrategy>();
@@ -71,49 +64,38 @@ var persistenceProvider = builder.Configuration.GetValue<string>("Persistence:Pr
 switch (persistenceProvider)
 {
     case "EntityFramework":
+        builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepositoryEF>();
+
+        builder.Services.AddSingleton<MotocicletaRepositoryEF>();
         builder.Services.AddSingleton<IMotocicletaRepository>(sp =>
             new LoggingMotocicletaRepository(
-                new MotocicletaRepositoryEF(
-                    sp.GetRequiredService<MotoTrackDbContext>())));
+                sp.GetRequiredService<MotocicletaRepositoryEF>()));
+
+        builder.Services.AddSingleton<ILecturaKilometrajeRepository, LecturaKilometrajeRepositoryEF>();
+        builder.Services.AddSingleton<IConfiguracionMantenimientoRepository, ConfiguracionMantenimientoRepositoryEF>();
+        builder.Services.AddSingleton<IMantenimientoRepository, MantenimientoRepositoryEF>();
+        builder.Services.AddSingleton<IGastoRepository, GastoRepositoryEF>();
         break;
     default:
+        builder.Services.AddSingleton<IUsuarioRepository, UsuarioRepository>();
+
         builder.Services.AddSingleton<MotocicletaRepository>();
         builder.Services.AddSingleton<IMotocicletaRepository>(sp =>
             new LoggingMotocicletaRepository(
                 sp.GetRequiredService<MotocicletaRepository>()));
+
+        builder.Services.AddSingleton<ILecturaKilometrajeRepository, LecturaKilometrajeRepository>();
+        builder.Services.AddSingleton<IConfiguracionMantenimientoRepository, ConfiguracionMantenimientoRepository>();
+        builder.Services.AddSingleton<IMantenimientoRepository, MantenimientoRepository>();
+        builder.Services.AddSingleton<IGastoRepository, GastoRepository>();
         break;
 }
 
+builder.Services.AddSingleton<UsuarioService>();
 builder.Services.AddSingleton<MotocicletaService>();
-
-// ======================
-// Lecturas de Kilometraje
-// ======================
-
-builder.Services.AddSingleton<
-    ILecturaKilometrajeRepository,
-    LecturaKilometrajeRepository>();
-
-builder.Services.AddSingleton<
-    LecturaKilometrajeService>();
-
-builder.Services.AddSingleton<
-    IConfiguracionMantenimientoRepository,
-    ConfiguracionMantenimientoRepository>();
-
-builder.Services.AddSingleton<
-    ConfiguracionMantenimientoService>();
-
-builder.Services.AddSingleton<
-    IMantenimientoRepository,
-    MantenimientoRepository>();
-
-builder.Services.AddSingleton<
-    MantenimientoService>();
-
-// ======================
-// Gastos
-// ======================
+builder.Services.AddSingleton<LecturaKilometrajeService>();
+builder.Services.AddSingleton<ConfiguracionMantenimientoService>();
+builder.Services.AddSingleton<MantenimientoService>();
 
 var app = builder.Build();
 
