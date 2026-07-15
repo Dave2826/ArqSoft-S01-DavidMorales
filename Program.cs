@@ -4,6 +4,8 @@ using MotoTrack.Domain.Interfaces;
 using MotoTrack.Infrastructure.Decorators;
 using MotoTrack.Infrastructure.Repositories;
 using MotoTrack.Helpers;
+using Microsoft.EntityFrameworkCore;
+using MotoTrack.Infrastructure.Persistence;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -34,6 +36,13 @@ builder.Services.AddSession(options =>
     options.Cookie.HttpOnly = true;
     options.Cookie.IsEssential = true;
 });
+
+// ======================
+// Entity Framework Core
+// ======================
+
+builder.Services.AddDbContext<MotoTrackDbContext>(options =>
+    options.UseSqlite(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 // ======================
 // Catálogo
