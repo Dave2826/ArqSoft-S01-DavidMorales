@@ -12,12 +12,18 @@ flowchart TD
 
     A --> D[MotoTrack.Domain<br/>Models e Interfaces]
 
-    A --> I[MotoTrack.Infrastructure<br/>Repositories]
+    A --> I[MotoTrack.Infrastructure<br/>Repository Pattern]
 
-    I --> J[(Archivos JSON)]
+    I --> J[Proveedor JSON<br/>Repositorios JSON]
+    I --> K[Proveedor EF Core<br/>Entity Framework Core]
+
+    J --> JF[(Archivos JSON<br/>Catalogo/Data/)]
+    K --> KF[(SQLite<br/>Data/MotoTrack.db)]
 
     style V fill:#E3F2FD,stroke:#1565C0,stroke-width:2px
     style A fill:#E8F5E9,stroke:#2E7D32,stroke-width:2px
     style D fill:#FFF8E1,stroke:#F9A825,stroke-width:2px
     style I fill:#FCE4EC,stroke:#C2185B,stroke-width:2px
+    style J fill:#FCE4EC,stroke:#C2185B,stroke-width:1px
+    style K fill:#FCE4EC,stroke:#C2185B,stroke-width:1px
 ```

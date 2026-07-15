@@ -49,18 +49,30 @@ flowchart TD
     S5 --> R5[ConfiguracionMantenimientoRepository]
     S6 --> R6[ItemRepository]
 
+    S1 --> E1[UsuarioRepositoryEF]
+    S2 --> E2[MotocicletaRepositoryEF]
+    S3 --> E3[MantenimientoRepositoryEF]
+    S4 --> E4[LecturaKilometrajeRepositoryEF]
+    S5 --> E5[ConfiguracionMantenimientoRepositoryEF]
+
     R1 --> D1[usuarios.json]
     R2 --> D2[motocicletas.json]
     R3 --> D3[mantenimientos.json]
     R4 --> D4[lecturasKilometraje.json]
     R5 --> D5[configuracionesMantenimiento.json]
+
+    E1 --> DB[(SQLite<br/>MotoTrack.db)]
+    E2 --> DB
+    E3 --> DB
+    E4 --> DB
+    E5 --> DB
 ```
 
 ## Interpretación
 
-MotoTrack utiliza una arquitectura por capas donde los usuarios interactúan con controladores MVC y endpoints API REST. Los controladores delegan la lógica de negocio a los servicios correspondientes y estos utilizan repositorios para acceder a la información almacenada en archivos JSON o en memoria (catálogo). El controlador `MotocicletasApiController` extiende la capa de presentación exponiendo los mismos servicios vía HTTP.
+MotoTrack utiliza una arquitectura por capas donde los usuarios interactúan con controladores MVC y endpoints API REST. Los controladores delegan la lógica de negocio a los servicios correspondientes y estos utilizan repositorios para acceder a los datos. El proveedor de persistencia activo (JSON o Entity Framework Core + SQLite) se selecciona mediante la clave `Persistence:Provider` en `appsettings.json`. El controlador `MotocicletasApiController` extiende la capa de presentación exponiendo los mismos servicios vía HTTP.
 
 ### Servicios adicionales
 
-- `GastoService` y `GastoRepository` gestionan gastos de mantenimiento (archivo `gastos.json`). No están registrados en DI actualmente.
+- `GastoService` e `IGastoRepository` gestionan gastos de mantenimiento. El repositorio concreto (`GastoRepository` o `GastoRepositoryEF`) se resuelve en el Composition Root según el valor de `Persistence:Provider`.
 - `CalculadorEstadoMantenimiento` (Helper en `Catalogo/Helpers/`) es utilizado por `HomeController` y `MotocicletaController` para calcular el estado de los 6 tipos de mantenimiento.

@@ -22,8 +22,19 @@ flowchart TD
     S --> J3[Data/mantenimientos.json]
     S --> J4[Data/lecturasKilometraje.json]
     S --> J5[Data/configuracionesMantenimiento.json]
+
+    S --> E[EF Core<br/>MotoTrackDbContext]
+
+    E --> S1[Data/MotoTrack.db]
 ```
 
 ## Interpretación
 
-MotoTrack se ejecuta en un entorno local de desarrollo utilizando Kestrel (`dotnet run`, perfil `http` en puerto 5141 o `https` en puerto 7116). Los usuarios acceden mediante un navegador web (interfaz MVC) o mediante clientes HTTP (API REST). Swagger UI está disponible en `/swagger` para explorar y probar los endpoints. Toda la información se almacena en archivos JSON dentro del directorio `Catalogo/Data/`. También existe un perfil `IIS Express` opcional en `launchSettings.json`.
+MotoTrack se ejecuta en un entorno local de desarrollo utilizando Kestrel (`dotnet run`, perfil `http` en puerto 5141 o `https` en puerto 7116). Los usuarios acceden mediante un navegador web (interfaz MVC) o mediante clientes HTTP (API REST). Swagger UI está disponible en `/swagger` para explorar y probar los endpoints.
+
+La aplicación soporta dos proveedores de persistencia seleccionables mediante la clave `Persistence:Provider` en `appsettings.json`:
+
+- **JSON**: los datos se almacenan en archivos JSON dentro del directorio `Catalogo/Data/`.
+- **EntityFramework**: los datos se almacenan en una base de datos SQLite en `Catalogo/Data/MotoTrack.db` mediante Entity Framework Core.
+
+También existe un perfil `IIS Express` opcional en `launchSettings.json`.

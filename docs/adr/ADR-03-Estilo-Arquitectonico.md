@@ -72,12 +72,19 @@ Responsable de representar las entidades y contratos principales del sistema.
 
 ### Capa de Infraestructura
 
-Responsable de la persistencia y acceso a datos.
+Responsable de la persistencia y acceso a datos. Actualmente existen dos proveedores de persistencia seleccionables mediante configuración (`Persistence:Provider` en `appsettings.json`).
 
 **Componentes:**
 
-- Repositories: ConfiguracionMantenimientoRepository, GastoRepository, ItemRepository, LecturaKilometrajeRepository, MantenimientoRepository, MotocicletaRepository, UsuarioRepository
+- Repositorios JSON: ConfiguracionMantenimientoRepository, GastoRepository, ItemRepository, LecturaKilometrajeRepository, MantenimientoRepository, MotocicletaRepository, UsuarioRepository
 - Archivos JSON de almacenamiento en `Catalogo/Data/`
+- `MotoTrackDbContext`: DbContext de Entity Framework Core con configuración Fluent API
+- `Persistence/Configurations/`: configuraciones Fluent API para cada entidad
+- `Persistence/Repositories/`: implementaciones EF Core: ConfiguracionMantenimientoRepositoryEF, GastoRepositoryEF, LecturaKilometrajeRepositoryEF, MantenimientoRepositoryEF, MotocicletaRepositoryEF, UsuarioRepositoryEF
+- `Persistence/Migrations/`: migraciones de base de datos (InitialCreate)
+- Base de datos SQLite en `Catalogo/Data/MotoTrack.db`
+
+La lógica de negocio permanece independiente del proveedor de persistencia gracias al Repository Pattern. Los servicios y controladores se vinculan únicamente a las interfaces definidas en la capa de Dominio, mientras que el proveedor concreto se resuelve en el Composition Root (`Program.cs`).
 
 ---
 
@@ -183,14 +190,35 @@ MotoTrack
 │       └── IUsuarioRepository.cs
 │
 └── MotoTrack.Infrastructure (Infraestructura)
-    └── Repositories/
-        ├── ConfiguracionMantenimientoRepository.cs
-        ├── GastoRepository.cs
-        ├── ItemRepository.cs
-        ├── LecturaKilometrajeRepository.cs
-        ├── MantenimientoRepository.cs
-        ├── MotocicletaRepository.cs
-        └── UsuarioRepository.cs
+    ├── Repositories/
+    │   ├── ConfiguracionMantenimientoRepository.cs
+    │   ├── GastoRepository.cs
+    │   ├── ItemRepository.cs
+    │   ├── LecturaKilometrajeRepository.cs
+    │   ├── MantenimientoRepository.cs
+    │   ├── MotocicletaRepository.cs
+    │   └── UsuarioRepository.cs
+    ├── Persistence/
+    │   ├── MotoTrackDbContext.cs
+    │   ├── Configurations/
+    │   │   ├── ConfiguracionMantenimientoConfiguration.cs
+    │   │   ├── GastoConfiguration.cs
+    │   │   ├── LecturaKilometrajeConfiguration.cs
+    │   │   ├── MantenimientoConfiguration.cs
+    │   │   ├── MotocicletaConfiguration.cs
+    │   │   └── UsuarioConfiguration.cs
+    │   ├── Repositories/
+    │   │   ├── ConfiguracionMantenimientoRepositoryEF.cs
+    │   │   ├── GastoRepositoryEF.cs
+    │   │   ├── LecturaKilometrajeRepositoryEF.cs
+    │   │   ├── MantenimientoRepositoryEF.cs
+    │   │   ├── MotocicletaRepositoryEF.cs
+    │   │   └── UsuarioRepositoryEF.cs
+    │   └── Migrations/
+    │       ├── 20260715145738_InitialCreate.cs
+    │       └── MotoTrackDbContextModelSnapshot.cs
+    └── Decorators/
+        └── LoggingMotocicletaRepository.cs
 ```
 
 Esta organización soporta todas las funcionalidades actualmente implementadas en el sistema y mantiene una separación clara de responsabilidades.
@@ -219,15 +247,25 @@ flowchart TD
     end
 
     subgraph "MotoTrack.Infrastructure"
-        REP[Repositories<br/>7 implementaciones]
+        REP[JSON Repositories<br/>7 implementaciones]
         JSON[JSON Data<br/>Catalogo/Data/]
+        EFR[EF Core Repositories<br/>6 implementaciones]
+        DBC[DbContext<br/>MotoTrackDbContext]
+        CFG[Fluent API<br/>6 configuraciones]
+        MIG[Migrations<br/>InitialCreate]
+        SQL[SQLite<br/>Data/MotoTrack.db]
     end
 
     CMVC --> SVC
     CAP --> SVC
     SVC --> INT
     SVC --> REP
+    SVC --> EFR
     REP --> JSON
+    EFR --> DBC
+    DBC --> CFG
+    DBC --> MIG
+    EFR --> SQL
 
     style CMVC fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
     style CAP fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
@@ -237,6 +275,11 @@ flowchart TD
     style INT fill:#2a2a2a,stroke:#66bb6a,color:#f5f5f5
     style REP fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
     style JSON fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
+    style EFR fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style DBC fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style CFG fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style MIG fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+    style SQL fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
 ```
 
 ---
