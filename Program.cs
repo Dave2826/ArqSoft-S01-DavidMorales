@@ -2,10 +2,11 @@ using MotoTrack.Application.Services;
 using MotoTrack.Application.Strategies;
 using MotoTrack.Domain.Interfaces;
 using MotoTrack.Infrastructure.Decorators;
+using MotoTrack.Infrastructure.Persistence;
+using MotoTrack.Infrastructure.Persistence.Repositories;
 using MotoTrack.Infrastructure.Repositories;
 using MotoTrack.Helpers;
 using Microsoft.EntityFrameworkCore;
-using MotoTrack.Infrastructure.Persistence;
 using Microsoft.OpenApi;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -65,10 +66,24 @@ builder.Services.AddSingleton<UsuarioService>();
 builder.Services.AddSingleton<IEstadoMantenimientoStrategy, DefaultEstadoStrategy>();
 builder.Services.AddSingleton<CalculadorEstadoMantenimiento>();
 
-builder.Services.AddSingleton<MotocicletaRepository>();
-builder.Services.AddSingleton<IMotocicletaRepository>(sp =>
-    new LoggingMotocicletaRepository(
-        sp.GetRequiredService<MotocicletaRepository>()));
+var persistenceProvider = builder.Configuration.GetValue<string>("Persistence:Provider");
+
+switch (persistenceProvider)
+{
+    case "EntityFramework":
+        builder.Services.AddSingleton<IMotocicletaRepository>(sp =>
+            new LoggingMotocicletaRepository(
+                new MotocicletaRepositoryEF(
+                    sp.GetRequiredService<MotoTrackDbContext>())));
+        break;
+    default:
+        builder.Services.AddSingleton<MotocicletaRepository>();
+        builder.Services.AddSingleton<IMotocicletaRepository>(sp =>
+            new LoggingMotocicletaRepository(
+                sp.GetRequiredService<MotocicletaRepository>()));
+        break;
+}
+
 builder.Services.AddSingleton<MotocicletaService>();
 
 // ======================
