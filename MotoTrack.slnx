@@ -3,5 +3,5 @@
   <Project Path="../MotoTrack.Domain/MotoTrack.Domain.csproj" Id="20163ab6-d18c-44c5-a060-6ef412d24a29" />
   <Project Path="../MotoTrack.Infrastructure/MotoTrack.Infrastructure.csproj" Id="b1e1045c-f6e4-410c-a601-9e62e19f1197" />
   <Project Path="MotoTrack.csproj" />
-  <Project Path="MotoTrack.Tests\MotoTrack.Tests.csproj" Id="b5c776de-d92b-46ad-99d9-9bbf8150dc9a" />
+  <Project Path="..\MotoTrack.Tests\MotoTrack.Tests.csproj" Id="b5c776de-d92b-46ad-99d9-9bbf8150dc9a" />
 </Solution>
