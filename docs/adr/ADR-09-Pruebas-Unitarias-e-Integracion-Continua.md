@@ -25,8 +25,24 @@ El proyecto MotoTrack incorporó un conjunto de pruebas unitarias y automatizaci
 4. **Se mantiene la estrategia de commits pequeños con una sola responsabilidad por BUILD.**  
    Cada BUILD aborda un único objetivo: infraestructura de pruebas, pruebas de una clase específica, actualización de CI, etc. La granularidad facilita la revisión y el aislamiento de problemas.
 
-5. **Se identifica como deuda técnica futura la reorganización de la raíz del repositorio.**  
+5. **Se adopta una rama permanente `ci-cd` para la infraestructura de Integración Continua.**  
+   La estrategia de ramas del proyecto incorpora una rama permanente destinada exclusivamente a GitHub Actions, CI/CD, automatización, calidad, cobertura y herramientas DevOps. Esta rama centraliza la evolución del pipeline, evita mezclar cambios de infraestructura con funcionalidades y no sustituye las ramas `feature/*`. Las actividades continúan utilizando ramas `feature/*` según la estrategia existente.
+
+6. **Se identifica como deuda técnica futura la reorganización de la raíz del repositorio.**  
    Actualmente la raíz del repositorio Git está en `Catalogo/`, mientras que los proyectos `MotoTrack.Application`, `MotoTrack.Domain`, `MotoTrack.Infrastructure` y `MotoTrack.Tests` residen fuera de ella. Esto impide que el workflow de GitHub Actions acceda a todos los proyectos necesarios durante el checkout. La corrección de esta estructura se difiere a un BUILD futuro.
+
+## Evolución de la estrategia de integración
+
+La estrategia oficial de ramas de MotoTrack se define de la siguiente manera:
+
+| Rama | Propósito |
+|---|---|
+| `main` | Rama estable. Contiene el código en producción. |
+| `ci-cd` | Rama permanente para infraestructura de Integración Continua (GitHub Actions, CI/CD, automatización, calidad, cobertura, análisis estático, herramientas DevOps). |
+| `feature/*` | Una rama por actividad. Cada BUILD se desarrolla en su propia rama y se integra mediante pull request. |
+| `deuda-tecnica` | Investigación y refactorización arquitectónica. No contiene funcionalidades nuevas. |
+
+La rama `ci-cd` no modifica el historial existente ni sustituye el flujo de trabajo basado en `feature/*`. Su propósito exclusivo es centralizar la evolución del pipeline de Integración Continua, evitando mezclar cambios de infraestructura con funcionalidades del producto.
 
 ## Consecuencias
 
