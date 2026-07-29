@@ -29,11 +29,12 @@ El proyecto implementa una arquitectura por capas con 5 proyectos independientes
 ---
 
 <p align="center">
-  <img src="https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet" alt=".NET 10">
-  <img src="https://img.shields.io/badge/ASP.NET_Core-MVC-512BD4?logo=dotnet" alt="ASP.NET Core MVC">
-  <img src="https://img.shields.io/badge/EF_Core-SQLite-0769AD?logo=entity-framework" alt="EF Core SQLite">
+  <img src="https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet&logoColor=white" alt=".NET 10">
+  <img src="https://img.shields.io/badge/ASP.NET_Core-MVC-512BD4?logo=dotnet&logoColor=white" alt="ASP.NET Core MVC">
+  <img src="https://img.shields.io/badge/EF_Core-SQLite-0769AD?logo=sqlite&logoColor=white" alt="EF Core SQLite">
   <img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT">
-  <img src="https://img.shields.io/badge/build-passing-success?logo=github-actions" alt="CI passing">
+  <img src="https://img.shields.io/badge/build-passing-success?logo=github-actions&logoColor=white" alt="CI passing">
+  <img src="https://img.shields.io/badge/tests-45%20%E2%80%94%20xUnit%20%2B%20Moq-blue?logo=checkmarx&logoColor=white" alt="45 tests">
 </p>
 
 ## Tabla de contenidos
@@ -167,17 +168,15 @@ Añade trazabilidad sobre el repositorio de motocicletas sin modificar su implem
 
 ## API REST
 
-MotoTrack incorpora una API REST documentada mediante Swagger.
+API REST documentada con Swagger/OpenAPI, disponible en `/swagger`.
 
-La documentación interactiva se encuentra disponible en /swagger.
-
-Endpoints disponibles:
-
-- GET /api/motocicletas
-- GET /api/motocicletas/{id}
-- POST /api/motocicletas
-- PUT /api/motocicletas/{id}
-- DELETE /api/motocicletas/{id}
+| Método | Endpoint | Descripción |
+|--------|----------|-------------|
+| GET | `/api/motocicletas` | Listar todas las motocicletas |
+| GET | `/api/motocicletas/{id}` | Obtener motocicleta por ID |
+| POST | `/api/motocicletas` | Crear una motocicleta |
+| PUT | `/api/motocicletas/{id}` | Actualizar una motocicleta |
+| DELETE | `/api/motocicletas/{id}` | Eliminar una motocicleta |
 
 ---
 
