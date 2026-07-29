@@ -57,4 +57,21 @@ mototrack-{tipo}-{variante}.{ext}
 
 - [Brand Guidelines](BRAND_GUIDELINES.md) — reglas completas de identidad visual
 - [Master Source](logo/master/README.md) — instrucciones de exportación desde archivo editable
+- [Presentations](presentations/README.md) — plantillas para presentaciones institucionales
 - [README principal](../README.md) — visión general del proyecto
+
+## Assets de plataforma
+
+Los siguientes archivos en `Catalogo/wwwroot/` se derivan de `branding/`:
+
+| Archivo | Fuente | Propósito |
+|---------|--------|-----------|
+| `favicon.ico` | `logo/mototrack-favicon.ico` | Favicon de navegador |
+| `favicon.svg` | `logo/mototrack-favicon.svg` | Favicon vectorial |
+| `mototrack-isotype.svg` | `logo/mototrack-isotype.svg` | Isotipo en interfaz |
+| `mototrack-logo.svg` | `logo/mototrack-logo.svg` | Logo en interfaz |
+| `mototrack-app-icon.png` | `logo/mototrack-app-icon.png` | Apple Touch Icon / PWA |
+| `mototrack-icon.png` | `logo/mototrack-icon.png` | PWA manifest 512×512 |
+| `site.webmanifest` | — | PWA manifest (brand-aligned) |
+| `robots.txt` | — | SEO crawler directives |
+| `sitemap.xml` | — | SEO sitemap baseline |
