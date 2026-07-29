@@ -62,3 +62,7 @@ MotoTrack utiliza valores conservadores dentro de los rangos documentados por lo
 - `CalculadorEstadoMantenimiento`: clase que orquesta el cálculo por tipo.
 - `IEstadoMantenimientoStrategy`: interfaz que define cómo se compara el kilometraje actual contra el umbral.
 - `MaintenanceStatusResult`: objeto de resultado con estado, color, mensaje descriptivo, kilómetros restantes y próximo servicio.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

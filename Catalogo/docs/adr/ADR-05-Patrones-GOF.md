@@ -140,4 +140,8 @@ flowchart TD
     style R fill:#2a2a2a,stroke:#ab47bc,color:#f5f5f5
     style SVC fill:#2a2a2a,stroke:#4a9eff,color:#f5f5f5
     style CT fill:#2a2a2a,stroke:#4a9eff,color:#f5f5f5
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*
 ```

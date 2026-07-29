@@ -39,3 +39,7 @@ Toda la información contenida en el catálogo es interna y no se expone directa
 | Suspensión | 30 000 km | 25000–35000 km | 3000 km |
 | Líquido de frenos | 20 000 km | 15000–25000 km | 2000 km |
 | Anticongelante | 40 000 km | 30000–50000 km | 3000 km |
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

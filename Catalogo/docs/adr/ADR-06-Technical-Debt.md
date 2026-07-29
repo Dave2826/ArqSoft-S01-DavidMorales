@@ -46,3 +46,7 @@ La solución recomendada consiste en centralizar la configuración de rutas movi
 ## Estado actual
 
 Esta deuda técnica ha sido identificada y documentada. Su resolución queda planificada para una futura refactorización. La deuda no representa un riesgo funcional inmediato. Su implementación fue pospuesta conscientemente para priorizar el desarrollo de funcionalidades del proyecto durante las primeras etapas.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

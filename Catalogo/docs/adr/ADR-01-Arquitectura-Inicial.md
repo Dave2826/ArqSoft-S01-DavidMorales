@@ -114,3 +114,7 @@ El sistema se organiza mediante una arquitectura por capas donde la interfaz de 
 ---
 
 > **Nota:** Esta decisión inicial fue posteriormente reforzada y formalizada en [ADR-03](ADR-03-Estilo-Arquitectonico.md), donde se detallan los componentes actuales de cada capa según la implementación real del proyecto.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

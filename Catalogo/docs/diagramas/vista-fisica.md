@@ -46,3 +46,7 @@ flowchart TB
 ## Interpretación
 
 MotoTrack se encuentra dividido en múltiples proyectos que permiten separar responsabilidades. La capa web (`Catalogo`) contiene los controladores MVC y API, vistas, helpers, la documentación técnica y los archivos de persistencia (JSON y SQLite). La capa de aplicación (`MotoTrack.Application`) contiene la lógica de negocio mediante servicios. La capa de dominio (`MotoTrack.Domain`) define los modelos e interfaces del sistema. La capa de infraestructura (`MotoTrack.Infrastructure`) implementa los repositorios JSON, los repositorios Entity Framework Core con sus configuraciones Fluent API, el DbContext, las migraciones y el decorador de trazabilidad. El proveedor de persistencia activo se selecciona mediante la clave `Persistence:Provider` en `appsettings.json`.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

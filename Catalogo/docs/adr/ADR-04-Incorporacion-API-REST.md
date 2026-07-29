@@ -125,3 +125,7 @@ El diagrama anterior muestra el flujo completo de una solicitud HTTP: el cliente
 ## Uso de Inteligencia Artificial
 
 El uso de IA relacionado con esta actividad se encuentra documentado en `IA.md`.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

@@ -42,3 +42,7 @@ El proyecto MotoTrack incorporó un conjunto de pruebas unitarias y automatizaci
 
 - **Incremento del mantenimiento de pruebas.** Cada cambio en la lógica de negocio puede requerir actualizar las pruebas correspondientes.
 - **La estructura actual del repositorio limita la ejecución del workflow en GitHub.** Hasta que se reorganice la raíz del repositorio para incluir todos los proyectos, el pipeline no podrá completarse exitosamente en GitHub Actions.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

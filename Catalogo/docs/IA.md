@@ -103,3 +103,7 @@ La inteligencia artificial fue utilizada como herramienta de apoyo para:
 - Resolver dudas específicas durante la implementación.
 
 La validación final de las decisiones arquitectónicas, la implementación del código, las pruebas y la documentación fueron realizadas por el autor del proyecto.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

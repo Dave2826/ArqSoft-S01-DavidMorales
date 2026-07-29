@@ -285,3 +285,7 @@ flowchart TD
 ---
 
 > **Nota:** Esta decisión arquitectónica fue posteriormente extendida mediante [ADR-05](ADR-05-Patrones-GOF.md), incorporando los patrones GOF Strategy (Behavioral) y Decorator (Structural) sin modificar el estilo arquitectónico principal basado en capas.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

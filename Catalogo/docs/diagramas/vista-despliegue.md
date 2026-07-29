@@ -38,3 +38,7 @@ La aplicación soporta dos proveedores de persistencia seleccionables mediante l
 - **EntityFramework**: los datos se almacenan en una base de datos SQLite en `Catalogo/Data/MotoTrack.db` mediante Entity Framework Core.
 
 También existe un perfil `IIS Express` opcional en `launchSettings.json`.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

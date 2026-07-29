@@ -76,3 +76,7 @@ MotoTrack utiliza una arquitectura por capas donde los usuarios interactúan con
 
 - `GastoService` e `IGastoRepository` gestionan gastos de mantenimiento. El repositorio concreto (`GastoRepository` o `GastoRepositoryEF`) se resuelve en el Composition Root según el valor de `Persistence:Provider`.
 - `CalculadorEstadoMantenimiento` (Helper en `Catalogo/Helpers/`) es utilizado por `HomeController` y `MotocicletaController` para calcular el estado de los 6 tipos de mantenimiento.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

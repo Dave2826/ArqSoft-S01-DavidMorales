@@ -156,4 +156,8 @@ flowchart TD
     style CFG fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
     style MIG fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
     style SQL fill:#2a2a2a,stroke:#ff7a00,color:#f5f5f5
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*
 ```

@@ -49,3 +49,7 @@ flowchart TD
 MotoTrack ofrece dos vías de interacción: la interfaz web (navegador) y la API REST. El flujo principal inicia con el inicio de sesión, desde donde el usuario accede al dashboard, administra motocicletas, registra mantenimientos y consulta gastos y alertas. Los usuarios no autenticados pueden explorar el catálogo público de motocicletas. La API REST expone los datos de motocicletas para integración programática.
 
 Este flujo representa los escenarios de uso más importantes del sistema y sirve como elemento integrador de las demás vistas arquitectónicas (modelo 4+1 de Kruchten).
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*

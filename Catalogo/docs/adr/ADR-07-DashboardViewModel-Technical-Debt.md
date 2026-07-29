@@ -67,3 +67,7 @@ Como posible evolución futura, las propiedades repetitivas podrían reemplazars
 ## Estado actual
 
 Esta deuda técnica ha sido identificada y documentada. No representa un error funcional: el Dashboard funciona correctamente con la estructura actual. Su resolución queda planificada para una futura refactorización.
+
+---
+
+*Para la identidad visual oficial de MotoTrack (colores, tipografía, logotipo), consultar [`BRAND_GUIDELINES.md`](../../branding/BRAND_GUIDELINES.md) — única fuente de verdad para los recursos gráficos del proyecto.*
