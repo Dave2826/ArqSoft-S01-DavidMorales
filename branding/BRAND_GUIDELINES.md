@@ -271,7 +271,7 @@ Esta sección documenta los puntos de contacto donde el branding debe aplicarse 
 | Media | GitHub repository social preview | Brand Integration — GitHub | Pendiente |
 | Baja | Slide decks en `assets/presentations/` | Brand Integration — Docs | Pendiente |
 | Baja | Screenshots con branding en `assets/screenshots/` | Brand Integration — Docs | Pendiente |
-| Futura | Modo claro (temas alternos) | Brand Integration — Theming | Planeación |
+| Futura | Modo claro (temas alternos) | Brand Integration — Theming | Documentado — Pendiente de implementación |
 
 ---
 
