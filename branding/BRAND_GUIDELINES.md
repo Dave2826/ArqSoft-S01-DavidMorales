@@ -142,6 +142,22 @@ El logotipo de MotoTrack consiste en un símbolo (una línea quebrada que forma 
 | Isotipo | 24px |
 | Favicon | 16px |
 
+### Familia de favicon
+
+Todos los iconos deben derivarse del archivo maestro `logo/master/mototrack-brand-assets.ai`. Las variantes disponibles actualmente son:
+
+| Tamaño | Archivo | Formato | Destino |
+|--------|---------|---------|---------|
+| 16×16 | (incluido en ICO) | ICO | Navegador (pestaña) |
+| 32×32 | `mototrack-favicon.ico` / `mototrack-favicon.svg` | ICO + SVG | Favicon estándar |
+| 48×48 | (incluido en ICO) | ICO | Navegador (alta densidad) |
+| 64×64 | `mototrack-favicon.svg` | SVG (escalable) | Navegadores modernos |
+| 180×180 | `mototrack-app-icon.png` | PNG | Apple Touch Icon |
+| 192×192 | — | PNG | PWA manifest (pendiente de exportar desde master) |
+| 512×512 | `mototrack-icon.png` | PNG | PWA manifest |
+
+Todos los archivos ICO y SVG se generan desde el isotipo oficial. El PNG 192×192 está pendiente de exportación desde el archivo maestro.
+
 ### Área de resguardo
 
 El área de resguardo (clear space) alrededor del logotipo debe ser igual al 25% del ancho del isotipo. No colocar texto, bordes ni otros elementos gráficos dentro de esta área.

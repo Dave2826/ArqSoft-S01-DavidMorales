@@ -1,0 +1,7 @@
+# MotoTrack - robots.txt
+# https://mototrack.app/
+
+User-agent: *
+Allow: /
+
+Sitemap: https://mototrack.app/sitemap.xml
