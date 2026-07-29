@@ -28,6 +28,32 @@ El proyecto implementa una arquitectura por capas con 5 proyectos independientes
 
 ---
 
+<p align="center">
+  <img src="https://img.shields.io/badge/.NET-10.0-512BD4?logo=dotnet" alt=".NET 10">
+  <img src="https://img.shields.io/badge/ASP.NET_Core-MVC-512BD4?logo=dotnet" alt="ASP.NET Core MVC">
+  <img src="https://img.shields.io/badge/EF_Core-SQLite-0769AD?logo=entity-framework" alt="EF Core SQLite">
+  <img src="https://img.shields.io/badge/license-MIT-green" alt="License MIT">
+  <img src="https://img.shields.io/badge/build-passing-success?logo=github-actions" alt="CI passing">
+</p>
+
+## Tabla de contenidos
+
+- [Características principales](#características-principales)
+- [Capturas del sistema](#capturas-del-sistema)
+- [Tecnologías utilizadas](#tecnologías-utilizadas)
+- [Arquitectura implementada](#arquitectura-implementada)
+- [Patrones de diseño](#patrones-de-diseño-implementados)
+- [API REST](#api-rest)
+- [Persistencia](#persistencia)
+- [Instalación](#instalación)
+- [Roadmap Arquitectónico](#roadmap-arquitectónico)
+- [Documentación](#documentación-arquitectónica)
+- [Identidad Visual](#identidad-visual)
+- [Estructura del proyecto](#estructura-del-proyecto)
+- [Autor](#autor)
+
+---
+
 ## Características principales
 
 - Registro e inicio de sesión.
@@ -205,39 +231,43 @@ La aplicación utilizará el proveedor de persistencia configurado en `appsettin
 
 ## Roadmap Arquitectónico
 
-| ADR | Etapa | Descripción |
-|------|--------|-------------|
+| ADR | Título | Descripción |
+|-----|--------|-------------|
 | ADR-01 | Arquitectura Inicial | Arquitectura por capas con persistencia JSON |
 | ADR-02 | Vistas Arquitectónicas | Documentación mediante modelo 4+1 |
 | ADR-03 | Estilo Arquitectónico | Formalización de arquitectura por capas |
-| ADR-04 | API REST | Exposición de endpoints REST documentados con Swagger |
-| ADR-05 | Patrones GOF | Incorporación de Strategy + Decorator para estado de mantenimiento y trazabilidad |
-| ADR-06 | Technical Debt | Identificación y priorización de deuda técnica acumulada |
-| ADR-07 | DashboardViewModel Technical Debt | Refactorización del DashboardViewModel para eliminar deuda técnica |
+| ADR-04 | API REST | Exposición de endpoints REST con Swagger |
+| ADR-05 | Patrones GOF | Strategy + Decorator para estado y trazabilidad |
+| ADR-06 | Technical Debt | Identificación y priorización de deuda técnica |
+| ADR-07 | DashboardViewModel Debt | Refactorización del DashboardViewModel |
+| ADR-08 | Migración EF Core | Incorporación de Entity Framework Core + SQLite |
+| ADR-09 | Pruebas y CI | Pruebas unitarias e integración continua |
 
 ---
 
 ## Documentación Arquitectónica
 
-Las decisiones arquitectónicas del proyecto se encuentran documentadas en:
+Las decisiones arquitectónicas están documentadas en el directorio `docs/adr/`:
 
-- docs/adr/ADR-01-Arquitectura-Inicial.md
-- docs/adr/ADR-02-Vistas-Arquitectonicas.md
-- docs/adr/ADR-03-Estilo-Arquitectonico.md
-- docs/adr/ADR-04-Incorporacion-API-REST.md
-- docs/adr/ADR-05-Patrones-GOF.md
-- docs/adr/ADR-06-Technical-Debt.md
-- docs/adr/ADR-07-DashboardViewModel-Technical-Debt.md
+- [ADR-01: Arquitectura Inicial](docs/adr/ADR-01-Arquitectura-Inicial.md)
+- [ADR-02: Vistas Arquitectónicas](docs/adr/ADR-02-Vistas-Arquitectonicas.md)
+- [ADR-03: Estilo Arquitectónico](docs/adr/ADR-03-Estilo-Arquitectonico.md)
+- [ADR-04: API REST](docs/adr/ADR-04-Incorporacion-API-REST.md)
+- [ADR-05: Patrones GOF](docs/adr/ADR-05-Patrones-GOF.md)
+- [ADR-06: Technical Debt](docs/adr/ADR-06-Technical-Debt.md)
+- [ADR-07: DashboardViewModel Debt](docs/adr/ADR-07-DashboardViewModel-Technical-Debt.md)
+- [ADR-08: Migración EF Core](docs/adr/ADR-08-Migracion-EntityFrameworkCore.md)
+- [ADR-09: Pruebas y CI](docs/adr/ADR-09-Pruebas-Unitarias-e-Integracion-Continua.md)
 
-El uso de herramientas de inteligencia artificial se documenta en:
-
-- docs/IA.md
+Uso de inteligencia artificial documentado en [docs/IA.md](docs/IA.md).
 
 ---
 
-## Estado Actual
+## Identidad Visual
 
-MotoTrack actualmente cuenta con arquitectura por capas documentada, Repository Pattern con dos proveedores de persistencia (Entity Framework Core + SQLite y JSON), API REST, Swagger, Strategy, Decorator y documentación arquitectónica mediante ADR. El proyecto continúa evolucionando mediante mejoras incrementales.
+La identidad visual oficial de MotoTrack se encuentra en el directorio [`branding/`](../branding/). Las guías completas de uso están disponibles en [`BRAND_GUIDELINES.md`](../branding/BRAND_GUIDELINES.md).
+
+Activos incluidos: logotipo (light y dark), isotipo, icono cuadrado, favicon, app icon, banner GitHub y social preview.
 
 ---
 
@@ -269,26 +299,25 @@ MotoTrack.Application/             ← Capa de aplicación
 
 MotoTrack.Infrastructure/          ← Capa de infraestructura
 ├── Repositories/                  ← Repositorios JSON
-├── Persistence/
-│   ├── MotoTrackDbContext.cs      ← DbContext de EF Core
-│   ├── Configurations/            ← Configuración Fluent API
-│   ├── Repositories/              ← Repositorios EF Core
-│   └── Migrations/                ← Migraciones de base de datos
-└── Decorators/                    ← Decorador para trazabilidad
+├── Persistence/                   ← EF Core (DbContext, configuraciones, migraciones, repositorios)
+└── Decorators/                    ← Decorador de trazabilidad
+
+MotoTrack.Tests/                   ← Pruebas unitarias (xUnit + Moq)
+
+branding/                          ← Identidad visual oficial
+├── BRAND_GUIDELINES.md            ← Guías de marca
+├── logo/                          ← Logotipo, isotipo, icono, favicon, app icon
+└── social/                        ← Banner GitHub y social preview
 ```
 
 ---
 
 ## Autor
 
-David Morales Guerrero
-
-Tecnológico del Software
-
-Materia: Arquitectura de Software
+**David Morales Guerrero**
 
 ---
 
 ## Uso de Inteligencia Artificial
 
-Se utilizó ChatGPT como herramienta de apoyo para investigación, resolución de problemas y documentación. Las decisiones finales fueron tomadas y verificadas por el autor.
+Se utilizó IA como herramienta de apoyo para investigación, resolución de problemas y documentación. Las decisiones finales fueron tomadas y verificadas por el autor.
