@@ -1,10 +1,30 @@
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../branding/social/mototrack-github-banner.svg">
+    <img src="../branding/social/mototrack-github-banner.svg" alt="MotoTrack Banner" width="100%">
+  </picture>
+</p>
+
+<br>
+
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="../branding/logo/mototrack-logo.svg">
+    <img src="../branding/logo/mototrack-logo.svg" alt="MotoTrack Logo" height="48">
+  </picture>
+</p>
+
 # MotoTrack
+
+**Smart motorcycle maintenance tracking.**
+
+---
 
 ## Descripción
 
-MotoTrack es una aplicación web desarrollada en ASP.NET Core MVC que permite a los motociclistas administrar sus motocicletas, registrar mantenimientos, controlar el kilometraje, visualizar alertas inteligentes de servicio, consultar el historial completo y utilizar una API REST documentada con Swagger.
+MotoTrack es una aplicación web ASP.NET Core MVC para la gestión integral del mantenimiento de motocicletas. Permite a los motociclistas registrar sus vehículos, controlar el kilometraje, programar servicios, visualizar alertas inteligentes de mantenimiento y gestionar gastos asociados. Incluye una API REST documentada con Swagger/OpenAPI.
 
-El proyecto fue desarrollado como parte de la materia de Arquitectura de Software y evoluciona mediante entregas incrementales.
+El proyecto implementa una arquitectura por capas con 5 proyectos independientes, 2 proveedores de persistencia seleccionables mediante configuración (Entity Framework Core + SQLite y JSON), 3 patrones de diseño GOF (Repository, Strategy, Decorator) y documentación arquitectónica mediante ADR.
 
 ---
 
