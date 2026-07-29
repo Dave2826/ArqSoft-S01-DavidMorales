@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 192 48">
+  <defs>
+    <style>
+      .sym { stroke: #ff7a00; stroke-width: 2.5; fill: none; stroke-linecap: round; stroke-linejoin: round; }
+      .txt { fill: #f5f5f5; font-family: 'Montserrat', 'Segoe UI', sans-serif; font-weight: 800; font-size: 22px; letter-spacing: -0.03em; }
+    </style>
+  </defs>
+  <g transform="translate(0, 4)">
+    <path class="sym" d="M6 36 L10 10 L18 22 L26 10 L30 36"/>
+  </g>
+  <text class="txt" x="44" y="32">MotoTrack</text>
+</svg>
