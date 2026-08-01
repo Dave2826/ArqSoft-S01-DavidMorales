@@ -85,3 +85,16 @@ function connectParticles() {
 }
 
 drawParticles();
+
+window.addEventListener("load", () => {
+    const splash = document.getElementById("splash");
+
+    if (!splash)
+        return;
+
+    splash.classList.add("splash--hidden");
+
+    setTimeout(() => {
+        splash.remove();
+    }, 450);
+});

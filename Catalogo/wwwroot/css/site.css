@@ -101,6 +101,33 @@ a {
         color: #ffa64d;
     }
 
+/* ================= SPLASH SCREEN ================= */
+.splash {
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: var(--color-bg);
+    opacity: 1;
+    visibility: visible;
+    transition: opacity 400ms ease, visibility 400ms ease;
+}
+
+.splash-img {
+    width: auto;
+    height: 280px;
+    max-width: 80vw;
+    object-fit: contain;
+}
+
+.splash--hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 /* ================= NAVBAR ================= */
 .navbar {
     background-color: #1b1b1b !important;
