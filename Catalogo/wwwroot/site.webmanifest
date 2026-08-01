@@ -10,14 +10,14 @@
   "background_color": "#121212",
   "icons": [
     {
-      "src": "/mototrack-app-icon.png",
-      "sizes": "180x180",
+      "src": "/assets/branding/app-icon/mototrack-app-icon-512.png",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any maskable"
     },
     {
-      "src": "/mototrack-icon.png",
-      "sizes": "512x512",
+      "src": "/assets/branding/app-icon/mototrack-app-icon-1024.png",
+      "sizes": "1024x1024",
       "type": "image/png",
       "purpose": "any maskable"
     }
