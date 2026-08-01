@@ -2308,6 +2308,44 @@ body > .dash-container-fluid {
 }
 
 /* ================= EXPLORAR GRID ================= */
+.explore-hero {
+    display: flex;
+    align-items: center;
+    gap: var(--space-lg);
+    padding: var(--space-xl) var(--space-lg);
+    margin-bottom: var(--space-lg);
+    background: linear-gradient(145deg, #1e1e1e 0%, #1b1b1b 100%);
+    border-left: 5px solid var(--color-primary);
+    border-radius: var(--radius-md);
+    box-shadow: var(--shadow-card);
+}
+
+.explore-hero-logo {
+    display: block;
+    flex-shrink: 0;
+    width: 170px;
+    height: auto;
+}
+
+.explore-hero-text h1 {
+    margin: 0 0 4px;
+}
+
+.explore-hero-text .contador-motos {
+    margin-bottom: 0;
+}
+
+@media (max-width: 576px) {
+    .explore-hero {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .explore-hero-logo {
+        width: 130px;
+    }
+}
+
 .badge-ano {
     display: inline-block;
     padding: 6px 16px;

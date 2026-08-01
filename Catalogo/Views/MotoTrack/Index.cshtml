@@ -4,15 +4,20 @@
     var marcas = ViewBag.Marcas as List<string> ?? new List<string>();
 }
 
-<h1>Explorar Motocicletas</h1>
+<div class="explore-hero">
+    <img src="~/assets/branding/logo/mototrack-logo-primary.svg" alt="MotoTrack" class="explore-hero-logo" />
+    <div class="explore-hero-text">
+        <h1>Explorar Motocicletas</h1>
 
-<p class="text-muted">
-    Explora motocicletas, conoce especificaciones y encuentra inspiración para tu próximo proyecto.
-</p>
+        <p class="text-muted">
+            Explora motocicletas, conoce especificaciones y encuentra inspiración para tu próximo proyecto.
+        </p>
 
-<p class="contador-motos">
-    Total de motocicletas registradas: <strong>@Model.Count()</strong>
-</p>
+        <p class="contador-motos">
+            Total de motocicletas registradas: <strong>@Model.Count()</strong>
+        </p>
+    </div>
+</div>
 
 <div class="filtro">
     <a asp-action="Index">Todas</a>
