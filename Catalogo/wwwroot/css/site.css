@@ -2916,6 +2916,50 @@ body > .dash-container-fluid {
 /* Alertas card tighter */
 /* ================= MIS MOTOS REDESIGN ================= */
 
+.moto-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    margin-bottom: var(--space-lg);
+}
+
+.moto-header-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.moto-header-logo {
+    display: block;
+    flex-shrink: 0;
+    width: 130px;
+    height: auto;
+}
+
+.moto-header-text h2 {
+    margin: 0;
+    font-size: 1.5rem;
+}
+
+.moto-header-sub {
+    margin: 2px 0 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+.moto-header-btn {
+    font-size: 0.8rem;
+    padding: 8px 18px;
+}
+
+@media (max-width: 576px) {
+    .moto-header-logo {
+        width: 110px;
+    }
+}
+
 .motos-stats-bar {
     display: flex;
     gap: 12px;

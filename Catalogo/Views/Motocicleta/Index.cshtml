@@ -12,9 +12,15 @@
 
 <div class="dash-container-fluid">
 
-    <div style="display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:10px;margin-bottom:16px">
-        <h2 style="margin:0;font-size:1.5rem">Mis Motocicletas</h2>
-        <a asp-action="Crear" class="btn-mototrack-primary" style="font-size:0.8rem;padding:8px 18px">+ Nueva Motocicleta</a>
+    <div class="moto-header">
+        <div class="moto-header-brand">
+            <img src="~/assets/branding/logo/mototrack-logo-primary.svg" alt="MotoTrack" class="moto-header-logo" />
+            <div class="moto-header-text">
+                <h2>Mis Motocicletas</h2>
+                <p class="moto-header-sub">Tu flota y su mantenimiento</p>
+            </div>
+        </div>
+        <a asp-action="Crear" class="btn-mototrack-primary moto-header-btn">+ Nueva Motocicleta</a>
     </div>
 
     <div class="motos-stats-bar">
