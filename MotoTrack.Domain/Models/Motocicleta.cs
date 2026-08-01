@@ -18,6 +18,7 @@ namespace MotoTrack.Domain.Models
         public int Ano { get; set; }
 
         [Required]
+        [Range(1, int.MaxValue)]
         public int Cilindrada { get; set; }
 
         [Required]

@@ -146,17 +146,7 @@ namespace MotoTrack.Controllers
 
             _motocicletaService.Agregar(motocicleta);
 
-            var configuracion = new ConfiguracionMantenimiento()
-            {
-                MotocicletaId = motocicleta.Id,
-                CambioAceiteKm = 2000,
-                RevisionCadenaKm = 3000,
-                RevisionBalatasKm = 5000,
-                RevisionLlantasKm = 7500,
-                RevisionFiltroAireKm = 10000,
-                AjusteValvulasKm = 12000
-            };
-            _configuracionService.Guardar(configuracion);
+            _configuracionService.CrearConfiguracionInicial(motocicleta);
 
             RegistrarHistorialCompra(motocicleta.Id, kmAceite, kmCadena, kmBalatas, kmLlantas, kmFiltro, kmValvulas);
 
