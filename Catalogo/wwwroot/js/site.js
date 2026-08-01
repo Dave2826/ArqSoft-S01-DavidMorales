@@ -98,3 +98,14 @@ window.addEventListener("load", () => {
         splash.remove();
     }, 450);
 });
+
+const navbar = document.querySelector(".navbar");
+
+if (navbar) {
+    const toggleNavbarScrolled = () => {
+        navbar.classList.toggle("navbar-scrolled", window.scrollY > 24);
+    };
+
+    toggleNavbarScrolled();
+    window.addEventListener("scroll", toggleNavbarScrolled, { passive: true });
+}

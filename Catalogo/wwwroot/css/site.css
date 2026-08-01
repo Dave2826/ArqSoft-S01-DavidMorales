@@ -140,6 +140,20 @@ a {
     min-height: 72px;
     padding-top: 0;
     padding-bottom: 0;
+    transition: min-height var(--transition-slow), background-color var(--transition-slow), box-shadow var(--transition-slow);
+}
+
+.navbar.navbar-scrolled {
+    min-height: 56px;
+    background-color: rgba(27, 27, 27, 0.85) !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.45);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+}
+
+.navbar.navbar-scrolled .navbar-brand {
+    padding-top: 0;
+    padding-bottom: 0;
 }
 
 .navbar-brand {
@@ -169,6 +183,7 @@ a {
 .navbar-logo {
     display: block;
     flex-shrink: 0;
+    transition: width var(--transition-slow);
 }
 
 .navbar-logo--full {
@@ -180,6 +195,14 @@ a {
     display: none;
     width: 42px;
     height: auto;
+}
+
+.navbar.navbar-scrolled .navbar-logo--full {
+    width: 120px;
+}
+
+.navbar.navbar-scrolled .navbar-logo--isotype {
+    width: 34px;
 }
 
 @media (max-width: 576px) {
@@ -1349,14 +1372,6 @@ footer {
     border-left: 4px solid var(--color-primary);
 }
 
-.perfil-header-title {
-    font-family: 'Montserrat', 'Segoe UI', sans-serif;
-    font-size: 1.75rem;
-    font-weight: 800;
-    color: #ff7a00;
-    line-height: 1.2;
-}
-
 .perfil-header-name {
     font-family: 'Montserrat', 'Segoe UI', sans-serif;
     font-size: var(--text-xl);
@@ -2033,10 +2048,6 @@ body > .dash-container-fluid {
     box-shadow: var(--shadow-card);
 }
 
-.explore-hero-text h1 {
-    margin: 0 0 4px;
-}
-
 .explore-hero-text .contador-motos {
     margin-bottom: 0;
 }
@@ -2468,11 +2479,6 @@ body > .dash-container-fluid {
     margin-bottom: 16px;
 }
 
-.dash-brand-text h2 {
-    margin: 0;
-    font-size: 1.75rem;
-}
-
 .dash-brand-welcome {
     margin: 6px 0 0;
     font-size: var(--text-sm);
@@ -2638,11 +2644,6 @@ body > .dash-container-fluid {
     flex-wrap: wrap;
     gap: var(--space-md);
     margin-bottom: var(--space-2xl);
-}
-
-.moto-header-text h2 {
-    margin: 0;
-    font-size: 1.7rem;
 }
 
 .moto-header-sub {
