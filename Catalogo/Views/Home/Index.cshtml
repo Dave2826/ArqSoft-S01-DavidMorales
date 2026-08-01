@@ -11,7 +11,8 @@
             <img src="~/assets/branding/logo/mototrack-logo-primary.png" alt="MotoTrack" class="dash-brand-logo" />
             <div class="dash-brand-text">
                 <h2>Dashboard</h2>
-                <p class="dash-brand-welcome">Bienvenido, @Context.Session.GetString("Nombre")</p>
+                <p class="dash-brand-welcome">Bienvenido de nuevo,</p>
+                <p class="dash-brand-user">@Context.Session.GetString("Nombre")</p>
             </div>
         </div>
         @if (Model.Motocicletas.Any())
