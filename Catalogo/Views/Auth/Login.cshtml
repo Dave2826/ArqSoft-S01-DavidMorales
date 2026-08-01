@@ -8,12 +8,7 @@
 
     <div class="login-container">
 
-        <div class="login-hero">
-            <h1 class="login-title">MOTOTRACK</h1>
-            <p class="login-subtitle">
-                Controla tus motocicletas, mantenimientos y estadísticas desde un solo lugar.
-            </p>
-        </div>
+        <partial name="_AuthBranding" />
 
         @if (ViewBag.Error != null)
         {
@@ -48,14 +43,6 @@
 
         </div>
 
-    </div>
-
-    <div class="login-showcase">
-        <div class="login-showcase-image">
-            <img src="~/assets/branding/logo/mototrack-logo-primary.svg" width="64" height="64" alt="MotoTrack" class="navbar-logo" />
-        </div>
-        <div class="login-showcase-text">MotoTrack</div>
-        <div class="login-showcase-sub">Próximamente</div>
     </div>
 
 </div>

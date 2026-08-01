@@ -1748,8 +1748,8 @@ body > .dash-container-fluid {
 .login-page {
     display: flex;
     justify-content: center;
-    align-items: flex-start;
-    gap: 40px;
+    align-items: center;
+    min-height: 72vh;
     padding: 40px 20px;
     max-width: 1100px;
     margin: 0 auto;
@@ -1760,9 +1760,17 @@ body > .dash-container-fluid {
     max-width: 520px;
 }
 
-.login-hero {
-    margin-bottom: 32px;
+.auth-brand {
     text-align: center;
+    margin-bottom: 32px;
+}
+
+.auth-brand-logo {
+    display: block;
+    width: min(80vw, 360px);
+    height: auto;
+    margin: 0 auto 20px;
+    filter: drop-shadow(0 8px 24px rgba(255, 122, 0, 0.18));
 }
 
 .login-title {
@@ -1852,54 +1860,18 @@ body > .dash-container-fluid {
     text-decoration: underline;
 }
 
-.login-showcase {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 40px;
-    min-width: 200px;
-}
-
-.login-showcase-image {
-    width: 220px;
-    height: 220px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-    border: 2px solid #333;
-    margin-bottom: 12px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.login-showcase-text {
-    font-size: 1.3rem;
-    color: #ff7a00;
-    font-weight: 700;
-}
-
-.login-showcase-sub {
-    color: #666;
-    font-size: 0.85rem;
-    margin-top: 4px;
-}
-
 @media (max-width: 768px) {
     .login-page {
-        flex-direction: column;
-        align-items: center;
         padding: 24px 16px;
+        min-height: 0;
     }
 
     .login-container {
         max-width: 100%;
     }
 
-    .login-showcase {
-        display: none;
+    .auth-brand-logo {
+        width: min(82vw, 300px);
     }
 
     .login-title {

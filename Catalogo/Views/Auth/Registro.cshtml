@@ -4,48 +4,54 @@
     ViewData["Title"] = "Registro";
 }
 
-<h2>Registro de Usuario</h2>
+<div class="login-page">
 
-@if (ViewBag.Error != null)
-{
-    <div class="error-box">@ViewBag.Error</div>
-}
+    <div class="login-container">
 
-<div class="card">
-    <div class="card-body">
+        <partial name="_AuthBranding" />
 
-        <form asp-action="Registro" method="post">
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-box">@ViewBag.Error</div>
+        }
 
-            <div class="form-group">
-                <label>Nombre</label>
-                <input asp-for="Nombre" />
-                <span asp-validation-for="Nombre" class="error"></span>
-            </div>
+        <div class="login-form-box">
 
-            <div class="form-group">
-                <label>Apellido</label>
-                <input asp-for="Apellido" />
-                <span asp-validation-for="Apellido" class="error"></span>
-            </div>
+            <form asp-action="Registro" method="post">
 
-            <div class="form-group">
-                <label>Correo</label>
-                <input asp-for="Correo" />
-                <span asp-validation-for="Correo" class="error"></span>
-            </div>
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input asp-for="Nombre" class="login-input" />
+                    <span asp-validation-for="Nombre" class="error"></span>
+                </div>
 
-            <div class="form-group">
-                <label>Contraseña</label>
-                <input asp-for="PasswordHash" type="password" />
-                <span asp-validation-for="PasswordHash" class="error"></span>
-            </div>
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input asp-for="Apellido" class="login-input" />
+                    <span asp-validation-for="Apellido" class="error"></span>
+                </div>
 
-            <div class="form-actions">
-                <button type="submit" class="btn">Registrarme</button>
-                <a asp-controller="Auth" asp-action="Login" class="btn-cancel">Ya tengo cuenta</a>
-            </div>
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input asp-for="Correo" class="login-input" />
+                    <span asp-validation-for="Correo" class="error"></span>
+                </div>
 
-        </form>
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input asp-for="PasswordHash" type="password" class="login-input" />
+                    <span asp-validation-for="PasswordHash" class="error"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-mototrack-primary">Registrarme</button>
+                    <a asp-controller="Auth" asp-action="Login" class="btn-cancel">Ya tengo cuenta</a>
+                </div>
+
+            </form>
+
+        </div>
 
     </div>
+
 </div>
