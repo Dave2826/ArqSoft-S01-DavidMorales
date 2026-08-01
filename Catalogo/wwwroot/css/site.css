@@ -63,7 +63,7 @@ body {
 }
 
 /* ================= TYPOGRAPHY PREMIUM ================= */
-h1, h2, h3, h4, h5, .navbar-brand, .navbar .nav-link, .btn, .btn-mototrack-primary, .btn-landing-secondary, .btn-action, .btn-cancel, .landing-title, .login-title, .perfil-stat-value, .hero-title, .alertas-title, .landing-benefit-title, .login-showcase-text, .landing-showcase-text {
+h1, h2, h3, h4, h5, .navbar-brand, .navbar .nav-link, .btn, .btn-mototrack-primary, .btn-landing-secondary, .btn-action, .btn-cancel, .landing-title, .login-title, .perfil-stat-value, .hero-title, .alertas-title, .landing-benefit-title, .login-showcase-text {
     font-family: 'Montserrat', 'Segoe UI', sans-serif;
     font-weight: 700;
 }
@@ -410,7 +410,7 @@ footer {
     flex-wrap: wrap;
     row-gap: var(--space-lg);
     gap: var(--space-xl);
-    padding: var(--space-2xl) 0;
+    padding: var(--space-lg) 0 var(--space-2xl);
 }
 
 .footer-brand {
@@ -1346,9 +1346,11 @@ footer {
 .perfil-banner {
     display: flex;
     align-items: center;
+    justify-content: center;
     gap: var(--space-md);
     padding: var(--space-md) var(--space-lg);
-    margin-bottom: var(--space-lg);
+    margin: 0 auto var(--space-lg);
+    max-width: 720px;
     background: linear-gradient(145deg, #1e1e1e 0%, #1b1b1b 100%);
     border-left: 5px solid #ff7a00;
     border-radius: var(--radius-md);
@@ -1679,7 +1681,7 @@ body > .dash-container-fluid {
 /* ================= LANDING PAGE ================= */
 .landing-page {
     text-align: center;
-    padding: 56px 20px 40px;
+    padding: 56px 20px var(--space-lg);
 }
 
 .landing-hero {
@@ -1753,7 +1755,7 @@ body > .dash-container-fluid {
     gap: 24px;
     justify-content: center;
     flex-wrap: wrap;
-    margin-bottom: 48px;
+    margin-bottom: var(--space-xl);
 }
 
 .landing-benefit {
@@ -1794,27 +1796,6 @@ body > .dash-container-fluid {
     font-size: 0.9rem;
     line-height: 1.5;
     margin: 0;
-}
-
-.landing-showcase {
-    margin-top: 0;
-}
-
-.landing-showcase-image {
-    width: 220px;
-    height: 220px;
-    margin: 0 auto 12px;
-    border-radius: 16px;
-    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-    border: 2px solid #333;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.3), 0 12px 32px rgba(0,0,0,0.2);
-}
-
-.landing-showcase-text {
-    color: #ff7a00;
-    font-size: 1.1rem;
-    font-weight: 600;
-    margin-bottom: 4px;
 }
 
 @media (max-width: 768px) {
