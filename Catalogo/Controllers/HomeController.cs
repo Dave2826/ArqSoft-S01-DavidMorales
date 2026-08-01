@@ -182,6 +182,11 @@ namespace MotoTrack.Controllers
             return View();
         }
 
+        public IActionResult Presentation()
+        {
+            return View();
+        }
+
         [ResponseCache(
             Duration = 0,
             Location = ResponseCacheLocation.None,
