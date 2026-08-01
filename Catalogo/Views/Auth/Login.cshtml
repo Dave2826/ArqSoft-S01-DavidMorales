@@ -6,9 +6,9 @@
 
 <div class="login-page">
 
-    <div class="login-container">
+    <partial name="_AuthBranding" />
 
-        <partial name="_AuthBranding" />
+    <section class="login-form-side">
 
         @if (ViewBag.Error != null)
         {
@@ -43,6 +43,6 @@
 
         </div>
 
-    </div>
+    </section>
 
 </div>

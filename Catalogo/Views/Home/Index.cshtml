@@ -8,10 +8,10 @@
 
     <div class="dash-header">
         <div class="dash-brand">
-            <img src="~/assets/branding/logo/mototrack-logo-primary.svg" alt="MotoTrack" class="dash-brand-logo" />
+            <img src="~/assets/branding/logo/mototrack-logo-primary.png" alt="MotoTrack" class="dash-brand-logo" />
             <div class="dash-brand-text">
                 <h2>Dashboard</h2>
-                <p class="dash-brand-welcome">Hola, @Context.Session.GetString("Nombre") — bienvenido de vuelta.</p>
+                <p class="dash-brand-welcome">Bienvenido, @Context.Session.GetString("Nombre")</p>
             </div>
         </div>
         @if (Model.Motocicletas.Any())
@@ -303,7 +303,7 @@
     {
         <div class="card hero-card hero-empty anim-hero">
             <div class="hero-img hero-img--empty">
-                <img src="~/assets/branding/isotype/mototrack-isotype.svg" width="64" height="64" alt="MotoTrack" />
+                <img src="~/assets/branding/isotype/mototrack-isotype.png" width="64" alt="MotoTrack" />
             </div>
             <div class="hero-body">
                 <div class="hero-empty-title">No tienes motocicletas registradas</div>
