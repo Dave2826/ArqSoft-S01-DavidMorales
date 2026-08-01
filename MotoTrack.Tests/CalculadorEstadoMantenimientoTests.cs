@@ -85,7 +85,7 @@ namespace MotoTrack.Tests
         }
 
         [Fact]
-        public void Calcular_MotoNuevaSinHistorial_CadenaPresentaProximoPorUmbralExistente()
+        public void Calcular_MotoNuevaSinHistorial_CadenaConIntervaloCompletoDisponible_PresentaAlDia()
         {
             // Arrange
             var moto = CrearMoto(0);
@@ -96,7 +96,7 @@ namespace MotoTrack.Tests
 
             // Assert
             Assert.Equal("1000 km", resultado.ProximaCadena);
-            Assert.Equal("PRÓXIMO", resultado.EstadoCadena);
+            Assert.Equal("AL DÍA", resultado.EstadoCadena);
         }
 
         [Fact]

@@ -8,7 +8,7 @@ namespace MotoTrack.Application.Strategies
         {
             var faltan = kilometrajeProximo - kilometrajeActual;
             if (faltan < 0) return "VENCIDO";
-            if (faltan <= warningThresholdKm) return "PRÓXIMO";
+            if (faltan < warningThresholdKm) return "PRÓXIMO";
             return "AL DÍA";
         }
     }
