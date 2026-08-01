@@ -121,17 +121,23 @@ El logotipo de MotoTrack consiste en un símbolo (una línea quebrada que forma 
 
 ### Versiones
 
-| Archivo | Variante | Uso recomendado |
-|---|---|---|
-| `mototrack-logo.svg` | Logo completo, light | Fondos oscuros (#121212, #1e1e1e). Uso principal. |
-| `mototrack-logo-dark.svg` | Logo completo, dark | Fondos claros (#ffffff, #f5f5f5). Temas claro. |
-| `mototrack-isotype.svg` | Solo símbolo, light | Avatar, favicon, espacios reducidos, fondos oscuros. |
-| `mototrack-isotype-dark.svg` | Solo símbolo, dark | Espacios reducidos en fondos claros. |
-| `mototrack-icon.svg` | Símbolo cuadrado | App icon, social preview, square contexts. |
-| `mototrack-favicon.svg` | Símbolo optimizado | Favicon de navegador (viewBox reducido). |
-| `mototrack-github-banner.svg` | Logo completo, banner | GitHub profile, README banner. |
-| `mototrack-social-preview.png` | Logo + nombre, preview | Open Graph, Twitter Cards. |
-| `mototrack-app-icon.png` | Símbolo cuadrado HD | PWA manifest, mobile home screen. |
+| Archivo | Ruta | Variante | Uso recomendado |
+|---|---|---|---|
+| `mototrack-logo-primary.svg` | `logo/primary/` | Logo completo, primary | Fondos oscuros (#121212, #1e1e1e). Uso principal. |
+| `mototrack-logo-primary.png` | `logo/primary/` | Logo completo, primary | Rasterizado para contextos que requieran PNG. |
+| `mototrack-logo-light.svg` | `logo/primary/` | Logo completo, light | Fondos claros (#ffffff, #f5f5f5). Temas claro. |
+| `mototrack-logo-light.png` | `logo/primary/` | Logo completo, light | Rasterizado para contextos que requieran PNG. |
+| `mototrack-logo-monochrome.png` | `logo/primary/` | Logo completo, monochrome | Uso monocromático (solo PNG oficial). |
+| `mototrack-isotype.svg` | `logo/isotype/` | Solo símbolo, primary | Avatar, navbar, espacios reducidos, fondos oscuros. |
+| `mototrack-isotype.png` | `logo/isotype/` | Solo símbolo, primary | Rasterizado para contextos que requieran PNG. |
+| `mototrack-isotype-circle.png` | `logo/isotype/` | Solo símbolo, círculo | Avatares e iconos circulares. |
+| `mototrack-isotype-monochrome.png` | `logo/isotype/` | Solo símbolo, monochrome | Uso monocromático (solo PNG oficial). |
+| `mototrack-isotype-orange.png` | `logo/isotype/` | Solo símbolo, orange | Uso en marca naranja. |
+| `favicon.svg` | `logo/favicon/` | Símbolo optimizado | Favicon de navegador (viewBox reducido). |
+| `mototrack-github-banner.svg` | `logo/social/` | Logo completo, banner | GitHub profile, README banner. |
+| `mototrack-social-preview.png` | `logo/social/` | Logo + nombre, preview | Open Graph, Twitter Cards. |
+| `mototrack-app-icon-*.png` | `logo/app-icon/` | Símbolo cuadrado HD | PWA manifest, mobile home screen (128/256/512/1024). |
+| `mototrack-splash.png` | `logo/mobile/` | Símbolo cuadrado | Pantalla de bienvenida (splash). |
 
 ### Tamaño mínimo
 
@@ -146,17 +152,18 @@ El logotipo de MotoTrack consiste en un símbolo (una línea quebrada que forma 
 
 Todos los iconos deben derivarse del archivo maestro `logo/master/mototrack-brand-assets.ai`. Las variantes disponibles actualmente son:
 
-| Tamaño | Archivo | Formato | Destino |
-|--------|---------|---------|---------|
-| 16×16 | (incluido en ICO) | ICO | Navegador (pestaña) |
-| 32×32 | `mototrack-favicon.ico` / `mototrack-favicon.svg` | ICO + SVG | Favicon estándar |
-| 48×48 | (incluido en ICO) | ICO | Navegador (alta densidad) |
-| 64×64 | `mototrack-favicon.svg` | SVG (escalable) | Navegadores modernos |
-| 180×180 | `mototrack-app-icon.png` | PNG | Apple Touch Icon |
-| 192×192 | — | PNG | PWA manifest (pendiente de exportar desde master) |
-| 512×512 | `mototrack-icon.png` | PNG | PWA manifest |
+| Tamaño | Archivo | Ruta | Formato | Destino |
+|--------|---------|------|---------|---------|
+| 16×16 | `favicon-16.png` | `logo/favicon/` | PNG | Navegador (pestaña) |
+| 32×32 | `favicon.ico` / `favicon.svg` / `favicon-32.png` | `logo/favicon/` | ICO + SVG + PNG | Favicon estándar |
+| 48×48 | `favicon-48.png` | `logo/favicon/` | PNG | Navegador (alta densidad) |
+| 64×64 | `favicon.svg` | `logo/favicon/` | SVG (escalable) | Navegadores modernos |
+| 128×128 | `mototrack-app-icon-128.png` | `logo/app-icon/` | PNG | PWA manifest |
+| 256×256 | `mototrack-app-icon-256.png` | `logo/app-icon/` | PNG | Apple Touch Icon / PWA |
+| 512×512 | `mototrack-app-icon-512.png` | `logo/app-icon/` | PNG | PWA manifest |
+| 1024×1024 | `mototrack-app-icon-1024.png` | `logo/app-icon/` | PNG | PWA manifest / store |
 
-Todos los archivos ICO y SVG se generan desde el isotipo oficial. El PNG 192×192 está pendiente de exportación desde el archivo maestro.
+Todos los archivos ICO, SVG y PNG se generan desde el isotipo oficial.
 
 ### Área de resguardo
 
