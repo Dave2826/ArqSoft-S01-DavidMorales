@@ -7,7 +7,13 @@
 <div class="dash-container-fluid">
 
     <div class="dash-header">
-        <h2>Dashboard</h2>
+        <div class="dash-brand">
+            <img src="~/assets/branding/logo/mototrack-logo-primary.svg" alt="MotoTrack" class="dash-brand-logo" />
+            <div class="dash-brand-text">
+                <h2>Dashboard</h2>
+                <p class="dash-brand-welcome">Hola, @Context.Session.GetString("Nombre") — bienvenido de vuelta.</p>
+            </div>
+        </div>
         @if (Model.Motocicletas.Any())
         {
             <div class="dash-select-wrap">

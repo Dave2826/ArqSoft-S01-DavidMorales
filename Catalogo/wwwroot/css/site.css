@@ -2702,9 +2702,34 @@ body > .dash-container-fluid {
     margin-bottom: 16px;
 }
 
-.dash-header h2 {
+.dash-brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.dash-brand-logo {
+    display: block;
+    flex-shrink: 0;
+    width: 150px;
+    height: auto;
+}
+
+.dash-brand-text h2 {
     margin: 0;
     font-size: 1.5rem;
+}
+
+.dash-brand-welcome {
+    margin: 2px 0 0;
+    font-size: var(--text-sm);
+    color: var(--color-text-secondary);
+}
+
+@media (max-width: 576px) {
+    .dash-brand-logo {
+        width: 120px;
+    }
 }
 
 .dash-select-wrap {
