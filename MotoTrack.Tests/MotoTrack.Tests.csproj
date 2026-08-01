@@ -18,6 +18,7 @@
     <ProjectReference Include="..\MotoTrack.Domain\MotoTrack.Domain.csproj" />
     <ProjectReference Include="..\MotoTrack.Application\MotoTrack.Application.csproj" />
     <ProjectReference Include="..\MotoTrack.Infrastructure\MotoTrack.Infrastructure.csproj" />
+    <ProjectReference Include="..\Catalogo\MotoTrack.csproj" />
   </ItemGroup>
 
   <ItemGroup>

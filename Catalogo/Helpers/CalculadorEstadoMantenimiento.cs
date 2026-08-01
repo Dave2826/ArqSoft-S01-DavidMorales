@@ -69,9 +69,18 @@ namespace MotoTrack.Helpers
         private MaintenanceStatusResult CalcularEstadoIndividual(
             List<Mantenimiento> mantenimientos,
             Motocicleta moto,
-            MaintenanceType tipo)
+            MaintenanceType tipo,
+            ConfiguracionMantenimiento? config)
         {
             var result = new MaintenanceStatusResult();
+
+            var intervalo = config?.ObtenerIntervalo(tipo);
+
+            if (intervalo is null || intervalo <= 0)
+            {
+                result.Estado = "Sin registro";
+                return result;
+            }
 
             if (!MaintenanceCatalog.TryGet(tipo, out var entry) || entry is null)
             {
@@ -90,16 +99,15 @@ namespace MotoTrack.Helpers
 
             if (ultimo != null)
             {
-                proxKm = ultimo.KilometrajeServicio + entry.RecommendedIntervalKm;
+                proxKm = ultimo.KilometrajeServicio + intervalo.Value;
             }
             else if (moto.KilometrajeCompra.HasValue)
             {
-                proxKm = moto.KilometrajeCompra.Value + entry.RecommendedIntervalKm;
+                proxKm = moto.KilometrajeCompra.Value + intervalo.Value;
             }
             else
             {
-                result.Estado = "Sin registro";
-                return result;
+                proxKm = intervalo.Value;
             }
 
             var faltan = proxKm - moto.KilometrajeActual;
@@ -136,82 +144,80 @@ namespace MotoTrack.Helpers
             List<Mantenimiento> mantenimientos,
             ConfiguracionMantenimiento? config)
         {
-            _ = config;
-
             var r = new EstadoMantenimientoResult();
             bool tieneEstimados = false;
 
-            var rA = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Aceite);
+            var rA = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Aceite, config);
             r.EstadoAceite = rA.Estado;
             r.ProximoAceite = rA.Estado != "Sin registro" ? $"{rA.ProximoServicio} km" : "Sin registro";
             r.UltimoAceite = ObtenerUltimoStr(mantenimientos, "Cambio de aceite");
             if (rA.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Cambio de aceite") && moto.KilometrajeCompra.HasValue)
             { r.AceiteEsEstimado = true; tieneEstimados = true; }
 
-            var rC = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Cadena);
+            var rC = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Cadena, config);
             r.EstadoCadena = rC.Estado;
             r.ProximaCadena = rC.Estado != "Sin registro" ? $"{rC.ProximoServicio} km" : "Sin registro";
             r.UltimaCadena = ObtenerUltimoStr(mantenimientos, "Cadena");
             if (rC.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Cadena") && moto.KilometrajeCompra.HasValue)
             { r.CadenaEsEstimado = true; tieneEstimados = true; }
 
-            var rB = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Balatas);
+            var rB = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Balatas, config);
             r.EstadoBalatas = rB.Estado;
             r.ProximasBalatas = rB.Estado != "Sin registro" ? $"{rB.ProximoServicio} km" : "Sin registro";
             r.UltimasBalatas = ObtenerUltimoStr(mantenimientos, "Balatas");
             if (rB.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Balatas") && moto.KilometrajeCompra.HasValue)
             { r.BalatasEsEstimado = true; tieneEstimados = true; }
 
-            var rL = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Llantas);
+            var rL = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Llantas, config);
             r.EstadoLlantas = rL.Estado;
             r.ProximasLlantas = rL.Estado != "Sin registro" ? $"{rL.ProximoServicio} km" : "Sin registro";
             r.UltimasLlantas = ObtenerUltimoStr(mantenimientos, "Llantas");
             if (rL.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Llantas") && moto.KilometrajeCompra.HasValue)
             { r.LlantasEsEstimado = true; tieneEstimados = true; }
 
-            var rF = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.FiltroAire);
+            var rF = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.FiltroAire, config);
             r.EstadoFiltroAire = rF.Estado;
             r.ProximoFiltroAire = rF.Estado != "Sin registro" ? $"{rF.ProximoServicio} km" : "Sin registro";
             r.UltimoFiltroAire = ObtenerUltimoStr(mantenimientos, "Filtro de aire");
             if (rF.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Filtro de aire") && moto.KilometrajeCompra.HasValue)
             { r.FiltroAireEsEstimado = true; tieneEstimados = true; }
 
-            var rU = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Bujias);
+            var rU = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Bujias, config);
             r.EstadoBujias = rU.Estado;
             r.ProximasBujias = rU.Estado != "Sin registro" ? $"{rU.ProximoServicio} km" : "Sin registro";
             r.UltimasBujias = ObtenerUltimoStr(mantenimientos, "Bujías");
             if (rU.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Bujías") && moto.KilometrajeCompra.HasValue)
             { r.BujiasEsEstimado = true; tieneEstimados = true; }
 
-            var rV = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Valvulas);
+            var rV = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Valvulas, config);
             r.EstadoValvulas = rV.Estado;
             r.ProximasValvulas = rV.Estado != "Sin registro" ? $"{rV.ProximoServicio} km" : "Sin registro";
             r.UltimasValvulas = ObtenerUltimoStr(mantenimientos, "Válvulas");
             if (rV.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Válvulas") && moto.KilometrajeCompra.HasValue)
             { r.ValvulasEsEstimado = true; tieneEstimados = true; }
 
-            var rE = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Bateria);
+            var rE = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Bateria, config);
             r.EstadoBateria = rE.Estado;
             r.ProximaBateria = rE.Estado != "Sin registro" ? $"{rE.ProximoServicio} km" : "Sin registro";
             r.UltimaBateria = ObtenerUltimoStr(mantenimientos, "Batería");
             if (rE.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Batería") && moto.KilometrajeCompra.HasValue)
             { r.BateriaEsEstimado = true; tieneEstimados = true; }
 
-            var rS = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Suspension);
+            var rS = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Suspension, config);
             r.EstadoSuspension = rS.Estado;
             r.ProximaSuspension = rS.Estado != "Sin registro" ? $"{rS.ProximoServicio} km" : "Sin registro";
             r.UltimaSuspension = ObtenerUltimoStr(mantenimientos, "Suspensión");
             if (rS.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Suspensión") && moto.KilometrajeCompra.HasValue)
             { r.SuspensionEsEstimado = true; tieneEstimados = true; }
 
-            var rH = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.LiquidoFrenos);
+            var rH = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.LiquidoFrenos, config);
             r.EstadoLiquidoFrenos = rH.Estado;
             r.ProximoLiquidoFrenos = rH.Estado != "Sin registro" ? $"{rH.ProximoServicio} km" : "Sin registro";
             r.UltimoLiquidoFrenos = ObtenerUltimoStr(mantenimientos, "Líquido de frenos");
             if (rH.Estado != "Sin registro" && !mantenimientos.Any(m => m.Tipo == "Líquido de frenos") && moto.KilometrajeCompra.HasValue)
             { r.LiquidoFrenosEsEstimado = true; tieneEstimados = true; }
 
-            var rN = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Anticongelante);
+            var rN = CalcularEstadoIndividual(mantenimientos, moto, MaintenanceType.Anticongelante, config);
             r.EstadoAnticongelante = rN.Estado;
             r.ProximoAnticongelante = rN.Estado != "Sin registro" ? $"{rN.ProximoServicio} km" : "Sin registro";
             r.UltimoAnticongelante = ObtenerUltimoStr(mantenimientos, "Anticongelante");

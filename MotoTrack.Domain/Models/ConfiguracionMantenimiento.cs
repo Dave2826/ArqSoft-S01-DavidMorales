@@ -1,4 +1,6 @@
-﻿namespace MotoTrack.Domain.Models
+﻿using MotoTrack.Domain.Enums;
+
+namespace MotoTrack.Domain.Models
 {
     public class ConfiguracionMantenimiento
     {
@@ -17,5 +19,44 @@
         public int RevisionFiltroAireKm { get; set; }
 
         public int AjusteValvulasKm { get; set; }
+
+        public int? ObtenerIntervalo(MaintenanceType tipo)
+        {
+            return tipo switch
+            {
+                MaintenanceType.Aceite => CambioAceiteKm,
+                MaintenanceType.Cadena => RevisionCadenaKm,
+                MaintenanceType.Balatas => RevisionBalatasKm,
+                MaintenanceType.Llantas => RevisionLlantasKm,
+                MaintenanceType.FiltroAire => RevisionFiltroAireKm,
+                MaintenanceType.Valvulas => AjusteValvulasKm,
+                _ => null
+            };
+        }
+
+        public void AsignarIntervalo(MaintenanceType tipo, int intervaloKm)
+        {
+            switch (tipo)
+            {
+                case MaintenanceType.Aceite:
+                    CambioAceiteKm = intervaloKm;
+                    break;
+                case MaintenanceType.Cadena:
+                    RevisionCadenaKm = intervaloKm;
+                    break;
+                case MaintenanceType.Balatas:
+                    RevisionBalatasKm = intervaloKm;
+                    break;
+                case MaintenanceType.Llantas:
+                    RevisionLlantasKm = intervaloKm;
+                    break;
+                case MaintenanceType.FiltroAire:
+                    RevisionFiltroAireKm = intervaloKm;
+                    break;
+                case MaintenanceType.Valvulas:
+                    AjusteValvulasKm = intervaloKm;
+                    break;
+            }
+        }
     }
 }
