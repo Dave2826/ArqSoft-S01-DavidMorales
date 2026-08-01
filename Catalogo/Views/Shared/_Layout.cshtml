@@ -52,8 +52,8 @@
             <div class="container-fluid">
 
                 <a class="navbar-brand" asp-controller="Home" asp-action="Landing">
-                    <img src="~/assets/branding/isotype/mototrack-isotype.svg" width="28" height="28" alt="MotoTrack" class="navbar-logo" />
-                    MotoTrack
+                    <img src="~/assets/branding/logo/mototrack-logo-primary.svg" alt="MotoTrack" class="navbar-logo navbar-logo--full" />
+                    <img src="~/assets/branding/isotype/mototrack-isotype.svg" alt="MotoTrack" class="navbar-logo navbar-logo--isotype" />
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -140,13 +140,18 @@
     <footer class="border-top footer">
         <div class="container footer-inner">
             <div class="footer-brand">
-                <img src="~/assets/branding/logo/mototrack-logo-primary.svg" width="18" height="18" alt="" class="footer-logo" />
-                <span class="footer-name">MotoTrack</span>
+                <img src="~/assets/branding/logo/mototrack-logo-primary.svg" alt="" class="footer-logo" />
+                <div class="footer-brand-text">
+                    <span class="footer-name">MotoTrack</span>
+                    <span class="footer-version">v0.3.0</span>
+                </div>
             </div>
             <div class="footer-links">
-                <span class="footer-copy">&copy; 2026 MotoTrack</span>
+                <a asp-controller="MotoTrack" asp-action="Index">Explorar</a>
                 <span class="footer-sep">&middot;</span>
                 <a asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                <span class="footer-sep">&middot;</span>
+                <span class="footer-copy">&copy; 2026 MotoTrack</span>
             </div>
         </div>
     </footer>
