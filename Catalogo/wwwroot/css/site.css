@@ -1914,20 +1914,23 @@ body > .dash-container-fluid {
 }
 
 .landing-hero {
+    min-height: 66vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     margin-bottom: 60px;
 }
 
 .landing-brand-area {
-    width: 80px;
-    height: 80px;
-    margin: 0 auto 24px;
-    border-radius: 50%;
-    background: linear-gradient(145deg, #1a1a1a, #2a2a2a);
-    border: 2px solid #333;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.3);
-    display: flex;
-    align-items: center;
-    justify-content: center;
+    margin: 0 auto var(--space-xl);
+    filter: drop-shadow(0 8px 24px rgba(255, 122, 0, 0.18));
+}
+
+.landing-logo {
+    display: block;
+    width: min(72vw, 420px);
+    height: auto;
+    margin: 0 auto;
 }
 
 .landing-title {
@@ -2051,6 +2054,10 @@ body > .dash-container-fluid {
 
     .landing-subtitle {
         font-size: 1rem;
+    }
+
+    .landing-logo {
+        width: min(82vw, 320px);
     }
 
     .landing-benefit {
