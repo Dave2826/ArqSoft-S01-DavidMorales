@@ -332,6 +332,10 @@ Disponibles en el directorio [`Catalogo/docs/diagramas/`](Catalogo/docs/diagrama
 - [Vista de despliegue](Catalogo/docs/diagramas/vista-despliegue.md)
 - [Diagrama de capas (Mermaid)](Catalogo/docs/diagramas/arquitectura-por-capas.mmd)
 
+### Despliegue
+
+La documentación de la infraestructura de despliegue público se encuentra en [AWS Deployment](Catalogo/docs/deployment/AWS_DEPLOYMENT.md). El proyecto utiliza Integración Continua para compilar y ejecutar las pruebas; el despliegue a EC2 es manual.
+
 ### Roadmap
 
 El avance arquitectónico y las decisiones planificadas se consolidan en la sección [Roadmap Arquitectónico](#roadmap-arquitectónico).
