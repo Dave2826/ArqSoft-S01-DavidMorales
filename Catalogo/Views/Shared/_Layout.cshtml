@@ -1,0 +1,173 @@
+@functions {
+    string NavActive(string controller, string action = "Index")
+    {
+        var c = ViewContext.RouteData.Values["controller"]?.ToString();
+        var a = ViewContext.RouteData.Values["action"]?.ToString();
+        return (c == controller && a == action) ? "nav-link-active" : "";
+    }
+
+    string NavActiveHref(string path)
+    {
+        var current = Context.Request.Path.Value ?? "";
+        return current.StartsWith(path, StringComparison.OrdinalIgnoreCase) ? "nav-link-active" : "";
+    }
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - MotoTrack</title>
+
+    <meta name="description" content="MotoTrack - Controla tus motocicletas, mantenimientos y estadísticas desde un solo lugar." />
+    <meta name="theme-color" content="#ff7a00" />
+    <meta name="application-name" content="MotoTrack" />
+    <meta name="author" content="David Morales Guerrero" />
+    <meta name="robots" content="index, follow" />
+
+    <link rel="canonical" href="https://mototrack.app/" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="~/assets/branding/favicon/favicon.svg" />
+    <link rel="apple-touch-icon" sizes="180x180" href="~/assets/branding/app-icon/mototrack-app-icon-256.png" />
+    <link rel="manifest" href="~/site.webmanifest" />
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+
+    <!-- Open Graph / Social -->
+    <meta property="og:title" content="MotoTrack" />
+    <meta property="og:description" content="Controla tus motocicletas, mantenimientos y estadísticas desde un solo lugar." />
+    <meta property="og:image" content="~/assets/branding/logo/mototrack-logo-primary.png" />
+    <meta property="og:type" content="website" />
+    <meta name="twitter:card" content="summary_large_image" />
+</head>
+
+<body>
+
+    <!-- SPLASH SCREEN -->
+    <div id="splash" class="splash" aria-hidden="true">
+        <img src="~/assets/branding/splash/mototrack-splash.png" alt="MotoTrack" class="splash-img" />
+    </div>
+
+    <!-- NAVBAR -->
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-dark bg-dark border-bottom sticky-top">
+            <div class="container-fluid">
+
+                <a class="navbar-brand" asp-controller="Home" asp-action="Index">
+                    <img src="~/assets/branding/logo/mototrack-logo-primary.png" alt="MotoTrack" class="navbar-logo navbar-logo--full" />
+                    <img src="~/assets/branding/isotype/mototrack-isotype.png" alt="MotoTrack" class="navbar-logo navbar-logo--isotype" />
+                </a>
+
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                        data-bs-target=".navbar-collapse">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="navbar-collapse collapse d-sm-inline-flex justify-content-between">
+                    <ul class="navbar-nav flex-grow-1">
+                        @if (Context.Session.GetString("UsuarioId") == null)
+                        {
+                            <!-- Sin sesión -->
+                            <li class="nav-item">
+                                <a class="nav-link text-light @NavActive("Home", "Index")" asp-controller="Home" asp-action="Index">
+                                    INICIO
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-warning @NavActive("MotoTrack", "Index")" asp-controller="MotoTrack" asp-action="Index">
+                                    EXPLORAR
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light @NavActiveHref("/Auth/Login")" href="/Auth/Login">
+                                    LOGIN
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light @NavActiveHref("/Auth/Registro")" href="/Auth/Registro">
+                                    REGISTRO
+                                </a>
+                            </li>
+                        }
+                        else
+                        {
+                            <!-- Con sesión -->
+                            <li class="nav-item">
+                                <a class="nav-link text-light @NavActive("Home", "Index")" asp-controller="Home" asp-action="Index">
+                                    DASHBOARD
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light @NavActive("Motocicleta", "Index")" asp-controller="Motocicleta" asp-action="Index">
+                                    MIS MOTOS
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-light @NavActive("Perfil", "Index")" asp-controller="Perfil" asp-action="Index">
+                                    PERFIL
+                                </a>
+                            </li>
+
+                            <li class="nav-item">
+                                <a class="nav-link text-warning @NavActive("MotoTrack", "Index")" asp-controller="MotoTrack" asp-action="Index">
+                                    EXPLORAR
+                                </a>
+                            </li>
+
+                            <li class="nav-item ms-auto">
+                                <a class="nav-link text-light" href="/Auth/Logout">
+                                    CERRAR SESIÓN
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- CONTENIDO -->
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="border-top footer">
+        <div class="container">
+            <div class="footer-inner">
+                <div class="footer-brand">
+                    <img src="~/assets/branding/logo/mototrack-logo-primary.png" alt="MotoTrack" class="footer-logo" />
+                    <div class="footer-brand-text">
+                        <span class="footer-name">MotoTrack</span>
+                        <span class="footer-version">v0.3.0</span>
+                    </div>
+                </div>
+                <div class="footer-links">
+                    <a asp-controller="MotoTrack" asp-action="Index">Explorar</a>
+                    <span class="footer-sep">&middot;</span>
+                    <a asp-controller="Home" asp-action="Privacy">Privacidad</a>
+                    <span class="footer-sep">&middot;</span>
+                    <span class="footer-copy">&copy; 2026 MotoTrack</span>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+
+    @RenderSection("Scripts", required: false)
+
+</body>
+</html>

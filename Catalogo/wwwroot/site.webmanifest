@@ -1,0 +1,25 @@
+{
+  "name": "MotoTrack",
+  "short_name": "MotoTrack",
+  "description": "Controla tus motocicletas, mantenimientos y estadísticas desde un solo lugar.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "theme_color": "#ff7a00",
+  "background_color": "#121212",
+  "icons": [
+    {
+      "src": "/assets/branding/app-icon/mototrack-app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/branding/app-icon/mototrack-app-icon-1024.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

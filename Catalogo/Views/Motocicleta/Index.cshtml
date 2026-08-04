@@ -1,0 +1,207 @@
+﻿@model List<MotoTrack.Domain.Models.Motocicleta>
+@using MotoTrack.Domain.Models
+
+@{
+    ViewData["Title"] = "Mis Motocicletas";
+    var estados = ViewData["Estados"] as Dictionary<Guid, EstadoMantenimientoResult>;
+    var total = Model.Count;
+    var alDia = estados != null ? estados.Values.Count(e => e.PrioridadGeneral == EstadoMantenimientoResult.EstadoPrioridad.AlDia) : 0;
+    var requierenAtencion = estados != null ? estados.Values.Count(e => e.PrioridadGeneral is EstadoMantenimientoResult.EstadoPrioridad.Vencido or EstadoMantenimientoResult.EstadoPrioridad.Proximo) : 0;
+    var kmTotal = Model.Sum(m => m.KilometrajeActual);
+}
+
+<div class="dash-container-fluid">
+
+    <div class="moto-header">
+        <div class="moto-header-text">
+            <p class="moto-header-sub"><strong>@total</strong> motocicletas registradas</p>
+        </div>
+        <a asp-action="Crear" class="btn-mototrack-primary moto-header-btn">+ Nueva Motocicleta</a>
+    </div>
+
+    <div class="motos-stats-bar">
+        <div class="motos-stat">
+            <div class="motos-stat-value">@total</div>
+            <div class="motos-stat-label">Total</div>
+        </div>
+        <div class="motos-stat">
+            <div class="motos-stat-value" style="color:#a5d6a7">@alDia</div>
+            <div class="motos-stat-label">Al día</div>
+        </div>
+        <div class="motos-stat">
+            <div class="motos-stat-value" style="color:#ffcc80">@requierenAtencion</div>
+            <div class="motos-stat-label">Requieren atención</div>
+        </div>
+        <div class="motos-stat">
+            <div class="motos-stat-value" style="font-size:1.4rem">@kmTotal.ToString("N0") km</div>
+            <div class="motos-stat-label">Kilometraje total</div>
+        </div>
+    </div>
+
+    <div class="motos-controls">
+        <input type="text" class="moto-search" id="motoSearch" placeholder="Buscar motocicleta..." />
+        <select class="moto-filter" id="motoFilter">
+            <option value="all">Todos los estados</option>
+            <option value="al-dia">Al día</option>
+            <option value="proximo">Próximo servicio</option>
+            <option value="vencido">Vencido</option>
+        </select>
+        <select class="moto-sort" id="motoSort">
+            <option value="nombre">Ordenar: Nombre</option>
+            <option value="km">Ordenar: Kilometraje</option>
+            <option value="proximo">Ordenar: Próximo manto</option>
+            <option value="ano">Ordenar: Año</option>
+        </select>
+    </div>
+
+    @if (!Model.Any())
+    {
+        <div class="card hero-card hero-empty" style="margin-top:20px">
+            <div class="hero-img hero-img--empty">
+                <img src="~/assets/branding/isotype/mototrack-isotype.png" width="64" alt="MotoTrack" />
+            </div>
+            <div class="hero-body">
+                <div class="hero-empty-title">No tienes motocicletas registradas</div>
+                <div class="hero-empty-text">Agrega tu primera motocicleta para comenzar.</div>
+                <a class="btn-mototrack-primary" asp-action="Crear">Agregar motocicleta</a>
+            </div>
+        </div>
+    }
+    else
+    {
+        <div class="motos-grid" id="motosGrid">
+            @foreach (var moto in Model)
+            {
+                var est = estados![moto.Id];
+                var prio = est.PrioridadGeneral;
+                var estadoClass = prio == EstadoMantenimientoResult.EstadoPrioridad.Vencido ? "vencido" :
+                    prio == EstadoMantenimientoResult.EstadoPrioridad.Proximo ? "proximo" :
+                    prio == EstadoMantenimientoResult.EstadoPrioridad.AlDia ? "al-dia" : "sin-registro";
+
+                var searchText = $"{moto.Marca} {moto.Modelo} {moto.Ano}".ToLowerInvariant();
+
+                <div class="moto-card-h" data-estado="@estadoClass" data-nombre="@searchText" data-km="@moto.KilometrajeActual" data-ano="@moto.Ano" data-prio="@((int)prio)">
+                    <div class="moto-card-h-status moto-card-h-status--@estadoClass"></div>
+
+                    <div class="moto-card-h-left">
+                        <div class="moto-card-h-img">
+                            @if (!string.IsNullOrEmpty(moto.FotoUrl))
+                            {
+                                <img src="@moto.FotoUrl" alt="@moto.Marca @moto.Modelo" />
+                            }
+                        </div>
+                        <div class="moto-card-h-brand">@moto.Marca @moto.Modelo</div>
+                        <div class="moto-card-h-year">@moto.Ano</div>
+                    </div>
+
+                    <div class="moto-card-h-center">
+                        <div class="moto-card-h-info">
+                            <div class="moto-info-item">
+                                <span class="moto-info-label">Kilometraje</span>
+                                <span class="moto-info-value">@moto.KilometrajeActual km</span>
+                            </div>
+                            <div class="moto-info-item">
+                                <span class="moto-info-label">Cilindraje</span>
+                                <span class="moto-info-value">@moto.Cilindrada cc</span>
+                            </div>
+                        </div>
+                        <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
+                            <span class="moto-status-resumen moto-status--@estadoClass">@est.Resumen</span>
+                            @if (est.TotalVencidos > 0 || est.TotalProximos > 0)
+                            {
+                                <span class="moto-h-alerts @(est.TotalVencidos > 0 ? "" : "moto-h-alerts--proximo")">
+                                    @if (est.TotalVencidos > 0) { @(est.TotalVencidos)@: vencido(s)
+                                    }
+                                    @if (est.TotalVencidos > 0 && est.TotalProximos > 0) { @: ·
+                                    }
+                                    @if (est.TotalProximos > 0) { @(est.TotalProximos)@: próximo(s)
+                                    }
+                                </span>
+                            }
+                        </div>
+                        <div class="moto-estado-row">
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoAceite == "VENCIDO" ? "vencido" : est.EstadoAceite == "PRÓXIMO" ? "proximo" : est.EstadoAceite == "AL DÍA" ? "al-dia" : "sin-reg")" title="Aceite: @est.EstadoAceite@(est.AceiteEsEstimado ? " (estimado)" : "")">A</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoCadena == "VENCIDO" ? "vencido" : est.EstadoCadena == "PRÓXIMO" ? "proximo" : est.EstadoCadena == "AL DÍA" ? "al-dia" : "sin-reg")" title="Cadena: @est.EstadoCadena@(est.CadenaEsEstimado ? " (estimado)" : "")">C</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoBalatas == "VENCIDO" ? "vencido" : est.EstadoBalatas == "PRÓXIMO" ? "proximo" : est.EstadoBalatas == "AL DÍA" ? "al-dia" : "sin-reg")" title="Balatas: @est.EstadoBalatas@(est.BalatasEsEstimado ? " (estimado)" : "")">B</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoLlantas == "VENCIDO" ? "vencido" : est.EstadoLlantas == "PRÓXIMO" ? "proximo" : est.EstadoLlantas == "AL DÍA" ? "al-dia" : "sin-reg")" title="Llantas: @est.EstadoLlantas@(est.LlantasEsEstimado ? " (estimado)" : "")">L</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoFiltroAire == "VENCIDO" ? "vencido" : est.EstadoFiltroAire == "PRÓXIMO" ? "proximo" : est.EstadoFiltroAire == "AL DÍA" ? "al-dia" : "sin-reg")" title="Filtro de aire: @est.EstadoFiltroAire@(est.FiltroAireEsEstimado ? " (estimado)" : "")">F</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoBujias == "VENCIDO" ? "vencido" : est.EstadoBujias == "PRÓXIMO" ? "proximo" : est.EstadoBujias == "AL DÍA" ? "al-dia" : "sin-reg")" title="Bujías: @est.EstadoBujias@(est.BujiasEsEstimado ? " (estimado)" : "")">I</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoValvulas == "VENCIDO" ? "vencido" : est.EstadoValvulas == "PRÓXIMO" ? "proximo" : est.EstadoValvulas == "AL DÍA" ? "al-dia" : "sin-reg")" title="Válvulas: @est.EstadoValvulas@(est.ValvulasEsEstimado ? " (estimado)" : "")">V</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoBateria == "VENCIDO" ? "vencido" : est.EstadoBateria == "PRÓXIMO" ? "proximo" : est.EstadoBateria == "AL DÍA" ? "al-dia" : "sin-reg")" title="Batería: @est.EstadoBateria@(est.BateriaEsEstimado ? " (estimado)" : "")">E</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoSuspension == "VENCIDO" ? "vencido" : est.EstadoSuspension == "PRÓXIMO" ? "proximo" : est.EstadoSuspension == "AL DÍA" ? "al-dia" : "sin-reg")" title="Suspensión: @est.EstadoSuspension@(est.SuspensionEsEstimado ? " (estimado)" : "")">S</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoLiquidoFrenos == "VENCIDO" ? "vencido" : est.EstadoLiquidoFrenos == "PRÓXIMO" ? "proximo" : est.EstadoLiquidoFrenos == "AL DÍA" ? "al-dia" : "sin-reg")" title="Líquido de frenos: @est.EstadoLiquidoFrenos@(est.LiquidoFrenosEsEstimado ? " (estimado)" : "")">H</span>
+                            <span class="moto-estado-item moto-estado-item--@(est.EstadoAnticongelante == "VENCIDO" ? "vencido" : est.EstadoAnticongelante == "PRÓXIMO" ? "proximo" : est.EstadoAnticongelante == "AL DÍA" ? "al-dia" : "sin-reg")" title="Anticongelante: @est.EstadoAnticongelante@(est.AnticongelanteEsEstimado ? " (estimado)" : "")">N</span>
+                        </div>
+                    </div>
+
+                    <div class="moto-card-h-right">
+                        <div class="moto-btn-row">
+                            <a class="btn-moto-action" asp-action="Editar" asp-route-id="@moto.Id">Editar</a>
+                            <a class="btn-moto-action btn-moto-action--danger" asp-action="Eliminar" asp-route-id="@moto.Id" onclick="return confirm('¿Estás seguro de eliminar esta motocicleta?')">Eliminar</a>
+                        </div>
+                        <div class="moto-btn-row">
+                            <a class="btn-moto-action" asp-controller="LecturaKilometraje" asp-action="Crear" asp-route-motocicletaId="@moto.Id">Reg. KM</a>
+                            <a class="btn-moto-action" asp-controller="Mantenimiento" asp-action="Crear" asp-route-motocicletaId="@moto.Id">Reg. Manto</a>
+                        </div>
+                        <div class="moto-btn-row">
+                            <a class="btn-moto-action" asp-controller="Mantenimiento" asp-action="Index" asp-route-motocicletaId="@moto.Id">Historial</a>
+                            <a class="btn-moto-action" asp-controller="Mantenimiento" asp-action="Gastos" asp-route-motocicletaId="@moto.Id">Gastos</a>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    }
+</div>
+
+<script>
+    (function() {
+        const searchInput = document.getElementById('motoSearch');
+        const filterSelect = document.getElementById('motoFilter');
+        const sortSelect = document.getElementById('motoSort');
+        const grid = document.getElementById('motosGrid');
+        if (!grid) return;
+
+        function applyFilter() {
+            const search = searchInput.value.toLowerCase().trim();
+            const filter = filterSelect.value;
+            const sort = sortSelect.value;
+            const cards = Array.from(grid.querySelectorAll('.moto-card-h'));
+
+            cards.forEach(c => c.classList.remove('moto-hidden'));
+
+            const visible = cards.filter(c => {
+                const name = c.dataset.nombre || '';
+                const estado = c.dataset.estado || '';
+                const matchesSearch = !search || name.includes(search);
+                const matchesFilter = filter === 'all' || estado === filter;
+                return matchesSearch && matchesFilter;
+            });
+
+            cards.forEach(c => {
+                if (!visible.includes(c)) c.classList.add('moto-hidden');
+            });
+
+            if (sort) {
+                visible.sort((a, b) => {
+                    switch (sort) {
+                        case 'nombre': {
+                            const na = (a.dataset.nombre || '').toLowerCase();
+                            const nb = (b.dataset.nombre || '').toLowerCase();
+                            return na.localeCompare(nb);
+                        }
+                        case 'km': return parseInt(b.dataset.km || 0) - parseInt(a.dataset.km || 0);
+                        case 'proximo': return parseInt(b.dataset.prio || 0) - parseInt(a.dataset.prio || 0);
+                        case 'ano': return parseInt(b.dataset.ano || 0) - parseInt(a.dataset.ano || 0);
+                        default: return 0;
+                    }
+                });
+                visible.forEach(c => grid.appendChild(c));
+            }
+        }
+
+        searchInput.addEventListener('input', applyFilter);
+        filterSelect.addEventListener('change', applyFilter);
+        sortSelect.addEventListener('change', applyFilter);
+    })();
+</script>

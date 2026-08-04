@@ -1,0 +1,65 @@
+﻿@model MotoTrack.Domain.Models.PerfilViewModel
+
+@{
+    ViewData["Title"] = "Mi Perfil";
+}
+
+<div class="perfil-header">
+    <div class="perfil-header-name">@Model.Nombre @Model.Apellido</div>
+    <div class="perfil-header-email">@Model.Correo</div>
+    <div class="perfil-header-member">Miembro desde @Model.FechaRegistro.ToString("dd MMM yyyy")</div>
+</div>
+
+<div class="card perfil-card">
+    <div class="card-body">
+        <div class="perfil-section-title">Informacion Personal</div>
+
+        <div class="perfil-field">
+            <span class="perfil-field-label">Nombre</span>
+            <span class="perfil-field-value">@Model.Nombre</span>
+        </div>
+
+        <div class="perfil-field">
+            <span class="perfil-field-label">Apellido</span>
+            <span class="perfil-field-value">@Model.Apellido</span>
+        </div>
+
+        <div class="perfil-field">
+            <span class="perfil-field-label">Correo</span>
+            <span class="perfil-field-value">@Model.Correo</span>
+        </div>
+
+        <div class="perfil-field">
+            <span class="perfil-field-label">Registro</span>
+            <span class="perfil-field-value">@Model.FechaRegistro.ToString("dd MMM yyyy")</span>
+        </div>
+    </div>
+</div>
+
+<div class="card perfil-card">
+    <div class="card-body">
+        <div class="perfil-section-title">Resumen de Cuenta</div>
+
+        <div class="perfil-stats-grid">
+            <div class="perfil-stat-box">
+                <div class="perfil-stat-value">@Model.TotalMotocicletas</div>
+                <div class="perfil-stat-label">Motos</div>
+                <div class="perfil-stat-sub">registradas</div>
+            </div>
+
+            <div class="perfil-stat-box">
+                <div class="perfil-stat-value">@Model.ServiciosRealizados</div>
+                <div class="perfil-stat-label">Servicios</div>
+                <div class="perfil-stat-sub">realizados</div>
+            </div>
+
+            <div class="perfil-stat-box">
+                <div class="perfil-stat-value">$@Model.GastoAcumulado.ToString("N0")</div>
+                <div class="perfil-stat-label">Gasto</div>
+                <div class="perfil-stat-sub">acumulado</div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="perfil-footer">MotoTrack &middot; Manten el control de tus motocicletas</div>

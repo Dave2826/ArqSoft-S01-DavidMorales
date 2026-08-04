@@ -9,9 +9,6 @@ on:
 jobs:
   build-and-test:
     runs-on: ubuntu-latest
-    defaults:
-      run:
-        working-directory: Catalogo
 
     steps:
       - uses: actions/checkout@v4
@@ -22,10 +19,10 @@ jobs:
           dotnet-version: 10.x
 
       - name: Restore
-        run: dotnet restore MotoTrack.slnx
+        run: dotnet restore Catalogo/MotoTrack.slnx
 
       - name: Build
-        run: dotnet build MotoTrack.slnx --no-restore --nologo
+        run: dotnet build Catalogo/MotoTrack.slnx --no-restore --nologo
 
       - name: Test
-        run: dotnet test ../MotoTrack.Tests/MotoTrack.Tests.csproj --no-build --nologo
+        run: dotnet test MotoTrack.Tests/MotoTrack.Tests.csproj --no-build --nologo

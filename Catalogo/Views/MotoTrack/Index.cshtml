@@ -1,0 +1,72 @@
+@model IEnumerable<MotoTrack.Domain.Models.Item>
+
+@{
+    var marcas = ViewBag.Marcas as List<string> ?? new List<string>();
+}
+
+<div class="explore-hero">
+    <div class="explore-hero-text">
+        <p class="text-muted">
+            Explora motocicletas, conoce especificaciones y encuentra inspiración para tu próximo proyecto.
+        </p>
+
+        <p class="contador-motos">
+            Total de motocicletas registradas: <strong>@Model.Count()</strong>
+        </p>
+    </div>
+</div>
+
+<div class="filtro">
+    <a asp-action="Index">Todas</a>
+
+    @foreach (var marca in marcas)
+    {
+        <a asp-action="Index" asp-route-marca="@marca">@marca</a>
+    }
+</div>
+
+<div class="explore-grid">
+
+    @foreach (var item in Model)
+    {
+        <a class="explore-card" asp-action="Detalle" asp-route-id="@item.Id">
+
+            <div class="explore-card-img">
+                @if (!string.IsNullOrEmpty(item.ImagenUrl))
+                {
+                    <img src="@Url.Content(item.ImagenUrl)"
+                         alt="@item.Nombre" />
+                }
+                else
+                {
+                    <div class="explore-card-img--empty">
+                        <svg width="40" height="40" viewBox="0 0 24 24" fill="none">
+                            <circle cx="6" cy="17" r="3" stroke="#ff7a00" stroke-width="2"/>
+                            <circle cx="18" cy="17" r="3" stroke="#ff7a00" stroke-width="2"/>
+                            <path d="M12 5L15 9H21" stroke="#ff7a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M3 17H6M18 17H21" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M9 17H15" stroke="#ff7a00" stroke-width="2" stroke-linecap="round"/>
+                            <path d="M15 9L12 14L9 17" stroke="#ff7a00" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                }
+            </div>
+
+            <div class="explore-card-body">
+                <div class="explore-card-title">
+                    @item.Nombre
+                    <span class="explore-card-year">@item.Ano</span>
+                </div>
+                <div class="explore-card-subtitle">@item.Marca &middot; @item.Tipo</div>
+                <div class="explore-card-specs">
+                    <span class="explore-card-spec">@item.Cilindrada</span>
+                    <span class="explore-card-spec">@item.Potencia</span>
+                    <span class="explore-card-spec">@item.VelocidadMax</span>
+                    <span class="explore-card-spec">@item.Peso</span>
+                </div>
+            </div>
+
+        </a>
+    }
+
+</div>

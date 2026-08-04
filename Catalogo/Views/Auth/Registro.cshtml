@@ -1,0 +1,57 @@
+﻿@model MotoTrack.Domain.Models.Usuario
+
+@{
+    ViewData["Title"] = "Registro";
+}
+
+<div class="login-page">
+
+    <partial name="_AuthBranding" />
+
+    <section class="login-form-side">
+
+        @if (ViewBag.Error != null)
+        {
+            <div class="error-box">@ViewBag.Error</div>
+        }
+
+        <div class="login-form-box">
+
+            <form asp-action="Registro" method="post">
+
+                <div class="form-group">
+                    <label>Nombre</label>
+                    <input asp-for="Nombre" class="login-input" />
+                    <span asp-validation-for="Nombre" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Apellido</label>
+                    <input asp-for="Apellido" class="login-input" />
+                    <span asp-validation-for="Apellido" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Correo</label>
+                    <input asp-for="Correo" class="login-input" />
+                    <span asp-validation-for="Correo" class="error"></span>
+                </div>
+
+                <div class="form-group">
+                    <label>Contraseña</label>
+                    <input asp-for="PasswordHash" type="password" class="login-input" />
+                    <span asp-validation-for="PasswordHash" class="error"></span>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn-mototrack-primary">Registrarme</button>
+                    <a asp-controller="Auth" asp-action="Login" class="btn-cancel">Ya tengo cuenta</a>
+                </div>
+
+            </form>
+
+        </div>
+
+    </section>
+
+</div>

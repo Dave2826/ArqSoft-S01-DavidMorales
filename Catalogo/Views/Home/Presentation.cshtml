@@ -1,0 +1,55 @@
+@{
+    Layout = null;
+    ViewData["Title"] = "MotoTrack";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"]</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet" />
+    <link rel="icon" type="image/svg+xml" href="~/assets/branding/favicon/favicon.svg" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+</head>
+<body>
+    <main class="presentation-page">
+        <img src="~/assets/branding/logo/mototrack-logo-primary.png" alt="MotoTrack" class="presentation-logo" />
+
+        <h1 class="presentation-title">MotoTrack</h1>
+
+        <p class="presentation-tagline">
+            Diseñado por motociclistas,<br />
+            para motociclistas.
+        </p>
+
+        <p class="presentation-thanks">Gracias por asistir.</p>
+
+        <p class="presentation-qr-hint">
+            Escanea el código QR<br />
+            para probar MotoTrack<br />
+            desde tu celular.
+        </p>
+
+        <div class="presentation-qr" aria-label="Código QR">
+            <img src="~/images/demo/mototrack-demo-qr.png" alt="Código QR" class="presentation-qr-img" />
+        </div>
+
+        <a class="btn-mototrack-primary presentation-btn" asp-controller="Home" asp-action="Index">Entrar a MotoTrack</a>
+
+        <p class="presentation-credits">
+            Proyecto desarrollado para<br />
+            <span class="presentation-credits-course">Arquitectura de Software</span><br />
+            <span class="presentation-credits-author">David Morales Guerrero</span>
+        </p>
+
+        <p class="presentation-version">Versión 0.4.0</p>
+    </main>
+
+    <script src="~/js/site.js" asp-append-version="true"></script>
+</body>
+</html>
